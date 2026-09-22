@@ -1,0 +1,47 @@
+flowchart TD
+    Start(["For each museum M"]) --> Shared{"Does M share any<br/>program with the<br/>user's memberships?"}
+    Shared -- No --> NotCov["NOT COVERED<br/>(outside your networks)"]
+    Shared -- Yes --> Loop["For each shared program P"]
+
+    Loop --> Benefit["benefit = M.programs[P].benefit<br/>or program default"]
+    Benefit --> Excl{"Exclusion rule applies?<br/>(check anchors)"}
+
+    Excl --> Home{"home_institution / inter_institution:<br/>M within radius of a<br/>home museum granting P?"}
+    Excl --> Res{"residence: M within<br/>radius of user's ZIP?"}
+
+    Home -- Yes --> Blocked["This program blocked here"]
+    Res -- Yes --> Blocked
+    Home -- "No / unknown*" --> Keep["Keep this benefit"]
+    Res -- "No / no ZIP" --> Keep
+
+    Blocked --> Next{"More programs?"}
+    Keep --> Best["best = max(best, benefit)<br/>free &gt; 50% &gt; verify"]
+    Best --> Next
+    Next -- Yes --> Loop
+    Next -- No --> Classify{"best tier?"}
+
+    Classify -- free --> Free["FREE"]
+    Classify -- "discount_50 / other" --> Disc["~50% OFF"]
+    Classify -- varies --> Verify["VERIFY — confirm locally"]
+    Classify -- none --> NearBlock["NOT COVERED<br/>(too close to home)"]
+
+    Free --> Rec
+    Disc --> Rec
+    Verify --> Rec
+
+    Rec{"In more than one<br/>of your networks?"}
+    Rec -- Yes --> Multi["Show ALL associations as<br/>color-coded chips;<br/>highlight recommended =<br/>best tier, then most people admitted"]
+    Rec -- No --> Single["Show the single<br/>association chip"]
+    Multi --> Note
+    Single --> Note
+    Note["Always show: benefit as of &lt;date&gt;<br/>+ 'call ahead to confirm'"]
+
+    NotCov:::red
+    NearBlock:::red
+    Free:::green
+    Disc:::amber
+    Verify:::amber
+
+    classDef green fill:#d7f5dd,stroke:#2e7d32,color:#14532d;
+    classDef amber fill:#fdf3d3,stroke:#b7791f,color:#5c3d00;
+    classDef red fill:#fbdcdc,stroke:#c62828,color:#611a1a;
