@@ -1,0 +1,23 @@
+name: Deploy PWA to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: "20" }
+      # - working-directory: app
+      #   run: npm ci && npm run build
+      # - uses: actions/upload-pages-artifact@v3
+      #   with: { path: app/dist }
+      # - uses: actions/deploy-pages@v4
+      - run: echo "App not implemented yet — see docs/ARCHITECTURE.md section 8."
