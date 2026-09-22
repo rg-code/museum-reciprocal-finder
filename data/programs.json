@@ -1,0 +1,45 @@
+{
+  "_meta": { "note": "Program metadata + defaults. Per-museum records may override benefit/exclusion/admits.", "schema_version": 1 },
+  "ASTC": {
+    "name": "ASTC Travel Passport Program", "category": "science", "color": "#1f77b4",
+    "default_benefit": "free", "default_admits": 2,
+    "default_exclusion": { "radius_mi": 90, "anchors": ["home_institution", "residence"], "measure": "straight_line", "discretionary": false },
+    "source_url": "https://www.astc.org/membership/find-an-astc-member/passport-faq/"
+  },
+  "NARM": {
+    "name": "North American Reciprocal Museum Association", "category": "mixed", "color": "#9467bd",
+    "default_benefit": "free", "default_admits": 2,
+    "default_exclusion": { "radius_mi": 15, "anchors": ["home_institution"], "discretionary": true },
+    "source_url": "https://narmassociation.org/members/"
+  },
+  "ROAM": {
+    "name": "Reciprocal Organization of Associated Museums", "category": "mixed", "color": "#2ca02c",
+    "default_benefit": "free", "default_admits": 2,
+    "default_exclusion": { "radius_mi": 25, "anchors": ["inter_institution"], "discretionary": false },
+    "source_url": "https://sites.google.com/site/roammuseums/home"
+  },
+  "AZA": {
+    "name": "Association of Zoos & Aquariums", "category": "zoo_aquarium", "color": "#ff7f0e",
+    "default_benefit": "discount_50", "default_admits": 2,
+    "default_exclusion": { "anchors": ["inter_institution"], "discretionary": true },
+    "source_url": "https://www.aza.org/reciprocity/"
+  },
+  "AHS": {
+    "name": "American Horticultural Society Reciprocal Admissions Program", "category": "garden", "color": "#8c564b",
+    "default_benefit": "free", "default_admits": 2,
+    "default_exclusion": { "radius_mi": 90, "anchors": ["residence"], "discretionary": true },
+    "source_url": "https://ahsgardening.org/ahs-garden-network/"
+  },
+  "TIMETRAVELERS": {
+    "name": "Time Travelers", "category": "history", "color": "#e377c2",
+    "default_benefit": "varies", "default_admits": 2,
+    "default_exclusion": null,
+    "source_url": "https://timetravelers.mohistory.org/"
+  },
+  "ACM": {
+    "name": "Association of Children's Museums Reciprocal Network", "category": "children", "color": "#d62728",
+    "default_benefit": "discount_50", "default_admits": 6,
+    "default_exclusion": null,
+    "source_url": "https://findachildrensmuseum.org/reciprocal-network/"
+  }
+}
