@@ -1,0 +1,11 @@
+{
+  "name": "Museum Reciprocal Finder",
+  "short_name": "Reciprocal",
+  "description": "Which museums your membership gets you into free or at a discount.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f8fa",
+  "theme_color": "#1f77b4",
+  "icons": []
+}
