@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "note": "Hand-built SAMPLE dataset so the PWA is demonstrable before the pipeline runs. Replace with generated museums.json.",
+    "asof": "2026-09"
+  },
+  "museums": [
+    { "id": "nelson-atkins-kansas-city-mo", "name": "The Nelson-Atkins Museum of Art", "type": "art", "city": "Kansas City", "state": "MO", "lat": 39.0454, "lng": -94.5807, "website": "https://nelson-atkins.org", "programs": { "NARM": {}, "ROAM": {} } },
+    { "id": "new-britain-museum-american-art-ct", "name": "New Britain Museum of American Art", "type": "art", "city": "New Britain", "state": "CT", "lat": 41.6612, "lng": -72.7795, "website": "https://nbmaa.org", "programs": { "NARM": {}, "ROAM": {}, "AHS": {}, "ACM": {} } },
+    { "id": "museum-of-science-boston-ma", "name": "Museum of Science, Boston", "type": "science", "city": "Boston", "state": "MA", "lat": 42.3676, "lng": -71.0708, "website": "https://mos.org", "programs": { "ASTC": {}, "AZA": {} } },
+    { "id": "please-touch-museum-philadelphia-pa", "name": "Please Touch Museum", "type": "children", "city": "Philadelphia", "state": "PA", "lat": 39.9782, "lng": -75.2101, "website": "https://pleasetouchmuseum.org", "programs": { "ACM": {} } },
+    { "id": "cincinnati-museum-center-cincinnati-oh", "name": "Cincinnati Museum Center", "type": "science", "city": "Cincinnati", "state": "OH", "lat": 39.1100, "lng": -84.5375, "website": "https://cincymuseum.org", "programs": { "ASTC": {}, "TIMETRAVELERS": {}, "ACM": {} } },
+    { "id": "boonshoft-museum-of-discovery-dayton-oh", "name": "Boonshoft Museum of Discovery", "type": "science", "city": "Dayton", "state": "OH", "lat": 39.7969, "lng": -84.1936, "website": "https://boonshoft.org", "programs": { "ASTC": {}, "AZA": {}, "ACM": {} } },
+    { "id": "california-science-center-los-angeles-ca", "name": "California Science Center", "type": "science", "city": "Los Angeles", "state": "CA", "lat": 34.0155, "lng": -118.2865, "website": "https://californiasciencecenter.org", "programs": { "ASTC": {} } },
+    { "id": "missouri-botanical-garden-st-louis-mo", "name": "Missouri Botanical Garden", "type": "garden", "city": "St. Louis", "state": "MO", "lat": 38.6127, "lng": -90.2596, "website": "https://missouribotanicalgarden.org", "programs": { "AHS": {} } },
+    { "id": "missouri-historical-society-st-louis-mo", "name": "Missouri Historical Society", "type": "history", "city": "St. Louis", "state": "MO", "lat": 38.6440, "lng": -90.2840, "website": "https://mohistory.org", "programs": { "TIMETRAVELERS": {} } },
+    { "id": "san-diego-zoo-san-diego-ca", "name": "San Diego Zoo", "type": "zoo", "city": "San Diego", "state": "CA", "lat": 32.7353, "lng": -117.1490, "website": "https://sdzoo.org", "programs": { "AZA": { "benefit": "free" } } },
+    { "id": "dennos-museum-center-traverse-city-mi", "name": "Dennos Museum Center", "type": "art", "city": "Traverse City", "state": "MI", "lat": 44.7548, "lng": -85.5760, "website": "https://dennosmuseum.org", "programs": { "ASTC": {}, "NARM": {}, "ROAM": {} } },
+    { "id": "kohl-childrens-museum-glenview-il", "name": "Kohl Children's Museum", "type": "children", "city": "Glenview", "state": "IL", "lat": 42.0700, "lng": -87.7873, "website": "https://kohlchildrensmuseum.org", "programs": { "ACM": {} } }
+  ]
+}
