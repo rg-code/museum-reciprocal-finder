@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Missouri Botanical Garden",
+        "city": "St. Louis",
+        "state": "MO",
+        "website": "https://www.missouribotanicalgarden.org"
+      },
+      "geometry": { "type": "Point", "coordinates": [-90.2596, 38.6127] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Denver Botanic Gardens",
+        "city": "Denver",
+        "state": "CO",
+        "website": "https://www.botanicgardens.org"
+      },
+      "geometry": { "type": "Point", "coordinates": [-104.9612, 39.7320] }
+    }
+  ]
+}
