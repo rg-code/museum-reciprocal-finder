@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#1f77b4" />
+<link rel="manifest" href="./manifest.webmanifest" />
+<title>Museum Reciprocal Finder</title>
+<style>
+  :root { color-scheme: light; --bg:#f7f8fa; --card:#fff; --ink:#1a1f29; --muted:#5b6472;
+    --line:#e4e7ec; --accent:#1f77b4; --green:#137a3a; --greenbg:#d7f5dd; --amber:#8a5a00;
+    --amberbg:#fdf3d3; --greybg:#eef0f3; --grey:#5b6472; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); }
+  header { background:var(--accent); color:#fff; padding:14px 18px; }
+  header h1 { margin:0; font-size:18px; }
+  header p { margin:2px 0 0; font-size:12px; opacity:.9; }
+  main { max-width:820px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:16px; margin:0 0 14px; }
+  h2 { font-size:16px; margin:0 0 10px; }
+  button { font:inherit; cursor:pointer; border-radius:9px; border:1px solid var(--line);
+    background:#fff; padding:9px 14px; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  button.mode { display:block; width:100%; text-align:left; margin:8px 0; padding:14px;
+    font-weight:600; }
+  button.mode small { display:block; font-weight:400; color:var(--muted); margin-top:3px; }
+  label { display:block; font-weight:600; margin:12px 0 4px; }
+  input, select { font:inherit; width:100%; padding:9px 10px; border:1px solid var(--line);
+    border-radius:9px; background:#fff; }
+  .assoc { display:inline-flex; align-items:center; gap:6px; margin:4px 10px 4px 0;
+    font-weight:500; }
+  .assoc input { width:auto; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .muted { color:var(--muted); font-size:13px; }
+  .result { display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
+    border-top:1px solid var(--line); padding:12px 0; }
+  .result:first-child { border-top:none; }
+  .result .name { font-weight:600; }
+  .chips { margin-top:6px; }
+  .chip { display:inline-block; font-size:11px; font-weight:700; color:#fff; border-radius:20px;
+    padding:2px 9px; margin:3px 5px 0 0; }
+  .chip.rec { outline:2px solid #111; outline-offset:1px; }
+  .badge { flex:none; font-size:12px; font-weight:700; border-radius:20px; padding:4px 10px;
+    white-space:nowrap; }
+  .b-free { background:var(--greenbg); color:var(--green); }
+  .b-discount, .b-verify { background:var(--amberbg); color:var(--amber); }
+  .b-none { background:var(--greybg); color:var(--grey); }
+  .disclaimer { font-size:12px; color:var(--muted); border-top:1px solid var(--line);
+    margin-top:8px; padding-top:10px; }
+  a.link { color:var(--accent); }
+  .hidden { display:none; }
+  .gw { border-top:1px solid var(--line); padding:10px 0; }
+  .gw:first-child { border-top:none; }
+  .price { font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Museum Reciprocal Finder</h1>
+  <p>Which museums does your membership get you into free or at a discount?</p>
+</header>
+<main>
+  <div id="onboarding" class="card">
+    <h2>Get started</h2>
+    <button class="mode" data-mode="museum">I'm a member of a museum
+      <small>Pick your home museum(s) — most accurate (uses their location for distance rules).</small></button>
+    <button class="mode" data-mode="assoc">I have these associations
+      <small>Choose the networks your membership includes (ASTC, NARM, …).</small></button>
+    <button class="mode" data-mode="none">I don't have a membership yet
+      <small>See the cheapest membership that unlocks the most reciprocal access.</small></button>
+  </div>
+
+  <div id="membership" class="card hidden">
+    <h2 id="membership-title">Your membership</h2>
+    <div id="home-wrap" class="hidden">
+      <label for="home">Home museum(s)</label>
+      <select id="home" multiple size="6"></select>
+      <p class="muted">Cmd/Ctrl-click to select more than one.</p>
+    </div>
+    <div id="assoc-wrap" class="hidden">
+      <label>Associations you hold</label>
+      <div id="assoc-list"></div>
+    </div>
+    <label for="loc">Your home ZIP or city <span class="muted">(needed for distance rules)</span></label>
+    <input id="loc" placeholder="e.g. 64111 or Kansas City, MO" />
+    <p id="loc-note" class="muted"></p>
+    <div class="row" style="margin-top:12px">
+      <button class="primary" id="go">Find museums</button>
+      <button id="back1">Back</button>
+    </div>
+  </div>
+
+  <div id="results" class="card hidden">
+    <div class="row" style="justify-content:space-between">
+      <h2 id="results-title">Results</h2>
+      <button id="back2">Start over</button>
+    </div>
+    <div id="results-list"></div>
+    <p class="disclaimer">Reciprocal policies are set by each institution and change often.
+      This is guidance only — always confirm with the museum before you visit.
+      Sample data for demonstration.</p>
+  </div>
+
+  <div id="gateway" class="card hidden">
+    <div class="row" style="justify-content:space-between">
+      <h2>Cheapest gateway memberships</h2>
+      <button id="back3">Start over</button>
+    </div>
+    <p class="muted">Buy the smallest membership that unlocks the most reciprocal access.
+      Prices approximate — confirm on the museum's site.</p>
+    <div id="gateway-list"></div>
+  </div>
+</main>
+
+<script>
+"use strict";
+
+// ---- Eligibility engine (port of app/src/engine/engine.ts) ----
+const EARTH_MI = 3958.7613;
+function haversineMiles(a, b) {
+  const r = d => d * Math.PI / 180;
+  const dLat = r(b.lat - a.lat), dLng = r(b.lng - a.lng);
+  const h = Math.sin(dLat/2)**2 + Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLng/2)**2;
+  return 2 * EARTH_MI * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+function tierOf(b) {
+  if (b === "free") return "free";
+  if (b === "discount_50" || b === "discount_other") return "discount";
+  if (b === "varies") return "verify";
+  return "none";
+}
+const TIER_RANK = { free:3, discount:2, verify:1, none:0 };
+function resolveExclusion(entry, def) {
+  if (entry.exclusion) return { excl: entry.exclusion, optedIn: true };
+  return { excl: def || null, optedIn: false };
+}
+function isExcluded(museum, user, program, resolved) {
+  const { excl, optedIn } = resolved;
+  if (!excl) return false;
+  if (excl.discretionary && !optedIn) return false;
+  const rad = excl.radius_mi;
+  if (rad == null) return false;
+  const homes = (user.homeInstitutions || []).filter(h => h.programs.includes(program));
+  for (const anchor of excl.anchors) {
+    if (anchor === "home_institution" || anchor === "inter_institution") {
+      for (const h of homes) if (haversineMiles(museum, h) < rad) return true;
+    }
+    if (anchor === "residence" && user.zipCentroid) {
+      if (haversineMiles(museum, user.zipCentroid) < rad) return true;
+    }
+  }
+  return false;
+}
+function applicableOptions(museum, user, programs) {
+  const held = new Set(user.heldPrograms), out = [];
+  for (const [program, entry] of Object.entries(museum.programs)) {
+    if (!held.has(program)) continue;
+    const def = programs[program]; if (!def) continue;
+    const benefit = entry.benefit || def.default_benefit;
+    const admits = entry.admits != null ? entry.admits : def.default_admits;
+    if (isExcluded(museum, user, program, resolveExclusion(entry, def.default_exclusion))) continue;
+    out.push({ program, benefit, admits, color: def.color });
+  }
+  return out;
+}
+function recommendedOption(options) {
+  if (!options.length) return null;
+  return [...options].sort((a, b) =>
+    (TIER_RANK[tierOf(b.benefit)] - TIER_RANK[tierOf(a.benefit)]) ||
+    (b.admits - a.admits) || a.program.localeCompare(b.program))[0];
+}
+function classifyMuseum(museum, user, programs) {
+  const held = new Set(user.heldPrograms);
+  const shared = Object.keys(museum.programs).filter(p => held.has(p));
+  if (!shared.length) return { tier:"none", reason:"no_shared_program", options:[], recommended:null };
+  const options = applicableOptions(museum, user, programs);
+  if (!options.length) return { tier:"none", reason:"excluded_by_distance", options:[], recommended:null };
+  const recommended = recommendedOption(options);
+  return { tier: tierOf(recommended.benefit), reason:"eligible", options, recommended };
+}
+
+// ---- Small offline location lookup (sample; real app ships full ZIP/city datasets) ----
+const ZIP_CENTROIDS = {
+  "64111":[39.045,-94.583],"02114":[42.361,-71.068],"19104":[39.958,-75.198],
+  "90007":[34.021,-118.287],"63110":[38.627,-90.259],"60007":[42.008,-87.99],
+  "92101":[32.717,-117.163],"10001":[40.750,-73.997],"45414":[39.83,-84.20],
+  "45203":[39.109,-84.503],"49686":[44.763,-85.62],"06052":[41.667,-72.79]
+};
+const CITY_CENTROIDS = {
+  "kansas city, mo":[39.10,-94.58],"boston, ma":[42.36,-71.06],"philadelphia, pa":[39.95,-75.16],
+  "los angeles, ca":[34.05,-118.24],"st. louis, mo":[38.63,-90.20],"saint louis, mo":[38.63,-90.20],
+  "chicago, il":[41.88,-87.63],"san diego, ca":[32.72,-117.16],"new york, ny":[40.71,-74.01],
+  "dayton, oh":[39.76,-84.19],"cincinnati, oh":[39.10,-84.51],"traverse city, mi":[44.76,-85.62],
+  "new britain, ct":[41.67,-72.79]
+};
+function resolveLocation(input) {
+  const s = (input || "").trim();
+  if (!s) return { centroid: null, note: "No location set — distance rules skipped." };
+  if (/^\d{5}$/.test(s)) {
+    const z = ZIP_CENTROIDS[s];
+    return z ? { centroid:{lat:z[0],lng:z[1]}, note:"" }
+             : { centroid:null, note:"ZIP not in this demo's small lookup — distance rules skipped." };
+  }
+  const c = CITY_CENTROIDS[s.toLowerCase()];
+  return c ? { centroid:{lat:c[0],lng:c[1]}, note:"" }
+           : { centroid:null, note:"City not in this demo's small lookup — try a sample ZIP, or distance rules are skipped." };
+}
+
+// ---- App ----
+const el = id => document.getElementById(id);
+let PROGRAMS = {}, MUSEUMS = [], MEMBERSHIPS = [];
+let mode = null;
+
+async function loadData() {
+  const [p, m, g] = await Promise.all([
+    fetch("./data/programs.json").then(r => r.json()),
+    fetch("./data/museums.sample.json").then(r => r.json()),
+    fetch("./data/memberships.seed.json").then(r => r.json()).catch(() => ({ gateways: [] })),
+  ]);
+  PROGRAMS = p; delete PROGRAMS._meta;
+  MUSEUMS = m.museums || [];
+  MEMBERSHIPS = g.gateways || [];
+}
+
+function show(sec) {
+  for (const id of ["onboarding","membership","results","gateway"]) el(id).classList.toggle("hidden", id !== sec);
+  window.scrollTo(0, 0);
+}
+
+function renderAssocList() {
+  el("assoc-list").innerHTML = Object.keys(PROGRAMS).map(k =>
+    `<label class="assoc"><input type="checkbox" value="${k}"> <span style="color:${PROGRAMS[k].color}">●</span> ${PROGRAMS[k].name}</label>`
+  ).join("");
+}
+function renderHomeSelect() {
+  el("home").innerHTML = MUSEUMS.map(m =>
+    `<option value="${m.id}">${m.name} — ${m.city||""}, ${m.state||""}</option>`).join("");
+}
+
+function buildUser() {
+  const heldSet = new Set();
+  const homeInstitutions = [];
+  if (mode === "museum") {
+    for (const opt of el("home").selectedOptions) {
+      const mu = MUSEUMS.find(x => x.id === opt.value);
+      if (!mu) continue;
+      const progs = Object.keys(mu.programs);
+      progs.forEach(p => heldSet.add(p));
+      homeInstitutions.push({ id: mu.id, lat: mu.lat, lng: mu.lng, programs: progs });
+    }
+  } else if (mode === "assoc") {
+    el("assoc-list").querySelectorAll("input:checked").forEach(c => heldSet.add(c.value));
+  }
+  const loc = resolveLocation(el("loc").value);
+  el("loc-note").textContent = loc.note;
+  return {
+    heldPrograms: [...heldSet],
+    homeInstitutions,
+    zipCentroid: loc.centroid || undefined,
+    _homeIds: new Set(homeInstitutions.map(h => h.id)),
+  };
+}
+
+const BADGE = { free:["b-free","FREE"], discount:["b-discount","~50% OFF"],
+  verify:["b-verify","VERIFY"], none:["b-none",""] };
+
+function renderResults() {
+  const user = buildUser();
+  if (!user.heldPrograms.length) { el("results-list").innerHTML =
+    `<p class="muted">Select at least one association or home museum.</p>`; show("results"); return; }
+
+  const rows = MUSEUMS
+    .filter(m => !user._homeIds.has(m.id))
+    .map(m => {
+      const c = classifyMuseum(m, user, PROGRAMS);
+      const dist = user.zipCentroid ? haversineMiles(m, user.zipCentroid) : null;
+      return { m, c, dist };
+    })
+    .sort((a, b) => (TIER_RANK[b.c.tier] - TIER_RANK[a.c.tier]) ||
+      ((a.dist ?? 1e9) - (b.dist ?? 1e9)) || a.m.name.localeCompare(b.m.name));
+
+  const nCovered = rows.filter(r => r.c.tier !== "none").length;
+  el("results-title").textContent = `${nCovered} museum${nCovered===1?"":"s"} you can visit`;
+
+  el("results-list").innerHTML = rows.map(({ m, c, dist }) => {
+    const [bc, bt] = BADGE[c.tier];
+    let badgeText = bt;
+    if (c.tier === "none") badgeText = c.reason === "excluded_by_distance" ? "TOO CLOSE" : "NOT COVERED";
+    const chips = c.options.map(o => {
+      const rec = c.recommended && o.program === c.recommended.program ? " rec" : "";
+      return `<span class="chip${rec}" style="background:${o.color}" title="${o.admits} admitted">${o.program}</span>`;
+    }).join("");
+    const distStr = dist != null ? ` · ${Math.round(dist)} mi` : "";
+    return `<div class="result">
+      <div>
+        <div class="name">${m.name}</div>
+        <div class="muted">${m.city||""}, ${m.state||""}${distStr}</div>
+        <div class="chips">${chips || '<span class="muted">—</span>'}</div>
+      </div>
+      <span class="badge ${bc}">${badgeText}</span>
+    </div>`;
+  }).join("");
+  show("results");
+}
+
+function renderGateway() {
+  const loc = resolveLocation(el("loc") && el("loc").value);
+  const list = [...MEMBERSHIPS].sort((a, b) => {
+    const pa = (a.cheapest_reciprocal_tier||{}).price ?? 1e9;
+    const pb = (b.cheapest_reciprocal_tier||{}).price ?? 1e9;
+    return (b.unlocks.length - a.unlocks.length) || (pa - pb);
+  });
+  el("gateway-list").innerHTML = list.map(g => {
+    const tier = g.cheapest_reciprocal_tier || {};
+    const price = tier.price != null ? `$${tier.price}` : "price varies";
+    const chips = g.unlocks.map(p =>
+      `<span class="chip" style="background:${(PROGRAMS[p]||{}).color||'#888'}">${p}</span>`).join("");
+    const card = g.digital_card === true ? " · digital card" : (g.digital_card === false ? " · physical card only" : "");
+    return `<div class="gw">
+      <div><span class="price">${price}</span> — ${g.name} <span class="muted">(${g.city||""}, ${g.state||""}${card})</span></div>
+      <div class="chips">${chips}</div>
+    </div>`;
+  }).join("");
+  show("gateway");
+}
+
+// wire up
+document.querySelectorAll("button.mode").forEach(b => b.addEventListener("click", () => {
+  mode = b.dataset.mode;
+  if (mode === "none") { renderGateway(); return; }
+  el("membership-title").textContent = mode === "museum" ? "Your home museum" : "Your associations";
+  el("home-wrap").classList.toggle("hidden", mode !== "museum");
+  el("assoc-wrap").classList.toggle("hidden", mode !== "assoc");
+  show("membership");
+}));
+el("go").addEventListener("click", renderResults);
+el("back1").addEventListener("click", () => show("onboarding"));
+el("back2").addEventListener("click", () => show("onboarding"));
+el("back3").addEventListener("click", () => show("onboarding"));
+
+loadData().then(() => { renderAssocList(); renderHomeSelect(); })
+  .catch(e => { el("onboarding").innerHTML = "<p>Failed to load data: " + e + "</p>"; });
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
