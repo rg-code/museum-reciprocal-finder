@@ -1,0 +1,120 @@
+{
+  "_meta": {
+    "purpose": "Seed catalog for the gateway-membership recommender (memberships.json in the app). Each entry = a museum that SELLS a reciprocal-granting membership, its cheapest qualifying tier, and which of the app's 7 networks that tier unlocks.",
+    "networks_in_scope": ["ASTC", "NARM", "ROAM", "AZA", "AHS", "TIMETRAVELERS", "ACM"],
+    "out_of_scope_networks_seen": ["MARP", "ANCA"],
+    "prices_note": "Prices are approximate and were gathered 2026-09 from museum pages and prior project research. ALWAYS reconfirm on the museum's own membership page before relying on them; museums change tiers/prices. lat/lng are approximate city-level and should be replaced by real geocoding.",
+    "asof": "2026-09",
+    "schema_version": 1
+  },
+  "gateways": [
+    {
+      "id": "kern-county-museum-bakersfield-ca",
+      "name": "Kern County Museum",
+      "city": "Bakersfield", "state": "CA",
+      "lat": 35.3866, "lng": -119.0187,
+      "cheapest_reciprocal_tier": { "name": "Travel/Reciprocal (2 adults + up to 6 kids)", "price": 125, "currency": "USD" },
+      "unlocks": ["ASTC", "NARM", "ACM", "TIMETRAVELERS"],
+      "digital_card": true,
+      "notes": "Best 'most-networks-with-a-digital-card' option from prior research. Digital card via Join It (Apple/Google Wallet), but the card face shows only the Kern seal (no reciprocal logos). Some directories also list ROAM — verify.",
+      "source_url": "https://kerncountymuseum.org/become-a-member/",
+      "confidence": "approx"
+    },
+    {
+      "id": "boonshoft-museum-of-discovery-dayton-oh",
+      "name": "Boonshoft Museum of Discovery (Dayton Society of Natural History)",
+      "city": "Dayton", "state": "OH",
+      "lat": 39.7969, "lng": -84.1936,
+      "cheapest_reciprocal_tier": { "name": "Family (Standard)", "price": 135, "currency": "USD" },
+      "unlocks": ["ASTC", "AZA", "ACM"],
+      "digital_card": true,
+      "notes": "The only strong AZA (zoos/aquariums) gateway that also has a digital card. ASTC+AZA at Standard/Premium; ACM added at Family level. Family price seen as $135–$155 — verify.",
+      "source_url": "https://boonshoft.org/",
+      "confidence": "approx"
+    },
+    {
+      "id": "cincinnati-museum-center-cincinnati-oh",
+      "name": "Cincinnati Museum Center",
+      "city": "Cincinnati", "state": "OH",
+      "lat": 39.1100, "lng": -84.5375,
+      "cheapest_reciprocal_tier": { "name": "Family", "price": 140, "currency": "USD" },
+      "unlocks": ["ASTC", "TIMETRAVELERS", "ACM"],
+      "digital_card": true,
+      "notes": "ASTC + Time Travelers at ALL levels; ACM added at Family/Family Premium. Family ~$120–$150 — verify. Digital card via Member Portal. Good Time-Travelers gateway with a digital card.",
+      "source_url": "https://www.cincymuseum.org/members/join/",
+      "confidence": "approx"
+    },
+    {
+      "id": "western-science-center-hemet-ca",
+      "name": "Western Science Center",
+      "city": "Hemet", "state": "CA",
+      "lat": 33.7125, "lng": -116.9863,
+      "cheapest_reciprocal_tier": { "name": "Individual", "price": 45, "currency": "USD" },
+      "unlocks": ["ASTC"],
+      "digital_card": null,
+      "notes": "Cheapest single-network (ASTC-only) gateway from prior research (~$45 individual). Good if the goal is just ASTC at the lowest price. Price + digital-card status — verify.",
+      "source_url": "https://www.westernsciencecenter.org/",
+      "confidence": "verify"
+    },
+    {
+      "id": "dennos-museum-center-traverse-city-mi",
+      "name": "Dennos Museum Center",
+      "city": "Traverse City", "state": "MI",
+      "lat": 44.7548, "lng": -85.5760,
+      "cheapest_reciprocal_tier": { "name": "Family", "price": 100, "currency": "USD" },
+      "unlocks": ["ASTC", "NARM", "ROAM"],
+      "digital_card": null,
+      "notes": "~$100 family for ASTC+NARM+ROAM (three networks cheaply). Prior research paired this with a 'Carnegie (IN)' option at a similar price — that Carnegie entry still needs to be pinned down/verified.",
+      "source_url": "https://www.dennosmuseum.org/",
+      "confidence": "verify"
+    },
+    {
+      "id": "peoria-riverfront-museum-peoria-il",
+      "name": "Peoria Riverfront Museum",
+      "city": "Peoria", "state": "IL",
+      "lat": 40.6936, "lng": -89.5912,
+      "cheapest_reciprocal_tier": { "name": "Family", "price": 125, "currency": "USD" },
+      "unlocks": ["ASTC", "NARM", "TIMETRAVELERS"],
+      "digital_card": true,
+      "notes": "ASTC + NARM + Time Travelers with an Apple/Google Wallet card. Price — verify.",
+      "source_url": "https://www.peoriariverfrontmuseum.org/",
+      "confidence": "verify"
+    },
+    {
+      "id": "newfields-indianapolis-in",
+      "name": "Newfields (Indianapolis Museum of Art)",
+      "city": "Indianapolis", "state": "IN",
+      "lat": 39.8258, "lng": -86.1856,
+      "cheapest_reciprocal_tier": { "name": "reciprocal-eligible tier", "price": null, "currency": "USD" },
+      "unlocks": ["NARM", "ROAM", "AHS"],
+      "digital_card": true,
+      "notes": "Adds AHS (gardens) — the hardest network to pick up. Also NARM + ROAM. Has a digital card. Also lists MARP (out of scope). Price/tier — verify.",
+      "source_url": "https://discovernewfields.org/reciprocal-membership-programs",
+      "confidence": "verify"
+    },
+    {
+      "id": "new-jersey-state-museum-trenton-nj",
+      "name": "New Jersey State Museum",
+      "city": "Trenton", "state": "NJ",
+      "lat": 40.2206, "lng": -74.7699,
+      "cheapest_reciprocal_tier": { "name": "Sponsor", "price": 250, "currency": "USD" },
+      "unlocks": ["ASTC", "NARM", "ROAM", "TIMETRAVELERS"],
+      "digital_card": false,
+      "notes": "High coverage (4 in-scope networks + MARP), but reciprocity only at ~$250 Sponsor and PHYSICAL CARD ONLY (no digital). Included for completeness, not as a cheap gateway.",
+      "source_url": "https://njstatemuseumfoundation.givecloud.co/memberships/reciprocal-benefit-programs",
+      "confidence": "approx"
+    },
+    {
+      "id": "new-britain-museum-american-art-ct",
+      "name": "New Britain Museum of American Art (Hungerford)",
+      "city": "New Britain", "state": "CT",
+      "lat": 41.6612, "lng": -72.7795,
+      "cheapest_reciprocal_tier": { "name": "reciprocal-eligible tier", "price": null, "currency": "USD" },
+      "unlocks": ["ASTC", "NARM", "ROAM", "AHS", "ACM"],
+      "digital_card": false,
+      "notes": "Highest raw coverage (5 in-scope networks + ANCA) but PHYSICAL CARD ONLY. This is one of the user's current memberships. Price/tier — verify.",
+      "source_url": "https://nbmaa.org/",
+      "confidence": "verify"
+    }
+  ]
+}
