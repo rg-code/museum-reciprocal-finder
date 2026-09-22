@@ -1,0 +1,18 @@
+# Node / frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+# Python / pipeline
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+pipeline/geocode_cache.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
