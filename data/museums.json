@@ -20857,10 +20857,10 @@
         "NARM": {
           "verified": "2026-09"
         },
-        "ROAM": {
+        "AHS": {
           "verified": "2026-09"
         },
-        "AHS": {
+        "ROAM": {
           "verified": "2026-09"
         },
         "TIMETRAVELERS": {
@@ -20869,8 +20869,8 @@
       },
       "sources": [
         "narm",
-        "roam",
         "ahs",
+        "roam",
         "timetravelers"
       ],
       "last_seen": "2026-09-23",
@@ -31299,29 +31299,6 @@
       "last_seen": "2026-09-23",
       "kinds": [
         "history"
-      ]
-    },
-    {
-      "id": "kemper-art-museum-saint-louis-mo",
-      "name": "Kemper Art Museum",
-      "city": "Saint Louis",
-      "state": "MO",
-      "zip": null,
-      "country": "US",
-      "lat": 38.636,
-      "lng": -90.245,
-      "website": null,
-      "programs": {
-        "ROAM": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "roam"
-      ],
-      "last_seen": "2026-09-23",
-      "kinds": [
-        "art"
       ]
     },
     {
@@ -48962,7 +48939,7 @@
       "country": "US",
       "lat": 28.085,
       "lng": -82.758,
-      "website": "https:/palmharbormuseum.com",
+      "website": "https://palmharbormuseum.com",
       "programs": {
         "TIMETRAVELERS": {
           "verified": "2026-09"
@@ -50901,7 +50878,7 @@
       "country": "US",
       "lat": 41.39754,
       "lng": -70.67718,
-      "website": "http://Visit Site",
+      "website": null,
       "programs": {
         "AHS": {
           "verified": "2026-09"
@@ -68691,7 +68668,7 @@
       "country": "US",
       "lat": 38.88815,
       "lng": -77.01288,
-      "website": "http://Visit Site",
+      "website": null,
       "programs": {
         "AHS": {
           "verified": "2026-09"
