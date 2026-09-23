@@ -233,3 +233,21 @@ def test_merge_treats_saint_and_st_as_the_same_city():
         Record(program="ROAM", name="Carondelet History Museum / Susan Blow’s Kindergarten", city="Saint Louis", state="MO", source="roam"),
     ])
     assert sorted(m["programs"]) == ["NARM", "ROAM"] and m["city"] == "St. Louis"
+
+
+def test_clean_url_repairs_or_drops_bad_websites():
+    assert build.clean_url("https:/palmharbormuseum.com") == "https://palmharbormuseum.com"
+    assert build.clean_url("www.lincolnpresidential.org") == "https://www.lincolnpresidential.org"
+    assert build.clean_url("http://Visit Site") is None          # AHS placeholder text
+    assert build.clean_url("https://www.mnhs.org/members") == "https://www.mnhs.org/members"
+    assert build.clean_url("") is None and build.clean_url(None) is None
+
+
+def test_a_program_listing_one_museum_twice_keeps_its_distance_rule():
+    rule = {"radius_mi": 25, "anchors": ["inter_institution"]}
+    for order in ([None, rule], [rule, None]):
+        recs = [Record(program="NARM", name="Mildred Lane Kemper Art Museum", city="St. Louis", state="MO", source="narm")]
+        recs += [Record(program="ROAM", name=n, city="Saint Louis", state="MO", exclusion=e, source="roam")
+                 for n, e in zip(("Kemper Art Museum", "Mildred Lane Kemper Art Museum"), order)]
+        (m,) = build.normalize_and_merge(recs)
+        assert m["programs"]["ROAM"]["exclusion"] == rule

@@ -154,6 +154,7 @@ SAME_MUSEUM = {
     "samuel-p-harn-museum-of-art-gainesville-fl": "harn-museum-of-art-gainesville-fl",
     "frick-art-historical-center-pittsburgh-pa": "the-frick-pittsburgh-pittsburgh-pa",
     "graycliff-derby-ny": "frank-lloyd-wright-s-graycliff-derby-ny",
+    "graycliff-conservancy-derby-ny": "frank-lloyd-wright-s-graycliff-derby-ny",
     "dunn-gardens-seattle-wa": "e-b-dunn-historic-garden-trust-dunn-gardens-seattle-wa",
     "cupertino-historical-museum-cupertino-ca": "cupertino-historical-society-and-museum-cupertino-ca",
     "sterling-and-francine-clark-art-institute-williamstown-ma": "clark-art-institute-williamstown-ma",
@@ -183,6 +184,7 @@ SAME_MUSEUM = {
     "freeborn-county-historical-society-albert-lea-mn": "history-center-of-freeborn-county-albert-lea-mn",
     "luxembourg-american-cultural-center-belgium-wi": "luxembourg-american-cultural-society-and-center-belgium-wi",
     "westford-historical-society-and-musem-westford-ma": "westford-museum-of-the-westford-historical-society-inc-westford-ma",
+    "kemper-art-museum-saint-louis-mo": "mildred-lane-kemper-art-museum-st-louis-mo",   # ROAM lists it twice
     "union-county-heritage-museum-new-albany-ms":
         "the-william-faulkner-literary-garden-at-the-union-county-heritage-museum-new-albany-ms",
 }
@@ -288,6 +290,17 @@ def museum_kinds(names: List[str], programs) -> List[str]:
     return [k for k in KIND_PATTERNS if k in found]
 
 
+def clean_url(url: Optional[str]) -> Optional[str]:
+    """A usable http(s) link or None: repairs "https:/x.com", adds a missing
+    scheme, and drops placeholders like "http://Visit Site"."""
+    if not url:
+        return None
+    u = re.sub(r"^(https?):/(?!/)", r"\1://", url.strip(), flags=re.I)
+    if not re.match(r"^https?://", u, re.I):
+        u = "https://" + u
+    return u if re.match(r"^https?://[^\s/]+\.[a-z]{2,}(?::\d+)?(/\S*)?$", u, re.I) else None
+
+
 def normalize_and_merge(records: List[Record]) -> List[dict]:
     """Merge records that describe the same physical museum into one record with
     a combined `programs` map. Keyed by slug(name, city, state); a record from
@@ -301,7 +314,11 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
     today = date.today().isoformat()
     verified = today[:7]
 
-    for r in records:
+    # Aliased listings go last: by then name matching has merged everything it
+    # can, so an alias just joins its target (and can't block a same-program
+    # listing of that museum from matching by name, e.g. ROAM's two Kempers).
+    ordered = [r for r in records if r.id not in SAME_MUSEUM] + [r for r in records if r.id in SAME_MUSEUM]
+    for r in ordered:
         key = SAME_MUSEUM.get(r.id, r.id)
         place = place_key(r.city, r.state) if r.city and r.state else (r.city, r.state)  # "Saint Louis" == "St. Louis"
         if key not in museums:
@@ -319,7 +336,7 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
             m = {
                 "id": key, "name": r.name, "city": r.city, "state": r.state,
                 "zip": r.zip, "country": r.country, "lat": r.lat, "lng": r.lng,
-                "website": r.website, "programs": {}, "sources": [], "last_seen": today,
+                "website": clean_url(r.website), "programs": {}, "sources": [], "last_seen": today,
             }
             museums[key] = m
         # A later record for the same museum may supply coords the first one lacked.
@@ -334,13 +351,18 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
             entry["tier"] = r.tier
         if r.exclusion is not None:           # garden/museum opts into a distance rule
             entry["exclusion"] = r.exclusion
-        m["programs"][r.program] = entry
+        prev = m["programs"].get(r.program)
+        if prev:                              # same program lists this museum twice (aliases):
+            if "exclusion" in entry and "exclusion" not in prev:
+                prev["exclusion"] = entry["exclusion"]   # keep any distance rule either states
+        else:
+            m["programs"][r.program] = entry
         if r.source and r.source not in m["sources"]:
             m["sources"].append(r.source)
         if not m.get("zip") and r.zip:
             m["zip"] = r.zip
-        if not m.get("website") and r.website:
-            m["website"] = r.website
+        if not m.get("website") and clean_url(r.website):
+            m["website"] = clean_url(r.website)
 
     for key, m in museums.items():
         m["kinds"] = museum_kinds(names[key], m["programs"])
