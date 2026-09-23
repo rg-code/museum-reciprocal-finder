@@ -216,7 +216,10 @@ let mode = null;
 async function loadData() {
   const [p, m, g] = await Promise.all([
     fetch("./data/programs.json").then(r => r.json()),
-    fetch("./data/museums.sample.json").then(r => r.json()),
+    // Real pipeline output; fall back to the bundled sample if it's missing or empty.
+    fetch("./data/museums.json").then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => d.museums?.length ? d : Promise.reject("empty"))
+      .catch(() => fetch("./data/museums.sample.json").then(r => r.json())),
     fetch("./data/memberships.seed.json").then(r => r.json()).catch(() => ({ gateways: [] })),
   ]);
   PROGRAMS = p; delete PROGRAMS._meta;
@@ -275,7 +278,7 @@ function renderResults() {
     .filter(m => !user._homeIds.has(m.id))
     .map(m => {
       const c = classifyMuseum(m, user, PROGRAMS);
-      const dist = user.zipCentroid ? haversineMiles(m, user.zipCentroid) : null;
+      const dist = user.zipCentroid && m.lat != null ? haversineMiles(m, user.zipCentroid) : null;
       return { m, c, dist };
     })
     .sort((a, b) => (TIER_RANK[b.c.tier] - TIER_RANK[a.c.tier]) ||
