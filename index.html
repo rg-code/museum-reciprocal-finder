@@ -83,9 +83,21 @@
       <label>Associations you hold</label>
       <div id="assoc-list"></div>
     </div>
-    <label for="loc">Your home ZIP or city <span class="muted">(needed for distance rules)</span></label>
-    <input id="loc" placeholder="e.g. 64111 or Kansas City, MO" />
+    <label for="loc">Your home ZIP <span class="muted">(required — some networks block museums near where you live)</span></label>
+    <input id="loc" autocomplete="postal-code" placeholder="e.g. 64111 (or Kansas City, MO)" />
     <p id="loc-note" class="muted"></p>
+    <label for="near">Find museums near <span class="muted">(ZIP or city — leave blank to search near home)</span></label>
+    <div class="row">
+      <input id="near" placeholder="e.g. 02114 or Boston, MA" style="flex:1 1 220px; width:auto" />
+      <select id="radius" style="flex:0 0 160px; width:auto">
+        <option value="25">within 25 mi</option>
+        <option value="50">within 50 mi</option>
+        <option value="100" selected>within 100 mi</option>
+        <option value="250">within 250 mi</option>
+        <option value="">any distance</option>
+      </select>
+    </div>
+    <p id="near-note" class="muted"></p>
     <div class="row" style="margin-top:12px">
       <button class="primary" id="go">Find museums</button>
       <button id="back1">Back</button>
@@ -97,10 +109,11 @@
       <h2 id="results-title">Results</h2>
       <button id="back2">Start over</button>
     </div>
+    <p id="results-sub" class="muted"></p>
     <div id="results-list"></div>
     <p class="disclaimer">Reciprocal policies are set by each institution and change often.
       This is guidance only — always confirm with the museum before you visit.
-      Sample data for demonstration.</p>
+      <span id="sample-note" class="hidden">Sample data for demonstration.</span></p>
   </div>
 
   <div id="gateway" class="card hidden">
@@ -181,31 +194,64 @@ function classifyMuseum(museum, user, programs) {
   return { tier: tierOf(recommended.benefit), reason:"eligible", options, recommended };
 }
 
-// ---- Small offline location lookup (sample; real app ships full ZIP/city datasets) ----
-const ZIP_CENTROIDS = {
-  "64111":[39.045,-94.583],"02114":[42.361,-71.068],"19104":[39.958,-75.198],
-  "90007":[34.021,-118.287],"63110":[38.627,-90.259],"60007":[42.008,-87.99],
-  "92101":[32.717,-117.163],"10001":[40.750,-73.997],"45414":[39.83,-84.20],
-  "45203":[39.109,-84.503],"49686":[44.763,-85.62],"06052":[41.667,-72.79]
-};
-const CITY_CENTROIDS = {
-  "kansas city, mo":[39.10,-94.58],"boston, ma":[42.36,-71.06],"philadelphia, pa":[39.95,-75.16],
-  "los angeles, ca":[34.05,-118.24],"st. louis, mo":[38.63,-90.20],"saint louis, mo":[38.63,-90.20],
-  "chicago, il":[41.88,-87.63],"san diego, ca":[32.72,-117.16],"new york, ny":[40.71,-74.01],
-  "dayton, oh":[39.76,-84.19],"cincinnati, oh":[39.10,-84.51],"traverse city, mi":[44.76,-85.62],
-  "new britain, ct":[41.67,-72.79]
-};
-function resolveLocation(input) {
-  const s = (input || "").trim();
-  if (!s) return { centroid: null, note: "No location set — distance rules skipped." };
-  if (/^\d{5}$/.test(s)) {
-    const z = ZIP_CENTROIDS[s];
-    return z ? { centroid:{lat:z[0],lng:z[1]}, note:"" }
-             : { centroid:null, note:"ZIP not in this demo's small lookup — distance rules skipped." };
+// ---- Location resolver: ZIP (every US ZCTA) or "City, ST" (any city with a listed museum) ----
+// data/zip_centroids.json = {"64111":[39.057,-94.594], ...}, built by pipeline/zip_centroids.py
+// from the Census ZCTA gazetteer. Loaded on first use so it doesn't delay startup.
+let ZIPS = null, ZIP3 = null, zipsLoading = null;
+function loadZips() {
+  if (ZIPS) return Promise.resolve(ZIPS);
+  return zipsLoading ??= fetch("./data/zip_centroids.json")
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(z => {
+      // Mean centroid per 3-digit prefix: fallback for PO-box / single-building ZIPs
+      // (e.g. 20500) that have no ZCTA of their own.
+      const acc = {};
+      for (const [k, [lat, lng]] of Object.entries(z)) {
+        const a = acc[k.slice(0, 3)] ??= [0, 0, 0];
+        a[0] += lat; a[1] += lng; a[2]++;
+      }
+      ZIP3 = Object.fromEntries(Object.entries(acc).map(([p, [la, ln, n]]) => [p, [la / n, ln / n]]));
+      return ZIPS = z;
+    })
+    .finally(() => { zipsLoading = null; });  // a failed load can be retried
+}
+
+const normPlace = s => s.toLowerCase().replace(/\./g, "").replace(/\bsaint\b/g, "st")
+  .replace(/\s+/g, " ").trim();
+let CITIES = null;  // "kansas city, mo" -> {lat, lng}
+function cityIndex() {
+  if (CITIES) return CITIES;
+  const acc = {};
+  for (const m of MUSEUMS) {
+    if (m.lat == null || !m.city || !m.state) continue;
+    const a = acc[normPlace(`${m.city}, ${m.state}`)] ??= [0, 0, 0];
+    a[0] += m.lat; a[1] += m.lng; a[2]++;
   }
-  const c = CITY_CENTROIDS[s.toLowerCase()];
-  return c ? { centroid:{lat:c[0],lng:c[1]}, note:"" }
-           : { centroid:null, note:"City not in this demo's small lookup — try a sample ZIP, or distance rules are skipped." };
+  return CITIES = Object.fromEntries(
+    Object.entries(acc).map(([k, [la, ln, n]]) => [k, { lat: la / n, lng: ln / n }]));
+}
+
+// -> { centroid: {lat, lng} | null, label, note }
+async function resolveLocation(input) {
+  const s = (input || "").trim();
+  if (!s) return { centroid: null, label: "", note: "" };
+  const zm = s.match(/^(\d{5})(?:-\d{4})?$/);
+  if (zm) {
+    const zip = zm[1];
+    let z;
+    try { z = await loadZips(); }
+    catch { return { centroid: null, label: "", note: "Couldn't load the ZIP lookup — check your connection and try again." }; }
+    if (z[zip]) return { centroid: { lat: z[zip][0], lng: z[zip][1] }, label: `ZIP ${zip}`, note: "" };
+    const p = ZIP3[zip.slice(0, 3)];
+    if (p) return { centroid: { lat: p[0], lng: p[1] }, label: `ZIP ${zip}`,
+      note: `ZIP ${zip} isn't on the Census ZIP map (PO box, single-building, or new ZIP?) — using the ${zip.slice(0, 3)}xx area center, so distances are approximate.` };
+    return { centroid: null, label: "", note: `${zip} isn't a US ZIP code we recognize.` };
+  }
+  const m = normPlace(s).match(/^(.+?)[,\s]+([a-z]{2})$/);
+  const c = m && cityIndex()[`${m[1]}, ${m[2]}`];
+  if (c) return { centroid: c, label: s, note: "" };
+  return { centroid: null, label: "",
+    note: "Couldn't find that city (only cities with a listed museum are known) — enter a 5-digit ZIP instead." };
 }
 
 // ---- App ----
@@ -224,6 +270,7 @@ async function loadData() {
   ]);
   PROGRAMS = p; delete PROGRAMS._meta;
   MUSEUMS = m.museums || [];
+  el("sample-note").classList.toggle("hidden", !m._meta);  // only the sample file carries _meta
   MEMBERSHIPS = g.gateways || [];
 }
 
@@ -242,7 +289,11 @@ function renderHomeSelect() {
     `<option value="${m.id}">${m.name} — ${m.city||""}, ${m.state||""}</option>`).join("");
 }
 
-function buildUser() {
+const HOME_KEY = "mrf.home";  // remembered home ZIP/city (localStorage)
+
+// Home location = residence anchor for the distance rules (required).
+// "Near" location = where to look for museums; defaults to home.
+async function buildUser() {
   const heldSet = new Set();
   const homeInstitutions = [];
   if (mode === "museum") {
@@ -256,12 +307,19 @@ function buildUser() {
   } else if (mode === "assoc") {
     el("assoc-list").querySelectorAll("input:checked").forEach(c => heldSet.add(c.value));
   }
-  const loc = resolveLocation(el("loc").value);
-  el("loc-note").textContent = loc.note;
+  const nearGiven = el("near").value.trim() !== "";
+  const [home, near] = await Promise.all([resolveLocation(el("loc").value), resolveLocation(el("near").value)]);
+  el("loc-note").textContent = home.centroid ? home.note
+    : (home.note || "Enter your home ZIP — ASTC and AHS don't cover museums near where you live.");
+  el("near-note").textContent = near.note;
+  if (!home.centroid || (nearGiven && !near.centroid)) return null;
+  try { localStorage.setItem(HOME_KEY, el("loc").value.trim()); } catch {}
   return {
     heldPrograms: [...heldSet],
     homeInstitutions,
-    zipCentroid: loc.centroid || undefined,
+    zipCentroid: home.centroid,           // residence anchor for exclusion rules
+    home, near: nearGiven ? near : home,  // near = search origin for distance + radius
+    radius: Number(el("radius").value) || null,
     _homeIds: new Set(homeInstitutions.map(h => h.id)),
   };
 }
@@ -269,25 +327,35 @@ function buildUser() {
 const BADGE = { free:["b-free","FREE"], discount:["b-discount","~50% OFF"],
   verify:["b-verify","VERIFY"], none:["b-none",""] };
 
-function renderResults() {
-  const user = buildUser();
+async function renderResults() {
+  const user = await buildUser();
+  if (!user) return;  // location problem — the notes under the inputs say what to fix
   if (!user.heldPrograms.length) { el("results-list").innerHTML =
-    `<p class="muted">Select at least one association or home museum.</p>`; show("results"); return; }
+    `<p class="muted">Select at least one association or home museum.</p>`;
+    el("results-sub").textContent = ""; show("results"); return; }
 
+  let unmapped = 0;
   const rows = MUSEUMS
     .filter(m => !user._homeIds.has(m.id))
-    .map(m => {
-      const c = classifyMuseum(m, user, PROGRAMS);
-      const dist = user.zipCentroid && m.lat != null ? haversineMiles(m, user.zipCentroid) : null;
-      return { m, c, dist };
+    .map(m => ({ m, dist: m.lat != null ? haversineMiles(m, user.near.centroid) : null }))
+    .filter(r => {
+      if (user.radius == null) return true;
+      if (r.dist == null) { unmapped++; return false; }
+      return r.dist <= user.radius;
     })
+    .map(r => ({ ...r, c: classifyMuseum(r.m, user, PROGRAMS) }))
     .sort((a, b) => (TIER_RANK[b.c.tier] - TIER_RANK[a.c.tier]) ||
       ((a.dist ?? 1e9) - (b.dist ?? 1e9)) || a.m.name.localeCompare(b.m.name));
 
   const nCovered = rows.filter(r => r.c.tier !== "none").length;
   el("results-title").textContent = `${nCovered} museum${nCovered===1?"":"s"} you can visit`;
+  el("results-sub").textContent = [
+    user.radius != null ? `Within ${user.radius} mi of ${user.near.label}` : `Nearest to ${user.near.label} first`,
+    user.near !== user.home ? `distance rules measured from your home ${user.home.label}` : "",
+    unmapped ? `${unmapped} museum${unmapped===1?"":"s"} without a mapped location not shown` : "",
+  ].filter(Boolean).join(" · ");
 
-  el("results-list").innerHTML = rows.map(({ m, c, dist }) => {
+  el("results-list").innerHTML = rows.length ? rows.map(({ m, c, dist }) => {
     const [bc, bt] = BADGE[c.tier];
     let badgeText = bt;
     if (c.tier === "none") badgeText = c.reason === "excluded_by_distance" ? "TOO CLOSE" : "NOT COVERED";
@@ -304,12 +372,11 @@ function renderResults() {
       </div>
       <span class="badge ${bc}">${badgeText}</span>
     </div>`;
-  }).join("");
+  }).join("") : `<p class="muted">No museums within ${user.radius} mi of ${user.near.label} — try a larger radius.</p>`;
   show("results");
 }
 
 function renderGateway() {
-  const loc = resolveLocation(el("loc") && el("loc").value);
   const list = [...MEMBERSHIPS].sort((a, b) => {
     const pa = (a.cheapest_reciprocal_tier||{}).price ?? 1e9;
     const pb = (b.cheapest_reciprocal_tier||{}).price ?? 1e9;
@@ -343,7 +410,10 @@ el("back1").addEventListener("click", () => show("onboarding"));
 el("back2").addEventListener("click", () => show("onboarding"));
 el("back3").addEventListener("click", () => show("onboarding"));
 
-loadData().then(() => { renderAssocList(); renderHomeSelect(); })
+loadData().then(() => {
+  renderAssocList(); renderHomeSelect();
+  try { el("loc").value = localStorage.getItem(HOME_KEY) || ""; } catch {}
+})
   .catch(e => { el("onboarding").innerHTML = "<p>Failed to load data: " + e + "</p>"; });
 
 if ("serviceWorker" in navigator) {

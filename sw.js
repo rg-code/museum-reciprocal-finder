@@ -1,5 +1,5 @@
 // Minimal offline service worker: cache the app shell + data, serve cache-first.
-const CACHE = "mrf-v2";
+const CACHE = "mrf-v3";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,6 +8,7 @@ const ASSETS = [
   "./data/museums.json",
   "./data/museums.sample.json",
   "./data/memberships.seed.json",
+  "./data/zip_centroids.json",
 ];
 
 self.addEventListener("install", (e) => {
@@ -25,7 +26,10 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
   // Data is refreshed monthly: network-first so updates land, cache when offline.
-  if (new URL(e.request.url).pathname.includes("/data/")) {
+  // zip_centroids.json is static (Census ZCTAs change ~yearly; bump CACHE when rebuilt),
+  // so it falls through to cache-first below.
+  const path = new URL(e.request.url).pathname;
+  if (path.includes("/data/") && !path.endsWith("/zip_centroids.json")) {
     e.respondWith(
       fetch(e.request)
         .then((res) => {
