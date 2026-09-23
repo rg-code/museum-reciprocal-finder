@@ -5594,13 +5594,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "mcdonald-observatory-frank-n-bash-visitors-center-mcdonald-obs-tx",
+      "id": "mcdonald-observatory-frank-n-bash-visitors-center-fort-davis-tx",
       "name": "McDonald Observatory & Frank N. Bash Visitors Center",
-      "city": "McDonald Obs",
+      "city": "Fort Davis",
       "state": "TX",
       "country": "US",
-      "lat": null,
-      "lng": null,
+      "lat": 30.58916,
+      "lng": -103.89496,
       "website": null,
       "programs": {
         "ASTC": {
