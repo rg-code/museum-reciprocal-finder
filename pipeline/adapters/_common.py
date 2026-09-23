@@ -59,6 +59,8 @@ class Record:
     benefit: Optional[str] = None     # None => use program default
     admits: Optional[int] = None      # None => use program default
     website: Optional[str] = None
+    lat: Optional[float] = None       # set when the source already provides coords
+    lng: Optional[float] = None
     source: str = ""                  # adapter tag, e.g. "astc"
     raw: str = ""                     # original line/snippet, for auditing
 
