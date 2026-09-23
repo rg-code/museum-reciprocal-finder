@@ -76,6 +76,14 @@
   .assoc { display:inline-flex; align-items:center; gap:6px; margin:4px 10px 4px 0;
     font-weight:500; }
   .assoc input { width:auto; }
+  .ac-wrap { position:relative; display:block; min-width:0; }
+  .row > .ac-wrap { flex:1 1 220px; }
+  .ac { position:absolute; left:0; right:0; top:calc(100% + 4px); z-index:40; margin:0; padding:4px;
+    list-style:none; background:#fff; border:1px solid var(--line); border-radius:10px;
+    box-shadow:0 8px 24px rgba(16,24,40,.14); max-height:280px; overflow-y:auto; }
+  .ac.hidden { display:none; }
+  .ac li { padding:8px 10px; border-radius:7px; cursor:pointer; font-size:14px; }
+  .ac li[aria-selected="true"], .ac li:hover { background:#e8f1fb; }
   .assoc-aza { margin:6px 0 2px; padding:8px 10px; border:1px solid var(--line); border-radius:9px; }
   .assoc-aza .assoc { display:flex; margin:2px 0; }
   .assoc-aza p { margin:6px 0 0; font-size:12px; }
@@ -393,8 +401,32 @@ function cityIndex() {
     a[0] += m.lat; a[1] += m.lng; a[2]++;
   }
   return CITIES = Object.fromEntries(
-    Object.entries(acc).map(([k, [la, ln, n]]) => [k, { lat: la / n, lng: ln / n }]));
+    Object.entries(acc).map(([k, [la, ln, n]]) => [k, { lat: la / n, lng: ln / n, n }]));
 }
+
+// Every US place/town (data/places.json, Census gazetteers via pipeline/geodata.py):
+// [["St. Louis","MO",38.636,-90.245], ...]. Loaded on first use, like the ZIPs.
+let PLACES = null, placesLoading = null;
+function loadPlaces() {
+  if (PLACES) return Promise.resolve(PLACES);
+  return placesLoading ??= fetch("./data/places.json")
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(rows => {
+      const museumCities = cityIndex();
+      const byKey = new Map(), list = [];
+      for (const [name, st, lat, lng] of rows) {
+        const key = normPlace(`${name}, ${st}`);
+        const mc = museumCities[key];
+        const e = { label: `${name}, ${st}`, key, q: acKey(`${name} ${st}`), name: normPlace(name),
+                    pt: mc ? { lat: mc.lat, lng: mc.lng } : (lat != null ? { lat, lng } : null), museums: mc ? mc.n : 0 };
+        byKey.set(key, e); list.push(e);
+      }
+      return PLACES = { byKey, list };
+    })
+    .finally(() => { placesLoading = null; });
+}
+// Loose key for type-ahead: "St. Louis, MO" / "saint louis mo" -> "st louis mo"
+const acKey = s => normPlace(s.replace(/,/g, " "));
 
 // -> { centroid: {lat, lng} | null, label, note }
 async function resolveLocation(input) {
@@ -414,9 +446,73 @@ async function resolveLocation(input) {
   }
   const m = normPlace(s).match(/^(.+?)[,\s]+([a-z]{2})$/);
   const c = m && cityIndex()[`${m[1]}, ${m[2]}`];
-  if (c) return { centroid: c, label: s, note: "" };
-  return { centroid: null, label: "",
-    note: "Couldn't find that city (only cities with a listed museum are known) — enter a 5-digit ZIP instead." };
+  if (c) return { centroid: { lat: c.lat, lng: c.lng }, label: s, note: "" };
+  let places;
+  try { places = await loadPlaces(); }
+  catch { return { centroid: null, label: "", note: "Couldn't load the city list — check your connection, or use a 5-digit ZIP." }; }
+  const hit = m && places.byKey.get(`${m[1]}, ${m[2]}`);
+  const bare = !hit && places.list.filter(e => e.name === normPlace(s))   // "Kalamazoo" with no state
+    .sort((a, b) => b.museums - a.museums);
+  const e = hit || (bare && bare.length === 1 ? bare[0] : null);
+  if (e && e.pt) return { centroid: e.pt, label: e.label, note: "" };
+  if (e) return { centroid: null, label: "", note: `Can't place ${e.label} precisely — use a 5-digit ZIP instead.` };
+  if (bare && bare.length > 1)
+    return { centroid: null, label: "", note: `There's more than one ${s} — add the state, e.g. "${bare[0].label}".` };
+  return { centroid: null, label: "", note: "Couldn't find that city — pick one from the suggestions, or use a 5-digit ZIP." };
+}
+
+// ---- City autocomplete (home, "near", and local-museum inputs) ----
+// Suggestions from data/places.json; cities with listed museums rank first.
+// ↑/↓ move, Tab or Enter accepts, Esc closes.
+function attachCityAutocomplete(input) {
+  const wrap = document.createElement("span");
+  wrap.className = "ac-wrap";
+  if (input.style.flex) { wrap.style.flex = input.style.flex; input.style.flex = ""; input.style.width = "100%"; }
+  input.replaceWith(wrap); wrap.append(input);
+  const list = document.createElement("ul");
+  list.className = "ac hidden"; list.id = `${input.id}-ac`; list.setAttribute("role", "listbox");
+  wrap.append(list);
+  Object.assign(input, { autocomplete: "off" });
+  input.setAttribute("role", "combobox"); input.setAttribute("aria-autocomplete", "list");
+  input.setAttribute("aria-expanded", "false"); input.setAttribute("aria-controls", list.id);
+  let items = [], active = -1, seq = 0;
+
+  const close = () => { list.classList.add("hidden"); input.setAttribute("aria-expanded", "false");
+    input.removeAttribute("aria-activedescendant"); items = []; active = -1; };
+  const paint = () => {
+    list.innerHTML = items.map((e, i) => `<li role="option" id="${list.id}-${i}" aria-selected="${i === active}">
+        ${esc(e.label)}${e.museums ? `<span class="muted"> · ${e.museums} museum${e.museums === 1 ? "" : "s"}</span>` : ""}</li>`).join("");
+    if (active >= 0) input.setAttribute("aria-activedescendant", `${list.id}-${active}`);
+  };
+  const accept = i => { input.value = items[i].label; close(); input.dispatchEvent(new Event("change")); };
+
+  input.addEventListener("input", async () => {
+    const v = input.value.trim(), mine = ++seq;
+    if (v.length < 2 || /^\d/.test(v)) return close();          // ZIPs don't need suggestions
+    let places; try { places = await loadPlaces(); } catch { return close(); }
+    if (mine !== seq) return;                                    // a newer keystroke won
+    const q = acKey(v);
+    items = places.list.filter(e => e.q.startsWith(q))
+      .sort((a, b) => (b.museums - a.museums) || (a.label.length - b.label.length) || a.label.localeCompare(b.label))
+      .slice(0, 7);
+    if (!items.length || (items.length === 1 && items[0].label === v)) return close();
+    active = 0; paint();
+    list.classList.remove("hidden"); input.setAttribute("aria-expanded", "true");
+  });
+  input.addEventListener("keydown", e => {
+    if (!items.length) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      active = (active + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length; paint();
+    } else if ((e.key === "Enter" || e.key === "Tab") && active >= 0 && input.value !== items[active].label) {
+      e.preventDefault(); e.stopImmediatePropagation(); accept(active);   // Tab completes; the next Tab moves on
+    } else if (e.key === "Escape") { close(); }
+  });
+  list.addEventListener("mousedown", e => {                       // mousedown: before the input blurs
+    const li = e.target.closest("li"); if (!li) return;
+    e.preventDefault(); accept(+li.id.split("-").pop());
+  });
+  input.addEventListener("blur", () => setTimeout(close, 100));
 }
 
 // ---- App ----
@@ -797,6 +893,7 @@ document.querySelectorAll("button.mode").forEach(b => b.addEventListener("click"
 el("go").addEventListener("click", renderResults);
 el("kind").addEventListener("change", () => { if (RESULTS) { RESULTS.shown = PAGE; sortResults(); renderCards(); } });
 el("more").addEventListener("click", () => { RESULTS.shown += PAGE; renderCards(); });
+["loc", "near", "gw-zip"].forEach(id => attachCityAutocomplete(el(id)));
 el("home-search").addEventListener("input", renderHomeList);
 el("assoc-list").addEventListener("change", e => {
   const t = e.target;

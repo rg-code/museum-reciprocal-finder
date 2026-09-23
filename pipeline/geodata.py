@@ -7,8 +7,11 @@
   museums near" ZIP. Also used by the pipeline for sources that give a ZIP.
 - pipeline/place_centroids.json {"st louis, mo": [38.636, -90.245], ...}
   One point per incorporated place / CDP, plus towns and townships from the
-  county-subdivision file (~45k). Pipeline-only: geocodes sources that give
+  county-subdivision file (~40k). Pipeline-only: geocodes sources that give
   just "City, ST" (ASTC, NARM, ROAM) without a network call.
+- data/places.json [["St. Louis", "MO", 38.636, -90.245], ...]
+  The same places with display-ready names, shipped to the app for city
+  autocomplete and for resolving any US city typed as a location.
 
 All public domain. Places/ZCTAs change rarely, so this is run by hand (not in
 the monthly workflow); bump CACHE in sw.js after rebuilding zip_centroids.json:
@@ -120,6 +123,45 @@ def parse_cousubs(text: str) -> Dict[str, Optional[List[float]]]:
     return {k: v[0] for k, v in sorted(seen.items()) if len(v) == 1}
 
 
+def place_names(places_text: str, cousubs_text: str) -> List[list]:
+    """Display-ready [name, ST, lat, lng] for the app's city autocomplete + resolver.
+
+    Same names and priorities as parse_places/parse_cousubs, but written as the
+    Census writes them ("St. Louis", not the "st louis" lookup key). A place
+    with no usable point keeps its name with null coordinates; ambiguous town
+    names (two "Bloomfield township"s) are left out, as in parse_cousubs.
+    """
+    best: Dict[str, tuple] = {}
+
+    def offer(name: str, st: str, rank: tuple, pt):
+        k = place_key(name, st)
+        cur = best.get(k)
+        if cur and (rank <= cur[0] or (pt is None and cur[1][2] is not None)):
+            return                # keep a higher-ranked entry, or one that has a usable point
+        best[k] = (rank, [name, st] + (pt or [None, None]))
+
+    towns: Dict[str, list] = {}
+    for r in _rows(cousubs_text):
+        nyc = r["USPS"] == "NY" and r["NAME"].endswith(" borough")
+        if r.get("FUNCSTAT") != "A" and not nyc:
+            continue
+        name = _COUSUB_SUFFIX.sub("", r["NAME"])
+        towns.setdefault(place_key(name, r["USPS"]), []).append((name, r))
+    for k, v in towns.items():
+        if len(v) == 1:
+            name, r = v[0]
+            offer(name, r["USPS"], (0, False, 0.0), _pt_or_none(r))
+    for r in _rows(places_text):
+        name = _PLACE_SUFFIX.sub("", re.sub(r"\s*\(balance\)$", "", r["NAME"]))
+        pt = _pt_or_none(r)
+        # rank: real place (1) > alias like "Nashville" from "Nashville-Davidson" (0.5) > town (0);
+        # then incorporated over CDP, then larger land area.
+        rank = (1, r.get("FUNCSTAT") == "A", float(r.get("ALAND") or 0))
+        for n in {name, re.split(r"[-/]", name)[0].strip(), re.sub(r"^Urban ", "", name)}:
+            offer(n, r["USPS"], rank if n == name else (0.5,) + rank[1:], pt)
+    return sorted((v[1] for v in best.values()), key=lambda x: (x[0].lower(), x[1]))
+
+
 def _download(kind: str, year: Optional[int]) -> str:
     import requests
 
@@ -150,12 +192,19 @@ def main(argv: Optional[List[str]] = None) -> None:
     _write(DATA / "zip_centroids.json", parse_gazetteer(_download("zcta", args.year)), 30000)
     # A place wins over a same-named town/township (the place is the town
     # center) — unless the place has no usable point and the town does.
-    towns = parse_cousubs(_download("cousubs", args.year))
+    cousubs_text, places_text = _download("cousubs", args.year), _download("place", args.year)
+    towns = parse_cousubs(cousubs_text)
     places = {**towns}
-    for k, v in parse_places(_download("place", args.year)).items():
+    for k, v in parse_places(places_text).items():
         if v is not None or towns.get(k) is None:
             places[k] = v
     _write(HERE / "place_centroids.json", dict(sorted(places.items())), 28000)
+    # Display names for the app's city autocomplete (lazy-loaded, cache-first).
+    names = place_names(places_text, cousubs_text)
+    if len(names) < 28000:
+        raise SystemExit(f"only {len(names)} place names — refusing to overwrite")
+    (DATA / "places.json").write_text(json.dumps(names, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")
+    print(f"wrote {len(names)} place names -> {DATA / 'places.json'}")
 
 
 if __name__ == "__main__":

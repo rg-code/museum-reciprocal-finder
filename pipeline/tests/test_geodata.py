@@ -76,3 +76,13 @@ def test_parse_cousubs_keeps_towns_skips_ambiguous_and_statistical():
     assert c["brooklyn, ny"] == [40.635, -73.951]    # NYC borough
     assert "bloomfield, mi" not in c                  # two Bloomfields in MI: ambiguous
     assert "abilene ccd, tx" not in c and "abilene, tx" not in c   # statistical division
+
+
+def test_place_names_are_display_ready_with_points():
+    names = {(n, st): (lat, lng) for n, st, lat, lng in geodata.place_names(PLACES, COUSUBS)}
+    assert names[("St. Louis", "MO")] == (38.636, -90.245)          # Census spelling, not the lookup key
+    assert names[("Nashville", "TN")] == (36.172, -86.785)          # alias of Nashville-Davidson
+    assert names[("Harvard", "MA")] == (42.504, -71.589)            # New England town from cousubs
+    assert names[("San Francisco", "CA")] == (None, None)           # kept for autocomplete, no usable point
+    assert ("Louisville", "KY") in names and ("Louisville/Jefferson County metro government", "KY") not in names
+    assert not any(n == "Bloomfield" and st == "MI" for n, st in names)   # ambiguous town

@@ -48,5 +48,7 @@ document. Replace the AZA drop each May (its list runs May–April).
 `data/zip_centroids.json` maps every US ZIP (Census ZCTA, ~34k) to a centroid;
 the app uses it to resolve the home ZIP (residence anchor for distance rules)
 and the "find museums near" ZIP offline. ZCTAs change rarely, so this is run by
-hand rather than monthly: `python pipeline/geodata.py`. After rebuilding,
+hand rather than monthly: `python pipeline/geodata.py`, which also writes
+`data/places.json` (every US place/town with a display name, for the app's
+city autocomplete and city resolver). After rebuilding,
 bump `CACHE` in `sw.js` (the file is served cache-first).
