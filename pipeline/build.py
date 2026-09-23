@@ -46,7 +46,7 @@ def _json(path: Path, fn: Callable[[str], List[Record]]) -> Callable[[], List[Re
 
 SOURCES: Dict[str, dict] = {
     "astc": {"live": astc.fetch, "fixture": _txt(FIXTURES / "astc_sample.txt", astc.parse_text)},
-    "acm":  {"live": acm.fetch,  "fixture": _txt(FIXTURES / "acm_sample.html", acm.parse_html)},
+    "acm":  {"live": acm.fetch,  "fixture": _json(FIXTURES / "acm_sample.json", acm.parse_json)},
     "narm": {"live": narm.fetch, "fixture": _txt(FIXTURES / "narm_sample.html", narm.parse_html)},
     "roam": {"live": roam.fetch, "fixture": _txt(FIXTURES / "roam_sample.txt", roam.parse_text)},
     "aza":  {"live": aza.fetch,  "fixture": _txt(FIXTURES / "aza_sample.txt", aza.parse_text)},
@@ -94,7 +94,7 @@ def _manual_drop(program: str) -> Optional[List[Record]]:
     # Reuse the source's fixture parser but on the dropped file.
     parser = {
         "astc": astc.parse_text, "roam": roam.parse_text, "aza": aza.parse_text,
-        "acm": acm.parse_html, "narm": narm.parse_html, "timetravelers": tt.parse_html,
+        "acm": acm.parse_json, "narm": narm.parse_html, "timetravelers": tt.parse_html,
         "ahs": ahs.parse_json,
     }[program]
     out: List[Record] = []
@@ -117,10 +117,13 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
         if not m:
             m = {
                 "id": key, "name": r.name, "city": r.city, "state": r.state,
-                "country": r.country, "lat": None, "lng": None,
+                "country": r.country, "lat": r.lat, "lng": r.lng,
                 "website": r.website, "programs": {}, "sources": [], "last_seen": today,
             }
             museums[key] = m
+        # A later record for the same museum may supply coords the first one lacked.
+        if m.get("lat") is None and r.lat is not None:
+            m["lat"], m["lng"] = r.lat, r.lng
         entry: dict = {"verified": verified}
         if r.benefit is not None:
             entry["benefit"] = r.benefit
@@ -135,52 +138,84 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
     return sorted(museums.values(), key=lambda x: x["id"])
 
 
-# ---- Geocode (cached, optional) -------------------------------------------
+# ---- Geocode (city-level, cached, bounded) --------------------------------
+# Museums that arrive with coords (e.g. ACM) are left alone. The rest (ASTC has
+# no street address in its list) are geocoded to their CITY centroid — precise
+# enough for the coarse 90-mile distance rules. We key the cache by "City, ST",
+# so all museums in one city share a single lookup. The step is strictly bounded
+# (short timeout, per-run cap, polite delay) so it can never hang the CI job.
+CACHE_PATH = HERE / "geocode_cache.json"
+GEOCODE_TIMEOUT = 10          # seconds per request
+GEOCODE_DELAY = 1.1          # seconds between requests (Nominatim usage policy)
+GEOCODE_MAX_NEW = 500        # hard cap on new lookups per run
+
+
 def geocode(museums: List[dict], enabled: bool) -> None:
-    cache_path = HERE / "geocode_cache.json"
     cache: Dict[str, list] = {}
-    if cache_path.exists():
-        cache = json.loads(cache_path.read_text(encoding="utf-8"))
+    if CACHE_PATH.exists():
+        try:
+            cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001 - a corrupt cache shouldn't kill the run
+            cache = {}
 
     session = None
+    new_lookups = 0
     updated = False
     for m in museums:
-        if m["lat"] is not None:
+        if m.get("lat") is not None:          # already geocoded by its source
             continue
-        addr = ", ".join(p for p in (m["name"], m["city"], m["state"]) if p)
-        if addr in cache:
-            m["lat"], m["lng"] = cache[addr]
+        key = _city_key(m)
+        if not key:
             continue
-        if not enabled:
+        if key in cache:
+            m["lat"], m["lng"] = cache[key]
             continue
-        latlng = _census_geocode(addr, session)
+        if not enabled or new_lookups >= GEOCODE_MAX_NEW:
+            continue
+        latlng = _nominatim_city(key, session)
+        new_lookups += 1
         if latlng:
             m["lat"], m["lng"] = latlng
-            cache[addr] = latlng
+            cache[key] = latlng
             updated = True
+            _write_cache(cache)               # persist incrementally (resumable)
 
     if updated:
-        cache_path.write_text(json.dumps(cache, indent=2, sort_keys=True), encoding="utf-8")
+        _write_cache(cache)
 
 
-def _census_geocode(address: str, session) -> Optional[list]:
-    """One-address lookup via the free US Census geocoder (network)."""
+def _city_key(m: dict) -> Optional[str]:
+    city, state = m.get("city"), m.get("state")
+    if city and state:
+        return f"{city}, {state}"
+    return None
+
+
+def _write_cache(cache: Dict[str, list]) -> None:
+    CACHE_PATH.write_text(json.dumps(cache, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def _nominatim_city(city_state: str, session) -> Optional[list]:
+    """City-centroid lookup via OpenStreetMap Nominatim (free, city-level)."""
+    import time
+
     import requests
 
     sess = session or requests.Session()
+    time.sleep(GEOCODE_DELAY)                  # be polite / respect rate limits
     try:
         r = sess.get(
-            "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress",
-            params={"address": address, "benchmark": "Public_AR_Current", "format": "json"},
-            timeout=30,
+            "https://nominatim.openstreetmap.org/search",
+            params={"q": f"{city_state}, USA", "format": "json", "limit": 1},
+            timeout=GEOCODE_TIMEOUT,
+            headers={"User-Agent": "museum-reciprocal-finder/0.2 (personal project)"},
         )
         r.raise_for_status()
-        matches = r.json().get("result", {}).get("addressMatches", [])
-        if matches:
-            c = matches[0]["coordinates"]
-            return [round(c["y"], 5), round(c["x"], 5)]
+        hits = r.json()
+        if hits:
+            return [round(float(hits[0]["lat"]), 5), round(float(hits[0]["lon"]), 5)]
     except Exception as e:  # noqa: BLE001
-        print(f"    geocode miss: {address} ({e})", file=sys.stderr)
+        print(f"    geocode miss: {city_state} ({e})", file=sys.stderr)
     return None
 
 
