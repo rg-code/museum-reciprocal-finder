@@ -253,6 +253,41 @@ def same_museum(a: str, b: str, city: Optional[str]) -> bool:
     return False
 
 
+# Broad museum kinds for the app's "museum type" picker. A museum gets every kind
+# its names match, plus its programs' own category (NARM/ROAM are mixed, so
+# they add nothing). No match -> no kinds (the app files it under "Other").
+KIND_PATTERNS = {
+    "art": r"\bart(?!hur|illery)|galler|sculpture|contemporary|\bmoca\b|athen(a|æ)?eum|\bcraft|design|"
+           r"photograph|glass|textile|decorative|painting|\bprints?\b|mural|architect",
+    "children": r"children|\bkids?\b|youth|\bplay\b|playhouse|doseum",
+    "science": r"scien|technolog|planetari|observatory|\bspace\b|aero|aviation|\bflight|\bair\b|"
+               r"exploratorium|discovery (center|place|cube|world|park|lab)|innovation|engineer|\bstem\b|"
+               r"\bsteam\b|invent|computer|energy|atomic",
+    "history": r"(?<!natural )histor|heritage|pioneer|\bfort\b|house|homestead|mansion|plantation|village|"
+               r"presidential|library|memorial|monument|battlefield|archive|genealog|railroad|railway|trolley|"
+               r"maritime|military|veteran|\bwar\b|cabin|jail|lighthouse|hall of fame|\bfarm|\bmill\b|depot|"
+               r"schoolhouse|cultur|\bnative\b|\bindian\b|tribal|pueblo|jewish|holocaust|african american|arab american|"
+               r"chinese american|japanese american|mexican|latin[oa]|hispanic|irish|italian|german|polish|czech|"
+               r"swedish|norwegian|asia|\bwest\b|western|cowboy|county museum|regional museum|state museum|"
+               r"area museum|valley museum|automobile|\bauto\b|motor|wheels|clock|watch|\bski\b|industr|"
+               r"precision|writers|music|\bblues\b|jazz|synagogue|sign museum|preservation",
+    "nature": r"natural history|nature|wildlife|audubon|environment|ecolog|marine|ocean|preserve|geolog|"
+              r"fossil|dinosaur|paleont|wetland|forest",
+    "zoo": r"\bzoo|aquarium|aviary|safari|sea ?life|reptile|butterfly|raptor",
+    "garden": r"garden|arboret|botanic|conservatory|horticult",
+}
+_KIND_RES = {k: re.compile(v, re.I) for k, v in KIND_PATTERNS.items()}
+PROGRAM_KIND = {"ASTC": "science", "ACM": "children", "AZA": "zoo", "AHS": "garden", "TIMETRAVELERS": "history"}
+
+
+def museum_kinds(names: List[str], programs) -> List[str]:
+    """Kinds for a museum from all its names and its programs, in KIND_PATTERNS order."""
+    text = " | ".join(names)
+    found = {k for k, rx in _KIND_RES.items() if rx.search(text)}
+    found |= {PROGRAM_KIND[p] for p in programs if p in PROGRAM_KIND}
+    return [k for k in KIND_PATTERNS if k in found]
+
+
 def normalize_and_merge(records: List[Record]) -> List[dict]:
     """Merge records that describe the same physical museum into one record with
     a combined `programs` map. Keyed by slug(name, city, state); a record from
@@ -261,15 +296,16 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
     old, short or suffixed names), or via SAME_MUSEUM. The first source's name
     and id win."""
     museums: Dict[str, dict] = {}
-    by_place: Dict[tuple, List[str]] = {}   # (city, state) -> museum ids there
+    by_place: Dict[object, List[str]] = {}  # normalized "city, st" -> museum ids there
     names: Dict[str, List[str]] = {}         # museum id -> every name merged into it
     today = date.today().isoformat()
     verified = today[:7]
 
     for r in records:
         key = SAME_MUSEUM.get(r.id, r.id)
+        place = place_key(r.city, r.state) if r.city and r.state else (r.city, r.state)  # "Saint Louis" == "St. Louis"
         if key not in museums:
-            for other in by_place.get((r.city, r.state), []):
+            for other in by_place.get(place, []):
                 if r.program not in museums[other]["programs"] and \
                         any(same_museum(r.name, n, r.city) for n in names[other]):
                     key = other
@@ -279,7 +315,7 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
             names[key].append(r.name)
         m = museums.get(key)
         if not m:
-            by_place.setdefault((r.city, r.state), []).append(key)
+            by_place.setdefault(place, []).append(key)
             m = {
                 "id": key, "name": r.name, "city": r.city, "state": r.state,
                 "zip": r.zip, "country": r.country, "lat": r.lat, "lng": r.lng,
@@ -306,6 +342,8 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
         if not m.get("website") and r.website:
             m["website"] = r.website
 
+    for key, m in museums.items():
+        m["kinds"] = museum_kinds(names[key], m["programs"])
     return sorted(museums.values(), key=lambda x: x["id"])
 
 

@@ -34,10 +34,22 @@
   .assoc input { width:auto; }
   .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .muted { color:var(--muted); font-size:13px; }
-  .result { display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
-    border-top:1px solid var(--line); padding:12px 0; }
-  .result:first-child { border-top:none; }
-  .result .name { font-weight:600; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;
+    margin-top:12px; }
+  .result { display:flex; flex-direction:column; gap:8px; background:#fff; border:1px solid var(--line);
+    border-radius:12px; padding:14px; box-shadow:0 1px 2px rgba(16,24,40,.05); }
+  .result .top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+  .result .name { font-weight:600; font-size:15px; line-height:1.3; margin:0; }
+  .result .chips { margin-top:0; }
+  .result .kinds { font-size:12px; color:var(--muted); }
+  .result .out { margin-top:auto; font-size:13px; text-decoration:none; }
+  .result .out:hover { text-decoration:underline; }
+  .cards .section { grid-column:1 / -1; margin:10px 0 0; font-size:13px; font-weight:700;
+    color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+  .cards .section:first-child { margin-top:0; }
+  .tools { gap:8px; margin-top:6px; }
+  .tools label { display:inline; margin:0; font-weight:600; font-size:13px; }
+  .tools select { width:auto; padding:6px 8px; }
   .chips { margin-top:6px; }
   .chip { display:inline-block; font-size:11px; font-weight:700; color:#fff; border-radius:20px;
     padding:2px 9px; margin:3px 5px 0 0; }
@@ -122,7 +134,22 @@
       <button id="back2">Start over</button>
     </div>
     <p id="results-sub" class="muted"></p>
-    <div id="results-list"></div>
+    <div class="row tools">
+      <label for="kind">Museum type</label>
+      <select id="kind">
+        <option value="">Any — ASTC first, then free AZA zoos, then ACM, then others</option>
+        <option value="art">Art</option>
+        <option value="children">Children's</option>
+        <option value="science">Science &amp; technology</option>
+        <option value="history">History &amp; culture</option>
+        <option value="nature">Nature &amp; natural history</option>
+        <option value="zoo">Zoos &amp; aquariums</option>
+        <option value="garden">Gardens</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div id="results-list" class="cards"></div>
+    <div class="row" style="margin-top:12px"><button id="more" class="hidden">Show more</button></div>
     <p class="disclaimer">Reciprocal policies are set by each institution and change often.
       This is guidance only — always confirm with the museum before you visit.
       <span id="sample-note" class="hidden">Sample data for demonstration.</span></p>
@@ -366,12 +393,27 @@ async function buildUser() {
 const BADGE = { free:["b-free","FREE"], discount:["b-discount","~50% OFF"],
   verify:["b-verify","VERIFY"], none:["b-none",""] };
 
+const KIND_LABELS = { art: "Art", children: "Children's", science: "Science & technology",
+  history: "History & culture", nature: "Nature & natural history", zoo: "Zoos & aquariums",
+  garden: "Gardens", other: "Other" };
+const kindsOf = m => (m.kinds && m.kinds.length ? m.kinds : ["other"]);
+// Default order for museums you can visit: ASTC first, then AZA zoos that are
+// free for you (the 100% tier), then ACM, then everything else.
+const PROGRAM_GROUPS = [
+  c => c.options.some(o => o.program === "ASTC"),
+  c => c.options.some(o => o.program === "AZA" && o.benefit === "free"),
+  c => c.options.some(o => o.program === "ACM"),
+];
+const programGroup = c => { const i = PROGRAM_GROUPS.findIndex(t => t(c)); return i < 0 ? PROGRAM_GROUPS.length : i; };
+const PAGE = 60;  // cards rendered per "Show more"
+let RESULTS = null;  // { user, rows, shown } for re-sorting and paging without a new search
+
 async function renderResults() {
   const user = await buildUser();
   if (!user) return;  // location problem — the notes under the inputs say what to fix
   if (!user.heldPrograms.length) { el("results-list").innerHTML =
     `<p class="muted">Select at least one association or home museum.</p>`;
-    el("results-sub").textContent = ""; show("results"); return; }
+    el("results-sub").textContent = ""; el("more").classList.add("hidden"); show("results"); return; }
 
   let unmapped = 0;
   const rows = MUSEUMS
@@ -382,37 +424,80 @@ async function renderResults() {
       if (r.dist == null) { unmapped++; return false; }
       return r.dist <= user.radius;
     })
-    .map(r => ({ ...r, c: classifyMuseum(r.m, user, PROGRAMS) }))
-    .sort((a, b) => (TIER_RANK[b.c.tier] - TIER_RANK[a.c.tier]) ||
-      ((a.dist ?? 1e9) - (b.dist ?? 1e9)) || a.m.name.localeCompare(b.m.name));
+    .map(r => {
+      const c = classifyMuseum(r.m, user, PROGRAMS);
+      return { ...r, c, eligible: c.tier !== "none", group: programGroup(c) };
+    });
 
-  const nCovered = rows.filter(r => r.c.tier !== "none").length;
+  const nCovered = rows.filter(r => r.eligible).length;
   el("results-title").textContent = `${nCovered} museum${nCovered===1?"":"s"} you can visit`;
   el("results-sub").textContent = [
     user.radius != null ? `Within ${user.radius} mi of ${user.near.label}` : `Nearest to ${user.near.label} first`,
     user.near !== user.home ? `distance rules measured from your home ${user.home.label}` : "",
     unmapped ? `${unmapped} museum${unmapped===1?"":"s"} without a mapped location not shown` : "",
   ].filter(Boolean).join(" · ");
-
-  el("results-list").innerHTML = rows.length ? rows.map(({ m, c, dist }) => {
-    const [bc, bt] = BADGE[c.tier];
-    let badgeText = bt;
-    if (c.tier === "none") badgeText = c.reason === "excluded_by_distance" ? "TOO CLOSE" : "NOT COVERED";
-    const chips = c.options.map(o => {
-      const rec = c.recommended && o.program === c.recommended.program ? " rec" : "";
-      return `<span class="chip${rec}" style="background:${o.color}" title="${o.admits} admitted">${o.program}</span>`;
-    }).join("");
-    const distStr = dist != null ? ` · ${Math.round(dist)} mi` : "";
-    return `<div class="result">
-      <div>
-        <div class="name">${m.name}</div>
-        <div class="muted">${m.city||""}, ${m.state||""}${distStr}</div>
-        <div class="chips">${chips || '<span class="muted">—</span>'}</div>
-      </div>
-      <span class="badge ${bc}">${badgeText}</span>
-    </div>`;
-  }).join("") : `<p class="muted">No museums within ${user.radius} mi of ${user.near.label} — try a larger radius.</p>`;
+  RESULTS = { user, rows, shown: PAGE };
+  sortResults();
+  renderCards();
   show("results");
+}
+
+// Eligible first; then the chosen museum type (it supersedes the program order);
+// then ASTC -> free AZA -> ACM -> others; then best benefit, nearest, name.
+function sortResults() {
+  const kind = el("kind").value;
+  for (const r of RESULTS.rows) r.kindMatch = !!kind && kindsOf(r.m).includes(kind);
+  RESULTS.rows.sort((a, b) => (b.eligible - a.eligible) || (b.kindMatch - a.kindMatch) ||
+    (a.group - b.group) || (TIER_RANK[b.c.tier] - TIER_RANK[a.c.tier]) ||
+    ((a.dist ?? 1e9) - (b.dist ?? 1e9)) || a.m.name.localeCompare(b.m.name));
+}
+
+function sectionOf(r, kind) {
+  if (!r.eligible) return "Not covered or too close";
+  if (kind) return r.kindMatch ? `${KIND_LABELS[kind]} you can visit` : "Other museums you can visit";
+  return "You can visit";
+}
+
+function cardHtml({ m, c, dist }) {
+  const [bc, bt] = BADGE[c.tier];
+  let badgeText = bt;
+  if (c.tier === "none") badgeText = c.reason === "excluded_by_distance" ? "TOO CLOSE" : "NOT COVERED";
+  const chips = c.options.map(o => {
+    const rec = c.recommended && o.program === c.recommended.program ? " rec" : "";
+    return `<span class="chip${rec}" style="background:${o.color}" title="${o.admits} admitted">${o.program}</span>`;
+  }).join("");
+  const distStr = dist != null ? ` · ${Math.round(dist)} mi` : "";
+  const where = [m.city, m.state].filter(Boolean).join(", ");
+  const q = encodeURIComponent([m.name, m.city, m.state].filter(Boolean).join(" "));
+  return `<article class="result">
+      <div class="top">
+        <h3 class="name">${esc(m.name)}</h3>
+        <span class="badge ${bc}">${badgeText}</span>
+      </div>
+      <div class="muted">${esc(where)}${distStr}</div>
+      <div class="chips">${chips || '<span class="muted">No shared program</span>'}</div>
+      <div class="kinds">${kindsOf(m).map(k => esc(KIND_LABELS[k])).join(" · ")}</div>
+      <a class="link out" href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener">Search on Google ↗</a>
+    </article>`;
+}
+
+function renderCards() {
+  const { user, rows, shown } = RESULTS;
+  const kind = el("kind").value;
+  if (!rows.length) {
+    el("results-list").innerHTML = `<p class="muted">No museums within ${user.radius} mi of ${esc(user.near.label)} — try a larger radius.</p>`;
+    el("more").classList.add("hidden");
+    return;
+  }
+  let html = "", last = null;
+  for (const r of rows.slice(0, shown)) {
+    const sec = sectionOf(r, kind);
+    if (sec !== last) { html += `<h3 class="section">${esc(sec)}</h3>`; last = sec; }
+    html += cardHtml(r);
+  }
+  el("results-list").innerHTML = html;
+  el("more").classList.toggle("hidden", shown >= rows.length);
+  el("more").textContent = `Show more (${rows.length - shown} left)`;
 }
 
 function renderGateway() {
@@ -445,6 +530,8 @@ document.querySelectorAll("button.mode").forEach(b => b.addEventListener("click"
   show("membership");
 }));
 el("go").addEventListener("click", renderResults);
+el("kind").addEventListener("change", () => { if (RESULTS) { RESULTS.shown = PAGE; sortResults(); renderCards(); } });
+el("more").addEventListener("click", () => { RESULTS.shown += PAGE; renderCards(); });
 el("home-search").addEventListener("input", renderHomeList);
 el("home-list").addEventListener("change", e => {
   if (e.target.type !== "checkbox") return;

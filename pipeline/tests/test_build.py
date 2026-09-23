@@ -195,3 +195,41 @@ def test_manual_drop_saved_html_page_becomes_a_txt_extract(tmp_path, monkeypatch
     assert (r.name, r.city, r.state) == ("Berman Museum of World History", "Anniston", "AL")
     assert (drop / "list.txt").exists()
     assert len(build.collect(["timetravelers"])) == 1        # .htm skipped once the .txt exists
+
+
+def test_museum_kinds_from_names_and_programs():
+    k = build.museum_kinds
+    assert k(["Nelson-Atkins Museum of Art"], {"NARM": {}}) == ["art"]
+    assert k(["Blanton Museum of Artat the University of Texas at Austin"], {"NARM": {}}) == ["art"]   # source typo
+    assert k(["Arthur Ross House"], {"NARM": {}}) == ["history"]                                        # not "art"
+    assert k(["Boston Children's Museum"], {"ACM": {}}) == ["children"]
+    assert k(["San Diego Natural History Museum"], {"ASTC": {}}) == ["science", "nature"]              # not "history"
+    assert k(["Turtle Bay Exploration Park"], {"ASTC": {}, "AHS": {}}) == ["science", "garden"]
+    assert k(["Birmingham Zoo"], {"AZA": {}}) == ["zoo"]
+    assert k(["Campbell House Museum"], {"TIMETRAVELERS": {}}) == ["history"]
+    assert k(["Newfields"], {"NARM": {}}) == []                                                          # -> "Other"
+
+
+def test_merged_museums_carry_kinds():
+    (m,) = build.normalize_and_merge([
+        Record(program="NARM", name="Newfields", city="Indianapolis", state="IN", source="narm"),
+        Record(program="ROAM", name="Newfields (Indianapolis Museum of Art)", city="Indianapolis", state="IN", source="roam"),
+    ])
+    assert m["kinds"] == ["art"]        # the ROAM name supplies the kind
+
+
+def test_museum_kinds_whole_word_and_culture_terms():
+    k = build.museum_kinds
+    assert k(["Eiteljorg Museum of American Indians & Western Art"], {}) == ["art", "history"]
+    assert k(["Newfields (Indianapolis Museum of Art)"], {}) == ["art"]   # "Indian" only as a word
+    assert k(["Delta Blues Museum"], {}) == ["history"]
+    assert k(["Chinese American Museum"], {}) == ["history"]
+    assert k(["Chicago Architecture Center"], {}) == ["art"]
+
+
+def test_merge_treats_saint_and_st_as_the_same_city():
+    (m,) = build.normalize_and_merge([
+        Record(program="NARM", name="Carondelet Historical Society/Susan Blow Kindergarten Museum", city="St. Louis", state="MO", source="narm"),
+        Record(program="ROAM", name="Carondelet History Museum / Susan Blow’s Kindergarten", city="Saint Louis", state="MO", source="roam"),
+    ])
+    assert sorted(m["programs"]) == ["NARM", "ROAM"] and m["city"] == "St. Louis"
