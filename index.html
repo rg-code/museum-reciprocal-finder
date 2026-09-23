@@ -54,6 +54,16 @@
   .gw { border-top:1px solid var(--line); padding:10px 0; }
   .gw:first-child { border-top:none; }
   .price { font-weight:700; }
+  .picklist { max-height:240px; overflow-y:auto; border:1px solid var(--line); border-radius:9px;
+    margin-top:6px; background:#fff; }
+  .picklist label { display:flex; gap:8px; align-items:baseline; margin:0; padding:7px 10px;
+    font-weight:500; border-top:1px solid var(--line); cursor:pointer; }
+  .picklist label:first-child { border-top:none; }
+  .picklist input { width:auto; flex:none; }
+  .picklist .empty { padding:10px; }
+  .picked { display:inline-flex; align-items:center; gap:4px; margin:4px 6px 0 0; padding:2px 4px 2px 10px;
+    border-radius:20px; background:var(--greybg); color:var(--ink); font-size:13px; }
+  .picked button { border:none; background:none; padding:0 6px; font-size:15px; line-height:1; }
 </style>
 </head>
 <body>
@@ -75,9 +85,11 @@
   <div id="membership" class="card hidden">
     <h2 id="membership-title">Your membership</h2>
     <div id="home-wrap" class="hidden">
-      <label for="home">Home museum(s)</label>
-      <select id="home" multiple size="6"></select>
-      <p class="muted">Cmd/Ctrl-click to select more than one.</p>
+      <label for="home-search">Home museum(s)</label>
+      <input id="home-search" type="search" autocomplete="off"
+        placeholder="Search by name or city, e.g. Lindsay Wildlife or Walnut Creek" />
+      <div id="home-list" class="picklist"></div>
+      <p id="home-picked" class="muted"></p>
     </div>
     <div id="assoc-wrap" class="hidden">
       <label>Associations you hold</label>
@@ -284,9 +296,29 @@ function renderAssocList() {
     `<label class="assoc"><input type="checkbox" value="${k}"> <span style="color:${PROGRAMS[k].color}">●</span> ${PROGRAMS[k].name}</label>`
   ).join("");
 }
-function renderHomeSelect() {
-  el("home").innerHTML = MUSEUMS.map(m =>
-    `<option value="${m.id}">${m.name} — ${m.city||""}, ${m.state||""}</option>`).join("");
+// Home-museum picker: search box -> checkbox list; picks survive re-filtering.
+const HOME_PICKED = new Set();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
+const normSearch = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
+  .replace(/['’]/g, "").replace(/&/g, " and ").replace(/\bsaint\b/g, "st").replace(/[^a-z0-9]+/g, " ").trim();
+function renderHomeList() {
+  const words = normSearch(el("home-search").value).split(" ").filter(Boolean);
+  const hits = MUSEUMS.filter(m => {
+    const hay = normSearch(`${m.name} ${m.city || ""} ${m.state || ""}`);
+    return words.every(w => hay.includes(w));
+  }).sort((a, b) => a.name.localeCompare(b.name));
+  el("home-list").innerHTML = hits.length ? hits.map(m =>
+    `<label><input type="checkbox" value="${esc(m.id)}"${HOME_PICKED.has(m.id) ? " checked" : ""}>
+      <span>${esc(m.name)} <span class="muted">${esc(m.city)}, ${esc(m.state)}</span></span></label>`).join("")
+    : `<p class="muted empty">No museums match — try fewer words or the city name.</p>`;
+  renderHomePicked();
+}
+function renderHomePicked() {
+  const picked = MUSEUMS.filter(m => HOME_PICKED.has(m.id));
+  el("home-picked").innerHTML = picked.length
+    ? "Selected: " + picked.map(m => `<span class="picked">${esc(m.name)}
+        <button type="button" data-id="${esc(m.id)}" aria-label="Remove ${esc(m.name)}">×</button></span>`).join("")
+    : "Tick every museum you're a member of.";
 }
 
 const HOME_KEY = "mrf.home";  // remembered home ZIP/city (localStorage)
@@ -297,9 +329,8 @@ async function buildUser() {
   const heldSet = new Set();
   const homeInstitutions = [];
   if (mode === "museum") {
-    for (const opt of el("home").selectedOptions) {
-      const mu = MUSEUMS.find(x => x.id === opt.value);
-      if (!mu) continue;
+    for (const mu of MUSEUMS) {
+      if (!HOME_PICKED.has(mu.id)) continue;
       const progs = Object.keys(mu.programs);
       progs.forEach(p => heldSet.add(p));
       homeInstitutions.push({ id: mu.id, lat: mu.lat, lng: mu.lng, programs: progs });
@@ -406,12 +437,24 @@ document.querySelectorAll("button.mode").forEach(b => b.addEventListener("click"
   show("membership");
 }));
 el("go").addEventListener("click", renderResults);
+el("home-search").addEventListener("input", renderHomeList);
+el("home-list").addEventListener("change", e => {
+  if (e.target.type !== "checkbox") return;
+  e.target.checked ? HOME_PICKED.add(e.target.value) : HOME_PICKED.delete(e.target.value);
+  renderHomePicked();
+});
+el("home-picked").addEventListener("click", e => {
+  const id = e.target.dataset && e.target.dataset.id;
+  if (!id) return;
+  HOME_PICKED.delete(id);
+  renderHomeList();
+});
 el("back1").addEventListener("click", () => show("onboarding"));
 el("back2").addEventListener("click", () => show("onboarding"));
 el("back3").addEventListener("click", () => show("onboarding"));
 
 loadData().then(() => {
-  renderAssocList(); renderHomeSelect();
+  renderAssocList(); renderHomeList();
   try { el("loc").value = localStorage.getItem(HOME_KEY) || ""; } catch {}
 })
   .catch(e => { el("onboarding").innerHTML = "<p>Failed to load data: " + e + "</p>"; });
