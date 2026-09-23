@@ -2,6 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  exclusionReason,
   haversineMiles,
   tierOf,
   isExcluded,
@@ -176,4 +177,21 @@ test("AZA in-kind via the association checkbox: blue tier gets free at blue zoos
   assert.equal(applicableOptions(redZoo, blue, programs)[0].benefit, "discount_50");
   assert.equal(applicableOptions(blueZoo, red, programs)[0].benefit, "discount_50");
   assert.equal(applicableOptions(publicZoo, red, programs)[0].benefit, "free");
+});
+
+test("classifyMuseum says why: blocked programs with their rule, and the networks you'd need", () => {
+  const near = museum("near-science", KC, { ASTC: {}, NARM: {} });
+  const user: UserProfile = { heldPrograms: ["ASTC"], homeInstitutions: [], zipCentroid: KC };
+  const c = classifyMuseum(near, user, PROGRAMS);
+  assert.equal(c.reason, "excluded_by_distance");
+  assert.deepEqual(c.blocked, [{ program: "ASTC", color: PROGRAMS.ASTC.color, anchor: "residence", radius: 90 }]);
+  assert.deepEqual(c.others, ["NARM"]);
+  const acmOnly = museum("kids", KC, { ACM: {} });
+  const d = classifyMuseum(acmOnly, user, PROGRAMS);
+  assert.equal(d.reason, "no_shared_program");
+  assert.deepEqual(d.others, ["ACM"]);
+  const home = { id: "home-museum", lat: KC.lat, lng: KC.lng, programs: ["ASTC"] };
+  const r = exclusionReason(near, { ...user, zipCentroid: NYC, homeInstitutions: [home] }, "ASTC",
+    { excl: PROGRAMS.ASTC.default_exclusion, optedIn: false });
+  assert.deepEqual(r, { anchor: "home", radius: 90, homeId: "home-museum" });
 });

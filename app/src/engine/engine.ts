@@ -46,6 +46,18 @@ export function tierOf(benefit: Benefit): Tier {
 
 const TIER_RANK: Record<Tier, number> = { free: 3, discount: 2, verify: 1, none: 0 };
 
+export interface ExclusionReason {
+  anchor: "home" | "residence";
+  radius: number;
+  homeId?: string;
+}
+
+/** A program the user holds that's ruled out at this museum, and why. */
+export interface BlockedProgram extends ExclusionReason {
+  program: string;
+  color: string;
+}
+
 interface ResolvedExclusion {
   excl: Exclusion | null;
   /** True when the museum's own record set an exclusion (vs. inheriting default). */
@@ -61,21 +73,21 @@ function resolveExclusion(
 }
 
 /**
- * True if this program's benefit is blocked at museum M for this user.
+ * Why a program is blocked at museum M for this user (null if it isn't).
  * Exclusion is OR across anchors: the first anchor within the radius blocks it.
  * (Confirmed ASTC behavior — within 90 mi of home institution OR residence.)
  */
-export function isExcluded(
+export function exclusionReason(
   museum: Museum,
   user: UserProfile,
   program: string,
   resolved: ResolvedExclusion,
-): boolean {
+): ExclusionReason | null {
   const { excl, optedIn } = resolved;
-  if (!excl) return false;
-  if (excl.discretionary && !optedIn) return false; // optional rule, museum didn't opt in
+  if (!excl) return null;
+  if (excl.discretionary && !optedIn) return null; // optional rule, museum didn't opt in
   const r = excl.radius_mi;
-  if (r == null) return false;
+  if (r == null) return null;
 
   const grantingHomes = (user.homeInstitutions ?? []).filter((h) =>
     h.programs.includes(program),
@@ -84,14 +96,24 @@ export function isExcluded(
   for (const anchor of excl.anchors) {
     if (anchor === "home_institution" || anchor === "inter_institution") {
       for (const h of grantingHomes) {
-        if (haversineMiles(museum, h) < r) return true;
+        if (haversineMiles(museum, h) < r) return { anchor: "home", radius: r, homeId: h.id };
       }
     }
     if (anchor === "residence" && user.zipCentroid) {
-      if (haversineMiles(museum, user.zipCentroid) < r) return true;
+      if (haversineMiles(museum, user.zipCentroid) < r) return { anchor: "residence", radius: r };
     }
   }
-  return false;
+  return null;
+}
+
+/** True if this program's benefit is blocked at museum M for this user. */
+export function isExcluded(
+  museum: Museum,
+  user: UserProfile,
+  program: string,
+  resolved: ResolvedExclusion,
+): boolean {
+  return exclusionReason(museum, user, program, resolved) !== null;
 }
 
 /** Every program the user could actually use at M, after distance exclusions. */
@@ -105,6 +127,7 @@ export function applicableOptions(
   museum: Museum,
   user: UserProfile,
   programs: Programs,
+  blocked: BlockedProgram[] = [],
 ): Option[] {
   const held = new Set(user.heldPrograms);
   const options: Option[] = [];
@@ -119,8 +142,11 @@ export function applicableOptions(
       benefit = "free";
     }
     const admits = entry.admits ?? def.default_admits;
-    const resolved = resolveExclusion(entry, def.default_exclusion);
-    if (isExcluded(museum, user, program, resolved)) continue;
+    const why = exclusionReason(museum, user, program, resolveExclusion(entry, def.default_exclusion));
+    if (why) {
+      blocked.push({ program, color: def.color, ...why });
+      continue;
+    }
     options.push({ program, benefit, admits, color: def.color });
   }
   return options;
@@ -147,16 +173,19 @@ export function classifyMuseum(
   programs: Programs,
 ): Classification {
   const held = new Set(user.heldPrograms);
+  // This museum's programs the user doesn't hold: what would get them in.
+  const others = Object.keys(museum.programs).filter((p) => !held.has(p) && programs[p]);
   const shared = Object.keys(museum.programs).filter((p) => held.has(p));
   if (shared.length === 0) {
-    return { tier: "none", reason: "no_shared_program", options: [], recommended: null };
+    return { tier: "none", reason: "no_shared_program", options: [], recommended: null, blocked: [], others };
   }
-  const options = applicableOptions(museum, user, programs);
+  const blocked: BlockedProgram[] = [];
+  const options = applicableOptions(museum, user, programs, blocked);
   if (options.length === 0) {
-    return { tier: "none", reason: "excluded_by_distance", options: [], recommended: null };
+    return { tier: "none", reason: "excluded_by_distance", options: [], recommended: null, blocked, others };
   }
   const recommended = recommendedOption(options)!;
-  return { tier: tierOf(recommended.benefit), reason: "eligible", options, recommended };
+  return { tier: tierOf(recommended.benefit), reason: "eligible", options, recommended, blocked, others };
 }
 
 /** Convenience: build the held-programs set from home museums + selected associations. */

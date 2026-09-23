@@ -93,4 +93,8 @@ export interface Classification {
   options: Option[];
   /** Best option to use, or null when not covered. */
   recommended: Option | null;
+  /** Programs the user holds that are ruled out here, with why (radius + anchor). */
+  blocked?: { program: string; color: string; anchor: "home" | "residence"; radius: number; homeId?: string }[];
+  /** This museum's programs the user doesn't hold (what would get them in). */
+  others?: string[];
 }
