@@ -35,6 +35,11 @@ PROGRAM = "ASTC"
 _PHONE = re.compile(r"\(?\d{3}\)?[\s.\-]*\d{3}[\s.\-]*\d{4}")
 # What's left when a long row wraps mid-phone: "(508) 289-", "(252)", "(402) 502-336".
 _PARTIAL_PHONE = re.compile(r"\s*\(?\d{3}\)(?:[\s.\-]+\d{1,4}){0,2}[\s.\-]*$")
+# Cities the PDF abbreviates past recognition (the geocoder can't place them).
+# Keyed by (city as printed, state) -> real city.
+_CITY_FIXES = {
+    ("McDonald Obs", "TX"): "Fort Davis",  # McDonald Observatory visitors center
+}
 
 
 def parse_text(text: str) -> List[Record]:
@@ -64,6 +69,7 @@ def parse_text(text: str) -> List[Record]:
         name, city = _split_name_city(line)
         if not name:
             continue
+        city = _CITY_FIXES.get((city, current_state), city)
         records.append(
             Record(
                 program=PROGRAM,

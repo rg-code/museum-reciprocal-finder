@@ -76,6 +76,13 @@ def test_astc_hawaii_header_with_curly_apostrophe_is_a_us_state():
     assert records[0].state == "HI" and records[0].city == "Wailuku"
 
 
+def test_astc_fixes_city_the_pdf_abbreviates():
+    text = "TEXAS\nMcDonald Observatory & Frank N. Bash Visitors Center, McDonald Obs (432) 426-3640\n"
+    records = astc.parse_text(text)
+    assert records[0].city == "Fort Davis" and records[0].state == "TX"
+    assert records[0].id == "mcdonald-observatory-frank-n-bash-visitors-center-fort-davis-tx"
+
+
 def test_astc_puerto_rico_is_kept_but_other_countries_are_not():
     text = "PUERTO RICO\nEcoExploratorio, San Juan (787) 281-9090\nCANADA\nScience North, Sudbury (705) 522-3701\n"
     records = astc.parse_text(text)
