@@ -183,7 +183,10 @@ function applicableOptions(museum, user, programs) {
   for (const [program, entry] of Object.entries(museum.programs)) {
     if (!held.has(program)) continue;
     const def = programs[program]; if (!def) continue;
-    const benefit = entry.benefit || def.default_benefit;
+    let benefit = entry.benefit || def.default_benefit;
+    // AZA is in-kind: a "100% OR 50%" zoo is free for members of another one.
+    if (entry.tier === "100_or_50" &&
+        (user.homeInstitutions || []).some(h => (h.tiers || {})[program] === "100_or_50")) benefit = "free";
     const admits = entry.admits != null ? entry.admits : def.default_admits;
     if (isExcluded(museum, user, program, resolveExclusion(entry, def.default_exclusion))) continue;
     out.push({ program, benefit, admits, color: def.color });
@@ -298,6 +301,7 @@ function renderAssocList() {
 }
 // Home-museum picker: search box -> checkbox list; picks survive re-filtering.
 const HOME_PICKED = new Set();
+const HOME_LIST_MAX = 100;  // rows rendered at once (thousands of museums)
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
 const normSearch = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
   .replace(/['’]/g, "").replace(/&/g, " and ").replace(/\bsaint\b/g, "st").replace(/[^a-z0-9]+/g, " ").trim();
@@ -307,9 +311,12 @@ function renderHomeList() {
     const hay = normSearch(`${m.name} ${m.city || ""} ${m.state || ""}`);
     return words.every(w => hay.includes(w));
   }).sort((a, b) => a.name.localeCompare(b.name));
-  el("home-list").innerHTML = hits.length ? hits.map(m =>
+  const shown = hits.slice(0, HOME_LIST_MAX);
+  el("home-list").innerHTML = hits.length ? shown.map(m =>
     `<label><input type="checkbox" value="${esc(m.id)}"${HOME_PICKED.has(m.id) ? " checked" : ""}>
       <span>${esc(m.name)} <span class="muted">${esc(m.city)}, ${esc(m.state)}</span></span></label>`).join("")
+      + (hits.length > shown.length
+        ? `<p class="muted empty">Showing ${shown.length} of ${hits.length} — type a name or city to narrow it down.</p>` : "")
     : `<p class="muted empty">No museums match — try fewer words or the city name.</p>`;
   renderHomePicked();
 }
@@ -333,7 +340,8 @@ async function buildUser() {
       if (!HOME_PICKED.has(mu.id)) continue;
       const progs = Object.keys(mu.programs);
       progs.forEach(p => heldSet.add(p));
-      homeInstitutions.push({ id: mu.id, lat: mu.lat, lng: mu.lng, programs: progs });
+      homeInstitutions.push({ id: mu.id, lat: mu.lat, lng: mu.lng, programs: progs,
+        tiers: Object.fromEntries(progs.map(p => [p, mu.programs[p].tier])) });
     }
   } else if (mode === "assoc") {
     el("assoc-list").querySelectorAll("input:checked").forEach(c => heldSet.add(c.value));

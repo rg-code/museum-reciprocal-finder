@@ -1,10 +1,20 @@
-List of ROAM Museums as of May 2026
-
-MICHIGAN
-Dennos Museum Center, Traverse City, MI
-
-CALIFORNIA
-Cantor Arts Center, Stanford, CA
-
-FLORIDA
-Harn Museum of Art, Gainesville, FL
+List of ROAM Museums				as of March 18, 2026
+* ROAM privileges may be restricted for concerts/lectures/special exhibitions and ticketed events.				
++ ROAM privileges do not extend to other institutions members within a 25 mile (40 km) radius.				
+‡ ROAM privileges do not apply to the [Specific gallery/exhibition/attraction].				
+State Full	City	Museum	Restrictions	Restriction Details
+Online		The Hunger Museum	*	
+Alaska	Anchorage	Anchorage Museum	* ‡	Premier exhibitions
+California	Long Beach	Carolyn Campagna Kleefeld Contemporary Art Museum California State University Long Beach		
+California	Napa	diRosa Center for Contemporary Art	* ‡	Discounted entry to public events and annual Auction
+District of Co	Washington	Hillwood Estate, Museum & Gardens	*	
+Massachusse	Beverly	Historic Beverly	*	
+Massachusett	Boston	Boston Athenaeum	* ‡	Access beyond the second floor, borrowing privileges, and library services
+Massachusett	Lincoln	deCordova Sculpture Park and Museum	*	
+Michigan	Benson	Swift County Historical Society		
+Michigan	Grosse Pointe Shores	Edsel & Eleanor Ford House	* +	
+New York	New Lebanon	Shaker Museum | Mount Lebanon	* +	
+Pennsylvania	Laurel Hill Cemetery	Laurel Hill Cemetery	* ‡	Ticketed events, members events, fundraising Events
+Wisconsin	Fon du Lac	Thelma Sadoff Center for the Arts	*	
+Ontario	Toronto	Art Gallery of Ontario	* + ‡	Reciprocal privileges do not extend to other institutions within Ontario
+Panamá	Panamá	MAC Panamá	*	

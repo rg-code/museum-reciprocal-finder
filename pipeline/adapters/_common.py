@@ -59,7 +59,10 @@ class Record:
     country: str = "US"
     benefit: Optional[str] = None     # None => use program default
     admits: Optional[int] = None      # None => use program default
+    tier: Optional[str] = None        # program-specific benefit tier, e.g. AZA "100_or_50"
+    exclusion: Optional[dict] = None  # per-institution distance rule, e.g. {"radius_mi": 90, "anchors": ["residence"]}
     website: Optional[str] = None
+    zip: Optional[str] = None         # 5-digit ZIP if the source gives one (used to geocode)
     lat: Optional[float] = None       # set when the source already provides coords
     lng: Optional[float] = None
     source: str = ""                  # adapter tag, e.g. "astc"

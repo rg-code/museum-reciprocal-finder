@@ -38,6 +38,8 @@ export interface MuseumProgramEntry {
   admits?: number;
   /** null/undefined => fall back to the program's default_exclusion. */
   exclusion?: Exclusion | null;
+  /** Program-specific tier, e.g. AZA "100_or_50" (in-kind: free between same-tier zoos). */
+  tier?: string;
   notes?: string;
   verified?: string;
 }
@@ -59,6 +61,8 @@ export interface HomeInstitution extends LatLng {
   id?: string;
   /** Programs this membership grants. */
   programs: string[];
+  /** This institution's own tier per program (see MuseumProgramEntry.tier). */
+  tiers?: Record<string, string | undefined>;
 }
 
 export interface UserProfile {

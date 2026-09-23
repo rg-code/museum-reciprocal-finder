@@ -144,3 +144,20 @@ test("heldProgramsFrom unions home museums and associations", () => {
   );
   assert.deepEqual([...held].sort(), ["ACM", "ASTC", "NARM"]);
 });
+
+test("AZA in-kind: a 100%-OR-50% zoo is free only for members of another 100%-OR-50% zoo", () => {
+  const programs: Programs = {
+    AZA: { name: "AZA", color: "#ff7f0e", default_benefit: "discount_50", default_admits: 2,
+      default_exclusion: { anchors: ["inter_institution"], discretionary: true } },
+  };
+  const far = { lat: 30, lng: -100 };
+  const zoo = museum("zoo-boise", KC, { AZA: { benefit: "discount_50", tier: "100_or_50" } });
+  const plain = museum("birmingham-zoo", KC, { AZA: { benefit: "discount_50" } });
+  const blueHome: UserProfile = { heldPrograms: ["AZA"], zipCentroid: NYC,
+    homeInstitutions: [{ ...far, programs: ["AZA"], tiers: { AZA: "100_or_50" } }] };
+  const redHome: UserProfile = { heldPrograms: ["AZA"], zipCentroid: NYC,
+    homeInstitutions: [{ ...far, programs: ["AZA"], tiers: {} }] };
+  assert.equal(applicableOptions(zoo, blueHome, programs)[0].benefit, "free");
+  assert.equal(applicableOptions(zoo, redHome, programs)[0].benefit, "discount_50");
+  assert.equal(applicableOptions(plain, blueHome, programs)[0].benefit, "discount_50");
+});

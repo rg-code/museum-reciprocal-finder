@@ -1,0 +1,157 @@
+State	City	Institution	Reciprocity
+CANADA	Calgary -Alberta	Wilder Institute's Calgary Zoo	50%
+	Granby - Quebec	Zoo de Granby	50%
+	Toronto	Toronto Zoo	50%
+	Winnipeg - Manitoba	Assiniboine Park Zoo	50%
+COLOMBIA	Cali Valle del Cauca	Zoológico de Cali	50%
+MEXICO	Puebla	Africam Safari Park	100% OR 50%
+Alabama	Birmingham	Birmingham Zoo	50%
+Alaska	Seward	Alaska SeaLife Center	50%
+Arizona	Phoenix	Phoenix Zoo	50%
+	Tempe	SEA LIFE Arizona Aquarium	50%
+	Tucson	Reid Park Zoo	50%
+Arkansas	Little Rock	Little Rock Zoo	50%
+California	Atascadero	Central Coast Zoo	50%
+	Eureka	Sequoia Park Zoo	50%
+	Fresno	Fresno Chaffee Zoo	50%
+	Los Angeles	Los Angeles Zoo	50%
+	Oakland	Oakland Zoo	50%
+	Sacramento	Sacramento Zoo	50%
+	San Francisco	San Francisco Zoological Gardens	50%
+	San Jose	Happy Hollow Park & Zoo	50%
+	San Mateo	CuriOdyssey	50%
+	San Pedro	Cabrillo Marine Aquarium	100% OR 50%
+	Santa Ana	Santa Ana Zoo	100% OR 50%
+	Santa Barbara	Santa Barbara Zoo	50%
+Colorado	Pueblo	Pueblo Zoo	50%
+	Westminster	Butterfly Pavilion	50%
+Connecticut	Bridgeport	Connecticut's Beardsley Zoo	50%
+DC	Washington	Smithsonian National Zoological Park	FREE TO PUBLIC 15% discount in gift shop
+Delaware	Wilmington	Brandywine Zoo	50%
+Florida	Gainesville	Santa Fe College Teaching Zoo	50%
+	Jacksonville	Jacksonville Zoo & Gardens	50%
+	Melbourne	Brevard Zoo	50%
+	Miami	Zoo Miami	50%
+Florida	Orlando	SEA LIFE Orlando Aquarium	50%
+	Sanford	Central Florida Zoo & Botanical Gardens	50%
+	Sanibel	Bailey-Matthews National Shell Museum & Aquarium	50%
+	Sarasota	Mote Marine Aquarium	50%
+	St. Augustine	Saint Augustine Alligator Farm	50%
+	Tampa	ZooTampa at Lowry Park	50%
+	Tampa	The Florida Aquarium	50%
+	West Palm Beach	Palm Beach Zoo & Conservation Society	50%
+Georgia	Atlanta	Zoo Atlanta	50%
+Idaho	Boise	Zoo Boise	100% OR 50%
+	Idaho Falls	Idaho Falls Zoo at Tautphaus Park	100% OR 50%
+Illinois	Bloomington	Miller Park Zoo	100% OR 50%
+	Chicago	Lincoln Park Zoo	FREE TO PUBLIC 10% discount in gift shop
+	Chicago	John G. Shedd Aquarium	50% (Limit 2)
+	Decatur	Scovill Zoo	50%
+	Peoria	Peoria Zoo	100% OR 50%
+	Wheaton	Cosley Zoo	100% OR 50%
+Indiana	Evansville	Mesker Park Zoo & Botanic Garden	100% OR 50%
+	Fort Wayne	Fort Wayne Children's Zoo	50%
+	South Bend	Potawatomi Zoo	50%
+Iowa	Des Moines	Blank Park Zoo	50%
+	Dubuque	National Mississippi River Museum & Aquarium	50%
+Kansas	Emporia	David Traylor Zoo of Emporia	100% OR 50%
+	Garden City	Lee Richardson Zoo	FREE TO PUBLIC FREE DRIVE-THRU, 10% discount in gift shops
+	Hutchinson	Hutchinson Zoo	100% OR 50%
+	Manhattan	Sunset Zoo	100% OR 50%
+	Salina	Rolling Hills Zoo	50%
+	Topeka	Topeka Zoo	50%
+	Wichita	Sedgwick County Zoo	50%
+Kentucky	Louisville	The Louisville Zoo	50%
+Louisiana	Baton Rouge	BREC's Baton Rouge Zoo	50%
+Maryland	Baltimore	The Maryland Zoo in Baltimore	50%
+Massachusetts	Attleboro	Capron Park Zoo	100% OR 50%
+	Boston	Franklin Park Zoo (Zoo New England)	50%
+	Boston	Museum of Science	100% OR 50%
+	New Bedford	Buttonwood Park Zoo	100% OR 50%
+	Stoneham	Walter D. Stone Memorial Zoo (Zoo New England)	50%
+Michigan	Auburn Hills	SEA Life Michigan Aquarium	50%
+	Battle Creek	Binder Park Zoo	100% OR 50%
+	Detroit	Detroit Zoo	50%
+	Grand Rapids	John Ball Zoological Garden	100% OR 50%
+	Lansing	Potter Park Zoological Gardens	100% OR 50%
+	Saginaw	Saginaw Children’s Zoo	100% OR 50%
+Minnesota	Apple Valley	Minnesota Zoological Garden	50%
+	Duluth	Lake Superior Zoo	50%
+	St. Paul	Como Park Zoo and Conservatory	Free TO PUBLIC 15% discount in gift shop
+Missouri	Eureka	Endangered Wolf Center	50% Endangered Species Tour and Evening Wolf Howl
+	Kansas City	Kansas City Zoo & Aquarium	50%
+	Kansas City	Sea Life Kansas City Aquarium	50%
+	Saint Louis	Saint Louis Zoo	FREE TO PUBLIC - 50% off Adventure Pass (Limit 4)
+	Springfield	Dickerson Park Zoo	50%
+Montana	Billings	ZooMontana	100% OR 50%
+	West Yellowstone	Grizzly & Wolf Discovery Center	50%
+Nebraska	Lincoln	Lincoln Children's Zoo	50%
+	Omaha	Omaha's Henry Doorly Zoo & Aquarium	50%
+New Jersey	Cape May	Cape May County Park Zoo	FREE TO PUBLIC 10% discount in gift shop
+	West Orange	Turtle Back Zoo	50%
+New Mexico	Albuquerque	Albuquerque Biological Park	50%
+New York	Buffalo	Buffalo Zoo	50%
+	Millbrook	Trevor-Lovejoy Zoo	100% OR 50%
+	Niagara Falls	Aquarium of Niagara	50%
+New York	Rochester	Seneca Park Zoo	50%
+	Staten Island	Staten Island Zoo	100% OR 50%
+	Syracuse	Rosamond Gifford Zoo at Burnet Park	50%
+	Utica	Utica Zoo	50%
+North Carolina	Asheboro	North Carolina Zoo	100% OR 50%
+	Asheville	Western North Carolina Nature Center	100% OR 50%
+	Durham	Museum of Life and Science	50%
+	Greensboro	Greensboro Science Center	50%
+	Kure Beach	No. Carolina Aquarium at Fort Fisher	50%
+	Manteo	No. Carolina Aquarium at Roanoke Island	50%
+	Pine Knoll Shores	No. Carolina Aquarium at Pine Knoll Shores	50%
+North Dakota	Bismarck	Dakota Zoo	100% OR 50%
+	Fargo	Red River Zoo	100% OR 50%
+	Minot	Roosevelt Park Zoo	100% OR 50%
+Ohio	Akron	Akron Zoological Park	50%
+	Cincinnati	Cincinnati Zoo & Botanical Garden	50%
+	Cleveland	Cleveland Metroparks Zoo	50%
+	Cumberland	The Wilds	50% off Open Air Safari
+	Dayton	Boonshoft Museum of Discovery	100% OR 50%
+	Powell	Columbus Zoo and Aquarium	50%
+	Toledo	The Toledo Zoo	50%
+Oklahoma	Oklahoma City	Oklahoma City Zoo and Botanical Garden	50%
+	Tulsa	Tulsa Zoo	50%
+Oregon	Portland	Oregon Zoo	50%
+	Winston	Wildlife Safari	50%
+Pennsylvania	Hershey	ZOOAMERICA North American Wildlife Park	100% OR 50%
+	Norristown	Elmwood Park Zoo	50%
+	Philadelphia	Philadelphia Zoo	50%
+	Pittsburgh	National Aviary	50%
+	Pittsburgh	Pittsburgh Zoo and Aquarium	50%
+Pennsylvania	Schnecksville	Lehigh Valley Zoo	100% OR 50%
+Rhode Island	Providence	Roger Williams Park Zoo	50%
+South Carolina	Columbia	Riverbanks Zoo & Garden	50%
+	Greenville	Greenville Zoo	50%
+South Dakota	Sioux Falls	Great Plains Zoo	50%
+Tennessee	Chattanooga	Chattanooga Zoo at Warner Park	100% OR 50%
+	Knoxville	Zoo Knoxville	50%
+	Memphis	Memphis Zoo	50%
+	Nashville	Nashville Zoo, Inc.	50%
+Texas	Abilene	Abilene Zoological Gardens	100% OR 50%
+	Brownsville	Gladys Porter Zoo	100% OR 50%
+	Corpus Christi	Texas State Aquarium	50% (Limit 2)
+	Dallas	Dallas Zoo	50%
+	Fort Worth	Fort Worth Zoo	50%
+	Grapevine	SEA LIFE Grapevine Aquarium	50%
+	Houston	Houston Zoo	50%
+	San Antonio	San Antonio Zoological Society	50%
+	Tyler	Caldwell Zoo	50%
+	Waco	Cameron Park Zoo	50%
+Utah	Salt Lake City	Tracy Aviary	100% OR 50%
+	Salt Lake City	Utah's Hogle Zoo	50%
+Virginia	Norfolk	Virginia Zoological Park	50%
+	Virginia Beach	Virginia Aquarium & Marine Science Center	50%
+Washington	Eatonville	Northwest Trek Wildlife Park	50%
+	Tacoma	Point Defiance Zoo & Aquarium	50%
+	Seattle	Woodland Park Zoo	50%
+West Virginia	Wheeling	Oglebay's Good Zoo	100% OR 50%
+Wisconsin	Baraboo	International Crane Foundation	100% OR 50%
+	Madison	Henry Vilas Zoo	FREE TO PUBLIC - 10% off Grille and Gift Shop
+	Milwaukee	Milwaukee County Zoological Gardens	100% OR 50%
+	Racine	Racine Zoological Gardens	50%
+	Suamico	Northeastern Wisconsin NEW Zoo & Adventure Park	50%

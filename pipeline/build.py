@@ -30,9 +30,11 @@ FIXTURES = HERE / "tests" / "fixtures"
 MANUAL = HERE / "manual_drops"
 DATA = HERE.parent / "data"
 sys.path.insert(0, str(ADAPTERS))
+sys.path.insert(0, str(HERE))
 
 import astc, acm, narm, roam, aza, ahs, timetravelers as tt  # noqa: E402
 from _common import Record  # noqa: E402
+import geodata  # noqa: E402
 
 
 # ---- Source registry -------------------------------------------------------
@@ -48,7 +50,7 @@ def _json(path: Path, fn: Callable[[str], List[Record]]) -> Callable[[], List[Re
 SOURCES: Dict[str, dict] = {
     "astc": {"live": astc.fetch, "fixture": _txt(FIXTURES / "astc_sample.txt", astc.parse_text)},
     "acm":  {"live": acm.fetch,  "fixture": _json(FIXTURES / "acm_sample.json", acm.parse_json)},
-    "narm": {"live": narm.fetch, "fixture": _txt(FIXTURES / "narm_sample.html", narm.parse_html)},
+    "narm": {"live": narm.fetch, "fixture": _txt(FIXTURES / "narm_sample.txt", narm.parse_text)},
     "roam": {"live": roam.fetch, "fixture": _txt(FIXTURES / "roam_sample.txt", roam.parse_text)},
     "aza":  {"live": aza.fetch,  "fixture": _txt(FIXTURES / "aza_sample.txt", aza.parse_text)},
     "ahs":  {"live": ahs.fetch,  "fixture": _json(FIXTURES / "ahs_sample.json", ahs.parse_json)},
@@ -65,6 +67,11 @@ def collect(sources: List[str], from_fixtures: bool = False) -> List[Record]:
             print(f"  ! unknown source: {name}", file=sys.stderr)
             continue
         drop = _manual_drop(name)
+        module = sys.modules.get(spec["live"].__module__)
+        if not drop and not from_fixtures and getattr(module, "BLOCKED_REASON", None):
+            print(f"  {name}: skipped — not scraped ({module.BLOCKED_REASON}); "
+                  f"add a file to pipeline/manual_drops/{name}/ to include it")
+            continue
         try:
             if drop:
                 recs = drop
@@ -84,23 +91,42 @@ def collect(sources: List[str], from_fixtures: bool = False) -> List[Record]:
 
 
 def _manual_drop(program: str) -> Optional[List[Record]]:
-    """Parse an association-supplied file dropped in manual_drops/<program>/ (.txt/.html/.json)."""
+    """Parse association-supplied files dropped in manual_drops/<program>/.
+
+    .txt/.html/.json go straight to the source's parser. A .pdf is turned into a
+    sibling .txt with that adapter's own extract_pdf_text (ASTC/ROAM/AZA) the
+    first time it's seen; only the .txt is committed (PDFs are gitignored — we
+    don't republish the association's document), and a PDF with a .txt beside
+    it is skipped so nothing is counted twice.
+    """
     folder = MANUAL / program
     if not folder.is_dir():
         return None
-    spec = SOURCES[program]
-    files = sorted(p for p in folder.iterdir() if p.suffix in (".txt", ".html", ".json"))
+    files = sorted(p for p in folder.iterdir() if p.suffix.lower() in (".txt", ".html", ".json", ".pdf"))
     if not files:
         return None
     # Reuse the source's fixture parser but on the dropped file.
     parser = {
         "astc": astc.parse_text, "roam": roam.parse_text, "aza": aza.parse_text,
-        "acm": acm.parse_json, "narm": narm.parse_html, "timetravelers": tt.parse_html,
+        "acm": acm.parse_json, "narm": narm.parse_text, "timetravelers": tt.parse_html,
         "ahs": ahs.parse_json,
     }[program]
+    module = {"astc": astc, "roam": roam, "aza": aza, "acm": acm, "narm": narm,
+              "timetravelers": tt, "ahs": ahs}[program]
+    for f in [f for f in files if f.suffix.lower() == ".pdf"]:
+        txt = f.with_suffix(".txt")
+        if txt in files:
+            continue
+        extract = getattr(module, "extract_pdf_text", None)
+        if not extract:
+            raise ValueError(f"{program}: manual drop {f.name} is a PDF but the adapter can't read PDFs")
+        txt.write_text(extract(f.read_bytes()), encoding="utf-8")
+        print(f"  {program}: extracted {f.name} -> {txt.name} (commit the .txt, not the PDF)")
+        files.append(txt)
     out: List[Record] = []
-    for f in files:
-        out.extend(parser(f.read_text(encoding="utf-8")))
+    for f in sorted(set(files)):
+        if f.suffix.lower() != ".pdf":
+            out.extend(parser(f.read_text(encoding="utf-8")))
     return out
 
 
@@ -110,6 +136,39 @@ SAME_MUSEUM = {
     "tulsa-children-s-museum-discovery-lab-tulsa-ok": "discovery-lab-tulsa-ok",
     "the-epc-museum-dba-la-nube-the-shape-of-imagination-el-paso-tx":
         "la-nube-steam-discovery-center-el-paso-tx",
+    # Renamed / full-vs-short names across NARM, ROAM, AHS (checked 2026-09-23).
+    "sheldon-swope-art-museum-terre-haute-in": "swope-art-museum-terre-haute-in",
+    "pacific-asia-museum-pasadena-ca": "usc-pacific-asia-museum-pasadena-ca",
+    "naples-art-naples-fl": "naples-art-institute-naples-fl",
+    "the-carmel-kelly-simmons-dozier-garden-at-lemoyne-arts-tallahassee-fl": "lemoyne-arts-tallahassee-fl",
+    "lake-wales-arts-center-lake-wales-fl": "lake-wales-arts-council-lake-wales-fl",
+    "kentuck-art-center-northport-al": "kentuck-museum-northport-al",
+    "international-arts-artists-hillyer-art-space-washington-dc":
+        "international-arts-artists-hillyer-arts-space-washington-dc",
+    "new-britain-youth-museum-hungerford-nature-center-kensington-ct": "hungerford-nature-center-kensington-ct",
+    "samuel-p-harn-museum-of-art-gainesville-fl": "harn-museum-of-art-gainesville-fl",
+    "frick-art-historical-center-pittsburgh-pa": "the-frick-pittsburgh-pittsburgh-pa",
+    "graycliff-derby-ny": "frank-lloyd-wright-s-graycliff-derby-ny",
+    "dunn-gardens-seattle-wa": "e-b-dunn-historic-garden-trust-dunn-gardens-seattle-wa",
+    "cupertino-historical-museum-cupertino-ca": "cupertino-historical-society-and-museum-cupertino-ca",
+    "sterling-and-francine-clark-art-institute-williamstown-ma": "clark-art-institute-williamstown-ma",
+    "charles-schulz-museum-santa-rosa-ca": "charles-m-schulz-museum-santa-rosa-ca",
+    "brandywine-conservancy-museum-of-art-chadds-ford-pa": "brandywine-museum-of-art-chadds-ford-pa",
+    "fullerton-arboretum-fullerton-ca": "arboretum-and-botanical-garden-at-cal-state-fullerton-fullerton-ca",
+    "lee-county-alliance-for-the-arts-fort-myers-fl": "alliance-for-the-arts-fort-myers-fl",
+    "abroms-engel-institute-for-the-visual-arts-aeiva-uab-birmingham-al":
+        "abroms-engel-institute-for-visual-arts-birmingham-al",
+    "the-dusable-black-history-museum-and-education-center-chicago-il":
+        "dusable-black-history-museum-and-educational-center-chicago-il",
+    "cornell-botanic-gardens-ithaca-ny": "cornell-botanical-gardens-ithaca-ny",
+    "patricia-and-philip-frost-art-museum-fiu-miami-fl": "the-patricia-phillip-frost-art-museum-miami-fl",
+    "university-of-california-botanical-garden-at-berkeley-berkeley-ca": "uc-botanical-garden-at-berkeley-berkeley-ca",
+    "utah-state-university-eastern-prehistoric-museum-price-ut": "usu-eastern-prehistoric-museum-price-ut",
+    "the-louise-arnold-tanger-arboretum-at-lancasterhistory-lancaster-pa": "lancasterhistory-org-lancaster-pa",
+    "eli-and-edythe-broad-museum-at-michigan-state-university-east-lansing-mi":
+        "the-eli-and-edythe-broad-art-museum-east-lansing-mi",
+    "milton-j-rubenstein-museum-of-science-technology-syracuse-ny": "museum-of-science-technology-most-syracuse-ny",
+    "providence-athen-um-providence-ri": "providence-athenaeum-providence-ri",
 }
 # Words that don't tell two museums in the same city apart.
 _GENERIC = {"the", "a", "of", "for", "at", "and", "dba", "museum", "museums",
@@ -127,29 +186,87 @@ def _name_core(name: str, city: Optional[str]) -> str:
     return " ".join(sorted(set(w for w in words(name) if w not in drop)))
 
 
+# Words too common to identify a museum on their own (checked after _GENERIC).
+_WEAK = {"childrens", "children", "science", "sciences", "art", "arts", "history", "historical",
+         "natural", "society", "garden", "gardens", "zoo", "aquarium", "university", "college",
+         "county", "city", "state", "national", "house", "park", "institute"}
+_ALT_SPLIT = re.compile(r"\s+\|\s+|\s*/\s*|\s+[–—-]\s+")
+
+
+def _name_forms(name: str) -> List[List[str]]:
+    """Word lists for each alternative form of a name: parentheticals dropped,
+    split on " | ", "/" and " – " ("Shaker Museum | Mount Lebanon" -> both parts)."""
+    base = re.sub(r"\([^)]*\)", " ", name)
+    forms = []
+    for part in [base] + _ALT_SPLIT.split(base):
+        s = part.lower().replace("’", "'").replace("'s", "").replace("&", " and ")
+        w = [("st" if x == "saint" else x) for x in re.findall(r"[a-z0-9]+", s)]
+        w = [{"museums": "museum", "gardens": "garden"}.get(x, x) for x in w]
+        while w and w[0] == "the":
+            w = w[1:]
+        while w and w[-1] in ("inc", "the"):
+            w = w[:-1]
+        if w:
+            forms.append(w)
+    return forms
+
+
+def same_museum(a: str, b: str, city: Optional[str]) -> bool:
+    """Do two names (same city + state, different programs) mean one museum?
+
+    Yes if their distinctive words match ("Lindsay Wildlife Museum" /
+    "Lindsay Wildlife Experience"), or if one form is a word-for-word prefix of
+    the other and still has a distinctive word ("Wexner Center for the Arts" /
+    "... at Ohio State University", "Newfields (Indianapolis Museum of Art)") or
+    is 3+ words naming the place ("Wichita Art Museum" / "... and Art Garden").
+    """
+    core_a, core_b = _name_core(a, city), _name_core(b, city)
+    if core_a and core_a == core_b:
+        return True
+    place = set(re.findall(r"[a-z0-9]+", (city or "").lower()))
+    for fa in _name_forms(a):
+        for fb in _name_forms(b):
+            short, long_ = (fa, fb) if len(fa) <= len(fb) else (fb, fa)
+            if long_[:len(short)] != short:
+                continue
+            distinctive = any(w not in _GENERIC and w not in _WEAK and w not in place for w in short)
+            # ...or the place itself is what identifies it: "Wichita Art Museum".
+            placed = len(short) >= 3 and any(w in place for w in short)
+            if distinctive or placed:
+                return True
+    return False
+
+
 def normalize_and_merge(records: List[Record]) -> List[dict]:
     """Merge records that describe the same physical museum into one record with
     a combined `programs` map. Keyed by slug(name, city, state); a record from
-    another program also merges into a museum in the same city + state whose
-    name has the same distinctive words (programs often use old/short names),
-    or via SAME_MUSEUM. The first source's name and id win."""
+    another program also merges into a museum in the same city + state when
+    `same_museum()` matches any name already merged there (programs often use
+    old, short or suffixed names), or via SAME_MUSEUM. The first source's name
+    and id win."""
     museums: Dict[str, dict] = {}
-    by_core: Dict[tuple, str] = {}   # (city, state, name core) -> museum id
+    by_place: Dict[tuple, List[str]] = {}   # (city, state) -> museum ids there
+    names: Dict[str, List[str]] = {}         # museum id -> every name merged into it
     today = date.today().isoformat()
     verified = today[:7]
 
     for r in records:
         key = SAME_MUSEUM.get(r.id, r.id)
-        core = (r.city, r.state, _name_core(r.name, r.city))
-        if key not in museums and core[2] and core in by_core:
-            if r.program not in museums[by_core[core]]["programs"]:
-                key = by_core[core]
-        by_core.setdefault(core, key)
+        if key not in museums:
+            for other in by_place.get((r.city, r.state), []):
+                if r.program not in museums[other]["programs"] and \
+                        any(same_museum(r.name, n, r.city) for n in names[other]):
+                    key = other
+                    break
+        names.setdefault(key, [])
+        if r.name not in names[key]:
+            names[key].append(r.name)
         m = museums.get(key)
         if not m:
+            by_place.setdefault((r.city, r.state), []).append(key)
             m = {
                 "id": key, "name": r.name, "city": r.city, "state": r.state,
-                "country": r.country, "lat": r.lat, "lng": r.lng,
+                "zip": r.zip, "country": r.country, "lat": r.lat, "lng": r.lng,
                 "website": r.website, "programs": {}, "sources": [], "last_seen": today,
             }
             museums[key] = m
@@ -161,22 +278,43 @@ def normalize_and_merge(records: List[Record]) -> List[dict]:
             entry["benefit"] = r.benefit
         if r.admits is not None:
             entry["admits"] = r.admits
+        if r.tier is not None:
+            entry["tier"] = r.tier
+        if r.exclusion is not None:           # garden/museum opts into a distance rule
+            entry["exclusion"] = r.exclusion
         m["programs"][r.program] = entry
         if r.source and r.source not in m["sources"]:
             m["sources"].append(r.source)
+        if not m.get("zip") and r.zip:
+            m["zip"] = r.zip
         if not m.get("website") and r.website:
             m["website"] = r.website
 
     return sorted(museums.values(), key=lambda x: x["id"])
 
 
-# ---- Geocode (city-level, cached, bounded) --------------------------------
-# Museums that arrive with coords (e.g. ACM) are left alone. The rest (ASTC has
-# no street address in its list) are geocoded to their CITY centroid — precise
-# enough for the coarse 90-mile distance rules. We key the cache by "City, ST",
-# so all museums in one city share a single lookup. The step is strictly bounded
-# (short timeout, per-run cap, polite delay) so it can never hang the CI job.
+# ---- Geocode (offline first, then cached Nominatim, bounded) ---------------
+# Museums that arrive with coords (e.g. ACM) are left alone. The rest are placed
+# at their ZIP centroid if the source gave a ZIP, else their CITY centroid from
+# the Census place table — both offline (see geodata.py), and precise enough for
+# the coarse 15-90 mile distance rules. Only cities missing from that table
+# (townships, NYC boroughs, ...) hit Nominatim; those results are cached by
+# "City, ST" in geocode_cache.json, which is committed, so each city is looked up
+# once ever. The network step is strictly bounded (short timeout, per-run cap,
+# polite delay) so it can never hang the CI job.
 CACHE_PATH = HERE / "geocode_cache.json"
+PLACES_PATH = HERE / "place_centroids.json"
+# "City, ST" as sources print it, for locales no gazetteer or settlement search
+# can place (hamlets, campuses, old spellings). Looked up by hand 2026-09-23.
+GEO_OVERRIDES = {
+    "St. Mary's City, MD": [38.180, -76.429],       # Historic St. Mary's City (not a Census place)
+    "Colton's Point, MD": [38.225, -76.753],         # Census/OSM spell it "Coltons Point"
+    "University Center, MI": [43.513, -83.962],      # Saginaw Valley State University campus
+    "Bonito River, NM": [33.496, -105.523],          # NARM lists Fort Stanton by its river
+    "Sanibel Island, FL": [26.449, -82.022],         # the city of Sanibel (mostly water, so no place point)
+    "Staatsburgh, NY": [41.853, -73.920],            # the hamlet is "Staatsburg"
+}
+ZIPS_PATH = DATA / "zip_centroids.json"
 GEOCODE_TIMEOUT = 10          # seconds per request
 GEOCODE_DELAY = 1.1          # seconds between requests (Nominatim usage policy)
 GEOCODE_MAX_NEW = 500        # hard cap on new lookups per run
@@ -190,11 +328,19 @@ def geocode(museums: List[dict], enabled: bool) -> None:
         except Exception:  # noqa: BLE001 - a corrupt cache shouldn't kill the run
             cache = {}
 
+    zips = _load_table(ZIPS_PATH)
+    places = _load_table(PLACES_PATH)
     session = None
     new_lookups = 0
     updated = False
     for m in museums:
         if m.get("lat") is not None:          # already geocoded by its source
+            continue
+        pt = zips.get(m.get("zip") or "") or (
+            places.get(geodata.place_key(m["city"], m["state"])) if m.get("city") and m.get("state") else None)
+        pt = pt or GEO_OVERRIDES.get(_city_key(m) or "")
+        if pt:
+            m["lat"], m["lng"] = pt
             continue
         key = _city_key(m)
         if not key:
@@ -214,6 +360,13 @@ def geocode(museums: List[dict], enabled: bool) -> None:
 
     if updated:
         _write_cache(cache)
+
+
+def _load_table(path: Path) -> Dict[str, list]:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
 
 
 def _city_key(m: dict) -> Optional[str]:
@@ -238,7 +391,9 @@ def _nominatim_city(city_state: str, session) -> Optional[list]:
     try:
         r = sess.get(
             "https://nominatim.openstreetmap.org/search",
-            params={"q": f"{city_state}, USA", "format": "json", "limit": 1},
+            # Structured, settlements only: a free-text "Harvard, MA" returns the university.
+            params={"city": city_state.rsplit(", ", 1)[0], "state": city_state.rsplit(", ", 1)[-1],
+                    "country": "USA", "featureType": "settlement", "format": "json", "limit": 1},
             timeout=GEOCODE_TIMEOUT,
             headers={"User-Agent": "museum-reciprocal-finder/0.2 (personal project)"},
         )
@@ -331,7 +486,7 @@ def main(argv: Optional[List[str]] = None) -> None:
                     help="comma-separated: astc,acm,narm,roam,aza,ahs,timetravelers")
     ap.add_argument("--from-fixtures", action="store_true",
                     help="use saved fixtures instead of live fetching (offline)")
-    ap.add_argument("--no-geocode", action="store_true", help="skip the geocoding stage")
+    ap.add_argument("--no-geocode", action="store_true", help="skip network (Nominatim) geocoding; offline ZIP/place tables still apply")
     ap.add_argument("--out", default=str(DATA), help="output directory (default: data/)")
     args = ap.parse_args(argv)
     run(

@@ -72,9 +72,10 @@ def test_run_writes_museums_and_meta(tmp_path):
     meta = json.loads((tmp_path / "meta.json").read_text(encoding="utf-8"))
     assert meta["counts"]["museums"] == 8
     assert meta["counts"]["by_program"]["ASTC"] == 6
-    # No network geocoding requested; ASTC rows stay null, but the 2 ACM rows
+    # No network geocoding requested, but the offline tables still apply: the 6
+    # ASTC fixture cities are all in the Census place table, and the 2 ACM rows
     # arrive pre-geocoded from their source.
-    assert meta["geocoded"] == 2
+    assert meta["geocoded"] == 8
 
 
 def test_merge_matches_renamed_museum_in_same_city():
@@ -116,3 +117,67 @@ def test_merge_uses_same_museum_aliases():
     ]
     (m,) = build.normalize_and_merge(recs)
     assert m["id"] == "discovery-lab-tulsa-ok" and sorted(m["programs"]) == ["ACM", "ASTC"]
+
+
+def test_manual_drop_feeds_a_source_that_is_not_scraped(tmp_path, monkeypatch):
+    # AZA / Time Travelers opt out of automated access: fetch() refuses, and a
+    # file dropped in manual_drops/<program>/ is used instead.
+    (tmp_path / "aza").mkdir()
+    (tmp_path / "aza" / "aza_2026.txt").write_text(
+        (PIPE / "tests" / "fixtures" / "aza_sample.txt").read_text(encoding="utf-8"), encoding="utf-8")
+    monkeypatch.setattr(build, "MANUAL", tmp_path)
+    records = build.collect(["aza"])
+    assert records and all(r.program == "AZA" for r in records)
+
+    monkeypatch.setattr(build, "MANUAL", tmp_path / "empty")
+    assert build.collect(["aza", "timetravelers"]) == []   # refused, not crashed
+
+
+def test_manual_drop_pdf_is_extracted_to_txt_once_and_not_double_counted(tmp_path, monkeypatch):
+    import aza
+    drop = tmp_path / "aza"
+    drop.mkdir()
+    (drop / "aza-2026-27.pdf").write_bytes(b"%PDF-fake")
+    fixture = (PIPE / "tests" / "fixtures" / "aza_sample.txt").read_text(encoding="utf-8")
+    calls = []
+    monkeypatch.setattr(aza, "extract_pdf_text", lambda b: calls.append(b) or fixture)
+    monkeypatch.setattr(build, "MANUAL", tmp_path)
+
+    first = build.collect(["aza"])
+    assert (drop / "aza-2026-27.txt").read_text(encoding="utf-8") == fixture
+    second = build.collect(["aza"])                # .txt now exists: PDF skipped
+    assert len(calls) == 1 and first and len(second) == len(first)
+
+
+def test_same_museum_prefix_and_alternate_forms():
+    same = [
+        ("Wexner Center for the Arts at Ohio State University", "Wexner Center for the Arts", "Columbus"),
+        ("San Antonio Museum of Art (SAMA)", "San Antonio Museum of Art", "San Antonio"),
+        ("Shaker Museum | Mount Lebanon", "Shaker Museum", "New Lebanon"),
+        ("The Trustees/deCordova Sculpture Park and Museum", "deCordova Sculpture Park and Museum", "Lincoln"),
+        ("Wichita Art Museum and Art Garden", "Wichita Art Museum", "Wichita"),
+        ("Newfields (Indianapolis Museum of Art)", "Newfields", "Indianapolis"),
+        ("Peace River Botanical & Sculpture Gardens Inc.", "Peace River Botanical and Sculpture Gardens", "Punta Gorda"),
+        ("Telfair Museums", "Telfair Museum of Art", "Savannah"),
+    ]
+    different = [
+        ("San Diego History Center", "San Diego Natural History Museum", "San Diego"),
+        ("Museum of Utah", "Utah's Hogle Zoo", "Salt Lake City"),
+        ("Museum of Contemporary Art Denver", "RedLine Contemporary Art Center", "Denver"),
+        ("Museum of the Shenandoah Valley", "Shenandoah Valley Discovery Museum", "Winchester"),
+        ("San Diego Museum of Art", "San Diego Museum of Man", "San Diego"),
+        ("Chicago History Museum", "Chicago Children's Museum", "Chicago"),
+    ]
+    assert [x for x in same if not build.same_museum(*x)] == []
+    assert [x for x in different if build.same_museum(*x)] == []
+
+
+def test_merge_compares_against_every_name_already_merged():
+    # ROAM's short name only matches NARM's, not ASTC's — it still joins the one museum.
+    recs = [
+        Record(program="ASTC", name="Roberson Museum", city="Binghamton", state="NY", source="astc"),
+        Record(program="NARM", name="Roberson Museum and Science Center", city="Binghamton", state="NY", source="narm"),
+        Record(program="ROAM", name="Roberson Museum & Science Center (RMSC)", city="Binghamton", state="NY", source="roam"),
+    ]
+    (m,) = build.normalize_and_merge(recs)
+    assert sorted(m["programs"]) == ["ASTC", "NARM", "ROAM"]

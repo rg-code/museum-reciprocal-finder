@@ -1,8 +1,21 @@
-Reciprocity List of AZA Zoos and Aquariums
-Effective May 2026 - April 2027
-
-OHIO
-Cincinnati Zoo & Botanical Garden, Cincinnati, OH - 50%
-CALIFORNIA
-San Diego Zoo, San Diego, CA - Free
-Sacramento Zoo, Sacramento, CA - 25%
+State	City	Institution	Reciprocity
+CANADA	Calgary -Alberta	Wilder Institute's Calgary Zoo	50%
+	Toronto	Toronto Zoo	50%
+MEXICO	Puebla	Africam Safari Park	100% OR 50%
+Alabama	Birmingham	Birmingham Zoo	50%
+Alaska	Seward	Alaska SeaLife Center	50%
+DC	Washington	Smithsonian National Zoological Park	FREE TO PUBLIC 15% discount in gift shop
+Idaho	Boise	Zoo Boise	100% OR 50%
+	Idaho Falls	Idaho Falls Zoo at Tautphaus Park	100% OR 50%
+Illinois	Bloomington	Miller Park Zoo	100% OR 50%
+	Chicago	Lincoln Park Zoo	FREE TO PUBLIC 10% discount in gift shop
+	Chicago	John G. Shedd Aquarium	50% (Limit 2)
+Minnesota	Apple Valley	Minnesota Zoological Garden	50%
+Missouri	Eureka	Endangered Wolf Center	50% Endangered Species Tour and Evening Wolf Howl
+	Saint Louis	Saint Louis Zoo	FREE TO PUBLIC - 50% off Adventure Pass (Limit 4)
+Ohio	Akron	Akron Zoological Park	50%
+	Cumberland	The Wilds	50% off Open Air Safari
+Tennessee	Chattanooga	Chattanooga Zoo at Warner Park	100% OR 50%
+	Nashville	Nashville Zoo, Inc.	50%
+Texas	Abilene	Abilene Zoological Gardens	100% OR 50%
+	Corpus Christi	Texas State Aquarium	50% (Limit 2)

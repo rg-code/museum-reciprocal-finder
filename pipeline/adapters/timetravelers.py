@@ -53,11 +53,14 @@ def parse_html(html: str) -> List[Record]:
     return records
 
 
-def fetch(session=None, url: str = TIMETRAVELERS_URL) -> List[Record]:
-    """Download the Time Travelers directory and parse it into Records."""
-    import requests
+# Checked 2026-09-23: timetravelers.mohistory.org/robots.txt is 'Disallow: /' for all agents. We don't scrape sources that opt out, so this
+# program is fed only by a manual drop (pipeline/manual_drops/timetravelers/).
+BLOCKED_REASON = "timetravelers.mohistory.org/robots.txt is 'Disallow: /' for all agents"
 
-    sess = session or requests.Session()
-    resp = sess.get(url, timeout=60, headers={"User-Agent": "museum-reciprocal-finder/0.1"})
-    resp.raise_for_status()
-    return parse_html(resp.text)
+
+def fetch(session=None, url: str = "") -> List[Record]:
+    """Not fetched automatically — the source opts out of automated access."""
+    raise RuntimeError(
+        f"Time Travelers is not scraped ({BLOCKED_REASON}). Put a saved copy of the participant directory (or a list from the Missouri Historical Society) in "
+        "pipeline/manual_drops/timetravelers/ instead."
+    )

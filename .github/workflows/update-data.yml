@@ -14,8 +14,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r pipeline/requirements.txt
-      - name: Build data/museums.json from live sources
-        run: python pipeline/build.py --sources astc,acm
+      - name: Test the adapters (a broken parser fails here, before any data is written)
+        run: python -m pytest pipeline/tests -q
+      # AZA and Time Travelers opt out of scraping: they're read from
+      # pipeline/manual_drops/<program>/ when a file is there, else skipped.
+      - name: Build data/museums.json from live sources + manual drops
+        run: python pipeline/build.py --sources astc,acm,narm,roam,ahs,aza,timetravelers
       - name: Commit refreshed data (if changed)
         run: |
           git config user.name  "data-bot"

@@ -95,6 +95,12 @@ export function isExcluded(
 }
 
 /** Every program the user could actually use at M, after distance exclusions. */
+/**
+ * AZA reciprocity is in-kind: a "100% OR 50%" zoo gives 100% to members of
+ * another "100% OR 50%" zoo and 50% to everyone else (stored as discount_50).
+ */
+export const IN_KIND_TIER = "100_or_50";
+
 export function applicableOptions(
   museum: Museum,
   user: UserProfile,
@@ -106,7 +112,11 @@ export function applicableOptions(
     if (!held.has(program)) continue;
     const def = programs[program];
     if (!def) continue;
-    const benefit: Benefit = entry.benefit ?? def.default_benefit;
+    let benefit: Benefit = entry.benefit ?? def.default_benefit;
+    if (entry.tier === IN_KIND_TIER &&
+        user.homeInstitutions.some((h) => h.tiers?.[program] === IN_KIND_TIER)) {
+      benefit = "free";
+    }
     const admits = entry.admits ?? def.default_admits;
     const resolved = resolveExclusion(entry, def.default_exclusion);
     if (isExcluded(museum, user, program, resolved)) continue;

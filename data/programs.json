@@ -15,7 +15,7 @@
   "ROAM": {
     "name": "Reciprocal Organization of Associated Museums", "category": "mixed", "color": "#2ca02c",
     "default_benefit": "free", "default_admits": 2,
-    "default_exclusion": { "radius_mi": 25, "anchors": ["inter_institution"], "discretionary": false },
+    "default_exclusion": { "radius_mi": 25, "anchors": ["inter_institution"], "discretionary": true },
     "source_url": "https://sites.google.com/site/roammuseums/home"
   },
   "AZA": {

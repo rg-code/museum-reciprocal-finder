@@ -1,14 +1,26 @@
-"""AZA (Association of Zoos & Aquariums) reciprocal adapter.
+"""AZA (Association of Zoos & Aquariums) Reciprocal Admissions adapter.
 
-Source: an annual PDF (May-April) at aza.org/reciprocity. Benefit is set PER
-institution (typically 50% off, sometimes free/100%), so the adapter reads the
-discount column and maps it to a benefit; unknown -> program default (discount_50).
+Source: AZA's annual reciprocity PDF (May-April cycle) from aza.org/reciprocity.
+aza.org opts out of automated access (robots.txt disallows automated agents and
+/reciprocity sits behind a Cloudflare bot challenge), so the PDF is downloaded
+by hand into pipeline/manual_drops/aza/. build.py turns it into a same-named
+.txt with `extract_pdf_text()` — only that .txt is committed — and parses it
+with `parse_text()`.
 
-Design: `parse_text()` handles "Name, City, ST - <discount>" style lines;
-`fetch()` downloads + extracts + parses. Tests use a fixture.
+Layout (verified on the 2026-27 list, "Updated 8/20/26"): 5 landscape pages, a
+table State | City | Zoo or Aquarium | Reciprocity | Contact Name | Phone #,
+with a prose sidebar on the right. Reciprocity text is printed in color (red
+50%, blue 100% OR 50%, green FREE TO PUBLIC) and everything else in black, which
+is how its wrapped notes are told apart from names. The State cell is blank
+under the first row of each state.
 
-NOTE (Phase 0): confirm the live PDF's columns (name / location / discount) and
-tune the discount detection.
+Benefit is in-kind, per the sidebar legend:
+- "50%"            -> discount_50 for every member.
+- "100% OR 50%"    -> 100% for members of other "100% OR 50%" zoos, else 50%.
+                      Emitted as discount_50 with tier "100_or_50"; the app
+                      upgrades it to free when the user's home zoo shares it.
+- "FREE TO PUBLIC" -> free for everyone (tier "free_public").
+- "(Limit N)"      -> admits N. Anything else -> "varies" (call ahead).
 """
 from __future__ import annotations
 
@@ -19,94 +31,103 @@ from _common import Record, state_header
 
 SOURCE = "aza"
 PROGRAM = "AZA"
+# Checked 2026-09-23: aza.org/robots.txt disallows automated agents and
+# /reciprocity sits behind a Cloudflare bot challenge (HTTP 403). We don't
+# scrape sources that opt out, so this program is fed only by a manual drop.
+BLOCKED_REASON = ("aza.org/robots.txt disallows automated agents and /reciprocity sits "
+                  "behind a Cloudflare bot challenge (HTTP 403)")
 
-_SKIP_MARKERS = ("reciprocity", "reciprocal list", "effective", "page ", "association of zoos")
-
-
-def _is_skippable(line: str) -> bool:
-    low = line.lower()
-    return not line or any(m in low for m in _SKIP_MARKERS)
-
-
-def _benefit_from(text: str) -> Optional[str]:
-    """Map a discount snippet to a benefit. None => program default (discount_50)."""
-    low = text.lower()
-    if "free" in low or "100%" in low or "no charge" in low:
-        return "free"
-    if "50%" in low or "50 %" in low or "half" in low:
-        return "discount_50"
-    m = re.search(r"(\d{1,3})\s*%", low)
-    if m:
-        pct = int(m.group(1))
-        if pct >= 100:
-            return "free"
-        return "discount_50" if pct == 50 else "discount_other"
-    return None
+HEADER = "State\tCity\tInstitution\tReciprocity"
+# Column starts (pt) on the 792pt-wide page; the sidebar begins at ~613.
+CITY_X, NAME_X, CONTACT_X, SIDEBAR_X = 74.0, 150.0, 406.0, 610.0
+_LIMIT = re.compile(r"\(\s*limit\s+(\d+)\s*\)", re.I)
+_FOOTER = re.compile(r"^(\*|please note)", re.I)
 
 
-def parse_text(text: str) -> List[Record]:
-    """Parse AZA PDF-extracted text into AZA Records."""
-    records: List[Record] = []
-    current_state: Optional[str] = None
-
-    for raw_line in text.splitlines():
-        line = raw_line.strip()
-        if _is_skippable(line):
-            continue
-        st = state_header(line)
-        if st:
-            current_state = st
-            continue
-
-        # Split an optional trailing discount after a dash/pipe/tab.
-        location_part, discount_part = line, ""
-        m = re.split(r"\s+[-–—|]\s+", line, maxsplit=1)
-        if len(m) == 2:
-            location_part, discount_part = m[0].strip(), m[1].strip()
-
-        parts = [p.strip() for p in location_part.rsplit(",", 2)]
-        if len(parts) == 3:
-            name, city, state = parts
-            state = state.split()[0].upper()[:2] if state else current_state
-        elif len(parts) == 2:
-            name, city, state = parts[0], parts[1], current_state
-        else:
-            name, city, state = parts[0], None, current_state
-        if not name:
-            continue
-
-        records.append(
-            Record(
-                program=PROGRAM,
-                name=name,
-                city=city or None,
-                state=state or current_state,
-                benefit=_benefit_from(discount_part),  # None => default discount_50
-                source=SOURCE,
-                raw=line,
-            )
-        )
-    return records
+def _is_black(w: dict) -> bool:
+    c = w.get("non_stroking_color")
+    return not c or all(v == 0 for v in (c if isinstance(c, (list, tuple)) else [c]))
 
 
 def extract_pdf_text(pdf_bytes: bytes) -> str:
+    """PDF -> tab-separated State, City, Institution, Reciprocity (one row per line)."""
     import io
-    import pdfplumber
+    import pdfplumber  # imported lazily so unit tests don't need it
 
-    out = []
+    rows: List[List[str]] = []
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
-            out.append(page.extract_text() or "")
-    return "\n".join(out)
+            words = [w for w in page.extract_words(x_tolerance=1.5, extra_attrs=["non_stroking_color"])
+                     if w["x0"] < SIDEBAR_X]
+            header = next((w for w in words if w["text"] == "Reciprocity"), None)
+            if not header:
+                continue
+            words = sorted((w for w in words if w["top"] > header["bottom"] + 1),
+                           key=lambda w: (w["top"], w["x0"]))
+            lines: List[List[dict]] = []
+            for w in words:
+                if lines and abs(lines[-1][0]["top"] - w["top"]) < 2.5:
+                    lines[-1].append(w)
+                else:
+                    lines.append([w])
+            for line in lines:
+                line.sort(key=lambda w: w["x0"])
+                text = " ".join(w["text"] for w in line)
+                if _FOOTER.match(text):
+                    break                    # legend/notes at the foot of the page
+                black = [w for w in line if _is_black(w)]
+                pick = lambda lo, hi: " ".join(w["text"] for w in black if lo <= w["x0"] < hi)
+                state, city, name = pick(0, CITY_X), pick(CITY_X, NAME_X), pick(NAME_X, CONTACT_X)
+                recip = " ".join(w["text"] for w in line if not _is_black(w) and w["x0"] < CONTACT_X)
+                if name or city or state:
+                    rows.append([state, city, name, recip])
+                elif recip and rows:         # wrapped reciprocity note
+                    rows[-1][3] = f"{rows[-1][3]} {recip}".strip()
+    return "\n".join([HEADER] + ["\t".join(r) for r in rows]) + "\n"
+
+
+def _benefit(recip: str):
+    """Reciprocity text -> (benefit, tier, admits)."""
+    t = recip.upper()
+    m = _LIMIT.search(recip)
+    admits = int(m.group(1)) if m else None
+    if t.startswith("FREE TO PUBLIC"):   # a "(Limit N)" here caps an add-on, not entry
+        return "free", "free_public", None
+    if t.startswith("100% OR 50%"):
+        return "discount_50", "100_or_50", admits
+    if t.startswith("50%"):
+        return "discount_50", None, admits
+    return "varies", None, admits
+
+
+def parse_text(text: str) -> List[Record]:
+    """Parse the tab-separated extract into US AZA Records (non-US rows dropped)."""
+    records: List[Record] = []
+    state: Optional[str] = None
+    in_us = False
+    for line in text.splitlines():
+        if not line.strip() or line.startswith("State\t"):
+            continue
+        cells = (line.split("\t") + ["", "", "", ""])[:4]
+        st_cell, city, name, recip = (c.strip() for c in cells)
+        if st_cell:                          # a new state/country section
+            state = state_header(st_cell)
+            in_us = state is not None
+        if not in_us or not name:
+            continue
+        benefit, tier, admits = _benefit(recip)
+        records.append(Record(
+            program=PROGRAM, name=name, city=city or None, state=state,
+            benefit=benefit, admits=admits, tier=tier,
+            source=SOURCE, raw=f"{st_cell or state} | {city} | {name} | {recip}",
+        ))
+    return records
 
 
 def fetch(session=None, url: str = "") -> List[Record]:
-    """Download the AZA reciprocity PDF and parse it. Pass the current PDF URL."""
-    import requests
-
-    if not url:
-        raise ValueError("AZA PDF URL required (annual list URL changes; pass url=...)")
-    sess = session or requests.Session()
-    resp = sess.get(url, timeout=60, headers={"User-Agent": "museum-reciprocal-finder/0.1"})
-    resp.raise_for_status()
-    return parse_text(extract_pdf_text(resp.content))
+    """Not fetched automatically — the source opts out of automated access."""
+    raise RuntimeError(
+        f"AZA is not scraped ({BLOCKED_REASON}). Put the current reciprocity PDF "
+        "(May-April cycle) from https://www.aza.org/reciprocity in "
+        "pipeline/manual_drops/aza/ instead."
+    )

@@ -1,25 +1,114 @@
-{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Missouri Botanical Garden",
-        "city": "St. Louis",
-        "state": "MO",
-        "website": "https://www.missouribotanicalgarden.org"
-      },
-      "geometry": { "type": "Point", "coordinates": [-90.2596, 38.6127] }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Denver Botanic Gardens",
-        "city": "Denver",
-        "state": "CO",
-        "website": "https://www.botanicgardens.org"
-      },
-      "geometry": { "type": "Point", "coordinates": [-104.9612, 39.7320] }
-    }
-  ]
-}
+[
+ {
+  "name": "Adkins Arboretum",
+  "position": {
+   "lat": 38.9509028,
+   "lng": -75.9354968
+  },
+  "description": "<p>Native Chesapeake Garden on Maryland’s Eastern Shore<br />\n12610 Eveland Road<br />\nRidgely, Maryland 21660<br />\n(410) 634-2847</p>\n<p><a href=\"http://www.adkinsarboretum.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Additional Benefits:<br />\n</em><em>Free Audio Tour and First Saturday Guided Tour</em></p>\n<p><img decoding=\"async\" class=\"alignleft\" src=\"https://ahsgardening.org/wp-content/uploads/2025/02/Adkins-768x432-1.jpg\" alt=\"\" width=\"286\" height=\"137\" /></p>\n"
+ },
+ {
+  "name": "Airlie Gardens",
+  "position": {
+   "lat": 34.2182979,
+   "lng": -77.8302416
+  },
+  "description": "<p>300 Airlie Road<br />\nWilmington, North Carolina 28403<br />\n(910) 798-7700</p>\n<p><a href=\"http://www.airliegardens.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>To Note:<br />\n</em><em>Local Visitor Exception</em></p>\n<p><em>First established in 1901, Airlie Gardens is a breathtaking combination of wildlife, formal gardens, historic structures, sculptures, and a butterfly house, as well as being home to a 468-year-old Live Oak. </em></p>\n"
+ },
+ {
+  "name": "American Museum & Gardens",
+  "position": {
+   "lat": 51.3751178,
+   "lng": -2.3112106
+  },
+  "description": "<div>American Museum & Gardens</div>\n<div>Claverton Manor</div>\n<div>Bath BA2 7BD</div>\n<div>United Kingdom</div>\n<div><a href=\"tel:+441225460503\">+4401225460503</a></div>\n<div><a href=\"http://www.americanmuseum.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a></div>\n<div><em><br />\nSet on the edge of Bath, UK, looking over the rolling Cotswold Hills, the American Museum & Gardens occupies 125 acres of parkland surrounding the historic Claverton Manor, offering the ultimate country escape from the city. Blending English landscape tradition with American design, the “New American Garden” features the only public Oehme, van Sweden garden in Europe, showcasing bold swathes of American perennials, grasses, and shrubs within an English country garden setting. The Mount Vernon Garden is inspired by George Washington’s estate,  plus there’s an arboretum and walks through traditional woodland and parkland. Together, these diverse landscapes celebrate the rich botanical and cultural connections between the United Kingdom and the United States.</em></div>\n<div>\n<p><img decoding=\"async\" class=\"alignnone size-full wp-image-7664\" src=\"https://ahsgardening.org/wp-content/uploads/2026/06/American-Museum-And-Gardens-Claire-Takacs_38A6495-200x133-1.jpg\" alt=\"\" width=\"200\" height=\"133\" /></p>\n</div>\n"
+ },
+ {
+  "name": "Botanica, The Wichita Gardens",
+  "position": {
+   "lat": 37.6964308,
+   "lng": -97.361781
+  },
+  "description": "<p>701 Amidon Street<br />\nWichita, Kansas 62703<br />\n(316) 264-0448</p>\n<p><a href=\"http://www.botanica.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Additional Benefits:</em><br />\n<em>Gift Shop Discounts</em></p>\n"
+ },
+ {
+  "name": "Brooklyn Botanic Garden",
+  "position": {
+   "lat": 40.66951299999999,
+   "lng": -73.962381
+  },
+  "description": "<p>990 Washington Avenue<br />\nBrooklyn, New York 11225<br />\n(718) 623-7200</p>\n<p><a href=\"http://www.bbg.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>To Note:<br />\n<i>General admission only. Does not include Lightscape or other ticketed events</i><br />\nParking Fee</em></p>\n"
+ },
+ {
+  "name": "Catalina Island Conservancy – Wrigley Memorial & Botanic Garden",
+  "position": {
+   "lat": 33.3263374,
+   "lng": -118.3401574
+  },
+  "description": "<p style=\"font-weight: 400;\">Catalina Island Conservancy – Wrigley Memorial & Botanic Garden<br />\n1400 Avalon Cyn Road<br />\nAvalon, CA  90704</p>\n<p style=\"font-weight: 400;\">310-510-2595</p>\n<p><a href=\"https://catalinaconservancy.org/recreation/wrigley-memorial-and-botanic-garden/\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p style=\"font-weight: 400;\"><em>Wrigley Memorial & Botanic Garden, operated by the Catalina Island Conservancy, covers 38 acres on Catalina Island featuring it’s native and endemic plant species. The Botanic Garden is a great location to immerse yourself in nature in Avalon Canyon.  The centerpiece of the Botanic Garden, the Wrigley Memorial is an iconic landmark which honors William Wrigley Jr., whose greatest legacy was his vision for Catalina Island to remain protected for future generations to enjoy.</em></p>\n<p><img decoding=\"async\" class=\"alignnone size-medium wp-image-3533\" src=\"https://ahsgardening.org/wp-content/uploads/2025/04/25551438187_362696ac98_6k-300x200.jpg\" alt=\"\" width=\"300\" height=\"200\" srcset=\"https://ahsgardening.org/wp-content/uploads/2025/04/25551438187_362696ac98_6k-300x200.jpg 300w, https://ahsgardening.org/wp-content/uploads/2025/04/25551438187_362696ac98_6k-1024x684.jpg 1024w, https://ahsgardening.org/wp-content/uploads/2025/04/25551438187_362696ac98_6k-768x513.jpg 768w, https://ahsgardening.org/wp-content/uploads/2025/04/25551438187_362696ac98_6k-1536x1025.jpg 1536w, https://ahsgardening.org/wp-content/uploads/2025/04/25551438187_362696ac98_6k-2048x1367.jpg 2048w\" sizes=\"(max-width: 300px) 100vw, 300px\" /></p>\n"
+ },
+ {
+  "name": "George Washington’s American Horticultural Society",
+  "position": {
+   "lat": 38.74258359999999,
+   "lng": -77.0450901
+  },
+  "description": "<p>7931 East Boulevard Drive<br />\nAlexandria, Virginia 22308<br />\n(703) 768-5700</p>\n<p><a href=\"http://www.ahsgardening.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Additional Benefits:<br />\n</em><em>Free or Discounted Entry to Select Special Events</em></p>\n<p><em>The natural beauty of this 25-acre historic site along the Potomac River, once part of George Washington’s farmland, is enhanced by a blend of formal and naturalistic gardens, including woodlands, a meadow, and award-winning children’s gardens, along with many breathtaking views.</em></p>\n<p><img decoding=\"async\" src=\"https://ahsgardening.org/wp-content/uploads/2025/03/AHS.jpg\" /></p>\n"
+ },
+ {
+  "name": "Imua Discovery Garden ",
+  "position": {
+   "lat": 20.88544,
+   "lng": -156.50753
+  },
+  "description": "<p style=\"font-weight: 400;\">161 S. Wakea Avenue<br />\nKahului, HI  96732<br />\n808-244-7467</p>\n<p style=\"font-weight: 400;\"><a href=\"https://discoverimua.com/garden/\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://discoverimua.com/garden/&source=gmail&ust=1741716358515000&usg=AOvVaw2L6VNiU3NoJwpRUW3LFBvC\">Visit Site</a></p>\n<p style=\"font-weight: 400;\">Additional Benefits:<br />\n<em>Free or Discounted Audio Guide or Tour</em><br />\n<em>Free or Discounted Educational Programs</em><br />\n<em>Free or Discounted Entry to Select Special Events<br />\n</em><em>Gift Shop Discount</em></p>\n<p style=\"font-weight: 400;\"><em>Imua Discovery Garden is a serene, family-friendly escape where nature, history, and learning come alive. Wander beneath majestic monkey-pod trees, explore interactive exhibits, and connect with Maui’s rich cultural and environmental heritage. With a past that spans Maui’s native chiefs and Hawaii’s plantation era, this six-acre oasis offers a unique blend of relaxation, education, and adventure. Whether seeking tranquility or discovery, Imua Discovery Garden is a must-visit destination on Hawaii’s enchanting Valley Isle.</em></p>\n<p><img decoding=\"async\" class=\"\" src=\"https://ahsgardening.org/wp-content/uploads/2025/03/Imua-Discovery-Gardens.jpg\" width=\"375\" height=\"227\" /></p>\n"
+ },
+ {
+  "name": "International Peace Garden",
+  "position": {
+   "lat": 49.2304365,
+   "lng": -100.0595039
+  },
+  "description": "<p>Box 419<br />\nBoissevain, Manitoba<br />\nCanada R0K 0E0<br />\n888-432-6733</p>\n<p><a href=\"http://www.peacegarden.com\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Founded in 1932, the International Peace Garden celebrates the enduring peace and friendship between the United States of America and Canada. Visitors can explore nearly 2,400 acres of beautifully maintained landscapes, anchored by the magnificent Formal Gardens. More than 100,000 flowering annuals and perennials fill terraced beds and scenic walkways, highlighted by a stunning Sunken Garden and an 18-foot floral clock. Guests can also enjoy the year-round Conservatory, home to approximately</em><br />\n<em>5,000 unique species and cultivars of cacti and succulents from around the world.</em></p>\n<p><em>Visit our website for current hours, seasonal features, and border reentry information.</em></p>\n<figure id=\"attachment_3026\" aria-describedby=\"caption-attachment-3026\" style=\"width: 300px\" class=\"wp-caption alignnone\"><img decoding=\"async\" class=\"size-full wp-image-3026\" src=\"https://ahsgardening.org/wp-content/uploads/2025/03/InternationalPeaceGarden.jpg\" alt=\"\" width=\"300\" height=\"188\" /><figcaption id=\"caption-attachment-3026\" class=\"wp-caption-text\">created by dji camera</figcaption></figure>\n"
+ },
+ {
+  "name": "International Peace Garden",
+  "position": {
+   "lat": 48.9981607,
+   "lng": -100.0523677
+  },
+  "description": "<p>10939 Highway 281<br />\nDunseith, North Dakota 58329<br />\n(888) 432-6733</p>\n<p><a href=\"http://www.peacegarden.com\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Founded in 1932, the International Peace Garden celebrates the enduring peace and friendship between the United States of America and Canada. Visitors can explore nearly 2,400 acres of beautifully maintained landscapes, anchored by the magnificent Formal Gardens. More than 100,000 flowering annuals and perennials fill terraced beds and scenic walkways, highlighted by a stunning Sunken Garden and an 18-foot floral clock. Guests can also enjoy the year-round Conservatory, home to approximately</em><br />\n<em>5,000 unique species and cultivars of cacti and succulents from around the world.</em></p>\n<p><em>Visit our website for current hours, seasonal features, and border reentry information.</em></p>\n<p><img decoding=\"async\" class=\"size-full wp-image-3026\" src=\"https://ahsgardening.org/wp-content/uploads/2025/03/InternationalPeaceGarden.jpg\" alt=\"\" width=\"300\" height=\"188\" /></p>\n"
+ },
+ {
+  "name": "Mitchell Park Horticultural Conservatory (The Domes)",
+  "position": {
+   "lat": 43.0264365,
+   "lng": -87.94594819999999
+  },
+  "description": "<p>524 South Layton Boulevard<br />\nMilwaukee, Wisconsin 53215<br />\n(414) 257-5600</p>\n<p><a href=\"http://www.mitchellparkdomes.com/\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Additional Benefits:<br />\nGift Shop Discounts</em></p>\n<p><em>To Note: The Domes offers two free admissions, regardless of AHS garden membership level. This policy is set by Milwaukee County.</em></p>\n"
+ },
+ {
+  "name": "St. George Village Botanical Garden",
+  "position": {
+   "lat": 17.7177571,
+   "lng": -64.83037329999999
+  },
+  "description": "<p>127 Estate St, George<br />\nFrederiksted, St Croix US Virgin Islands 00840<br />\n(340) 692-2874</p>\n<p><a href=\"https://www.thegardenstcroix.org/\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n"
+ },
+ {
+  "name": "Texas Discovery Gardens",
+  "position": {
+   "lat": 32.7751527,
+   "lng": -96.75973800000001
+  },
+  "description": "<p>3601 Martin Luther King Jr. Boulevard<br />\nDallas, Texas 75210<br />\n(214) 428-7476</p>\n<p><a href=\"http://www.txdg.org\" target=\"_blank\" rel=\"noopener\">Visit Site</a><br />\n<em>To Note: Reciprocal visitors are offered a 50% discount from regular admission prices. Not applicable for special events or classes.</em></p>\n<p><em>Explore, Experience, Entertain, and Educate at Texas Discovery Gardens.</em></p>\n<p><em>Our 7.5-acre, 100% organic gardens showcase Texas native and adaptive plants. Visit the Rosine Smith Sammons Butterfly House for our daily butterfly release and exploration of hundreds of exotic butterflies in a tropical rainforest. Discover our local art gallery, garden trains, snake and reptile shack, and children’s playscape with a rock-climbing wall. Relax in the Secret Garden with soothing fountains and enjoy family picnics on our circular lawn. Join us for educational, craft, and social events, species exhibits, and volunteer opportunities, and experience the beauty and wonder of our natural world. And don’t forget our award-winning gift shop with something for everyone.</em></p>\n"
+ },
+ {
+  "name": "Toronto Botanical Garden",
+  "position": {
+   "lat": 43.7341428,
+   "lng": -79.35819630000002
+  },
+  "description": "<p>777 Lawrence Avenue East<br />\nToronto, Ontario M3C 1P2<br />\n(416) 397-1341</p>\n<p><a href=\"http://www.torontobotanicalgarden.ca\" target=\"_blank\" rel=\"noopener\">Visit Site</a></p>\n<p><em>Additional Benefits:<br />\nFree or Discounted Educational Programs<br />\nFree or Discounted Entry to Select Special Events<br />\nGift Shop Discounts</em></p>\n<p><img decoding=\"async\" class=\"alignnone size-full wp-image-3095\" src=\"https://ahsgardening.org/wp-content/uploads/2025/03/toronto_botanical_garden_logo_colour.jpg\" alt=\"\" width=\"150\" height=\"86\" /></p>\n"
+ }
+]

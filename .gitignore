@@ -9,7 +9,9 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
-pipeline/geocode_cache.json
+
+# Manual drops: commit only the extracted .txt, never the association's PDF
+pipeline/manual_drops/**/*.pdf
 
 # OS / editor
 .DS_Store
