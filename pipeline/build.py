@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -104,15 +105,46 @@ def _manual_drop(program: str) -> Optional[List[Record]]:
 
 
 # ---- Normalize + merge -----------------------------------------------------
+# Same museum, names too different to match automatically: other id -> id to merge into.
+SAME_MUSEUM = {
+    "tulsa-children-s-museum-discovery-lab-tulsa-ok": "discovery-lab-tulsa-ok",
+    "the-epc-museum-dba-la-nube-the-shape-of-imagination-el-paso-tx":
+        "la-nube-steam-discovery-center-el-paso-tx",
+}
+# Words that don't tell two museums in the same city apart.
+_GENERIC = {"the", "a", "of", "for", "at", "and", "dba", "museum", "museums",
+            "center", "centre", "experience", "kids"}
+
+
+def _name_core(name: str, city: Optional[str]) -> str:
+    """Distinctive words of a museum name, e.g. "Lindsay Wildlife Museum" and
+    "Lindsay Wildlife Experience" -> "lindsay wildlife". The city's own words
+    are dropped too ("The Muse Knoxville" -> "muse")."""
+    def words(s: str) -> List[str]:
+        s = s.lower().replace("’", "'").replace("'s", "").replace("&", " and ")
+        return [("st" if w == "saint" else w) for w in re.findall(r"[a-z0-9]+", s)]
+    drop = _GENERIC | set(words(city or ""))
+    return " ".join(sorted(set(w for w in words(name) if w not in drop)))
+
+
 def normalize_and_merge(records: List[Record]) -> List[dict]:
     """Merge records that describe the same physical museum into one record with
-    a combined `programs` map. Keyed by slug(name, city, state)."""
+    a combined `programs` map. Keyed by slug(name, city, state); a record from
+    another program also merges into a museum in the same city + state whose
+    name has the same distinctive words (programs often use old/short names),
+    or via SAME_MUSEUM. The first source's name and id win."""
     museums: Dict[str, dict] = {}
+    by_core: Dict[tuple, str] = {}   # (city, state, name core) -> museum id
     today = date.today().isoformat()
     verified = today[:7]
 
     for r in records:
-        key = r.id
+        key = SAME_MUSEUM.get(r.id, r.id)
+        core = (r.city, r.state, _name_core(r.name, r.city))
+        if key not in museums and core[2] and core in by_core:
+            if r.program not in museums[by_core[core]]["programs"]:
+                key = by_core[core]
+        by_core.setdefault(core, key)
         m = museums.get(key)
         if not m:
             m = {

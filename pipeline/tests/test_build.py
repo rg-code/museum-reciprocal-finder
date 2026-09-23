@@ -75,3 +75,44 @@ def test_run_writes_museums_and_meta(tmp_path):
     # No network geocoding requested; ASTC rows stay null, but the 2 ACM rows
     # arrive pre-geocoded from their source.
     assert meta["geocoded"] == 2
+
+
+def test_merge_matches_renamed_museum_in_same_city():
+    # ASTC uses the current name, ACM the old one — same museum, one record.
+    recs = [
+        Record(program="ASTC", name="Lindsay Wildlife Experience", city="Walnut Creek", state="CA", source="astc"),
+        Record(program="ACM", name="Lindsay Wildlife Museum", city="Walnut Creek", state="CA",
+               lat=37.92342, lng=-122.07567, source="acm"),
+        Record(program="ASTC", name="The DoSeum", city="San Antonio", state="TX", source="astc"),
+        Record(program="ACM", name="The DoSeum, San Antonio's Museum for Kids", city="San Antonio", state="TX", source="acm"),
+    ]
+    museums = build.normalize_and_merge(recs)
+    assert [(m["name"], sorted(m["programs"])) for m in museums] == [
+        ("Lindsay Wildlife Experience", ["ACM", "ASTC"]),
+        ("The DoSeum", ["ACM", "ASTC"]),
+    ]
+    assert museums[0]["lat"] == 37.92342  # precise ACM coords carried over
+
+
+def test_merge_keeps_different_museums_apart():
+    recs = [
+        # Similar names, genuinely different museums.
+        Record(program="ASTC", name="Florida Air Museum", city="Lakeland", state="FL", source="astc"),
+        Record(program="ACM", name="Florida Children's Museum", city="Lakeland", state="FL", source="acm"),
+        # Nothing distinctive left once the city and generic words go — never merged.
+        Record(program="ASTC", name="Museum of Science, Boston", city="Boston", state="MA", source="astc"),
+        Record(program="ACM", name="Boston Museum", city="Boston", state="MA", source="acm"),
+        # Same distinctive words, but different cities.
+        Record(program="ASTC", name="Discovery Museum", city="Acton", state="MA", source="astc"),
+        Record(program="ACM", name="Discovery Museum", city="Bridgeport", state="CT", source="acm"),
+    ]
+    assert len(build.normalize_and_merge(recs)) == 6
+
+
+def test_merge_uses_same_museum_aliases():
+    recs = [
+        Record(program="ASTC", name="Discovery Lab", city="Tulsa", state="OK", source="astc"),
+        Record(program="ACM", name="Tulsa Children's Museum Discovery Lab", city="Tulsa", state="OK", source="acm"),
+    ]
+    (m,) = build.normalize_and_merge(recs)
+    assert m["id"] == "discovery-lab-tulsa-ok" and sorted(m["programs"]) == ["ACM", "ASTC"]
