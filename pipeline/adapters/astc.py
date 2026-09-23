@@ -53,11 +53,11 @@ def parse_text(text: str) -> List[Record]:
         if st:                       # a recognized US state header
             current_state = st
             continue
-        if "," not in line:          # any other header/prose line resets scope
+        if _is_section_header(line):  # non-US country / preamble section heading
             current_state = None
             continue
-        if current_state is None:    # data line under a non-US / preamble header
-            continue
+        if current_state is None or "," not in line:
+            continue                 # stray fragment, or data under a non-US header
 
         name, city = _split_name_city(line)
         if not name:
@@ -74,6 +74,22 @@ def parse_text(text: str) -> List[Record]:
             )
         )
     return records
+
+
+def _is_section_header(line: str) -> bool:
+    """An ALL-CAPS heading (state/country/section name) with no comma.
+
+    Used to reset scope at non-US sections (CANADA, AUSTRALIA, EXCLUSION, ...).
+    Museum rows always contain a comma, so they never match here — and a stray
+    mixed-case fragment is skipped WITHOUT resetting state, so it can't cascade-
+    drop the rest of a section.
+    """
+    return (
+        "," not in line
+        and len(line) <= 40
+        and any(c.isalpha() for c in line)
+        and line == line.upper()
+    )
 
 
 def _split_name_city(line: str):
@@ -100,9 +116,11 @@ def _discover_abridged_url(html: str) -> Optional[str]:
 def extract_pdf_text(pdf_bytes: bytes) -> str:
     """Reconstruct the abridged PDF into one normalized line per row.
 
-    The layout is 3 columns; naive text extraction interleaves them, so we
-    assign each word to a column by its x position, group words into rows by
-    their y (top) position, and join each row left-to-right.
+    The layout is 3 columns; naive full-page extraction interleaves them. Rather
+    than cluster words by hand (fragile — per-glyph `top` varies within a row),
+    we crop each column band and let pdfplumber do its own line grouping, which
+    keeps every "Name, City <phone>" row intact. Columns start near x≈18/274/529
+    on the 792pt-wide page, so band cuts at ~1/3 and ~2/3 fall in the gutters.
     """
     import io
     import pdfplumber  # imported lazily so unit tests don't need it
@@ -110,23 +128,15 @@ def extract_pdf_text(pdf_bytes: bytes) -> str:
     lines: List[str] = []
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
-            width = float(page.width)
-            b1, b2 = width * 0.334, width * 0.657   # column boundaries (~1/3, ~2/3)
-            cols: List[list] = [[], [], []]
-            for w in page.extract_words(use_text_flow=False, keep_blank_chars=False):
-                x0 = float(w["x0"])
-                ci = 0 if x0 < b1 else (1 if x0 < b2 else 2)
-                cols[ci].append(w)
-            for col in cols:
-                rows: dict = {}
-                for w in col:
-                    key = round(float(w["top"]) / 3)     # cluster words into rows
-                    rows.setdefault(key, []).append(w)
-                for key in sorted(rows):                  # top -> bottom
-                    row = sorted(rows[key], key=lambda d: float(d["x0"]))
-                    text = " ".join(d["text"] for d in row).strip()
-                    if text:
-                        lines.append(text)
+            width, height = float(page.width), float(page.height)
+            bands = [(0.0, width * 0.334), (width * 0.334, width * 0.657), (width * 0.657, width)]
+            for x0, x1 in bands:
+                col = page.crop((x0, 0, x1, height))
+                text = col.extract_text(x_tolerance=1, y_tolerance=3) or ""
+                for raw in text.split("\n"):
+                    line = raw.strip()
+                    if line:
+                        lines.append(line)
     return "\n".join(lines)
 
 

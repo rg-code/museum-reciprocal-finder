@@ -23,7 +23,8 @@ def test_astc_parses_entries_grouped_by_state():
     text = (FIXTURES / "astc_sample.txt").read_text(encoding="utf-8")
     records = astc.parse_text(text)
 
-    # 6 institutions across 3 states; header/footer lines skipped.
+    # 6 US institutions across 3 states; the EXCLUSION preamble and the CANADA
+    # section are skipped (not recognized US states).
     assert len(records) == 6
     assert all(r.program == "ASTC" for r in records)
     assert all(r.source == "astc" for r in records)
@@ -36,9 +37,22 @@ def test_astc_parses_entries_grouped_by_state():
     assert wsc.state == "CA"
     assert wsc.id == "western-science-center-hemet-ca"
 
-    # Name containing punctuation is preserved (rsplit keeps commas in the name).
+    # Punctuation in the name is preserved; trailing phone + "ID Required" stripped.
     rocket = by_name["U.S. Space & Rocket Center"]
     assert rocket.city == "Huntsville" and rocket.state == "AL"
+
+    # A row whose phone lost its opening paren still yields a clean city.
+    humboldt = by_name["Natural History Museum of Cal Poly Humboldt"]
+    assert humboldt.city == "Arcata" and humboldt.state == "CA"
+
+
+def test_astc_city_is_last_comma_field_when_name_has_commas():
+    # Museum names can themselves contain commas; the city is the last field.
+    text = "KANSAS\nExploration Place, The Sedgwick County Science Center, Wichita (316) 660-0600\n"
+    records = astc.parse_text(text)
+    assert len(records) == 1
+    assert records[0].name == "Exploration Place, The Sedgwick County Science Center"
+    assert records[0].city == "Wichita" and records[0].state == "KS"
 
 
 def test_astc_entry_without_trailing_state_uses_section_header():
@@ -49,31 +63,34 @@ def test_astc_entry_without_trailing_state_uses_section_header():
     assert records[0].city == "Dayton"
 
 
-def test_acm_keeps_only_reciprocal_flagged_museums():
-    html = (FIXTURES / "acm_sample.html").read_text(encoding="utf-8")
-    records = acm.parse_html(html)
+def test_acm_keeps_only_reciprocal_us_museums():
+    data = (FIXTURES / "acm_sample.json").read_text(encoding="utf-8")
+    records = acm.parse_json(data)
 
     names = {r.name for r in records}
     assert "Please Touch Museum" in names
-    assert "Kohl Children's Museum" in names
-    assert "Non-Reciprocal Kids Museum" not in names  # data-reciprocal="false"
+    assert "Kohl Children's Museum" in names            # HTML entity decoded
+    assert "Non-Reciprocal Kids Museum" not in names    # category != Reciprocal
+    assert "Canadian Children's Museum" not in names    # non-US dropped
     assert len(records) == 2
 
 
-def test_acm_sets_uniform_benefit_and_party_size():
-    html = (FIXTURES / "acm_sample.html").read_text(encoding="utf-8")
-    ptm = next(r for r in acm.parse_html(html) if r.name == "Please Touch Museum")
+def test_acm_sets_uniform_benefit_party_size_and_coords():
+    data = (FIXTURES / "acm_sample.json").read_text(encoding="utf-8")
+    ptm = next(r for r in acm.parse_json(data) if r.name == "Please Touch Museum")
     assert ptm.program == "ACM"
     assert ptm.benefit == "discount_50"
     assert ptm.admits == 6
     assert ptm.city == "Philadelphia" and ptm.state == "PA"
     assert ptm.website == "https://www.pleasetouchmuseum.org"
     assert ptm.id == "please-touch-museum-philadelphia-pa"
+    # ACM arrives pre-geocoded, so coordinates are carried on the record.
+    assert ptm.lat == 39.97417 and ptm.lng == -75.20111
 
 
 def test_records_serialize_with_id():
-    html = (FIXTURES / "acm_sample.html").read_text(encoding="utf-8")
-    d = acm.parse_html(html)[0].to_dict()
+    data = (FIXTURES / "acm_sample.json").read_text(encoding="utf-8")
+    d = acm.parse_json(data)[0].to_dict()
     assert d["id"] and d["program"] == "ACM" and "raw" in d
 
 

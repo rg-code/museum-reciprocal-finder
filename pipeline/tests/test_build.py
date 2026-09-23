@@ -72,5 +72,6 @@ def test_run_writes_museums_and_meta(tmp_path):
     meta = json.loads((tmp_path / "meta.json").read_text(encoding="utf-8"))
     assert meta["counts"]["museums"] == 8
     assert meta["counts"]["by_program"]["ASTC"] == 6
-    # No geocoding requested -> coords stay null.
-    assert meta["geocoded"] == 0
+    # No network geocoding requested; ASTC rows stay null, but the 2 ACM rows
+    # arrive pre-geocoded from their source.
+    assert meta["geocoded"] == 2

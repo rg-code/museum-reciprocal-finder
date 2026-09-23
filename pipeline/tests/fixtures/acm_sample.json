@@ -1,0 +1,54 @@
+{
+  "success": true,
+  "count": 4,
+  "response": [
+    {
+      "name": "Please Touch Museum",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "zip": "19104",
+      "country": "United States",
+      "lat": "39.97417",
+      "lng": "-75.20111",
+      "url": "https://www.pleasetouchmuseum.org",
+      "phone": "(215) 581-3181",
+      "category_names": "Reciprocal"
+    },
+    {
+      "name": "Kohl Children&#039;s Museum",
+      "city": "Glenview",
+      "state": "Illinois",
+      "zip": "60026",
+      "country": "United States",
+      "lat": "42.07290",
+      "lng": "-87.82234",
+      "url": "",
+      "phone": "(847) 832-6600",
+      "category_names": "Reciprocal"
+    },
+    {
+      "name": "Non-Reciprocal Kids Museum",
+      "city": "Nowhere",
+      "state": "Texas",
+      "zip": "75001",
+      "country": "United States",
+      "lat": "32.90000",
+      "lng": "-96.80000",
+      "url": "",
+      "phone": "",
+      "category_names": "Emerging"
+    },
+    {
+      "name": "Canadian Children&#039;s Museum",
+      "city": "Gatineau",
+      "state": "Quebec",
+      "zip": "J8X",
+      "country": "Canada",
+      "lat": "45.42970",
+      "lng": "-75.70930",
+      "url": "",
+      "phone": "",
+      "category_names": "Reciprocal"
+    }
+  ]
+}
