@@ -2,6 +2,11 @@ name: Deploy PWA to GitHub Pages
 on:
   push:
     branches: [ main ]
+  # The data refresh pushes with GITHUB_TOKEN, which never triggers `push`
+  # workflows — so redeploy when it finishes instead.
+  workflow_run:
+    workflows: [ "Update reciprocal data" ]
+    types: [ completed ]
   workflow_dispatch: {}
 permissions:
   contents: read
@@ -12,6 +17,8 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build-deploy:
+    # Skip when the data refresh failed (e.g. its count guardrail tripped).
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
