@@ -10,7 +10,7 @@ Sources (checked 2026-09-23):
 | ROAM | member-list PDF linked from the ROAM Google Site (Drive) | live, monthly; falls back to a stale mirror if Drive fails |
 | AHS | garden-network map data embedded in ahsgardening.org | live, monthly |
 | AZA | annual reciprocity PDF | **manual drop** — aza.org opts out of automated access |
-| Time Travelers | participant directory | **manual drop** — robots.txt disallows all agents |
+| Time Travelers | "List of Member Institutions" page, saved from a browser (.htm) | **manual drop** — robots.txt disallows all agents |
 
 Per-museum rules the sources mark are kept on each program entry: `exclusion`
 (ROAM "+" 25 mi, NARM 15/50 mi, AHS "Local Visitor Exception" 90 mi from home)

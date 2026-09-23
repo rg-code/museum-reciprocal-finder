@@ -181,3 +181,17 @@ def test_merge_compares_against_every_name_already_merged():
     ]
     (m,) = build.normalize_and_merge(recs)
     assert sorted(m["programs"]) == ["ASTC", "NARM", "ROAM"]
+
+
+def test_manual_drop_saved_html_page_becomes_a_txt_extract(tmp_path, monkeypatch):
+    drop = tmp_path / "timetravelers"
+    drop.mkdir()
+    (drop / "list.htm").write_text(
+        '<a class="v-list__tile--link"><div class="v-list__tile__title">Berman Museum of World History</div>'
+        '<div class="v-list__tile__sub-title">840 Museum Drive Anniston, AL 36206</div>'
+        '<div class="v-list__tile__sub-title">https://exploreamag.org/</div></a>', encoding="utf-8")
+    monkeypatch.setattr(build, "MANUAL", tmp_path)
+    (r,) = build.collect(["timetravelers"])
+    assert (r.name, r.city, r.state) == ("Berman Museum of World History", "Anniston", "AL")
+    assert (drop / "list.txt").exists()
+    assert len(build.collect(["timetravelers"])) == 1        # .htm skipped once the .txt exists

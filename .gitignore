@@ -10,8 +10,11 @@ __pycache__/
 .venv/
 venv/
 
-# Manual drops: commit only the extracted .txt, never the association's PDF
+# Manual drops: commit only the extracted .txt, never the association's PDF / saved page
 pipeline/manual_drops/**/*.pdf
+pipeline/manual_drops/**/*.htm
+pipeline/manual_drops/**/*.html
+pipeline/manual_drops/**/*_files/
 
 # OS / editor
 .DS_Store

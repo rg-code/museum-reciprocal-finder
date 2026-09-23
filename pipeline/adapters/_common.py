@@ -43,6 +43,14 @@ def state_header(line: str) -> Optional[str]:
     return None
 
 
+def place_key(city: str, state: str) -> str:
+    """Normalized "City, ST" lookup key for the Census place table: "st louis, mo"."""
+    c = city.lower().replace("’", "'").replace(".", "")
+    c = re.sub(r"\bsaint\b", "st", c)
+    c = re.sub(r"\s+", " ", c).strip()
+    return f"{c}, {state.lower()}"
+
+
 def slugify(*parts: Optional[str]) -> str:
     text = "-".join(p for p in parts if p)
     text = text.lower()

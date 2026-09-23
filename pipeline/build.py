@@ -33,8 +33,7 @@ sys.path.insert(0, str(ADAPTERS))
 sys.path.insert(0, str(HERE))
 
 import astc, acm, narm, roam, aza, ahs, timetravelers as tt  # noqa: E402
-from _common import Record  # noqa: E402
-import geodata  # noqa: E402
+from _common import Record, place_key  # noqa: E402
 
 
 # ---- Source registry -------------------------------------------------------
@@ -54,7 +53,7 @@ SOURCES: Dict[str, dict] = {
     "roam": {"live": roam.fetch, "fixture": _txt(FIXTURES / "roam_sample.txt", roam.parse_text)},
     "aza":  {"live": aza.fetch,  "fixture": _txt(FIXTURES / "aza_sample.txt", aza.parse_text)},
     "ahs":  {"live": ahs.fetch,  "fixture": _json(FIXTURES / "ahs_sample.json", ahs.parse_json)},
-    "timetravelers": {"live": tt.fetch, "fixture": _txt(FIXTURES / "timetravelers_sample.html", tt.parse_html)},
+    "timetravelers": {"live": tt.fetch, "fixture": _txt(FIXTURES / "timetravelers_sample.txt", tt.parse_text)},
 }
 
 
@@ -93,40 +92,46 @@ def collect(sources: List[str], from_fixtures: bool = False) -> List[Record]:
 def _manual_drop(program: str) -> Optional[List[Record]]:
     """Parse association-supplied files dropped in manual_drops/<program>/.
 
-    .txt/.html/.json go straight to the source's parser. A .pdf is turned into a
-    sibling .txt with that adapter's own extract_pdf_text (ASTC/ROAM/AZA) the
-    first time it's seen; only the .txt is committed (PDFs are gitignored — we
-    don't republish the association's document), and a PDF with a .txt beside
-    it is skipped so nothing is counted twice.
+    .txt/.json go straight to the source's parser. A .pdf (or a saved .htm/.html
+    page) is turned into a sibling .txt with that adapter's own
+    extract_pdf_text / extract_html_text the first time it's seen; only the .txt
+    is committed (originals are gitignored — we don't republish the
+    association's document), and an original with a .txt beside it is skipped
+    so nothing is counted twice.
     """
     folder = MANUAL / program
     if not folder.is_dir():
         return None
-    files = sorted(p for p in folder.iterdir() if p.suffix.lower() in (".txt", ".html", ".json", ".pdf"))
+    files = sorted(p for p in folder.iterdir() if p.suffix.lower() in (".txt", ".htm", ".html", ".json", ".pdf"))
     if not files:
         return None
     # Reuse the source's fixture parser but on the dropped file.
     parser = {
         "astc": astc.parse_text, "roam": roam.parse_text, "aza": aza.parse_text,
-        "acm": acm.parse_json, "narm": narm.parse_text, "timetravelers": tt.parse_html,
+        "acm": acm.parse_json, "narm": narm.parse_text, "timetravelers": tt.parse_text,
         "ahs": ahs.parse_json,
     }[program]
     module = {"astc": astc, "roam": roam, "aza": aza, "acm": acm, "narm": narm,
               "timetravelers": tt, "ahs": ahs}[program]
-    for f in [f for f in files if f.suffix.lower() == ".pdf"]:
+    raw_kinds = {".pdf": "extract_pdf_text", ".htm": "extract_html_text", ".html": "extract_html_text"}
+    raw = set()
+    for f in files:
+        extract = getattr(module, raw_kinds.get(f.suffix.lower(), ""), None)
+        if f.suffix.lower() == ".pdf" and not extract:
+            raise ValueError(f"{program}: manual drop {f.name} is a PDF but the adapter can't read PDFs")
+        if not extract:                      # e.g. an HTML page the parser reads directly
+            continue
+        raw.add(f)
         txt = f.with_suffix(".txt")
         if txt in files:
             continue
-        extract = getattr(module, "extract_pdf_text", None)
-        if not extract:
-            raise ValueError(f"{program}: manual drop {f.name} is a PDF but the adapter can't read PDFs")
-        txt.write_text(extract(f.read_bytes()), encoding="utf-8")
-        print(f"  {program}: extracted {f.name} -> {txt.name} (commit the .txt, not the PDF)")
+        data = f.read_bytes() if f.suffix.lower() == ".pdf" else f.read_text(encoding="utf-8", errors="replace")
+        txt.write_text(extract(data), encoding="utf-8")
+        print(f"  {program}: extracted {f.name} -> {txt.name} (commit the .txt, not the original)")
         files.append(txt)
     out: List[Record] = []
-    for f in sorted(set(files)):
-        if f.suffix.lower() != ".pdf":
-            out.extend(parser(f.read_text(encoding="utf-8")))
+    for f in sorted(set(files) - raw):
+        out.extend(parser(f.read_text(encoding="utf-8")))
     return out
 
 
@@ -169,6 +174,17 @@ SAME_MUSEUM = {
         "the-eli-and-edythe-broad-art-museum-east-lansing-mi",
     "milton-j-rubenstein-museum-of-science-technology-syracuse-ny": "museum-of-science-technology-most-syracuse-ny",
     "providence-athen-um-providence-ri": "providence-athenaeum-providence-ri",
+    # Time Travelers listings of museums other programs already list (2026-09-23).
+    "bob-bullock-texas-state-history-museum-austin-tx": "bullock-texas-state-history-museum-austin-tx",
+    "friends-of-rancho-los-cerritos-long-beach-ca": "rancho-los-cerritos-long-beach-ca",
+    "the-columbia-gorge-interpretive-center-museum-stevenson-wa": "columbia-gorge-museum-stevenson-wa",
+    "connecticut-trolley-museum-east-windsor-ct": "ct-trolley-museum-east-windsor-ct",
+    "old-davie-schhol-historical-museum-davie-fl": "old-davie-school-historical-museum-davie-fl",
+    "freeborn-county-historical-society-albert-lea-mn": "history-center-of-freeborn-county-albert-lea-mn",
+    "luxembourg-american-cultural-center-belgium-wi": "luxembourg-american-cultural-society-and-center-belgium-wi",
+    "westford-historical-society-and-musem-westford-ma": "westford-museum-of-the-westford-historical-society-inc-westford-ma",
+    "union-county-heritage-museum-new-albany-ms":
+        "the-william-faulkner-literary-garden-at-the-union-county-heritage-museum-new-albany-ms",
 }
 # Words that don't tell two museums in the same city apart.
 _GENERIC = {"the", "a", "of", "for", "at", "and", "dba", "museum", "museums",
@@ -337,7 +353,7 @@ def geocode(museums: List[dict], enabled: bool) -> None:
         if m.get("lat") is not None:          # already geocoded by its source
             continue
         pt = zips.get(m.get("zip") or "") or (
-            places.get(geodata.place_key(m["city"], m["state"])) if m.get("city") and m.get("state") else None)
+            places.get(place_key(m["city"], m["state"])) if m.get("city") and m.get("state") else None)
         pt = pt or GEO_OVERRIDES.get(_city_key(m) or "")
         if pt:
             m["lat"], m["lng"] = pt

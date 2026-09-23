@@ -55,8 +55,9 @@ def test_parse_places_strips_descriptors_and_keys_by_city_state():
     assert p["louisville, ky"] == [38.2, -85.7]                # real place beats the metro alias
     assert p["aaronsburg, pa"] == [40.91, -77.41]              # incorporated beats CDP
     assert geodata.place_key("Saint Louis", "MO") == "st louis, mo"
-    # Internal point unusable (mostly water / 1,700 sq mi) -> left to Nominatim.
-    assert "san francisco, ca" not in p and "anchorage, ak" not in p
+    # Internal point unusable (mostly water / 1,700 sq mi): the name is kept
+    # (it's a real city) but with no point, so geocoding falls back to Nominatim.
+    assert p["san francisco, ca"] is None and p["anchorage, ak"] is None
 
 
 COUSUBS = (

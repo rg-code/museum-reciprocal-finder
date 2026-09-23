@@ -21,6 +21,7 @@ import argparse
 import io
 import json
 import re
+import sys
 import zipfile
 from datetime import date
 from pathlib import Path
@@ -28,6 +29,8 @@ from typing import Dict, List, Optional
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
+sys.path.insert(0, str(HERE / "adapters"))
+from _common import place_key  # noqa: E402  (shared with the adapters and build.py)
 GAZ_URL = ("https://www2.census.gov/geo/docs/maps-data/data/gazetteer/"
            "{y}_Gazetteer/{y}_Gaz_{kind}_national.zip")
 DECIMALS = 3  # ~110 m — far finer than the 15-90 mi distance rules need
@@ -38,14 +41,6 @@ _PLACE_SUFFIX = re.compile(
     r"\s+(city and borough|metropolitan government|metro government|consolidated government|"
     r"unified government|urban county|municipality|comunidad|zona urbana|borough|village|"
     r"town|city|cdp)$", re.I)
-
-
-def place_key(city: str, state: str) -> str:
-    """Normalized lookup key shared by the builder and build.py: "st louis, mo"."""
-    c = city.lower().replace("’", "'").replace(".", "")
-    c = re.sub(r"\bsaint\b", "st", c)
-    c = re.sub(r"\s+", " ", c).strip()
-    return f"{c}, {state.lower()}"
 
 
 def _rows(text: str):
@@ -63,27 +58,31 @@ def _pt(row: dict) -> List[float]:
     return [round(float(row["INTPTLAT"]), DECIMALS), round(float(row["INTPTLONG"]), DECIMALS)]
 
 
+def _pt_or_none(row: dict) -> Optional[List[float]]:
+    """The internal point, or None when it isn't a usable center (mostly water / huge)."""
+    land, water = float(row.get("ALAND") or 0), float(row.get("AWATER") or 0)
+    return None if water > land or land > MAX_PLACE_SQM else _pt(row)
+
+
 def parse_gazetteer(text: str) -> Dict[str, List[float]]:
     """ZCTA gazetteer text -> {zip: [lat, lng]}."""
     out = {r["GEOID"].zfill(5): _pt(r) for r in _rows(text) if r.get("GEOID")}
     return dict(sorted(out.items()))
 
 
-def parse_places(text: str) -> Dict[str, List[float]]:
+def parse_places(text: str) -> Dict[str, Optional[List[float]]]:
     """Place gazetteer text -> {"city, st": [lat, lng]}.
 
     "Nashville-Davidson metropolitan government (balance)" is also keyed as
     "nashville", "Urban Honolulu CDP" as "honolulu". When names collide in a
     state, an incorporated place (FUNCSTAT A) beats a CDP, then larger land area.
-    Places whose internal point isn't a usable city center are left out (so the
-    pipeline falls back to Nominatim): mostly water — San Francisco's point is
-    out by the Farallones — or huge, like Anchorage's 1,700 sq mi.
+    Places whose internal point isn't a usable city center keep their name but
+    get null (so the name still validates a city, and geocoding falls back to
+    Nominatim): mostly water — San Francisco's point is out by the Farallones —
+    or huge, like Anchorage's 1,700 sq mi.
     """
     best: Dict[str, tuple] = {}
     for r in _rows(text):
-        land, water = float(r.get("ALAND") or 0), float(r.get("AWATER") or 0)
-        if water > land or land > MAX_PLACE_SQM:
-            continue
         name = re.sub(r"\s*\(balance\)$", "", r["NAME"])
         name = _PLACE_SUFFIX.sub("", name)
         names = {name, re.split(r"[-/]", name)[0].strip(), re.sub(r"^Urban ", "", name)}
@@ -92,7 +91,7 @@ def parse_places(text: str) -> Dict[str, List[float]]:
             k = place_key(n, r["USPS"])
             # Aliases (split/"Urban" forms) never displace a real place of that name.
             alias = n != name
-            cand = (not alias, rank, _pt(r))
+            cand = (not alias, rank, _pt_or_none(r))
             if k not in best or cand[:2] > best[k][:2]:
                 best[k] = cand
     return {k: v[2] for k, v in sorted(best.items())}
@@ -101,7 +100,7 @@ def parse_places(text: str) -> Dict[str, List[float]]:
 _COUSUB_SUFFIX = re.compile(r"\s+(charter township|township|town|plantation|borough)$", re.I)
 
 
-def parse_cousubs(text: str) -> Dict[str, List[float]]:
+def parse_cousubs(text: str) -> Dict[str, Optional[List[float]]]:
     """County-subdivision gazetteer -> {"city, st": [lat, lng]} for towns and townships.
 
     Fills what the place table lacks: New England towns ("Harvard, MA" — not a
@@ -116,11 +115,8 @@ def parse_cousubs(text: str) -> Dict[str, List[float]]:
         nyc = r["USPS"] == "NY" and r["NAME"].endswith(" borough")
         if r.get("FUNCSTAT") != "A" and not nyc:
             continue
-        land, water = float(r.get("ALAND") or 0), float(r.get("AWATER") or 0)
-        if water > land or land > MAX_PLACE_SQM:
-            continue
         name = _COUSUB_SUFFIX.sub("", r["NAME"])
-        seen.setdefault(place_key(name, r["USPS"]), []).append(_pt(r))
+        seen.setdefault(place_key(name, r["USPS"]), []).append(_pt_or_none(r))
     return {k: v[0] for k, v in sorted(seen.items()) if len(v) == 1}
 
 
@@ -152,8 +148,13 @@ def main(argv: Optional[List[str]] = None) -> None:
     ap.add_argument("--year", type=int, help="gazetteer year (default: newest available)")
     args = ap.parse_args(argv)
     _write(DATA / "zip_centroids.json", parse_gazetteer(_download("zcta", args.year)), 30000)
-    # Places win over a same-named town/township (the place is the town center).
-    places = {**parse_cousubs(_download("cousubs", args.year)), **parse_places(_download("place", args.year))}
+    # A place wins over a same-named town/township (the place is the town
+    # center) — unless the place has no usable point and the town does.
+    towns = parse_cousubs(_download("cousubs", args.year))
+    places = {**towns}
+    for k, v in parse_places(_download("place", args.year)).items():
+        if v is not None or towns.get(k) is None:
+            places[k] = v
     _write(HERE / "place_centroids.json", dict(sorted(places.items())), 28000)
 
 

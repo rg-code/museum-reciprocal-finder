@@ -1,0 +1,514 @@
+Institution	Address	Website
+Berman Museum of World History	840 Museum Drive Anniston, AL 36206	https://exploreamag.org/berman-home-page/
+Arizona Historical Society - Arizona History Museum	949 East 2nd Street Tucson, AZ 85719	https://www.arizonahistoricalsociety.org/museum/arizona-history-museum/
+The Jewish History Museum	564 South Stone Avenue Tucson, AZ 85701	https://www.jewishhistorymuseum.org
+Show Low Historical Museum	561 East Deuce of Clubs PO Box 3468 Show Low, AZ 85901	https://www.showlowmuseum.com
+Arizona Historical Society - Downtown History Museum	140 North Stone Avenue Tucson, AZ 85701	https://www.arizonahistoricalsociety.org
+Arizona Historical Society - Fort Lowell Museum	2900 North Craycroft Road Tucson, AZ 85712	https://www.arizonahistoricalsociety.org
+Arizona Historical Society Museum at Papago Park	1300 North College Avenue Tempe, AZ 85281	https://www.arizonahistoricalsociety.org
+Arizona Historical Society - Pioneer Museum	2340 North Fort Valley Road Flagstaff, AZ 86001	https://www.arizonahistoricalsociety.org
+Arizona Historical Society - Sanguinetti House Museum and Garden	240 South Madison Avenue Yuma, AZ 85364	https://www.arizonahistoricalsociety.org
+Gila County Historical Museum	1330 N. Broad St. Globe, AZ 85501	https://gilahistoricalmuseum.org
+Heritage Square Foundation	113 N Sixth St.Pheonix, AZ 85004	https://www.heritagesquarePHX.org
+Shiloh Museum of Ozark History	118 West Johnson Avenue Springdale, AR 72764	https://www.shilohmuseum.org
+Old Independence Regional Museum	380 South 9th Street Batesville, AR 72501	https://www.oirm.org
+Historic Arkansas Museum	200 East 3rd Street Little Rock, AR 72201	https://www.historicarkansas.org
+Arkansas Air and Military Museum	4290 S School Ave, Fayetteville, AR 72701	https://www.arkansasairandmilitary.com/
+Twentynine Palms Historical Society	6760 National Park Drive PO Box 1926 Twentynine Palms, CA 92277	https://www.29palmshistorical.com
+The Hayward Area Historical Society and Museum	22380 Foothill Boulevard Hayward, CA 94541	https://www.haywardareahistory.org
+Heritage Square Museum	3800 Homer Street Los Angeles, CA 90031	https://www.heritagesquare.org
+Whittier Historical Society & Museum	6755 Newlin Avenue Whittier, CA 90601	https://www.whittiermuseum.org
+Catalina Island Museum	217 Metrople PO Box 366 Avalon, CA 90704	https://www.catalinamuseum.org
+Friends of Rancho Los Cerritos	4600 Virginia Road Long Beach, CA 90807	https://www.rancholoscerritos.org
+El Presidio de Santa Barbara State Historic Park	123 East Canon Perdido Street Santa Barbara, CA 93101	https://www.sbthp.org/presidio
+Goleta Valley Historical Society	304 Los Carneros Road Goleta, CA 93117	https://www.goletahistory.org
+Kern County Museum	3801 Chester Avenue Bakersfield, CA 93301	https://www.kerncountymuseum.org/
+San Mateo County History Museum	2200 Broadway Street Redwood City, CA 94063	https://www.historysmc.org
+California Historical Society	678 Mission Street San Francisco, CA 94105	https://www.californiahistoricalsociety.org
+History San Jose	1650 Senter Road San Jose, CA 95112	https://www.historysanjose.org
+Northern Mariposa County History Center	10301 Highway 49 Coulterville, CA 95311	https://coultervillehistorycenter.org
+Folsom History	823 Sutter Street Folsom, CA 95630	https://www.folsomhistory.org/
+The California Museum	1020 O Street Sacramento, CA 95814	https://www.californiamuseum.org
+Sacramento History Museum	101 I Street Old Sacramento, CA 95814	https://www.sachistorymuseum.org/
+San Diego History Center	1649 El Prado Suite 3 San Diego, CA 92101	https://www.sandiegohistory.org
+Pasadena Museum of History	470 West Walnut Street Pasadena, CA 91103	https://pasadenahistory.org
+Dominguez Rancho Adobe Museum	18127 South Alameda Street Rancho Dominguez, CA 90220	https://www.dominguezrancho.org
+USS Hornet Museum	707 West Hornet AvenuePier 3, Almeda Point Alameda, CA 94501	https://www.uss-hornet.org
+Rancho Cordova Historical Society	2729 Prospect Park Drive Rancho Cordova, CA 95670	https://www.cordovacouncil.org/rancho-cordova-historical-society
+Peralta Hacienda Historical Park	2465 34th St. Oakland, CA 94601	https://www.peraltahacienda.org
+Museum of Sonoma County	425 Seventh St. Santa Rosa, CA 95401	https://www.museumsc.org
+The Walt Disney Family Museum	104 Montgomery St. The Presido San Fransico, CA 94129	https://www.waltdisney.org
+Santa Ynez Valley Historical Museum & Parks-Janeway Carriage House	3596 Sagunto St. Santa Ynez, CA 93460	https://www.santaynezmuseum.org
+The Haas-Lilienthal House	2007 Franklin Street San Francisco, CA 94109	https://www.sfheritage.org
+The Banning Museum	401 E. M Street Wilmington, CA 90744	https://www.thebanningmuseum.org
+John Dewitt Historic Museum and Library, Alpine Historical Society	2116 Tavern Rd. PO Box 382 Alpine, CA 91903	https://www.alpinehistory.org
+Sutter's Fort State Historic Park	2701 L Street Sacramento, CA 95816	https://www.suttersfort.org
+Kearney Mansion Museum	7160 W. Kearney Blvd. Fresno, CA 93706	https://valleyhistory.org
+Bonita Museum and Cultural Center	4355 Bonita Rd. Bonita, CA 91902	https://bonitahistoricalsociety.org
+Tenderloin Museum	398 Eddy Street San Francisco, CA 94102	https://www.tenderloinmuseum.org
+Balboa Island Museum	210 B Marine Ave. Balboa Island, CA 92662	https://www.balboaislandmuseum.org
+San Fernando Valley Historical Society	10940 Sepulveda Blvd., Mission Hills, CA 91346	https://www.sfvhs.com
+Campo de Cahuenga Historic Site	3919 Lankershim Blvd., Los Angeles, CA 91604	https://www.campodecahuenga.com
+Chinese Historical Society of America	965 Clay St., San Francisco, CA 94108	https://chsa.org
+San Joaquin County Historical Society & Museum	11793 N. Micke Grove Rd., Lodi, California 95240	https://www.sanjoaquinhistory.org
+Sutter County Museum	1333 Butte House Rd, Yuba City, CA 95993	https://www.suttercountymuseum.org/
+Kingsburg Historical Park	2321 Sierra St., Kingsburg, CA 93631	https://www.kingsburghistoricalpark.org
+Camron-Stanford House	1418 Lakeside Drive, Oakland, CA 94612	https://cshouse.org
+Santa Monica History Museum	1350 7th St., Santa Monica, CA  90401	https://santamonicahistory.org/
+Marina Del Rey Historical Society	13737 Fiji Way Suite C-3, Marina Del Rey, CA  90292	https://www.marinadelreyhistoricalsociety.org/
+Roseville Historical Society	557 Lincoln St., Roseville, CA 95678	www.rosevillehistorical.org
+Knight Foundry	81 Eureka Street, Sutter Creek, CA  95685	https://knightfoundry.com/
+The Hunger Museum	10850 Wilshire Blvd., Ste. 400, Los Angeles, CA  90024	https://hungermuseum.org/
+Cotati Historical Society	201 W Sierra Ave, Cotati, CA 94931	https://cotatimuseum.org
+Central Sierra Historical Society & Museum, Inc.	24642 Tollhouse Rd, Shaver Lake, CA 93664	https://museumofthesierra.org/
+Italian American Museum of Los Angeles	644 N. Main Street, Los Angeles, CA 90012	www.iamla.org
+Olaf Wieghorst Museum and Western Heritage Center	131 Rea Avenue, El Cajon, CA  92020	https://wieghorstmuseum.org/
+Heritage Museum of Orange County	3101 W Harvard St., Santa Ana, CA 92704	www.heritagemuseumoc.org
+South Park City Museum	100 4th Street PO Box 634 Fairplay, CO 80440	https://www.southparkcity.org
+Museum of Western Colorado	462 Ute Avenue, Grand Junction, CO 81501 (3 locations; call for details)	https://www.museumofwesternco.org
+History Colorado	1200 Broadway Denver, CO 80203	https://www.historycolorado.org
+Centennial Village Museum	1475 A Street Greeley, CO 80631	https://greeleymuseums.com/locations/centennial-village/
+Museum of Boulder	2205 Broadway Boulder, CO 80302	https://museumofboulder.org
+Colorado Springs Pioneers Museum	215 S. Tejon St. Colorado Springs, CO 80903	https://www.cspm.org
+Cozens Ranch	77849 US Hwy 40 Fraser, CO 80446	https://grandcountyhistory.org/museums/cozens-ranch-museum/
+Pioneer Village Museum	110 East Byers Ave Hot Sulphur Springs, CO 80451	https://grandcountyhistory.org/museums/pioneer-village-museum/
+Heritage Park	111 N. 4th St. Kremmling, CO 80459	https://grandcountyhistory.org/museums/heritage-park-museum/
+Golden History Museum	923 10th St. Golden, CO 80401	https://goldenhistory.org
+Rocky Mountain Wing, Commemorative Air Force	780 Heritage Way Grand Junction, CO 81506	https://www.rockymountainwingcaf.org/
+American Numismatic Association Money Museum	818 N Cascade Ave, Colorado Springs, CO 80903, USA	https://www.money.org/
+Lafayette History Museum	108 E. Simpson St., Lafayette, CO 80026	https://lafayettehistoricalsociety.org/
+Connecticut Trolley Museum	58 North Road East Windsor, CT 06088	https://www.ct-trolley.org
+1842 Second Meeting House, Bethel Historical Society	40 Main St. Bethel, CT 06801	https://www.bethelhistoricalsociety.com
+Fairfield Museum & History Center	370 Beach Rd, Fairfield, CT 06824	https://www.fairfieldhistory.org
+Delaware Historical Society	505 Market Street Wilmington, DE 19801	https://www.dehistory.org
+Delaware Agricultural Museum & Village	866 North DuPont Highway Dover, DE 19901	https://www.agriculturalmuseum.org
+New Castle Historical Society Historic Houses	30 Market St. New Castle, DE 19720	https://www.newcastlehistory.org
+Pencader Heritage Museum	2029 Sunset Lake Rd., Newark, DE 19702	https://www.pencaderheritage.org/
+Edison & Ford Winter Estates	2350 McGregor Boulevard Fort Myers, FL 33901	https://www.edisonford.org/
+Orange County Regional History Center	65 East Central Boulevard Orlando, FL 32801	https://www.thehistorycenter.org
+Key West Art & Historical Society	281 Front Street Key West, FL 33040	https://www.kwahs.org
+HistoryMiami Museum	101 West Flagler Street Miami, FL 33130	https://www.historymiami.org
+Jewish Museum of Florida	301 Washington Avenue Miami Beach, FL 33139	https://www.JMOF.FIU.EDU
+Seminole Ah-Tah-Thi-Ki Museum	30290 Josie Billie Hwy PMB 1003, Clewiston, FL 33440	https://www.ahtahthiki.com
+Tampa Bay History Center	801 Old Water Street Tampa Bay, FL 33602	https://www.tampabayhistorycenter.org
+Historic Spanish Point	337 North Tamiami Trail Osprey, FL 34229	https://www.historicspanishpoint.org
+Richard and Pat Johnson Palm Beach County History	300 North Dixie Highway West Palm Beach, FL 33401	https://www.historicalsocietypbc.org
+World Golf Hall of Fame and Museum	One World Golf Place St. Augustine, FL 32092	https://www.worldgolfhalloffame.org
+Vero Heritage Center	2140 14th Ave. Vero Beach, FL 32960	https://www.veroheritage.org
+Mandarin Museum and Historical Society	11964 Mandarin Rd. Jacksonville, FL 32223	https://www.mandarinmuseum.net
+Fort Lauderdale Historical Society	219 SW 2 Avenue Fort Lauderdale, FL 33312	https://historyfortlauderdale.org/museum/
+Florida Keys History & Discovery Center	82100 Overseas Highway Islamorada, FL 33036	https://www.keysdiscovery.com
+Historic Stranahan House Museum	335 S.E. 6th Avenue Fort Lauderdale, FL 33301	https://www.stranahanhouse.org
+UWF Historic Trust, Pensacola	330 South Jefferson St., Pensacola FL 32502	https://www.historicpensacola.org
+The Brevard Museum of History and Natural Science	2201 Michigan Ave. Cocoa, FL 32926	https://www.brevard-museum.com/
+The Florida Historical Society	435 Brevard Ave. Cocoa, FL 32922	https://www.myfloridahistory.org
+Heritage Village	11909 125th Street N. Largo, FL 33774	https://www.pinellascounty.org/heritage
+Old Davie Schhol Historical Museum	6650 Griffin Rd. Davie, FL 33314	https://www.olddavieschool.org
+St. Petersburg Museum of History	335 2nd Ave. NE St. Petersburg, FL 33701	https://www.spmoh.org
+Sample McDougald House	450 NE 10th Street Pompano Beach, FL 33061	https://www.samplemcdougald.org
+Osceola County Welcome Center and History Museum	4155 W Vine St. Kissimmee, FL 34741	https://www.osceolahistory.org
+Casa Feliz Historic Home Museum	656 N. Park Ave. Winter Park, FL 32789	https://www.casafeliz.us
+Pioneer Village at Shingle Creek	2491 Babb Rd. Kissimme, FL 34746	https://osceolahistory.org/pioneer-village/
+Dunedin History Museum	349 Main St, Dunedin, FL 34698	https://www.dunedinmuseum.org/
+Lake Wales History Museum	325 S. Scenic Hwy, Lake Wales, FL 33853	https://lakewaleshistory.org/
+Palm Harbor Museum	2043 Curlew Rd, Palm Harbor, FL 34683	https:/palmharbormuseum.com
+The Old Courthouse Heritage Museum	1 Courthouse Square, Inverness, FL 34450	https://cccourthouse.org/
+Amelia Island Museum of History	233 S 3rd St, Fernandina Beach, FL 32034	https://ameliamuseum.org/
+Gulfport Historical Society	5301 28th Ave S, Gulfport, FL 33707	https://www.gulfporthistoricalsociety.org/
+Military Heritage Museum	900 W Marion Ave, Punta Gorda, FL 33950	https://militaryheritagemuseum.org
+Historic Stranahan House Museum	335 SE 6th Avenue, Fort Lauderdale, FL 33301	https://stranahanhouse.org/
+Old Courthouse Heritage Museum	1 Courthouse Square, Inverness, FL 34450	www.cccourthouse.org
+The Columbus Museum	1251 Wynnton Road Columbus, GA 31906	https://www.columbusmuseum.com
+Augusta Museum of History	560 Reynolds Street Augusta, GA 30901	https://www.augustamuseum.org
+Atlanta History Center	130 West Paces Ferry Road Northwest Atlanta, GA 30305	https://www.atlantahistorycenter.com
+Marietta History Center	1 Depot St Marietta, GA 30060	https://www.mariettahistory.org
+Chieftains Museum and Major Ridge Home	501 Riverside Parkway Rome, GA 30161	https://www.chieftainsmuseum.org
+The William Breman Jewish Heritage Museum	1440 Spring Street NW Atlanta, GA 30309	https://www.thebreman.org
+Thronateeska Heritage Center	100 West Roosevelt Ave. Albany, GA 31701	https://heritagecenter.org
+Environmental & Heritage Center	2020 Clean Water Dr. Buford, GA 30519	https://www.gwinnettcounty.com/
+American Baptist Historical Society	2930 Flowers Road South Atlanta, GA 30341	https://www.abhsarchives.org
+Legacy Museum on Main	136 Main St. PO Box 1051, LaGrange, GA 30240	https://www.trouparchives.org
+Bonner County History Museum	611 S. Ella Ave. Sandpoint, ID 83864	https://www.bonnercountyhistory.org
+Idaho State Museum	610 Julia Davis Dr. Boise, ID 83702	https://history.idaho.gov/location/museum/
+Old Idaho Penitentiary	2445 Old Penitentiary Rd. Boise, ID 83712	https://www.history.idaho.gov/oldpen
+Nez Perce County Historical Society & Museum	0306 3rd St, Lewiston, ID 83501	https://www.nezpercecountymuseum.com
+Center for American Archeology	101 N. Broadway PO Box 366 Kampsville, IL 62053	https://www.caa-archeology.org
+Abraham Lincoln Presidential Library and Museum	112 N. 6th St. Springfield, IL 62701	https://www.presidentlincoln.org
+Boone County Museum of History	314 S. State St. Belvidere, IL 61010	https://www.bcmuseumofhistory.org
+DuPage County Historical Museum	102 East Wesley Street Wheaton, IL 60187	https://dupagemuseum.org/
+Ethnic Heritage Museum	1129 South Main Street PO Box 382 Rockford, IL 61105	https://www.ethnicheritagemuseum.org
+Frank Lloyd Wright Home and Studio	951 Chicago Avenue Oak Park, IL 60302	https://www.flwright.org
+Illinois State Museum	502 South Spring Street Springfield, IL 62706	https://www.illinoisstatemuseum.org
+Joliet Area Historical Museum	204 North Ottawa Street Joliet, IL 60432	https://www.jolietmuseum.org
+McLean County Museum of History and the Cruisin' with Lincoln on 66 Visitors' Center	200 North Main Street Historic Downtown Bloomington Bloomington, IL 61701	https://www.mchistory.org
+Naper Settlement	523 South Webster Street Naperville, IL 60540	https://www.napersettlement.org
+Tinker Swiss Cottage Museum and Gardens	411 Kent Street Rockford, IL 61102	https://www.tinkercottage.com
+Vermilion County Museum	116 North Gilbert Street Danville, IL 61832	https://www.vermilioncountymuseum.org
+Wilmette Historical Museum	609 Ridge Road Wilmette, IL 60091	https://www.wilmettehistory.org
+Winnetka Historical Society	411 Linden Street PO Box 365 Winnetka, IL 60093	https://www.winnetkahistory.org
+Norwood Park Historical Society	5624 North Newark Aveune Chicago, IL 60631	https://www.norwoodparkhistoricalsociety.org
+Elmhurst History Museum	120 East Park Aveune Elmhurst, IL 60126	https://www.elmhursthistory.org
+Geneva History Museum	113 South Third Street Geneva, IL 60134	https://www.genevahistorymuseum.org
+Historical Society of Quincy and Adams County	425 South 12th Street Quincy, IL 62301	https://www.hsqac.org
+Midway Village Museum	6799 Guilford Road Rockford, IL 61107	https://www.midwayvillage.com
+The National Public Housing Museum	625 N Kingsbury St., Chicago, IL, 60654	https://www.nphm.org/
+Peoria Riverfront Museum	222 Southwest Washington Street Peoria, IL 61602	https://www.peoriariverfrontmuseum.org/
+Madison County Historical Museum and Archival Library	801 North Main Street Edwardsville, IL 62025-1111	https://madcohistory.org
+The Richard H. Driehaus Museum	40 E. Erie St. Chicago, IL 60611	https://www.driehausmuseum.org
+Dana-Thomas House	301 E. Lawrence Ave. Springfield, IL 62703	https://www.dana-thomas.org
+Illinois National Guard and Military Historical Society	1301 N. MacArthur Blvd Springfield, IL 62702	https://www.il.ngb.army.mil
+Mount Prospect Historical Society	101 S. Maple St. Mount Prospect, IL 60056-3229	https://mtphist.org
+The Evanston History Center in the Charles Gates Dawes House	225 Greenwood St. Evanston, IL 60201	https://www.evanstonhistorycenter.org
+Spurlock Museum	600 S. Gregory St. Urbana, IL 61801	https://www.spurlock.illinois.edu
+Dekalb County History Center	1730 N. Main St. Sycamore, IL 60178	https://www.dekalbcountyhistory.org/
+Lake County Discovery Museum	1899 West Winchester Rd., Libertyville, IL 60048	https://www.lcfpd.org/museum
+Lincoln Heritage Museum	1115 Nicholson Rd. Lincoln, IL 62656	https://museum.lincolncollege.edu
+Aurora Historical Society- Tanner House Museum	305 Cedar St. Aurora, IL 60506	https://www.aurorahistory.net/visit/tanner-house/
+Aurora Historical Society- David L. Pierce Art and History Center	20 E. Downer Pl. Aurora, IL 60505	https://www.aurorahistory.net/visit/david-l-pierce-art-history-center/
+Erlander Home Museum	404 S. Third St. Rockford, IL 61104	https://swedishhistorical.org
+Kenilworth Historical Society	415 Kenilworth Ave. Kenilworth, IL 60043	https://kenilworthhistory.org
+Flagg Township Museum	518 4th Ave. Rochelle, IL 61068	https://www.flaggtownshipmuseumrochelle.org/home.aspx
+Vermilion County War Museum	307 N. Vermilion St. Danville, IL 61832	https://www.vcwm.org
+Arlington Heights Historical Museum	110 W. Fremont Street, Arlington Heights, IL 60004	https://www.ahmuseum.org/
+McHenry County Historical Society and Museum	6422 Main Street, Union, IL 60180	https://www.mchenrycountyhistory.org
+Lincoln Presidential Foundation	944 Clock Tower Dr.	www.lincolnpresidential.org
+Glen Carbon Heritage Museum	124 School St, Glen Carbon, IL 62034	https://www.glencarbonil.gov/891/Heritage-Museum-and-Log-Cabin
+Mendota Museum & Historical Society	901 Washington St, Mendota, IL 61342	https://www.mendotamuseums.org/
+Jackson County Historical Society	1616 Edith Street, Murphysboro, IL  62966	https://jchsil.org/
+Warren County History Museum	238 South Sunny Lane, Monmouth, IL  61462	https://www.wchistorymuseum.com/
+Elgin History Museum	360 Park St., Elgin, IL  60120	https://elginhistory.org/
+Wauconda Township Historical Society	1711 N. Main Street, Wauconda, IL  60084	https://www.waucondahistory.org/
+Champaign County History Museum	102 E University Ave, Champaign, IL  61820	https://www.champaigncountyhistory.org/
+St. Charles History Museum	215 E Main St, St. Charles, IL  60174	https://stcmuseum.org
+Elk Grove Historical Museum	399 Biesterfield Rd, Elk Grove Village, IL 60007	https://elkgroveparks.org/museum
+Illinois Governor's Mansion	410 E Jackson St, Springfield, IL 62701	https://www.illinoismansion.org
+Tampico Area Historical Society	119 S Main St, Tampico, IL 61283	https://tampicohistoricalsociety.com/
+Lombard Historical Society	23 W Maple St, Lombard, IL 60148	https://www.lombardhistory.org/
+Park Ridge History Center	721 N Prospect Ave, Park Ridge, IL 60068	https://www.parkridgehistorycenter.org
+Poplar Grove Vintage Wings & Wheels Museum	5151 Orth Road Ste. A-1, Poplar Grove, IL 61065	www.wwmuseum.org
+The History Center	302 East Berry Street Fort Wayne, IN 46802	https://www.fwhistorycenter.com
+La Porte County Historical Society & Museum	2405 Indiana Avenue Suite 1 La Porte, IN 46350	https://www.laportecountyhistory.org
+Indiana Historical Society	450 West Ohio Street Indianapolis, IN 46202	https://www.indianahistory.org
+Eiteljorg Museum of American Indians & Western Art	500 West Washington Street Indianapolis, IN 46204	https://www.eiteljorg.org
+Conner Prairie Interactive History Park	13400 Allisonville Road Fishers, IN 46038	https://www.connerprairie.org
+The History Museum	808 West Washington Street South Bend, IN 46601	https://www.historymuseumSB.org
+North Manchester Center for History	122 East Main Street North Manchester, IN 46962	https://www.nmanchesterhistory.org
+Museum of Culver & Lake Maxinkuckee History	102 W. Jefferson St., Culver, IN 46511	https://www.culverahs.com
+Porter County Museum	153 Franklin St. Valparaiso, IN 46383	https://www.pocomuse.org
+Brown County History Center	90 E. Gould St. PO Box 668 Nashville, IN 47448	https://www.browncountyhistorycenter.org
+Museum at Lassen's Resort	7408 Constitution Ave. Cedar Lake, IN 46303	https://lassensresort.org/
+Whitley County Historical Museum	108 W. Jefferson St. Columbia City, IN 46725	https://www.whitleymuseum.com/
+Model T Museum	309 North 8th St. Richmond, IN  47375-0996	https://www.mtfca.com/museum/
+Wabash Co. Historical Museum	36 E. Market St. Wabash, IN 46992	https://www.wabashmuseum.org
+Ernie Pyle World War II Museum	120 W. Briarwood Ave. Dana, IN 47847	https://erniepyle.org
+Monroe County History Center	202 E. Sixth Street Bloomington, IN 47408	https://monroehistory.org
+Evansville Museum of Arts, History. and Science	411 S.E. Riverside Dr Evansville, IN 47713-1098	https://emuseum.org
+Ruthmere Museum Campus	302 East Beardsley Ave. Elkhart, IN 46514	https://www.ruthmere.org
+Carnegie Center for Art and History	201 E. Spring Street, New Albany, IN 47150	https://www.carnegiecenter.org/
+LST Ship Memorial, Inc.	610 NW Riverside Dr, Evansville, IN 47708	https://www.lstmemorial.org/
+Studebaker National Museum	201 Chapin St., South Bend, IN 46601	https://www.studebakermuseum.org
+Howard County Historical Society	1200 W Sycamore St, Kokomo, IN 46901	https://hchsmd.org/
+Roanoke Historical Museum	102 1st St, Roanoke, IN 46783	https://roanokehistoricalmuseum.org
+Living History Farms	11121 Hickman Road Urbandale, IA 50322	https://www.livinghistoryfarms.org
+Johnson County Historical Society	200 E. 9th St., STE 101	https://www.johnsoncountyhistory.org
+The History Center	800 2nd Avenue SE, Cedar Rapids, IA 52402	https://www.historycenter.org/
+Muscatine History & Industry Center	117 West 2nd Street Muscatine, IA 52761	https://www.muscatinehistory.org
+National Czech & Slovak Museum & Library	1400 Inspiration Place SW Cedar Rapids, IA 52404	https://www.NCSML.org
+National Mississippi River Museum & Aquarium	350 East 3rd Street Port of Dubuque Dubuque, IA 52001	https://www.rivermuseum.com
+Sioux City Public Museum	607 Fourth St. Sioux City, IA 51101	https://www.siouxcitymuseum.org
+Vesterheim Norwegian-American Museum	520 West Water Street Decorah, IA 52101	https://www.vesterheim.org
+Jackson County History Museum	1212 East Quarry Street On the Fairgrounds Maquoketa, IA 52060	https://www.jciahs.com
+Clinton Engines Museum (Jackson County Historical Society)	605 East Maple Street Maquoketa, IA 52060	https://www.clintonengines.com
+Hoyt Sherman Place	1501 Woodland Ave. Des Moines, IA 50309	https://www.hoytsherman.org
+Museum of Danish America	2212 Washington Street Elk Horn, IA 51531	https://www.danishmuseum.org
+The Fort Museum and Frontier Village	1 Museum Rd. Fort Dodge, IA 50501	https://www.fortmuseumfv.com
+The Harlan-Lincoln House at Iowa Wesleyan University	101 W. Broad Street Mount Pleasant, IA 52641	https://www.iw.edu/harlan-lincoln-house
+State Historical Society of Iowa	600 E Locust St, Des Moines, IA 50319	https://history.iowa.gov/
+Ellis County Historical Society Museum	100 West 7th Street Hays, KS 67601	https://ellis-county-historical-society.square.site/
+Kansas Museum of History	6425 Southwest 6th Avenue Topeka, KS 66615	https://www.kshs.org
+Shawnee Town Museum	11501 West 57th Steet Shawnee, KS 66203	https://www.shawneetown.org
+The Wichita-Sedgwick County Historical Museum Association	204 South Main Street Wichita, KS 67202	https://www.wichitahistory.org
+Watkins Museum of History	1047 Massachusetts Street Lawerence, KS 66044	https://www.watkinsmuseum.org
+The Walter P. Chrysler Boyhood Home and Museum	102 W. 10th St. Ellis, KS 67637	https://www.chryslerboyhoodhome.org/
+Rice County Historical Society - Coronado Quivira Museum	105 West Lyon St. Lyons, KS 67554	https://www.cqmuseum.org
+Robert J. Dole Institute of Politics	2350 Petefish Dr. Lawrence, KS 66045	https://www.doleinstitute.org
+Dwight D. Eisenhower Presidential Library, Museum and Boyhood Home	200 SE Fourth St. Abilene, KS 67410	https://www.eisenhower.archives.gov
+Lindsborg Old Mill & Swedish Heritage Museum	120 East Mill Street, Lindsborg, KS  67456	https://www.oldmillmuseum.org
+Riley County Historical Society & Museum	2309 Claflin Rd., Manhatten, KS  66502	https://www.rileychs.com/
+Dickinson County Heritage Center	412 S Campbell St, Abilene, KS 67410	https://www.dickinsoncountyhistoricalsociety.com/
+Kentucky Historical Society	100 West Broadway Street Frankfort, KY 40601	https://www.history.ky.gov
+Lexington History Museum	210 N Broadway, Lexingston, KY 40507	https://lexhistory.org/
+Old Fort Western	16 Cony Street Augusta, ME 04330	https://www.oldfortwestern.org
+Seal Cove Auto Museum	1414 Tremont Rd. PO Box 106 Seal Cove, ME 04674	https://www.sealcoveautomuseum.org
+Boothbay Railway Village	586 Wiscasset Road Boothbay, ME 04537	https://www.railwayvillage.org
+Rufus Porter Museum	121 Main St. Bridgton, ME 04009	https://www.rufusportermuseum.org
+Maine's First Ship	27 Commercial St, Bath, ME 04530	https://www.mfship.org
+Johns Hopkins University Museums	3400 North Charles Street, Baltimore, MD 21218 (2 locations; see map for additional locations)	https://www.museums.jhu.edu
+Dorchester County Historical Society	1003 Greenway Drive Cambridge, MD 21613	https://www.dorchesterhistory.com/
+Maryland Center for History and Culture	610 Park Avenue, Baltimore, MD 21201	https://www.mdhistory.org/
+The Star-Spangled Banner Flag Museum	844 East Pratt Street Baltimore, MD 21202	https://www.flaghouse.org
+The National Colonial Farm at Piscataway Park	3400 Bryan Point Rd. Accokeek, MD 20607	https://www.accokeekfoundation.org
+Historic Newton: Jackson Homestead	527 Washington Street Newton, MA 02458	https://www.newtonma.gov/government/historic-newtons
+NHA Whaling Museum	15 Broad Street Box 1016 Nantucket, MA 02554	https://www.nha.org
+Worcester Historical Museum	30 Elm Street Worcester, MA 01609	https://www.worcesterhistory.org
+The Shirley-Eustis House Museum	33 Shirley Street Roxbury, MA 02119	https://www.shirleyeustishouse.org
+Falmouth Museums on the Green	55-65 Palmer Avenue Falmouth, MA 02540	https://museumsonthegreen.org
+Westford Historical Society and Musem	2 Boston Rd. Westford, MA 01886	https://museum.westford.org/
+Kemp-McCarthy Museum, Rowe Historical Society	282 Zoar Rd. Rowe, MA 01367	https://rowehistoricalsociety.wordpress.com
+The Fairbanks House Museum	511 East St., Dedham, Massachusetts 02026	https://fairbankshouse.org/
+Boxborough Museum	575 Middle Rd., Boxborough, MA  01719	https://www.boxboroughhistoricalsociety.org/
+Detroit Historical Society	5401 Woodward Avenue Detroit, MI 48202 (2 locations; call for details)	https://www.detroithistorical.org
+Michigan History Museum	702 West Kalamazoo Street Lansing, MI 48915	https://www.michigan.gov/museum
+Heritage Battle Creek	165 N Washington Battle Creek, MI 49017	https://www.heritagebattlecreek.org
+Midland County Historical Society - Heritage Park	3417 West Main Street Midland, MI 48640	https://www.mcfta.org/heritage-park/
+Harbor Springs History Museum	349 East Main Street Harbor Springs, MI 49740	https://www.harborspringshistory.org
+Cheboygan County History Center	427 Court Street PO Box 5005 Cheboygan, MI 49721-5005	https://www.cheboyganhistory.org
+Greater West Bloomfield Historical Society	3951 Orchard Lake Road West Bloomfield, MI 48323	https://www.gwbhs.org
+USS Silversides Submarine Museum	1346 Bluff St. Muskegon, MI 49441	https://www.silversidesmuseum.org
+Heritage Museum and Cultural Center	601 Main Street St. Joesph, MI 49085	https://www.theheritagemcc.org
+Grosse Pointe Historical Society	376 Kercheval Ave. Grosse Pointe Farms, MI 48236	https://www.gphistorical.org
+Grosse Ile Historical Society	25020 E River Rd. Grosse Ile, MI 48138	https://www.gihistsoc.org
+Wayne Historical Museum	One Town Square Wayne, MI 48184	https://waynehistoricalmuseum.wordpress.com
+USS LST 393 Veterans Museum	560 Mart St, Muskegon, MI 49440	https://www.lst393.org/
+Canton Historical Society	1022 Canton Ctr Rd., Canton, MI 48188	https://www.cantonhistoricalsocietymi.org/
+Argus Museum	525 W William St, Ann Arbor, MI  48103	https://argusmuseum.wordpress.com/
+Castle Museum of Saginaw County History	500 Federal Ave, Saginaw, MI  48607	https://www.castlemuseum.org/
+Hamburg Township Historical Museum	7225 Stone St, Hamburg, MI 48139	https://www.hamburgmuseum.org
+Gardner House Museum, Albion Historical Society	509 South Superior St, Albion, MI 49334	https://www.albionhistoricalsociety.org/
+Preservation Detroit	8801 Woodward Ave., Detroit, MI 48202	www.preservationdetroit.org
+Mower County Historical Society	1303 6th Avenue Southwest Austin, MN 55912	https://www.mowercountyhistory.org
+Stearns History Museum & Research Center	235 33rd Avenue South St. Cloud, MN 56301	https://www.stearnshistorymuseum.org/
+Minnesota Historical Society	345 West Kellogg Boulevard St. Paul, MN 55102 (26 locations statewide; call for details)	https://www.mnhs.org/members
+Beltrami County Historical Society	130 Minnesota Avenue Southwest Bemidji, MN 56601	https://www.beltramihistory.org
+Historical and Cultural Society of Clay County	Hjemkomst Center 202 1st Avenue North Moorhead, MN 56560	https://www.hcscconline.org
+Nicollet County Historical Society	1851 North Minnesota Avenue Saint Peter, MN 56082	https://www.nchsmn.org
+Steele County Historical Society	1700 Austin Road Owatonna, MN 55060	https://www.schsmn.org/visit-us
+Cass County MN Museum and Historical  Society	205 Minnesota Avenue West Walker, MN 56484	https://www.casscountymuseum.org
+Probstfield Farm Living History Foundation	4626 Oakport St. N, Moorhead, MN 56560	https://www.probstfieldfarm.org
+Crow Wing Historical Society and Museum	320 Laurel St. Brainerd, MN 56401	https://www.crowwinghistory.org
+McLeod Country Historical Society	380 School Rd NW Hutchinson, MN 55350	https://mcleodhistory.org
+Dakota County Historical Society-Lawshe Memorial Museum	130 3rd Avenue N South St. Paul, MN 55075	https://www.dakotahistory.org/lawshe-memorial-museum#explore-lawshe
+Dakota County Historical Society-LeDuc Historic Estate	1629 Vermillion Street Hastings, MN 55033	https://www.dakotahistory.org/leduc-historic-estate
+Dakota County Historical Society-Sibley Historic Site	1357 Sibley Memorial Highway Mendota Heights, MN 55150	https://www.dakotahistory.org/sibley-historic-site
+Freeborn County Historical Society	1031 Bridge Ave, Albert Lea, MN 56007	https://www.fchmmn.org/
+Northfield Historical Society Museum and Historic Bank Site	408 Division St. S.,  Northfield, MN  55057	https://www.northfieldhistory.org/
+Hormel Historic Home	208 4th Ave. NW, Austin, MN  55912	https://www.hormelhistorichome.org/
+Hennepin History Museum	2303 S 3rd Ave, Minneapolis, MN 55404	https://hennepinhistory.org/
+Waseca County History Center	315 Ne 2nd Avenue, Waseca, MN  56093	https://www.historical.waseca.mn.us/
+Ramsey County Historical Society	75 W. Fifth St., #323, Saint Paul, MN  55102	https://www.rchs.com/
+Gammelg\E5rden Museum of Scandia	20880 Olinda Trail N, Scandia, MN 55073	https://gammelgardenmuseum.org/
+Cook County Historical Museum	8 South Broadway, Grand Marais, MN 55604	https://www.cookcountyhistory.org/
+Dodge County Historical Society	615 N. Main St, Mantorville, MN 55955	https://dodgecountyhistorical.mn/
+History Center of Olmsted County	1195 W Circle Dr SW, Rochester, MN 55902	https://www.olmstedhistory.com/
+Union County Heritage Museum	114 Cleveland Street New Albany, MS 38652	https://www.ucheritagemuseum.com
+International Museum of Muslim Cultures	201 East Pascagoula St., Jackson, MS  39201	https://muslimmuseum.org/
+The Jacques Guibourd Historic House	1 North 4th Street Ste. Genevieve, MO 63670	https://www.visitstegen.com/jacques-guibourd-historic-house/
+Joplin Museum Complex	504 South Schifferdecker Avenue PO Box 555 Joplin, MO 64801	https://www.joplinmuseum.org
+Missouri History Museum	5700 Lindell Boulvard St. Louis, MO 63112	https://www.mohistory.org
+Campbell House Museum	1508 Locust Street St. Louis, MO 63103	https://www.campbellhousemuseum.org
+National Churchill Museum	501 Westminster Avenue Fulton, MO 65251	https://www.churchillmemorial.org
+Field House Museum	634 South Broadway St. Louis, MO 63102	https://www.fieldhousemuseum.org
+Clay County Museum and Historical Society	14 N. Main Street Liberty, MO 64068	https://www.claycountymuseum.org
+Soldiers Memorial Military Museum	1315 Chestnut St. St. Louis, MO 63103	https://mohistory.org/memorial
+Library & Research Center	225 S. Skinker Blvd. St. Louis, MO 63105	https://mohistory.org/library
+History Muesum on the Square	154 Park Central Square, Springfield, MO 65806	https://www.historymuseumonthesquare.org
+Carondelet History Museum/Susan Blow's Kindergarten	6303 Michigan Ave, St. Louis, MO 63111	https://www.carondelethistory.org/
+Chatillon-DeMenil Mansion	3352 DeMenil Place, St. Louis, MO 63118	https://www.demenil.org
+Montana Historical Society	225 North Roberts Street PO Box 201201 Helena, MT 59620	https://mhs.mt.gov/
+Granite County Museum and Cultural Center, Inc	135 S. Sansome St. Philipsburg, MT 59858	https://www.granitecountymuseum.com/
+Travelers' Rest Preservation & Heritage Association	6717 Highway 12 Lolo, MT 59847	https://www.travelersrest.org
+Gallatin History Museum	317 W. Main Bozeman, MT 59715	https://GallatinHistoryMuseum.org
+MonDak Heritage Center	120 3rd Ave. SE Sidney, MT 59270	https://mondakheritagecenter.org
+The World Museum of Mining	155 Museum Way, Butte, MT 59701	https://www.miningmuseum.org/
+The Willa Cather Foundation	413 North Webster Street Red Cloud, NE 68970	https://www.willacather.org
+Douglas County Historical Society	5730 North 30th Street 11B Omaha, NE 68111	https://www.douglascohistory.org
+Senator George Norris State Historic Site- History Nebraska	706 Norris Ave, McCook, NE 69001	https://history.nebraska.gov/senator-george-norris-state-historic-site/
+Neligh Mill State Historic Site- History Nebraska	Wylie Dr, NE 68756	https://history.nebraska.gov/neligh-mill-state-historic-site/
+Fort Robinson History Center- History Nebraska	3200 US-20, Crawford, NE 69339	https://history.nebraska.gov/fort-robinson-history-center/
+Chimney Rock Museum- History Nebraska	9822 County Rd 75, Bayard, NE 69334	https://history.nebraska.gov/rock/
+Nebraska History Museum- History Nebraska	131 Centennial Mall N, Lincoln, NE 68508	https://history.nebraska.gov/museum/
+Las Vegas International Scouting Museum	3025 W. Sahara Las Vegas, NV 89102	https://www.worldscoutingmuseum.org
+Manchester Historic Association (Millyard Museum)	200 Bedford Street Manchester, NH 03101	https://www.manchesterhistoric.org
+The Nashua Historical Society	5 Abbott Street Nashua, NH 03064	https://www.nashuahistoricalsociety.org
+Strawbery Banke Museum	14 Hancock Street PO Box 300 Portsmouth, NH 03801	https://www.strawberybanke.org
+The Warner House Association	150 Daniel Street PO Box 895 Portsmouth, NH 03802	https://www.warnerhouse.org
+Wright Museum of World War II	77 Center Street PO Box 1212 Wolfeboro, NH 03894	https://www.wrightmuseum.org
+Remick Country Doctor Museum & Farm	58 Cleveland Hill Rd. Tamworth, NH 03886	https://www.remickmuseum.org
+American Independence Museum	1 Governors Ln. Exeter, NH 03833	https://independencemuseum.org
+The Historical Society of Moorestown	12 High St. PO Box 477 Moorestown, NJ 08057	https://www.moorestownhistory.org
+New Jersey State Museum	205 W. State St.Trenton, NJ 08625	https://www.statemuseum.nj.gov
+Historical Society of Princeton	354 Quaker Rd, Princeton, NJ 08540	https://princetonhistory.org/
+The Buffalo History Museum	1 Museum Court Buffalo, NY 14216	https://www.buffalohistory.org
+New York Transit Museum	99 Schermerhorn Street Brooklyn, NY 11201	https://www.mta.info/museum
+Ontario County Historical Society	55 North Main Street Canandaigua, NY 14424	https://www.ochs.org
+The Wyckoff Farmhouse Museum	5816 Clarendon Road Brooklyn, NY 11203	https://www.wyckoffmuseum.org
+Brooklyn Historical Society	128 Pierrepont Street Brooklyn, NY 11201	https://www.brooklynhistory.org
+Hanford Mills Museum	51 County Route 12 PO Box 99 East Meredith, NY 13757	https://www.hanfordmills.org
+Buffalo Niagara Heritage Village	3755 Tonawanda Creek Rd. Amherst, NY 14228	https://www.bnhv.org
+Dunkirk Historical Society	513 Washington Ave. Dunkirk, NY 14048	https://dunkirkhistoricalmuseum.org
+Ulysses S. Grant Cottage State Historic Site	1000 Mt. McGregor Rd. Wilton, NY 12831	https://www.grantcottage.org
+Huntington Historical Society	209 Main Street Huntington, NY 11743	https://www.huntingtonhistoricalsociety.org
+Graycliff Conservancy	6472 Old Lake Shore Rd. PO Box 823, Derby, NY 14047	https://experiencegraycliff.org
+Darwin R. Barker Historical Museum	20 E Main St., Fredonia, NY 14063	https://www.barkermuseum.org/
+Lancaster, New York Historical Society & Museum	40 Clark St, Lancaster, Lancaster, NY 14086	www.lancasternyhistoricalsociety.org
+Onondaga Historical Association	321 Montgomery St, Syracuse, NY 13202	www.cnyhistory.org
+Sharon Historical Society	236 Main Street, Sharon Springs, NY 13459	www.sharonhistoricalsocietyny.org
+High Point Museum & Historical Park	1859 East Lexington Avenue High Point, NC 27262	https://www.highpointmuseum.org
+Joel Lane Museum House	160 South Saint Mary's Street PO Box 10884 Raleigh, NC 27603	https://www.joellane.org
+City of Raleigh (COR) Museum	220 Fayetteville Street Suite 100 Raleigh, NC 27601	https://www.cityofraleighmuseum.org
+Preservation Durham	701 W. Main Street, Suite 310PO Box 25411 Durham, NC 27701	https://www.preservationdurham.org
+Greensboro Historical Museum	130 Summit Avenue Greensboro, NC 27401	https://www.greensborohistory.org/
+Gaston County Museum of Art & History	131 W. Main St. Dallas, NC 28034	https://gastoncountymuseum.org
+Museum and Archives of Rockingham County	1086 Hwy 65 Reidsville, NC 27320	https://www.themarconline.org
+Museum of the Cherokee Indian	589 Tsali Blvd., Cherokee, NC 28719	www.mci.org
+Bonanzaville, Cass County Historical Society	1351 West Main Avenue PO Box 719 West Fargo, ND 58078	https://www.bonanzaville.org
+State Historical Society of North Dakota	612 East Boulevard Avenue Bismarck, ND 58505 (12 locations statewide; call for details)	https://www.history.nd.gov
+National Buffalo Museum	500 17th St SE, Jamestown, ND 58401	https://www.buffalomuseum.com/
+Ohio History Center	800 East 17th Avenue Columbus, OH 43211	https://www.ohiohistory.org
+Oberlin Heritage Center	73 South Professor Street PO Box 455 Oberlin, OH 44074	https://www.oberlinheritage.org
+Merry-Go-Round Museum	301 Jackson Street Sandusky, OH 44870	https://www.merrygoroundmuseum.org
+Cincinnati History Museum at Cincinnati Museum Center	1301 Western Avenue Cincinnati, OH 45203	https://www.cincymuseum.org
+Fort Meigs: Ohio's War of 1812 Battlefield	29100 West River Road Perrysberg, OH 43551	https://www.fortmeigs.org
+Rutherford B. Hayes Presidential Library & Museums	Spiegel Grove Fremont, OH 43420	https://www.rbhayes.org
+Johnston Farm & Indian Agency	9845 North Hardin Road Piqua, OH 45356	https://www.johnstonfarmohio.com
+Our House Tavern	432 First Avenue Gallipolis, OH 45631	https://www.ohiohistory.org/ourhouse
+Wahkeena Nature Preserve	2200 Pump Station Road Sugar Grove, OH 43155	https://www.ohiohistory.org/wahkeena
+Armstrong Air & Space Museum	500 Apollo Drive Wapakoneta, OH 45895	https://www.armstrongmuseum.org
+Dennison Railroad Depot Museum	400 Center Street Dennison, OH 44621	https://www.dennisondepot.org
+Historic Schoenbrunn Village	1984 East High Avenue New Philadelphia, OH 44663	https://www.ohiohistory.org/visit/museum-and-site-locator/schoenbrunn-village
+Uhrichsville Clay Museum	330 North Main Street Uhrichsville, OH 44683	https://ohiolha.org/member_organization/urichsville-clay-museum/
+Galion History Center	201 S. Union St. PO Box 125 Galion, OH 44833	https://www.galionhistory.com
+Historic Zoar Village	198 Main Street Zoar, OH 44697	https://historiczoarvillage.com
+Lake County History Center Museum and Village	415 Riverside Drive Painesville Township, OH 44077	https://www.lakehistory.org
+The Museum of Ceramics	400 East Fifth Street East Liverpool, OH 43920	https://www.themuseumofceramics.com
+Lorain Historical Society	329 W. 10th St. Lorain, OH 44052	https://www.lorainhistory.org
+GAR Hall	1785 Main Street Peninsula, OH 44264	https://peninsulahistory.org
+The Works: Ohio Center for History, Art, & Technology	55 S. 1st Street Newark, OH 43055	https://www.attheworks.org
+National Council for History Education	13940 Cedar Rd. #393 University Heights, OH 44118	https://www.NCHE.net
+Auglaize County Historical Society	206 W Main St Wapakoneta, OH 45895	https://www.auglaizecountyhistory.org
+Clark County Historical Society - The Heritage Center	117 South Fountain Ave. Springfield, OH 45502	https://heritage.center/
+Baseball Heritage Museum	6601 Lexington Ave. Cleveland, OH 44103	https://www.baseballheritagemuseum.org
+Lorain Country Historical Society	509 Washington Ave Elyria, OH 44035	https://www.lchs.org
+McKinley Presidential Library and Museum	800 McKinley Monument Dr. NW Canton, Ohio 44708	https://www.mckinleymuseum.org
+Historic Roscoe Village	600 N. Whitewoman Street, Coshocton, Ohio 43812	https://www.RoscoeVillage.com
+Robbins Hunter Museum	221 E Broadway, Granville, OH 43023	https://www.robbinshunter.org/
+Toledo History Museum	425 N St Clair St, Toledo, OH 43604	https://www.toledohistorymuseum.org/
+The Cleo Redd Fisher Museum	203 East Main Street, Loudonville, OH 44842	https://www.crfmuseum.com
+Granville Historical Society	115 E. Broadway, Granville, OH  43023	https://www.granvillehistory.org/
+Decorative Arts Center of Ohio	145 E. Main St., Lancaster, OH  43130	https://www.decartsohio.org/
+Hancock Historical Museum	422 W Sandusky St, Findlay, OH 45840	https://hancockhistoricalmuseum.org/
+Dunham Tavern Museum & Gardens	6709 Euclid Ave, Cleveland, OH 44103	https://www.dunhamtavern.org/
+Piatt Castle Mac-A-Cheek	10051 Township Road 47, West Liberty, OH 43357	www.piattcastle.org
+Oklahoma Historical Society	800 Nazih Zuhdi Dr Oklahoma City, OK 73105 (4 locations statewide; call for details)	https://www.okhistory.org
+Har-Ber Village Museum	4404 West 20th Grove, OK 74344	https://www.har-bervillage.com
+Edmond Historical Society and Museum	431 South Boulevard Edmond, OK 73034	https://www.edmondhistory.org
+TIFF	Reitman Square 350 King St. W Toronto, Ontario Canada, AE M5V 3X5	https://www.TIFF.net
+Southern Oregon Historical Society	160 North Central Avenue Medford, OR 97501	https://www.sohs.org
+Oregon Historical Society	1200 Southwest Park Avenue Portland, OR 97205	https://www.ohs.org
+Historic Deepwood Estate	1116 Mission Street Southeast Salem, OR 97302	https://historicdeepwoodestate.org
+Willamette Heritage Center	1313 Mill Street Southeast Salem, OR 97301	https://www.willametteheritage.org
+Shelton McMurphey Johnson House	303 Williamette St. Off Third and Pearl Eugene, OR 97401	https://www.smjhouse.org
+Pendleton Air Museum	21 SW Emigrant Ave. Pendleton, OR 97801	https://www.pendletonairmuseum.org
+Heritage Station Museum	108 SW Frazer Ave, Pendleton, OR 97801	https://www.heritagestationmuseum.org/home
+Four Rivers Cultural Center & Museum	676 SW 5th Ave., Ontario, OR 97914	https://4rcc.com/
+Museum of the Oregon Territory	211 Tumwater Dr., Oregon City, OR 97045	https://www.clackamashistory.org
+Cascade Locks Historical Museum	417 SW Portage Rd, Cascade Locks, OR 97014	https://www.cascadelocksmuseum.org/
+Oregon Coast Military Museum	2145 Kingwood St., Florence, OR 97439	https://www.oregoncoastmilitarymuseum.com/
+The National Civil War Museum	1 Lincoln Circle at Reservoir Park Harrisburg, PA 17103	https://www.nationalcivilwarmuseum.org
+The Hershey Story: The Museum on Chocolate Avenue	63 West Chocolate Avenue Hershey, PA 17033	https://www.hersheystory.org
+Mercer Museum	84 South Pine Street Doylestown, PA 18901	https://www.mercermuseum.org
+The York County History Center	121 N. Pershing Ave York, PA 17401	https://www.yorkheritage.org
+Pearl S Buck House	520 Dublin Road Perkasie, PA 18944	https://www.pearlsbuck.org
+Heisey House Museum - Clinton County Historical Society	362 East Water Street Lock Haven, PA 17745	https://www.clintonpahistory.org/heisey-house-museum.html
+Historical Society of Pennsylvania	1300 Locust Street Philadelphia, PA 19107	https://www.hsp.org
+Erie County Historical Society	356 W. Sixth Street St. Erie, PA 16507	https://www.eriehistory.org
+The Friends of Valley Forge	1400 N. Outer Line Dr. King of Prussia, PA 19406	https://www.friendsofvalleyforge.org
+Quiet Valley Living Historical Farm	347 Quiet Valley Rd. Stroudsburg, PA 18360	https://www.quietvalley.org
+Monroe County Historical Association	900 Main Street Stroudburg, PA 18360	https://www.monroehistorical.org
+Pennsylvania Heritage Foundation	400 North Street Harrisburg, PA 17120	https://www.paheritage.org
+The State Museum of Pennsylvania	300 North St. Harrisburg, PA 17120	https://www.statemuseumpa.org
+Goodell Gardens & Homestead	221 Waterford St., Edinboro, PA 16412	https://www.goodellgardens.org
+Cumberland County Historical Society	21 N. Pitt St., Carlisle, PA 17013	https://www.historicalsociety.com
+Lycoming County Historical Society	858 W. 4th St., Williamsport, PA 17701	https://www.tabermuseum.org/
+Pennsylvania Trolley Museum	1 Museum Rd., Washington, PA  15301	https://pa-trolley.org/
+Renfrew Museum and Park	1010 E. Main St., Waynesboro, PA 17268	https://www.renfrewmuseum.org/
+Chester County History Center	225 N High St, West Chester, PA 19380	https://www.mycchc.org
+Penn State All-Sports Museum	1 Beaver Stadium, University Park, PA 16802	https://gopsusports.com/sports/2018/8/8/all-sports-museum-psu-all-sports-museum-html.aspx
+Doylestown Historical Society	56 South Main St., Doylestown, PA 1801	https://www.doylestownhistorical.org/
+Hanover Area Historical Society	21 Baltimore St., Hanover, PA 17331	https://www.hanoverpahistory.org
+Little Compton Historical Society (Wilbor House Museum)	548 West Main Road Little Compton, RI 02837	https://www.littlecompton.org
+Westerly Armory Museum	41 Railroad Avenue PO Box 614 Westerly, RI 02891	https://www.westerlyarmory.org
+Portsmouth Historical Society	870 East Main Rd. Portsmouth, RI 02871	https://www.portsmouthhistorical.org
+Museum of Work & Culture, Rhode Island Historical Society	42 S. Main St. Woonsocket, RI 02895	https://www.rihs.org/museums/museum-of-work-and-culture/
+John Brown House Museum, Rhode Island Historical Society	52 Power St. Providence, RI 02906	https://www.rihs.org/museums/john-brown-house/
+Upcountry History Museum	540 Buncombe St. Greenville, SC 29601	https://www.upcountryhistory.org
+South Carolina Historical Society	100 Meeting St, Charleston, SC 29401	https://schistory.org/
+The Center for Western Studies	2121 South Summit Avenue Sioux Falls, SD 57197	https://www.augie.edu/cws
+Adams Museum & House	54 Sherman Street 22 Van Buren Street Deadwood, SD 57732	https://DeadwoodHistory.com
+South Dakota Agricultural Heritage Museum	977 11th St. Brookings, SD 57007	https://agmuseum.com
+Mead Cultural Education Center	82 Mickelson Drive, Yankton, SD 57078	https://www.meadbuilding.org
+Tennessee State Museum	1000 Rosa L. Parks Blvd. Nashville, TN 37208	https://www.tnmuseum.org
+Customs House Museum & Cultural Center	200 South Second Street Clarksville, TN 37040	https://www.customshousemuseum.org
+East Tennessee Historical Society	601 S. Gay Street Knoxville, TN 37901	https://www.easttnhistory.org
+Tullahoma Fine Arts Center	401 S. Jackson St., Tullahoma, TN  37388	https://www.northernmuseum.org/
+Dallas Historical Society	3939 Grand Avenue Dallas, TX 75210	https://www.dallashistory.org
+Museum of the American Railroad	8004 N. Dallas Pkwy. Frisco, TX 75034	https://www.museumoftheamericanrailroad.org
+The Heritage Society	1100 Bagby Street Houston, TX 77002	https://www.heritagesociety.org
+Witte Museum	3801 Broadway Street San Antonio, TX 78209	https://www.wittemuseum.org
+Dallas Heritage Village	1515 S. Harwood Dallas, TX 75215	https://www.dallasheritagevillage.org
+Texas State Historical Association	3001 Lake Austin Blvd., Ste. 3.116 Austin, TX 78703	https://www.tshaonline.org
+National Museum of the Pacific War, Admiral Nimitz Foundation	340 E. Main St. Fredericksburg, TX 78624	https://www.PacificWarMuseum.org
+Houston Fire Museum	2403 Milam Street Houston, TX 77006	https://www.houstonfiremuseum.org/
+Pioneer Farms	10621 Pioneer Farms Dr. Austin, TX 78754	https://www.pioneerfarms.org
+Museum of the Coastal Bend	Victoria College 2200 East Red River Victoria, TX 77901	https://museumofthecoastalbend.org
+Bosque Museum	301 South Ave. Q Clifton, TX 76634	https://bosquemuseum.org
+Bob Bullock Texas State History Museum	1800 N. Congress Ave Austin, TX 78701	https://www.thestoryoftexas.com
+Taylor County History Center	133 William Street, Buffalo Gap, TX 79508	https://www.taylorcountyhistorycenter.org/
+Heritage Musuem of Montgomery County	1506 I-45 N. Feeder PO Box 2262, Conroe, TX 77301	https://www.heritagemuseum.us
+Lake Jackson Historical Association	249 Circle Way, Lake Jackson, TX  77566	https://www.ljhistory.org
+Czech Center Museum Houston	4920 San Jacinto St, Houston, TX 77004	https://www.czechcenter.org/
+Gregg County Historical Museum	214 N Fredonia St, Longview, TX 75601	https://gregghistorical.org/
+Museum of Moab	118 East Center Street Moab, UT 84532	https://www.moabmuseum.org
+Billings Farm and Museum	69 Old River Rd. Woodstock, VT 05091	https://www.billingsfarm.org
+Vermont Historical Society	60 Washington Street Barre, VT 05641	https://www.vermonthistory.org
+Vermont Granite Museum	7 Jones Brothers WayBarre, VT 05641	https://www.vtgranitemuseum.org
+Fredericksburg Area Museum	907 Princess Anne Street Fredericksburg, VA 22401	https://www.famva.org
+The Valentine	1015 East Clay Street Richmond, VA 23219	https://www.thevalentine.org
+Fauquier History Museum at the Old Jail	10 Ashby Street Warrenton, VA 20186	https://www.fauquierhistory.org
+Rocktown History	382 High St., Dayton, VA  22821	https://www.rocktownhistory.org/
+Woodrow Wilson Presidential Library and Museum	20 N. Coalter St., Staunton, VA  24401	https://www.woodrowwilson.org/
+Maymont	1700 Hampton St, Richmond, VA 23200	https://maymont.org/
+San Juan Historical Museum	405 Price Street PO Box 441 Friday Harbor, WA 98250	https://www.sjmuseum.org
+Pearson Air Museum	1115 East 5th Street Vancouver, WA 98661	https://www.nps.gov/fova/learn/historyculture/pearson.htm
+Two Rivers Heritage Museum	1 Durgan Street Washougal, WA 98671	https://www.historyfish.net/tworiversheritagemuseum
+Washington State History Museum	1911 Pacific Avenue Tacoma, WA 98402	https://www.washingtonhistory.org
+Yakima Valley Museum	2105 Tieton Drive Yakima, WA 98902	https://www.yakimavalleymuseum.org
+Fort Walla Walla Museum	755 Myra Road Walla Walla, WA 99362	https://www.fwwm.org
+Harbor History Museum	4121 Harborview Drive Gig Harbor, WA 98332	https://www.harborhistorymuseum.org/
+Fort Nisqually Living History Museum	5400 N. Pearl Suite 11 Tacoma, WA 98407	https://www.fortnisqually.org
+Fort Vancouver National Trust	750 Anderson St. Vancouver, WA 98661	https://www.thehistorictrust.org
+Fox Island Historical Society	1017 9th Ave PO Box 242 Fox Island, WA 98333	https://foxislandmuseum.org/
+Skagit County Historical Museum	501 South 4th St. La Conner, WA 98257	https://www.skagitcounty.net/museum
+Orcas Island Historical Museums	181 North Beach Rd. Eastsound, WA 98245	https://www.orcasmuseums.org
+Museum of History and Industry	860 Terry Ave. North Seattle, WA 98109	https://www.mohai.org
+Lincoln County Museum	600 7th St., Davenport, WA  99122	https://lincolncountymuseums.org/
+The Columbia Gorge Interpretive Center Museum	990 SW Rock Creek Drive, Stevenson, WA  98648	https://www.columbiagorge.org/
+Kitsap Historical Society & Museum	280 4th St, Bremerton, WA 98337	https://kitsapmuseum.org/
+North Franklin Heritage Museum	350 W Adams St, Connell, WA 99326	https://www.connellheritagemuseum.com
+Franklin County Historical Society & Museum	3305 N 4th Ave, Pasco, WA 99301	https://franklincountyhistoricalsociety.org/
+Kittitas County Historical Museum	114 E 3rd Ave, Ellensburg, WA 98926	https://www.kchm.org
+Whatcom Museum	121 Prospect St., Bellingham, WA 98225	https://www.whatcommuseum.org/
+Heritage Farm Museum & Village	3300 Harvey Rd. Huntington, WV 25704	https://www.heritagefarmmuseum.com/
+Luxembourg American Cultural Center	100 Peter Thein Avenue Belgium, WI 53004	https://www.lacs.lu
+Neville Public Museum of Brown County	210 Museum Place Green Bay, WI 54303	https://www.nevillepublicmuseum.org
+Hazelwood Historic House Museum/Brown County Historical Society	1008 South Monroe Avenue PO Box 1411 Green Bay, WI 54301	https://www.browncohistoricalsoc.org
+Three Lakes Historical Society and Museum	1798 Huron Street Three Lakes, WI 54562	https://www.threelakesmuseum.org
+The History Museum at the Castle	330 East College Avenue Appleton, WI 54911	https://www.myhistorymuseum.org
+New London Public Museum	406 South Pearl Street New London, WI 54961	https://www.newlondonwi.org/departments/new_london_public_museum.php
+Waukesha County Museum	101 West Main Street Waukesha, WI 53186	https://www.waukeshacountymuseum.org
+Ephraim Historical Foundation	3060 Anderson Ln. Ephralm, WI 54211	https://www.ephraim.org
+Chippewa Valley Museum	1204 East Half Moon Drive PO Box 1204, Eau Claire, Wisconsin 54703	https://cvmuseum.com
+Walworth County Historical Society	9 S Broad St., Elkhorn, WI  53121	https://www.walcohistory.org/
+Pioneer Village Museum	1866 13 1/2 14th Ave., Cameron, WI  54822	https://www.pioneervillagemuseum.org
+Manitowoc County Historical Society	924 Pine Crest Ln., Manitowoc, WI 54220	https://www.manitowoccountyhistory.org/
+Door County Historical Society	130 N 4th Avenue, Sturgeon Bay, WI  54235	https://doorcountyhistoricalsociety.org/
