@@ -1,82 +1,6 @@
 {
   "museums": [
     {
-      "id": "a-d-v-e-n-tu-r-e-sc-i-e-n-c-e-c-e-n-te-r-n-a-s-h-v-i-lle-6-1-5-8-6-2-5-1-6-0-id-r-e-q-u-i-r-ed-tn",
-      "name": "A d v e n tu r e Sc i e n c e C e n te r",
-      "city": "N a s h v i lle ( 6 1 5 ) 8 6 2 - 5 1 6 0 ID R e q u i r ed",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.77301,
-      "lng": -86.28201,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "a-l-d-e-n-b-d-o-w-m-u-s-e-u-m-o-f-s-c-i-en-c-e-a-r-t-m-i-d-l-a-n-d-9-8-9-6-3-1-5930-mi",
-      "name": "A l d e n B . D o w M u s e u m o f S c i en c e & A r t",
-      "city": "M i d l a n d ( 9 8 9 ) 6 3 1-5930",
-      "state": "MI",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "a-n-n-ar-b-o-r-h-a-n-d-s-o-n-m-u-s-e-u-m-a-n-n-a-r-b-o-r-7-3-4-9-9-5-5-4-3-9-mi",
-      "name": "A n n Ar b o r H a n d s - O n M u s e u m",
-      "city": "A n n A r b o r ( 7 3 4 ) 9 9 5 - 5 4 3 9",
-      "state": "MI",
-      "country": "US",
-      "lat": 43.6212,
-      "lng": -84.68243,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "a-n-n-i-s-to-n-m-u-se-u-m-s-a-n-d-g-a-r-de-n-s-a-n-n-is-t-o-n-2-5-6-2-3-7-6-7-6-6-al",
-      "name": "A n n i s to n M u se u m s a n d G a r de n s",
-      "city": "A n n is t o n ( 2 5 6 ) 2 3 7 - 6 7 6 6",
-      "state": "AL",
-      "country": "US",
-      "lat": 33.25888,
-      "lng": -86.82953,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "a-quaint-corner-children-s-museum-altoona-pa",
       "name": "A Quaint Corner Children's Museum",
       "city": "Altoona",
@@ -138,6 +62,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "adventure-science-center-nashville-tn",
+      "name": "Adventure Science Center",
+      "city": "Nashville",
+      "state": "TN",
+      "country": "US",
+      "lat": 36.16228,
+      "lng": -86.7743,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "aha-a-hands-on-adventure-lancaster-oh",
       "name": "AHA! A Hands-On Adventure",
       "city": "Lancaster",
@@ -166,6 +109,44 @@
       "country": "US",
       "lat": 42.20115,
       "lng": -85.58,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "airlie-gardens-wilmington-nc",
+      "name": "Airlie Gardens",
+      "city": "Wilmington",
+      "state": "NC",
+      "country": "US",
+      "lat": 34.23529,
+      "lng": -77.94873,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "alden-b-dow-museum-of-science-art-midland-mi",
+      "name": "Alden B. Dow Museum of Science & Art",
+      "city": "Midland",
+      "state": "MI",
+      "country": "US",
+      "lat": 43.61558,
+      "lng": -84.24721,
       "website": null,
       "programs": {
         "ASTC": {
@@ -267,6 +248,9 @@
       "lng": -83.74631,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -274,7 +258,27 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "anniston-museums-and-gardens-anniston-al",
+      "name": "Anniston Museums and Gardens",
+      "city": "Anniston",
+      "state": "AL",
+      "country": "US",
+      "lat": 33.66248,
+      "lng": -85.82832,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -317,13 +321,32 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "b-e-r-k-s-h-i-r-e-m-u-s-e-u-m-p-i-t-t-s-f-i-e-l-d-4-1-3-4-4-3-7-1-7-1-i-d-r-e-q-u-i-r-e-d-ma",
-      "name": "B e r k s h i r e M u s e u m",
-      "city": "P i t t s f i e l d ( 4 1 3 ) 4 4 3 - 7 1 7 1 I D R e q u i r e d",
-      "state": "MA",
+      "id": "asheville-museum-of-science-asheville-nc",
+      "name": "Asheville Museum of Science",
+      "city": "Asheville",
+      "state": "NC",
       "country": "US",
-      "lat": 42.37888,
-      "lng": -72.03237,
+      "lat": 35.59536,
+      "lng": -82.55084,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "barlow-planetarium-menasha-wi",
+      "name": "Barlow Planetarium",
+      "city": "Menasha",
+      "state": "WI",
+      "country": "US",
+      "lat": 44.20223,
+      "lng": -88.44654,
       "website": null,
       "programs": {
         "ASTC": {
@@ -368,6 +391,25 @@
       "country": "US",
       "lat": 44.94975,
       "lng": -93.0931,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "berkshire-museum-pittsfield-ma",
+      "name": "Berkshire Museum",
+      "city": "Pittsfield",
+      "state": "MA",
+      "country": "US",
+      "lat": 42.44848,
+      "lng": -73.25411,
       "website": null,
       "programs": {
         "ASTC": {
@@ -639,6 +681,9 @@
       "lng": -88.40615,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -646,6 +691,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -670,51 +716,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "c-o-r-n-i-n-g-m-u-s-e-u-m-o-f-g-l-a-s-s-c-o-r-n-in-g-6-0-7-4-3-8-5-6-0-0-ny",
-      "name": "C o r n i n g M u s e u m o f G l a s s",
-      "city": "C o r n in g ( 6 0 7 ) 4 3 8 - 5 6 0 0",
-      "state": "NY",
+      "id": "cable-natural-history-museum-cable-wi",
+      "name": "Cable Natural History Museum",
+      "city": "Cable",
+      "state": "WI",
       "country": "US",
-      "lat": 43.15617,
-      "lng": -75.84499,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "c-o-x-s-c-i-e-n-c-e-c-e-n-t-e-r-a-n-d-a-q-u-a-r-i-u-m-w-e-s-t-p-a-l-m-b-e-a-c-h-5-6-1-8-3-2-1-9-8-8-fl",
-      "name": "C o x S c i e n c e C e n t e r a n d A q u a r i u m",
-      "city": "W e s t P a l m B e a c h ( 5 6 1) 8 3 2 - 1 9 8 8",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "c-ra-d-l-e-o-f-a-v-i-a-ti-on-m-u-s-e-u-m-g-a-r-de-n-c-i-t-y-5-1-6-5-7-2-4-111-ny",
-      "name": "C ra d l e o f A v i a ti on M u s e u m",
-      "city": "G a r de n C i t y ( 5 1 6 ) 5 7 2 - 4 111",
-      "state": "NY",
-      "country": "US",
-      "lat": 43.15617,
-      "lng": -75.84499,
+      "lat": 46.20801,
+      "lng": -91.29213,
       "website": null,
       "programs": {
         "ASTC": {
@@ -771,6 +779,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "cape-fear-museum-of-history-and-science-wilmington-nc",
+      "name": "Cape Fear Museum of History and Science",
+      "city": "Wilmington",
+      "state": "NC",
+      "country": "US",
+      "lat": 34.23529,
+      "lng": -77.94873,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "carnegie-museum-of-montgomery-county-crawfordsville-in",
       "name": "Carnegie Museum of Montgomery County",
       "city": "Crawfordsville",
@@ -807,6 +834,25 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "catawba-science-center-hickory-nc",
+      "name": "Catawba Science Center",
+      "city": "Hickory",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.73333,
+      "lng": -81.34429,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -853,13 +899,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "cernan-earth-and-space-center-at-triton-college-river-grove-il",
-      "name": "Cernan Earth and Space Center at Triton College",
-      "city": "River Grove",
-      "state": "IL",
+      "id": "centro-criollo-de-ciencia-y-tecnologia-del-caribe-caguas-pr",
+      "name": "Centro Criollo de Ciencia y Tecnologia del Caribe",
+      "city": "Caguas",
+      "state": "PR",
       "country": "US",
-      "lat": 41.92586,
-      "lng": -87.83589,
+      "lat": 18.21294,
+      "lng": -66.05588,
       "website": null,
       "programs": {
         "ASTC": {
@@ -872,13 +918,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "ch-i-l-d-re-n-s-m-u-s-e-u-m-o-f-o-a-k-r-i-d-g-e-o-a-k-r-id-g-e-8-6-5-4-8-2-1-0-7-4-id-r-equired-tn",
-      "name": "Ch i l d re n 's M u s e u m o f O a k R i d g e",
-      "city": "O a k R id g e ( 8 6 5 ) 4 8 2- 1 0 7 4 ID R equired",
-      "state": "TN",
+      "id": "cernan-earth-and-space-center-at-triton-college-river-grove-il",
+      "name": "Cernan Earth and Space Center at Triton College",
+      "city": "River Grove",
+      "state": "IL",
       "country": "US",
-      "lat": null,
-      "lng": null,
+      "lat": 41.92586,
+      "lng": -87.83589,
       "website": null,
       "programs": {
         "ASTC": {
@@ -1347,6 +1393,9 @@
       "lng": -91.50183,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -1354,6 +1403,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -1477,6 +1527,9 @@
       "lng": -91.24988,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -1484,6 +1537,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -1540,6 +1594,9 @@
       "lng": -84.2719,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -1547,6 +1604,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -1733,6 +1791,9 @@
       "lng": -76.29914,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -1740,7 +1801,27 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "children-s-museum-science-center-imperial-centre-for-the-arts-sciences-rocky-mount-nc",
+      "name": "Children's Museum & Science Center, Imperial Centre for the Arts & Sciences",
+      "city": "Rocky Mount",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.94238,
+      "lng": -77.79569,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -1852,6 +1933,63 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "clark-planetarium-salt-lake-city-ut",
+      "name": "Clark Planetarium",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "country": "US",
+      "lat": 40.75962,
+      "lng": -111.8868,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "clay-center-for-the-arts-and-sciences-of-west-virginia-charleston-wv",
+      "name": "Clay Center for the Arts and Sciences of West Virginia",
+      "city": "Charleston",
+      "state": "WV",
+      "country": "US",
+      "lat": 38.3506,
+      "lng": -81.63328,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "cleveland-museum-of-natural-history-cleveland-oh",
+      "name": "Cleveland Museum of Natural History",
+      "city": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "lat": 41.49966,
+      "lng": -81.69368,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "cognition-of-davie-county-inc-mocksville-nc",
       "name": "COGNITION of Davie County, Inc.",
       "city": "Mocksville",
@@ -1911,6 +2049,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "columbus-area-children-s-museum-columbus-ne",
+      "name": "Columbus Area Children’s Museum",
+      "city": "Columbus",
+      "state": "NE",
+      "country": "US",
+      "lat": 41.4293,
+      "lng": -97.35814,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "connecticut-children-s-museum-new-haven-ct",
       "name": "Connecticut Children's Museum",
       "city": "New Haven",
@@ -1951,6 +2108,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "corning-museum-of-glass-corning-ny",
+      "name": "Corning Museum of Glass",
+      "city": "Corning",
+      "state": "NY",
+      "country": "US",
+      "lat": 42.14353,
+      "lng": -77.05434,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "corpus-christi-museum-of-science-history-corpus-christi-tx",
       "name": "Corpus Christi Museum of Science & History",
       "city": "Corpus Christi",
@@ -1979,6 +2155,9 @@
       "lng": -83.00685,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -1986,6 +2165,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -1998,6 +2178,44 @@
       "country": "US",
       "lat": 38.06084,
       "lng": -97.92977,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "cox-science-center-and-aquarium-west-palm-beach-fl",
+      "name": "Cox Science Center and Aquarium",
+      "city": "West Palm Beach",
+      "state": "FL",
+      "country": "US",
+      "lat": 26.71536,
+      "lng": -80.05329,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "cradle-of-aviation-museum-garden-city-ny",
+      "name": "Cradle of Aviation Museum",
+      "city": "Garden City",
+      "state": "NY",
+      "country": "US",
+      "lat": 40.72665,
+      "lng": -73.63431,
       "website": null,
       "programs": {
         "ASTC": {
@@ -2090,63 +2308,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "d-e-n-n-o-s-m-u-se-u-m-c-e-n-t-e-r-t-r-a-v-e-r-s-e-c-it-y-2-3-1-99-5-1-0-5-5-mi",
-      "name": "D e n n o s M u se u m C e n t e r",
-      "city": "T r a v e r s e C it y ( 2 3 1) 99 5 - 1 0 5 5",
-      "state": "MI",
-      "country": "US",
-      "lat": 43.6212,
-      "lng": -84.68243,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "d-i-s-c-o-v-e-r-y-c-e-n-t-e-r-o-c-a-l-a-3-5-2-4-0-1-3-9-0-0-fl",
-      "name": "D i s c o v e r y C e n t e r",
-      "city": "O c a l a ( 3 5 2 ) 4 0 1 - 3 9 0 0",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "d-i-s-c-o-v-e-r-y-p-a-r-k-o-f-a-m-e-r-i-ca-u-n-i-o-n-c-i-ty-7-31-8-8-5-5-4-55-tn",
-      "name": "D i s c o v e r y P a r k o f A m e r i ca",
-      "city": "U n i o n C i ty ( 7 31 ) 8 8 5 - 5 4 55",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.77301,
-      "lng": -86.28201,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "da-vinci-science-center-allentown-pa",
       "name": "Da Vinci Science Center",
       "city": "Allentown",
@@ -2154,6 +2315,25 @@
       "country": "US",
       "lat": 40.60226,
       "lng": -75.47161,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "danville-science-center-danville-va",
+      "name": "Danville Science Center",
+      "city": "Danville",
+      "state": "VA",
+      "country": "US",
+      "lat": 36.58799,
+      "lng": -79.39167,
       "website": null,
       "programs": {
         "ASTC": {
@@ -2194,6 +2374,25 @@
       "country": "US",
       "lat": 39.74595,
       "lng": -75.54659,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "dennos-museum-center-traverse-city-mi",
+      "name": "Dennos Museum Center",
+      "city": "Traverse City",
+      "state": "MI",
+      "country": "US",
+      "lat": 44.76065,
+      "lng": -85.6166,
       "website": null,
       "programs": {
         "ASTC": {
@@ -2292,6 +2491,25 @@
       "sources": [
         "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "discovery-center-ocala-fl",
+      "name": "Discovery Center",
+      "city": "Ocala",
+      "state": "FL",
+      "country": "US",
+      "lat": 29.1872,
+      "lng": -82.14009,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -2454,6 +2672,63 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "discovery-park-of-america-union-city-tn",
+      "name": "Discovery Park of America",
+      "city": "Union City",
+      "state": "TN",
+      "country": "US",
+      "lat": 36.42423,
+      "lng": -89.05701,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "discovery-place-charlotte-nc",
+      "name": "Discovery Place",
+      "city": "Charlotte",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.22721,
+      "lng": -80.84308,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "discovery-place-kids-huntersville-huntersville-nc",
+      "name": "Discovery Place Kids Huntersville",
+      "city": "Huntersville",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.41083,
+      "lng": -80.84293,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "discovery-space-of-central-pennsylvania-state-college-pa",
       "name": "Discovery Space of Central Pennsylvania",
       "city": "State College",
@@ -2480,6 +2755,25 @@
       "country": "US",
       "lat": 39.71093,
       "lng": -77.48943,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "discovery-world-milwaukee-wi",
+      "name": "Discovery World",
+      "city": "Milwaukee",
+      "state": "WI",
+      "country": "US",
+      "lat": 43.03865,
+      "lng": -87.90908,
       "website": null,
       "programs": {
         "ASTC": {
@@ -2563,32 +2857,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "e-c-o-t-a-r-i-u-m-w-o-r-c-e-s-t-e-r-5-0-8-9-2-9-2-7-0-0-id-r-e-q-u-i-r-e-d-ma",
-      "name": "E c o T a r i u m",
-      "city": "W o r c e s t e r ( 5 0 8 ) 9 2 9 - 2 7 0 0 ID R e q u i r e d",
-      "state": "MA",
+      "id": "eaa-aviation-museum-oshkosh-wi",
+      "name": "EAA Aviation Museum",
+      "city": "Oshkosh",
+      "state": "WI",
       "country": "US",
-      "lat": 42.37888,
-      "lng": -72.03237,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "e-m-e-r-a-l-d-c-o-a-s-t-s-c-i-e-n-c-e-c-e-n-t-e-r-f-o-r-t-w-a-l-t-o-n-b-e-a-c-h-8-5-0-6-6-4-1-2-6-1-fl",
-      "name": "E m e r a l d C o a s t S c i e n c e C e n t e r",
-      "city": "F o r t W a l t o n B e a c h ( 8 5 0 ) 6 6 4 - 1 2 6 1",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
+      "lat": 44.02069,
+      "lng": -88.54086,
       "website": null,
       "programs": {
         "ASTC": {
@@ -2660,6 +2935,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "ecoexploratorio-san-juan-pr",
+      "name": "EcoExploratorio",
+      "city": "San Juan",
+      "state": "PR",
+      "country": "US",
+      "lat": 18.38424,
+      "lng": -66.05344,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "ecotarium-worcester-ma",
       "name": "EcoTarium",
       "city": "Worcester",
@@ -2669,6 +2963,9 @@
       "lng": -71.76658,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -2676,18 +2973,57 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
     },
     {
-      "id": "el-la-s-h-a-r-p-m-u-s-eu-m-j-a-c-k-s-o-n-5-1-7-78-7-2-3-2-0-i-d-r-e-q-u-i-r-e-d-mi",
-      "name": "El la S h a r p M u s eu m",
-      "city": "J a c k s o n ( 5 1 7 ) 78 7 - 2 3 2 0 I D R e q u i r e d",
+      "id": "edgerton-explorit-center-aurora-ne",
+      "name": "Edgerton Explorit Center",
+      "city": "Aurora",
+      "state": "NE",
+      "country": "US",
+      "lat": 40.86689,
+      "lng": -98.00451,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "ella-sharp-museum-jackson-mi",
+      "name": "Ella Sharp Museum",
+      "city": "Jackson",
       "state": "MI",
       "country": "US",
-      "lat": 43.6212,
-      "lng": -84.68243,
+      "lat": 42.24165,
+      "lng": -84.42559,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "emerald-coast-science-center-fort-walton-beach-fl",
+      "name": "Emerald Coast Science Center",
+      "city": "Fort Walton Beach",
+      "state": "FL",
+      "country": "US",
+      "lat": 30.40576,
+      "lng": -86.61884,
       "website": null,
       "programs": {
         "ASTC": {
@@ -2795,25 +3131,6 @@
       },
       "sources": [
         "acm"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "ex-p-l-o-r-eu-m-sc-ie-n-ce-c-en-t-er-m-o-b-il-e-2-5-1-2-0-8-6-8-9-3-id-r-e-q-u-i-r-ed-al",
-      "name": "Ex p l o r eu m Sc ie n ce C en t er",
-      "city": "M o b il e (2 5 1 ) 2 0 8 - 6 8 9 3 ID R e q u i r ed",
-      "state": "AL",
-      "country": "US",
-      "lat": 33.25888,
-      "lng": -86.82953,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -3003,13 +3320,32 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "f-l-i-n-t-c-h-i-ld-r-e-n-s-m-u-s-e-u-m-fl-in-t-81-0-7-6-7-5-4-3-7-i-d-r-e-q-u-ir-e-d-mi",
-      "name": "F l i n t C h i ld r e n ' s M u s e u m",
-      "city": "Fl in t ( 81 0 ) 7 6 7 -5 4 3 7 I D R e q u ir e d",
-      "state": "MI",
+      "id": "exploreum-science-center-mobile-al",
+      "name": "Exploreum Science Center",
+      "city": "Mobile",
+      "state": "AL",
       "country": "US",
-      "lat": 43.6212,
-      "lng": -84.68243,
+      "lat": 30.69135,
+      "lng": -88.04375,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "fairbanks-museum-planetarium-st-johnsbury-vt",
+      "name": "Fairbanks Museum & Planetarium",
+      "city": "St Johnsbury",
+      "state": "VT",
+      "country": "US",
+      "lat": 44.41949,
+      "lng": -72.01565,
       "website": null,
       "programs": {
         "ASTC": {
@@ -3031,6 +3367,9 @@
       "lng": -90.50256,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -3038,6 +3377,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -3083,25 +3423,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "fl-o-r-i-d-a-a-i-r-m-u-s-e-u-m-l-a-k-e-l-a-n-d-8-6-3-9-0-4-6-8-3-3-fl",
-      "name": "Fl o r i d a A i r M u s e u m",
-      "city": "L a k e l a n d ( 8 6 3 ) 9 0 4 - 6 8 3 3",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "flandrau-science-center-planetarium-tucson-az",
       "name": "Flandrau Science Center & Planetarium",
       "city": "Tucson",
@@ -3140,6 +3461,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "fleischmann-planetarium-and-science-center-reno-nv",
+      "name": "Fleischmann Planetarium and Science Center",
+      "city": "Reno",
+      "state": "NV",
+      "country": "US",
+      "lat": 39.52618,
+      "lng": -119.81266,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "flint-children-s-museum-flint-mi",
       "name": "Flint Children's Museum",
       "city": "Flint",
@@ -3149,6 +3489,9 @@
       "lng": -83.71203,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -3156,6 +3499,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -3170,6 +3514,9 @@
       "lng": -96.5598,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -3177,7 +3524,27 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "florida-air-museum-lakeland-fl",
+      "name": "Florida Air Museum",
+      "city": "Lakeland",
+      "state": "FL",
+      "country": "US",
+      "lat": 28.03947,
+      "lng": -81.9498,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -3287,25 +3654,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "g-r-a-n-d-r-a-p-i-d-s-c-h-il-d-r-e-n-s-m-u-se-u-m-g-r-a-n-d-r-a-p-i-d-s-6-1-6-2-3-5-4726-mi",
-      "name": "G r a n d R a p i d s C h il d r e n 's M u se u m",
-      "city": "G r a n d R a p i d s (6 1 6 ) 2 3 5-4726",
-      "state": "MI",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "gateway-science-museum-chico-ca",
       "name": "Gateway Science Museum",
       "city": "Chico",
@@ -3393,6 +3741,9 @@
       "lng": -85.66719,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -3400,6 +3751,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -3485,6 +3837,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "great-lakes-science-center-cleveland-oh",
+      "name": "Great Lakes Science Center",
+      "city": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "lat": 41.49966,
+      "lng": -81.69368,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "great-river-children-s-museum-saint-cloud-mn",
       "name": "Great River Children's Museum",
       "city": "Saint Cloud",
@@ -3525,51 +3896,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "h-a-n-d-s-o-n-d-i-s-c-o-v-e-r-y-c-e-n-te-r-g-r-a-y-4-2-3-4-3-4-4-2-6-3-id-r-equired-tn",
-      "name": "H a n d s O n ! D i s c o v e r y C e n te r",
-      "city": "G r a y ( 4 2 3 ) 4 3 4 -4 2 6 3 ID R equired",
-      "state": "TN",
+      "id": "hands-on-children-s-museum-hendersonville-nc",
+      "name": "Hands On! Children's Museum",
+      "city": "Hendersonville",
+      "state": "NC",
       "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "h-a-n-d-s-o-n-s-c-i-e-n-c-e-c-e-n-t-e-r-t-u-l-l-a-h-o-m-a-9-3-1-4-5-5-8-3-8-7-tn",
-      "name": "H a n d s - O n S c i e n c e C e n t e r",
-      "city": "T u l l a h o m a ( 9 3 1 ) 4 5 5 - 8 3 8 7",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.77301,
-      "lng": -86.28201,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "h-a-r-v-a-r-d-m-u-s-e-u-m-s-o-f-s-c-i-e-n-c-e-c-u-l-t-u-r-e-c-a-m-b-r-i-d-g-e-6-1-7-495-3045-ma",
-      "name": "H a r v a r d M u s e u m s o f S c i e n c e & C u l t u r e",
-      "city": "C a m b r i d g e ( 6 1 7) 495-3045",
-      "state": "MA",
-      "country": "US",
-      "lat": null,
-      "lng": null,
+      "lat": 35.31873,
+      "lng": -82.46095,
       "website": null,
       "programs": {
         "ASTC": {
@@ -3599,6 +3932,82 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "hands-on-discovery-center-gray-tn",
+      "name": "Hands On! Discovery Center",
+      "city": "Gray",
+      "state": "TN",
+      "country": "US",
+      "lat": 36.41983,
+      "lng": -82.47654,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "hands-on-science-center-tullahoma-tn",
+      "name": "Hands-On Science Center",
+      "city": "Tullahoma",
+      "state": "TN",
+      "country": "US",
+      "lat": 35.36249,
+      "lng": -86.20998,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "harvard-museums-of-science-culture-cambridge-ma",
+      "name": "Harvard Museums of Science & Culture",
+      "city": "Cambridge",
+      "state": "MA",
+      "country": "US",
+      "lat": 42.36563,
+      "lng": -71.104,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "hastings-museum-hastings-ne",
+      "name": "Hastings Museum",
+      "city": "Hastings",
+      "state": "NE",
+      "country": "US",
+      "lat": 40.58613,
+      "lng": -98.38989,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -3719,13 +4128,32 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "i-n-t-re-p-id-m-u-s-e-u-m-n-e-w-y-o-r-k-6-4-6-3-81-5-0-30-i-d-r-e-q-u-i-r-e-d-ny",
-      "name": "I n t re p id M u s e u m",
-      "city": "N e w Y o r k ( 6 4 6 ) 3 81 -5 0 30 I D R e q u i r e d",
-      "state": "NY",
+      "id": "huntington-museum-of-art-huntington-wv",
+      "name": "Huntington Museum of Art",
+      "city": "Huntington",
+      "state": "WV",
       "country": "US",
-      "lat": 43.15617,
-      "lng": -75.84499,
+      "lat": 38.41925,
+      "lng": -82.44515,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "hutchings-museum-lehi-ut",
+      "name": "Hutchings Museum",
+      "city": "Lehi",
+      "state": "UT",
+      "country": "US",
+      "lat": 40.38811,
+      "lng": -111.8486,
       "website": null,
       "programs": {
         "ASTC": {
@@ -3825,6 +4253,44 @@
       "country": "US",
       "lat": 40.41912,
       "lng": -86.8919,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "imagination-station-science-and-history-museum-wilson-nc",
+      "name": "Imagination Station Science and History Museum",
+      "city": "Wilson",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.70591,
+      "lng": -77.91757,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "imagination-station-toledo-toledo-oh",
+      "name": "Imagination Station, Toledo",
+      "city": "Toledo",
+      "state": "OH",
+      "country": "US",
+      "lat": 41.65291,
+      "lng": -83.53782,
       "website": null,
       "programs": {
         "ASTC": {
@@ -3982,6 +4448,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "intrepid-museum-new-york-ny",
+      "name": "Intrepid Museum",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "lat": 40.71273,
+      "lng": -74.00602,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "iron-hill-museum-science-center-newark-de",
       "name": "Iron Hill Museum & Science Center",
       "city": "Newark",
@@ -4022,34 +4507,18 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "k-o-p-e-rn-ik-o-b-s-e-r-va-t-o-ry-s-c-ie-n-c-e-c-e-n-te-r-v-es-t-a-l-6-0-7-74-8-3685-ny",
-      "name": "K o p e rn ik O b s e r va t o ry & S c ie n c e C e n te r",
-      "city": "V es t a l ( 6 0 7 ) 74 8-3685",
-      "state": "NY",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "kaleideum-winston-salem-nc",
       "name": "Kaleideum",
-      "city": "Winston Salem",
+      "city": "Winston-Salem",
       "state": "NC",
       "country": "US",
       "lat": 36.09738,
       "lng": -80.24603,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -4057,6 +4526,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -4311,6 +4781,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "kiewit-luminarium-omaha-ne",
+      "name": "Kiewit Luminarium",
+      "city": "Omaha",
+      "state": "NE",
+      "country": "US",
+      "lat": 41.25875,
+      "lng": -95.93838,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "knock-knock-children-s-museum-baton-rouge-la",
       "name": "Knock Knock Children's Museum",
       "city": "Baton Rouge",
@@ -4353,51 +4842,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "l-i-c-h-t-e-r-m-a-n-n-a-t-u-r-e-c-e-n-t-e-r-m-e-m-p-h-i-s-9-0-1-6-3-6-2-2-1-1-i-d-r-e-q-u-i-r-e-d-tn",
-      "name": "L i c h t e r m a n N a t u r e C e n t e r",
-      "city": "M e m p h i s ( 9 0 1 ) 6 3 6 - 2 2 1 1 I D R e q u i r e d",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.77301,
-      "lng": -86.28201,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "l-i-n-d-s-a-y-w-i-l-d-l-i-f-e-e-x-p-e-r-i-e-n-c-e-w-a-l-n-u-t-c-r-e-e-k-9-2-5-9-3-5-1-9-7-8-ca",
-      "name": "L i n d s a y W i l d l i f e E x p e r i e n c e",
-      "city": "W a l n u t C r e e k ( 9 2 5 ) 9 3 5 - 1 9 7 8",
-      "state": "CA",
-      "country": "US",
-      "lat": 36.70146,
-      "lng": -118.756,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "l-o-n-g-i-sl-a-n-d-e-x-p-l-o-r-iu-m-po-r-t-j-e-ffe-rs-o-n-6-3-1-3-3-1-3-2-77-ny",
-      "name": "L o n g I sl a n d E x p l o r iu m",
-      "city": "Po r t J e ffe rs o n (6 3 1 ) 3 3 1- 3 2 77",
+      "id": "kopernik-observatory-science-center-vestal-ny",
+      "name": "Kopernik Observatory & Science Center",
+      "city": "Vestal",
       "state": "NY",
       "country": "US",
-      "lat": 43.15617,
-      "lng": -75.84499,
+      "lat": 42.08507,
+      "lng": -76.05381,
       "website": null,
       "programs": {
         "ASTC": {
@@ -4486,6 +4937,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "las-vegas-natural-history-museum-las-vegas-nv",
+      "name": "Las Vegas Natural History Museum",
+      "city": "Las Vegas",
+      "state": "NV",
+      "country": "US",
+      "lat": 36.16743,
+      "lng": -115.14841,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "launchpad-children-s-museum-sioux-city-ia",
       "name": "LaunchPAD Children's Museum",
       "city": "Sioux City",
@@ -4495,6 +4965,9 @@
       "lng": -96.40833,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -4502,6 +4975,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -4512,8 +4986,8 @@
       "city": "Lewisburg",
       "state": "PA",
       "country": "US",
-      "lat": 40.96453,
-      "lng": -76.88476,
+      "lat": 40.96443,
+      "lng": -76.88478,
       "website": null,
       "programs": {
         "ASTC": {
@@ -4566,6 +5040,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "lichterman-nature-center-memphis-tn",
+      "name": "Lichterman Nature Center",
+      "city": "Memphis",
+      "state": "TN",
+      "country": "US",
+      "lat": 35.14603,
+      "lng": -90.05178,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "lincoln-children-s-museum-lincoln-ne",
       "name": "Lincoln Children's Museum",
       "city": "Lincoln",
@@ -4575,6 +5068,9 @@
       "lng": -96.70032,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -4582,7 +5078,27 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "lindsay-wildlife-experience-walnut-creek-ca",
+      "name": "Lindsay Wildlife Experience",
+      "city": "Walnut Creek",
+      "state": "CA",
+      "country": "US",
+      "lat": 37.90207,
+      "lng": -122.06187,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -4648,6 +5164,25 @@
       "sources": [
         "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "long-island-explorium-port-jefferson-ny",
+      "name": "Long Island Explorium",
+      "city": "Port Jefferson",
+      "state": "NY",
+      "country": "US",
+      "lat": 40.94651,
+      "lng": -73.06913,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -4807,310 +5342,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "m-a-g-i-c-c-i-ty-d-i-s-c-o-v-e-r-y-c-e-n-t-e-r-m-in-o-t-7-0-1-8-5-8-7-5-2-9-i-d-r-e-q-u-ir-e-d-nd",
-      "name": "M a g i c C i ty D i s c o v e r y C e n t e r",
-      "city": "M in o t ( 7 0 1 ) 8 5 8 -7 5 2 9 I D R e q u ir e d",
-      "state": "ND",
-      "country": "US",
-      "lat": 47.62015,
-      "lng": -100.54074,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-a-ry-g-h-a-r-d-i-n-c-e-n-t-e-r-f-o-r-c-u-lt-u-r-a-l-a-rt-s-g-a-d-s-d-e-n-2-5-6-5-4-3-2-7-8-7-al",
-      "name": "M a ry G . H a r d i n C e n t e r f o r C u lt u r a l A rt s",
-      "city": "G a d s d e n ( 2 5 6 ) 5 4 3 - 2 7 8 7",
-      "state": "AL",
-      "country": "US",
-      "lat": 33.25888,
-      "lng": -86.82953,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-a-t-u-r-a-n-g-o-m-u-s-e-u-m-o-f-t-h-e-i-n-d-i-a-n-w-e-l-l-s-v-a-l-l-e-y-r-i-d-g-e-c-r-e-s-t-7-6-0-3-7-5-6-9-0-0-ca",
-      "name": "M a t u r a n g o M u s e u m o f t h e I n d i a n W e l l s V a l l e y",
-      "city": "R i d g e c r e s t ( 7 6 0 ) 3 7 5 - 6 9 0 0",
-      "state": "CA",
-      "country": "US",
-      "lat": 36.70146,
-      "lng": -118.756,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-a-y-b-o-r-n-m-u-se-u-m-b-a-y-lo-r-u-n-i-v-e-r-s-i-t-y-w-a-c-o-2-5-4-7-10-1180-tx",
-      "name": "M a y b o r n M u se u m , B a y lo r U n i v e r s i t y",
-      "city": "W a c o ( 2 5 4 ) 7 10-1180",
-      "state": "TX",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-a-y-b-o-r-n-sc-ie-n-ce-t-h-e-a-t-er-k-il-l-e-e-n-2-5-4-5-2-6-1-8-0-0-tx",
-      "name": "M a y b o r n Sc ie n ce T h e a t er",
-      "city": "K il l e e n ( 2 5 4) 5 2 6 - 1 8 0 0",
-      "state": "TX",
-      "country": "US",
-      "lat": 31.26389,
-      "lng": -98.54561,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-c-c-l-u-n-g-m-u-s-e-u-m-o-f-n-a-t-u-r-a-l-h-i-s-t-o-r-y-a-n-d-c-u-l-t-u-r-e-k-n-o-x-v-il-le-8-6-5-9-7-4-2-1-4-4-tn",
-      "name": "M c C l u n g M u s e u m o f N a t u r a l H i s t o r y a n d C u l t u r e",
-      "city": "K n o x v il le ( 8 6 5 ) 9 7 4 - 2 1 4 4",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.77301,
-      "lng": -86.28201,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-c-d-o-n-a-ld-o-b-se-r-v-a-t-o-r-y-f-ra-n-k-n-b-a-s-h-v-i-s-it-o-r-s-c-e-n-t-e-r-m-c-d-o-n-a-l-d-o-b-s-tx",
-      "name": "M c D o n a ld O b se r v a t o r y & F ra n k N . B a s h V i s it o r s C e n t e r",
-      "city": "M c D o n a l d O b s",
-      "state": "TX",
-      "country": "US",
-      "lat": 31.26389,
-      "lng": -98.54561,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-cw-a-n-e-s-c-i-e-n-c-e-c-e-n-t-e-r-b-ir-m-i-n-g-h-a-m-2-05-7-1-4-8-3-0-0-id-r-e-q-u-i-r-e-d-al",
-      "name": "M cW a n e S c i e n c e C e n t e r",
-      "city": "B ir m i n g h a m ( 2 05 ) 7 1 4 - 8 3 0 0 ID R e q u i r e d",
-      "state": "AL",
-      "country": "US",
-      "lat": 33.25888,
-      "lng": -86.82953,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-e-m-p-h-is-m-u-s-e-u-m-s-o-f-s-c-i-e-n-c-e-a-n-d-h-i-s-t-o-r-y-m-e-m-p-h-i-s-9-0-1-6-3-6-2-3-6-2-i-d-r-e-q-u-ired-tn",
-      "name": "M e m p h is M u s e u m s o f S c i e n c e a n d H i s t o r y",
-      "city": "M e m p h i s ( 9 0 1 ) 6 3 6 - 2 3 6 2 I D R e q u ired",
-      "state": "TN",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-id-h-u-d-s-o-n-d-i-s-c-o-v-e-ry-m-u-s-e-u-m-p-o-u-g-h-k-e-e-p-s-ie-8-4-5-471-0589-ny",
-      "name": "M id - H u d s o n D i s c o v e ry M u s e u m",
-      "city": "P o u g h k e e p s ie (8 4 5 ) 471-0589",
-      "state": "NY",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-o-o-n-sh-o-t-m-u-s-e-u-m-p-it-t-s-b-u-r-g-h-4-1-2-3-14-4-1-1-1-id-r-e-q-u-ir-e-d-pa",
-      "name": "M o o n sh o t M u s e u m",
-      "city": "P it t s b u r g h (4 1 2 ) 3 14 - 4 1 1 1 ID R e q u ir e d",
-      "state": "PA",
-      "country": "US",
-      "lat": 40.96999,
-      "lng": -77.72788,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-o-s-i-m-u-s-e-um-o-f-s-c-ie-n-c-e-i-n-no-v-a-ti-o-n-t-a-m-p-a-8-1-3-9-8-7-6-0-0-0-id-r-e-q-u-i-re-d-fl",
-      "name": "M O S I (M u s e um o f S c ie n c e & I n no v a ti o n )",
-      "city": "T a m p a ( 8 1 3 ) 9 8 7 - 6 0 0 0 ID R e q u i re d",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-o-x-i-t-h-e-w-o-l-f-m-u-s-e-u-m-o-f-e-x-p-l-o-r-a-t-i-o-n-i-n-n-o-v-a-t-i-o-n-s-a-n-t-a-b-a-r-b-a-r-a-8-0-5-7-7-0-5-0-0-0-i-d-r-e-quired-ca",
-      "name": "M O X I T h e W o l f M u s e u m o f E x p l o r a t i o n + I n n o v a t i o n",
-      "city": "S a n t a B a r b a r a ( 8 0 5 ) 7 7 0 - 5 0 0 0 I D R e quired",
-      "state": "CA",
-      "country": "US",
-      "lat": null,
-      "lng": null,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-u-s-e-k-n-o-x-v-i-l-l-e-k-n-o-x-v-i-l-l-e-8-6-5-5-9-4-1-4-9-4-i-d-r-e-q-u-i-r-e-d-tn",
-      "name": "M u s e K n o x v i l l e",
-      "city": "K n o x v i l l e ( 8 6 5 ) 5 9 4 - 1 4 9 4 I D R e q u i r e d",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.77301,
-      "lng": -86.28201,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-u-s-e-u-m-o-f-s-c-i-e-n-c-e-b-o-s-t-o-n-b-o-s-t-o-n-6-1-7-7-2-3-2-5-0-0-ma",
-      "name": "M u s e u m o f S c i e n c e , B o s t o n",
-      "city": "B o s t o n ( 6 1 7 ) 7 2 3 - 2 5 0 0",
-      "state": "MA",
-      "country": "US",
-      "lat": 42.37888,
-      "lng": -72.03237,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "m-us-e-u-m-o-f-d-isc-o-v-e-ry-a-n-d-sc-i-en-ce-f-o-r-t-l-a-u-d-e-rd-a-l-e-9-5-4-4-6-7-6-6-3-7-id-r-e-q-u-ir-ed-fl",
-      "name": "M us e u m o f D isc o v e ry a n d Sc i en ce",
-      "city": "F o r t L a u d e rd a l e (9 5 4 ) 4 6 7 - 6 6 3 7 ID R e q u ir ed",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "madison-children-s-museum-madison-wi",
       "name": "Madison Children's Museum",
       "city": "Madison",
@@ -5120,6 +5351,9 @@
       "lng": -89.38439,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -5127,6 +5361,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -5141,6 +5376,9 @@
       "lng": -101.29354,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -5148,6 +5386,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -5187,6 +5426,9 @@
       "lng": -78.63549,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -5194,7 +5436,27 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mary-g-hardin-center-for-cultural-arts-gadsden-al",
+      "name": "Mary G. Hardin Center for Cultural Arts",
+      "city": "Gadsden",
+      "state": "AL",
+      "country": "US",
+      "lat": 34.01283,
+      "lng": -86.00303,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -5218,6 +5480,82 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "maturango-museum-of-the-indian-wells-valley-ridgecrest-ca",
+      "name": "Maturango Museum of the Indian Wells Valley",
+      "city": "Ridgecrest",
+      "state": "CA",
+      "country": "US",
+      "lat": 35.62476,
+      "lng": -117.67126,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "maui-ocean-center-wailuku-hi",
+      "name": "Maui Ocean Center",
+      "city": "Wailuku",
+      "state": "HI",
+      "country": "US",
+      "lat": 20.88947,
+      "lng": -156.50894,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mayborn-museum-baylor-university-waco-tx",
+      "name": "Mayborn Museum, Baylor University",
+      "city": "Waco",
+      "state": "TX",
+      "country": "US",
+      "lat": 31.55451,
+      "lng": -97.13256,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mayborn-science-theater-killeen-tx",
+      "name": "Mayborn Science Theater",
+      "city": "Killeen",
+      "state": "TX",
+      "country": "US",
+      "lat": 31.11714,
+      "lng": -97.7278,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "mcauliffe-shepard-discovery-center-concord-nh",
       "name": "McAuliffe-Shepard Discovery Center",
       "city": "Concord",
@@ -5225,6 +5563,101 @@
       "country": "US",
       "lat": 43.20718,
       "lng": -71.53748,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mcclung-museum-of-natural-history-and-culture-knoxville-tn",
+      "name": "McClung Museum of Natural History and Culture",
+      "city": "Knoxville",
+      "state": "TN",
+      "country": "US",
+      "lat": 35.96039,
+      "lng": -83.92103,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mcdonald-observatory-frank-n-bash-visitors-center-mcdonald-obs-tx",
+      "name": "McDonald Observatory & Frank N. Bash Visitors Center",
+      "city": "McDonald Obs",
+      "state": "TX",
+      "country": "US",
+      "lat": null,
+      "lng": null,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mckinley-presidential-library-museum-canton-oh",
+      "name": "McKinley Presidential Library & Museum",
+      "city": "Canton",
+      "state": "OH",
+      "country": "US",
+      "lat": 40.79855,
+      "lng": -81.37495,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mcwane-science-center-birmingham-al",
+      "name": "McWane Science Center",
+      "city": "Birmingham",
+      "state": "AL",
+      "country": "US",
+      "lat": 33.52068,
+      "lng": -86.80243,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "memphis-museums-of-science-and-history-memphis-tn",
+      "name": "Memphis Museums of Science and History",
+      "city": "Memphis",
+      "state": "TN",
+      "country": "US",
+      "lat": 35.14603,
+      "lng": -90.05178,
       "website": null,
       "programs": {
         "ASTC": {
@@ -5277,6 +5710,44 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "michigan-flight-museum-air-adventures-belleville-mi",
+      "name": "Michigan Flight Museum & Air Adventures",
+      "city": "Belleville",
+      "state": "MI",
+      "country": "US",
+      "lat": 42.20484,
+      "lng": -83.48521,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "michigan-science-center-detroit-mi",
+      "name": "Michigan Science Center",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "lat": 42.33155,
+      "lng": -83.04664,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "mid-america-science-museum-hot-springs-ar",
       "name": "Mid-America Science Museum",
       "city": "Hot Springs",
@@ -5284,6 +5755,25 @@
       "country": "US",
       "lat": 34.50384,
       "lng": -93.05524,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mid-hudson-discovery-museum-poughkeepsie-ny",
+      "name": "Mid-Hudson Discovery Museum",
+      "city": "Poughkeepsie",
+      "state": "NY",
+      "country": "US",
+      "lat": 41.70655,
+      "lng": -73.92837,
       "website": null,
       "programs": {
         "ASTC": {
@@ -5313,6 +5803,25 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "milwaukee-public-museum-milwaukee-wi",
+      "name": "Milwaukee Public Museum",
+      "city": "Milwaukee",
+      "state": "WI",
+      "country": "US",
+      "lat": 43.03865,
+      "lng": -87.90908,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -5506,6 +6015,82 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "moonshot-museum-pittsburgh-pa",
+      "name": "Moonshot Museum",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "country": "US",
+      "lat": 40.4407,
+      "lng": -80.00257,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "morehead-planetarium-and-science-center-chapel-hill-nc",
+      "name": "Morehead Planetarium and Science Center",
+      "city": "Chapel Hill",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.91315,
+      "lng": -79.05578,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "mosi-museum-of-science-innovation-tampa-fl",
+      "name": "MOSI (Museum of Science & Innovation)",
+      "city": "Tampa",
+      "state": "FL",
+      "country": "US",
+      "lat": 27.94499,
+      "lng": -82.45831,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "moxi-the-wolf-museum-of-exploration-innovation-santa-barbara-ca",
+      "name": "MOXI The Wolf Museum of Exploration + Innovation",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "country": "US",
+      "lat": 34.42213,
+      "lng": -119.70267,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "muncie-children-s-museum-muncie-in",
       "name": "Muncie Children's Museum",
       "city": "Muncie",
@@ -5513,6 +6098,63 @@
       "country": "US",
       "lat": 40.19369,
       "lng": -85.38653,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "muse-knoxville-knoxville-tn",
+      "name": "Muse Knoxville",
+      "city": "Knoxville",
+      "state": "TN",
+      "country": "US",
+      "lat": 35.96039,
+      "lng": -83.92103,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "museum-of-coastal-carolina-and-ingram-planetarium-ocean-isle-beach-nc",
+      "name": "Museum of Coastal Carolina and Ingram Planetarium",
+      "city": "Ocean Isle Beach",
+      "state": "NC",
+      "country": "US",
+      "lat": 33.89434,
+      "lng": -78.42667,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "museum-of-discovery-and-science-fort-lauderdale-fl",
+      "name": "Museum of Discovery and Science",
+      "city": "Fort Lauderdale",
+      "state": "FL",
+      "country": "US",
+      "lat": 26.12231,
+      "lng": -80.14338,
       "website": null,
       "programs": {
         "ASTC": {
@@ -5534,6 +6176,9 @@
       "lng": -92.26465,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -5541,7 +6186,46 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "museum-of-life-and-science-durham-nc",
+      "name": "Museum of Life and Science",
+      "city": "Durham",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.99665,
+      "lng": -78.90181,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "museum-of-science-boston-boston-ma",
+      "name": "Museum of Science, Boston",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "lat": 42.35883,
+      "lng": -71.05783,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -5643,82 +6327,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "n-a-t-u-r-a-l-h-i-s-t-o-r-y-m-u-s-e-u-m-o-f-c-a-l-p-o-l-y-h-u-m-b-o-l-d-t-a-r-c-a-t-a-7-0-7-8-2-6-4-4-8-0-ca",
-      "name": "N a t u r a l H i s t o r y M u s e u m o f C a l P o l y H u m b o l d t",
-      "city": "A r c a t a 7 0 7 ) 8 2 6 - 4 4 8 0",
-      "state": "CA",
-      "country": "US",
-      "lat": 36.70146,
-      "lng": -118.756,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "n-a-t-u-r-a-l-h-i-s-t-o-r-y-m-u-s-e-u-m-s-o-f-l-o-s-a-n-g-e-l-e-s-c-o-u-n-t-y-l-o-s-a-n-g-e-l-e-s-2-1-3-7-6-3-3-4-2-6-i-d-r-e-q-u-i-re-d-ca",
-      "name": "N a t u r a l H i s t o r y M u s e u m s o f L o s A n g e l e s C o u n t y",
-      "city": "L o s A n g e l e s ( 2 1 3 ) 7 6 3 - 3 4 2 6 I D R e q u i re d",
-      "state": "CA",
-      "country": "US",
-      "lat": 36.70146,
-      "lng": -118.756,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "n-o-rt-h-m-u-s-e-u-m-o-f-n-a-tu-re-a-n-d-s-c-ie-n-c-e-l-a-n-c-a-s-t-e-r-pa",
-      "name": "N o rt h M u s e u m o f N a tu re a n d S c ie n c e",
-      "city": "L a n c a s t e r",
-      "state": "PA",
-      "country": "US",
-      "lat": 40.96999,
-      "lng": -77.72788,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "na-t-io-n-a-l-w-at-c-h-c-l-o-c-k-m-u-s-e-u-m-c-o-l-u-m-b-i-a-7-1-7-6-8-4-8-2-6-1-pa",
-      "name": "Na t io n a l W at c h & C l o c k M u s e u m",
-      "city": "C o l u m b i a ( 7 1 7 ) 6 8 4 - 8 2 6 1",
-      "state": "PA",
-      "country": "US",
-      "lat": 40.96999,
-      "lng": -77.72788,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "national-museum-of-mathematics-momath-new-york-ny",
       "name": "National Museum of Mathematics (MoMath)",
       "city": "New York",
@@ -5745,6 +6353,139 @@
       "country": "US",
       "lat": 35.0841,
       "lng": -106.65099,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "national-railroad-museum-green-bay-wi",
+      "name": "National Railroad Museum",
+      "city": "Green Bay",
+      "state": "WI",
+      "country": "US",
+      "lat": 44.51264,
+      "lng": -88.01258,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "national-watch-clock-museum-columbia-pa",
+      "name": "National Watch & Clock Museum",
+      "city": "Columbia",
+      "state": "PA",
+      "country": "US",
+      "lat": 41.03892,
+      "lng": -76.41918,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "natural-history-museum-of-cal-poly-humboldt-arcata-ca",
+      "name": "Natural History Museum of Cal Poly Humboldt",
+      "city": "Arcata",
+      "state": "CA",
+      "country": "US",
+      "lat": 40.86652,
+      "lng": -124.08284,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "natural-history-museum-of-utah-salt-lake-city-ut",
+      "name": "Natural History Museum of Utah",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "country": "US",
+      "lat": 40.75962,
+      "lng": -111.8868,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "natural-history-museums-of-los-angeles-county-los-angeles-ca",
+      "name": "Natural History Museums of Los Angeles County",
+      "city": "Los Angeles",
+      "state": "CA",
+      "country": "US",
+      "lat": 34.05369,
+      "lng": -118.24277,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "nauticus-norfolk-va",
+      "name": "Nauticus",
+      "city": "Norfolk",
+      "state": "VA",
+      "country": "US",
+      "lat": 36.84937,
+      "lng": -76.28995,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "neville-public-museum-green-bay-wi",
+      "name": "Neville Public Museum",
+      "city": "Green Bay",
+      "state": "WI",
+      "country": "US",
+      "lat": 44.51264,
+      "lng": -88.01258,
       "website": null,
       "programs": {
         "ASTC": {
@@ -5885,25 +6626,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "no-r-t-h-d-a-k-o-t-a-s-g-a-t-e-w-a-y-t-o-s-c-ie-n-c-e-b-is-m-a-r-ck-7-0-1-2-5-8-1-9-7-5-nd",
-      "name": "No r t h D a k o t a ' s G a t e w a y t o S c ie n c e",
-      "city": "B is m a r ck (7 0 1 ) 2 5 8 -1 9 7 5",
-      "state": "ND",
-      "country": "US",
-      "lat": 47.62015,
-      "lng": -100.54074,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "noah-s-ark-at-the-skirball-los-angeles-ca",
       "name": "Noah's Ark At the Skirball",
       "city": "Los Angeles",
@@ -5925,6 +6647,44 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "north-carolina-museum-of-natural-sciences-raleigh-nc",
+      "name": "North Carolina Museum of Natural Sciences",
+      "city": "Raleigh",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.7804,
+      "lng": -78.6391,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "north-carolina-transportation-museum-spencer-nc",
+      "name": "North Carolina Transportation Museum",
+      "city": "Spencer",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.69201,
+      "lng": -80.43476,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "north-dakota-s-gateway-to-science-bismarck-nd",
       "name": "North Dakota's Gateway to Science",
       "city": "Bismarck",
@@ -5934,6 +6694,9 @@
       "lng": -100.8258,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -5941,7 +6704,27 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "north-museum-of-nature-and-science-lancaster-pa",
+      "name": "North Museum of Nature and Science",
+      "city": "Lancaster",
+      "state": "PA",
+      "country": "US",
+      "lat": 40.038,
+      "lng": -76.30567,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -5988,13 +6771,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "o-rl-a-n-d-o-s-c-ie-n-c-e-ce-n-t-e-r-o-r-la-n-d-o-4-0-7-5-1-4-2-0-0-0-i-d-r-e-q-u-ir-e-d-fl",
-      "name": "O rl a n d o S c ie n c e Ce n t e r",
-      "city": "O r la n d o (4 0 7 ) 5 1 4 - 2 0 0 0 I D R e q u ir e d",
-      "state": "FL",
+      "id": "oh-wow-the-roger-gloria-jones-children-s-center-for-science-technology-youngstown-oh",
+      "name": "OH WOW! The Roger & Gloria Jones Children's Center for Science & Technology",
+      "city": "Youngstown",
+      "state": "OH",
       "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
+      "lat": 41.10358,
+      "lng": -80.65202,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6037,6 +6820,9 @@
       "lng": -95.94296,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -6044,6 +6830,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -6056,6 +6843,25 @@
       "country": "US",
       "lat": 45.52025,
       "lng": -122.67419,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "orlando-science-center-orlando-fl",
+      "name": "Orlando Science Center",
+      "city": "Orlando",
+      "state": "FL",
+      "country": "US",
+      "lat": 28.54212,
+      "lng": -81.37905,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6106,44 +6912,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "p-h-i-ll-ip-a-n-d-p-a-t-r-i-c-ia-f-r-o-st-m-u-s-e-u-m-o-f-s-c-ie-n-c-e-m-i-a-m-i-3-0-5-4-3-4-9-6-0-0-i-d-r-e-q-u-i-r-e-d-fl",
-      "name": "P h i ll ip a n d P a t r i c ia F r o st M u s e u m o f S c ie n c e",
-      "city": "M i a m i ( 3 0 5) 4 3 4 - 9 6 0 0 I D R e q u i r e d",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "p-l-a-c-e-r-n-a-t-u-r-e-c-e-n-t-e-r-a-u-b-u-r-n-5-3-0-8-7-8-6-0-5-3-ca",
-      "name": "P l a c e r N a t u r e C e n t e r",
-      "city": "A u b u r n ( 5 3 0 ) 8 7 8 - 6 0 5 3",
-      "state": "CA",
-      "country": "US",
-      "lat": 36.70146,
-      "lng": -118.756,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "pacific-science-center-seattle-wa",
       "name": "Pacific Science Center",
       "city": "Seattle",
@@ -6170,44 +6938,6 @@
       "country": "US",
       "lat": 44.94757,
       "lng": -93.3569,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "pe-n-s-a-c-o-l-a-m-e-s-s-h-a-ll-p-e-n-s-a-co-l-a-8-7-7-9-3-7-6-3-77-id-r-e-q-u-i-re-d-fl",
-      "name": "Pe n s a c o l a M E S S H a ll",
-      "city": "P e n s a co l a ( 8 7 7 ) 9 3 7 - 6 3 77 ID R e q u i re d",
-      "state": "FL",
-      "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "pe-r-o-t-m-u-s-e-u-m-o-f-n-a-t-u-r-e-a-n-d-s-c-i-e-n-c-e-d-a-l-l-a-s-2-1-4-4-2-8-5-5-5-5-id-r-e-q-ui-re-d-tx",
-      "name": "Pe r o t M u s e u m o f N a t u r e a n d S c i e n c e",
-      "city": "D a l l a s (2 1 4 ) 4 2 8 - 5 5 5 5 ID R e q ui re d",
-      "state": "TX",
-      "country": "US",
-      "lat": 31.26389,
-      "lng": -98.54561,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6260,6 +6990,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "pensacola-mess-hall-pensacola-fl",
+      "name": "Pensacola MESS Hall",
+      "city": "Pensacola",
+      "state": "FL",
+      "country": "US",
+      "lat": 30.42131,
+      "lng": -87.21691,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "peoria-playhouse-children-s-museum-peoria-il",
       "name": "Peoria PlayHouse Children's Museum",
       "city": "Peoria",
@@ -6304,6 +7053,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "perot-museum-of-nature-and-science-dallas-tx",
+      "name": "Perot Museum of Nature and Science",
+      "city": "Dallas",
+      "state": "TX",
+      "country": "US",
+      "lat": 32.77627,
+      "lng": -96.79686,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "phelps-youth-pavilion-waterloo-center-for-the-arts-waterloo-ia",
       "name": "Phelps Youth Pavilion (Waterloo Center for the Arts)",
       "city": "Waterloo",
@@ -6325,6 +7093,44 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "phillip-and-patricia-frost-museum-of-science-miami-fl",
+      "name": "Phillip and Patricia Frost Museum of Science",
+      "city": "Miami",
+      "state": "FL",
+      "country": "US",
+      "lat": 25.77416,
+      "lng": -80.1936,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "placer-nature-center-auburn-ca",
+      "name": "Placer Nature Center",
+      "city": "Auburn",
+      "state": "CA",
+      "country": "US",
+      "lat": 38.89459,
+      "lng": -121.07399,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "please-touch-museum-philadelphia-pa",
       "name": "Please Touch Museum",
       "city": "Philadelphia",
@@ -6342,6 +7148,25 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "port-discover-elizabeth-city-nc",
+      "name": "Port Discover",
+      "city": "Elizabeth City",
+      "state": "NC",
+      "country": "US",
+      "lat": 36.30102,
+      "lng": -76.22037,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -6392,6 +7217,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "putnam-museum-and-science-center-davenport-ia",
+      "name": "Putnam Museum and Science Center",
+      "city": "Davenport",
+      "state": "IA",
+      "country": "US",
+      "lat": 41.52247,
+      "lng": -90.57564,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "quincy-children-s-museum-quincy-il",
       "name": "Quincy Children's Museum",
       "city": "Quincy",
@@ -6413,13 +7257,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "re-a-d-in-g-p-u-b-l-ic-m-u-se-u-m-r-e-a-d-in-g-6-1-0-3-7-1-5-8-5-0-pa",
-      "name": "Re a d in g P u b l ic M u se u m",
-      "city": "R e a d in g (6 1 0 ) 3 7 1 - 5 8 5 0",
-      "state": "PA",
+      "id": "reach-museum-richland-wa",
+      "name": "REACH Museum",
+      "city": "Richland",
+      "state": "WA",
       "country": "US",
-      "lat": 40.96999,
-      "lng": -77.72788,
+      "lat": 46.28043,
+      "lng": -119.2752,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6432,13 +7276,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "reach-museum-richland-wa",
-      "name": "REACH Museum",
-      "city": "Richland",
-      "state": "WA",
+      "id": "reading-public-museum-reading-pa",
+      "name": "Reading Public Museum",
+      "city": "Reading",
+      "state": "PA",
       "country": "US",
-      "lat": 46.28043,
-      "lng": -119.2752,
+      "lat": 40.33534,
+      "lng": -75.92795,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6527,25 +7371,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "s-a-c-r-a-m-e-n-t-o-c-h-i-l-d-r-e-n-s-m-u-s-e-u-m-r-a-n-c-h-o-c-o-r-d-o-v-a-9-1-6-7-3-0-5-0-7-9-i-d-r-e-q-u-i-r-e-d-ca",
-      "name": "S a c r a m e n t o C h i l d r e n ' s M u s e u m",
-      "city": "R a n c h o C o r d o v a ( 9 1 6 ) 7 3 0 - 5 0 7 9 I D R e q u i r e d",
-      "state": "CA",
-      "country": "US",
-      "lat": 36.70146,
-      "lng": -118.756,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "sacramento-children-s-museum-rancho-cordova-ca",
       "name": "Sacramento Children's Museum",
       "city": "Rancho Cordova",
@@ -6555,6 +7380,9 @@
       "lng": -121.28392,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -6562,6 +7390,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -6687,6 +7516,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "santa-cruz-museum-of-natural-history-santa-cruz-ca",
+      "name": "Santa Cruz Museum of Natural History",
+      "city": "Santa Cruz",
+      "state": "CA",
+      "country": "US",
+      "lat": 37.0501,
+      "lng": -121.99059,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "santa-fe-children-s-museum-santa-fe-nm",
       "name": "Santa Fe Children's Museum",
       "city": "Santa Fe",
@@ -6708,13 +7556,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "sc-i-e-n-c-e-a-n-d-d-i-s-c-o-v-e-r-y-c-e-n-t-e-r-o-f-n-o-r-t-h-w-e-st-f-l-o-r-i-d-a-p-a-n-a-m-a-c-it-y-8-5-0-7-6-9-6-1-2-8-fl",
-      "name": "Sc i e n c e a n d D i s c o v e r y C e n t e r o f N o r t h w e st F l o r i d a",
-      "city": "P a n a m a C it y (8 5 0 ) 7 6 9 - 6 1 2 8",
-      "state": "FL",
+      "id": "schiele-museum-of-natural-history-and-planetarium-gastonia-nc",
+      "name": "Schiele Museum of Natural History and Planetarium",
+      "city": "Gastonia",
+      "state": "NC",
       "country": "US",
-      "lat": 27.75677,
-      "lng": -81.46398,
+      "lat": 35.26227,
+      "lng": -81.18382,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6786,6 +7634,44 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "science-and-discovery-center-of-northwest-florida-panama-city-fl",
+      "name": "Science and Discovery Center of Northwest Florida",
+      "city": "Panama City",
+      "state": "FL",
+      "country": "US",
+      "lat": 30.15865,
+      "lng": -85.66029,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "science-center-of-iowa-des-moines-ia",
+      "name": "Science Center of Iowa",
+      "city": "Des Moines",
+      "state": "IA",
+      "country": "US",
+      "lat": 41.58687,
+      "lng": -93.62495,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "science-central-fort-wayne-in",
       "name": "Science Central",
       "city": "Fort Wayne",
@@ -6812,6 +7698,25 @@
       "country": "US",
       "lat": 44.94975,
       "lng": -93.0931,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "science-museum-of-virginia-richmond-va",
+      "name": "Science Museum of Virginia",
+      "city": "Richmond",
+      "state": "VA",
+      "country": "US",
+      "lat": 37.53851,
+      "lng": -77.43428,
       "website": null,
       "programs": {
         "ASTC": {
@@ -6912,6 +7817,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "scienceworks-hands-on-museum-ashland-or",
+      "name": "ScienceWorks Hands-On Museum",
+      "city": "Ashland",
+      "state": "OR",
+      "country": "US",
+      "lat": 42.19725,
+      "lng": -122.7154,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "scioto-county-children-s-museum-inc-aka-candyland-children-s-museum-portsmouth-oh",
       "name": "Scioto County Children's Museum, Inc. aka Candyland Children's Museum",
       "city": "Portsmouth",
@@ -6942,6 +7866,9 @@
       "lng": -94.19725,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -6949,6 +7876,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -7028,6 +7956,44 @@
       "country": "US",
       "lat": 41.17927,
       "lng": -73.18879,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "sloan-museum-of-discovery-and-longway-planetarium-flint-mi",
+      "name": "Sloan Museum of Discovery and Longway Planetarium",
+      "city": "Flint",
+      "state": "MI",
+      "country": "US",
+      "lat": 43.01617,
+      "lng": -83.69002,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "smud-museum-of-science-and-curiosity-mosac-sacramento-ca",
+      "name": "SMUD Museum of Science and Curiosity (MOSAC)",
+      "city": "Sacramento",
+      "state": "CA",
+      "country": "US",
+      "lat": 38.58106,
+      "lng": -121.49389,
       "website": null,
       "programs": {
         "ASTC": {
@@ -7177,6 +8143,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "spi-where-science-and-play-intersect-mount-vernon-oh",
+      "name": "SPI: Where Science and Play Intersect",
+      "city": "Mount Vernon",
+      "state": "OH",
+      "country": "US",
+      "lat": 40.3934,
+      "lng": -82.48572,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "springfield-museums-springfield-ma",
       "name": "Springfield Museums",
       "city": "Springfield",
@@ -7267,6 +8252,63 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "sternberg-museum-of-natural-history-hays-ks",
+      "name": "Sternberg Museum of Natural History",
+      "city": "Hays",
+      "state": "KS",
+      "country": "US",
+      "lat": 38.871,
+      "lng": -99.33115,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "strataca-hutchinson-ks",
+      "name": "Strataca",
+      "city": "Hutchinson",
+      "state": "KS",
+      "country": "US",
+      "lat": 38.06084,
+      "lng": -97.92977,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "strategic-air-command-and-aerospace-museum-ashland-ne",
+      "name": "Strategic Air Command and Aerospace Museum",
+      "city": "Ashland",
+      "state": "NE",
+      "country": "US",
+      "lat": 41.03917,
+      "lng": -96.36839,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "sugar-hill-children-s-museum-of-art-storytelling-new-york-ny",
       "name": "Sugar Hill Children's Museum of Art & Storytelling",
       "city": "New York",
@@ -7288,13 +8330,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "t-h-e-f-r-a-n-k-l-in-i-n-s-t-itu-te-p-h-i-la-d-e-l-p-h-i-a-2-1-5-4-4-8-12-0-0-i-d-r-e-q-u-i-r-ed-pa",
-      "name": "T h e F r a n k l in I n s t itu te",
-      "city": "P h i la d e l p h i a (2 1 5 ) 4 4 8 - 12 0 0 I D R e q u i r ed",
-      "state": "PA",
+      "id": "sunriver-nature-center-observatory-sunriver-or",
+      "name": "Sunriver Nature Center & Observatory",
+      "city": "Sunriver",
+      "state": "OR",
       "country": "US",
-      "lat": 40.96999,
-      "lng": -77.72788,
+      "lat": 43.884,
+      "lng": -121.43852,
       "website": null,
       "programs": {
         "ASTC": {
@@ -7307,51 +8349,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "t-h-e-m-u-s-e-u-m-o-f-f-li-g-h-t-f-o-u-n-d-a-t-i-o-n-t-u-k-w-i-la-2-0-6-76-4-57-0-0-wa",
-      "name": "T h e M u s e u m o f F li g h t F o u n d a t i o n",
-      "city": "T u k w i la ( 2 0 6) 76 4 - 57 0 0",
-      "state": "WA",
+      "id": "swaner-preserve-and-ecocenter-park-city-ut",
+      "name": "Swaner Preserve and EcoCenter",
+      "city": "Park City",
+      "state": "UT",
       "country": "US",
-      "lat": 47.28684,
-      "lng": -120.21261,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "t-h-e-s-c-i-en-c-e-zone-casper-wy",
-      "name": "T h e S c i en c e Zone",
-      "city": "Casper",
-      "state": "WY",
-      "country": "US",
-      "lat": 42.85012,
-      "lng": -106.32514,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "t-h-e-s-t-a-te-m-u-s-e-u-m-o-f-p-e-n-n-s-yl-v-a-n-i-a-h-a-r-r-i-s-b-u-r-g-7-1-7-7-8-7-4-9-8-0-pa",
-      "name": "T h e S t a te M u s e u m o f P e n n s yl v a n i a",
-      "city": "H a r r i s b u r g (7 1 7 ) 7 8 7 - 4 9 8 0",
-      "state": "PA",
-      "country": "US",
-      "lat": 40.96999,
-      "lng": -77.72788,
+      "lat": 40.64609,
+      "lng": -111.498,
       "website": null,
       "programs": {
         "ASTC": {
@@ -7745,6 +8749,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "the-discovery-reno-nv",
+      "name": "The Discovery",
+      "city": "Reno",
+      "state": "NV",
+      "country": "US",
+      "lat": 39.52618,
+      "lng": -119.81266,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "the-discovery-science-place-tyler-tx",
       "name": "The Discovery Science Place",
       "city": "Tyler",
@@ -7825,6 +8848,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "the-franklin-institute-philadelphia-pa",
+      "name": "The Franklin Institute",
+      "city": "Philadelphia",
+      "state": "PA",
+      "country": "US",
+      "lat": 39.95272,
+      "lng": -75.16353,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "the-health-museum-houston-tx",
       "name": "The Health Museum",
       "city": "Houston",
@@ -7874,6 +8916,9 @@
       "lng": -122.27304,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -7881,6 +8926,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -7943,6 +8989,25 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "the-museum-of-flight-foundation-tukwila-wa",
+      "name": "The Museum of Flight Foundation",
+      "city": "Tukwila",
+      "state": "WA",
+      "country": "US",
+      "lat": 47.46274,
+      "lng": -122.25592,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -8073,6 +9138,44 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "the-science-zone-casper-wy",
+      "name": "The Science Zone",
+      "city": "Casper",
+      "state": "WY",
+      "country": "US",
+      "lat": 42.85012,
+      "lng": -106.32514,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "the-state-museum-of-pennsylvania-harrisburg-pa",
+      "name": "The State Museum of Pennsylvania",
+      "city": "Harrisburg",
+      "state": "PA",
+      "country": "US",
+      "lat": 40.26631,
+      "lng": -76.88611,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "the-strong-national-museum-of-play-rochester-ny",
       "name": "The Strong National Museum of Play",
       "city": "Rochester",
@@ -8090,6 +9193,25 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "the-tech-interactive-san-jose-ca",
+      "name": "The Tech Interactive",
+      "city": "San Jose",
+      "state": "CA",
+      "country": "US",
+      "lat": 37.33617,
+      "lng": -121.89059,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -8122,6 +9244,25 @@
       "country": "US",
       "lat": 44.83224,
       "lng": -93.32049,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "the-works-ohio-center-for-history-art-and-technology-newark-oh",
+      "name": "The Works: Ohio Center for History, Art and Technology",
+      "city": "Newark",
+      "state": "OH",
+      "country": "US",
+      "lat": 40.05812,
+      "lng": -82.40126,
       "website": null,
       "programs": {
         "ASTC": {
@@ -8176,6 +9317,25 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "turtle-bay-exploration-park-redding-ca",
+      "name": "Turtle Bay Exploration Park",
+      "city": "Redding",
+      "state": "CA",
+      "country": "US",
+      "lat": 40.58636,
+      "lng": -122.39168,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -8237,6 +9397,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "university-of-kansas-natural-history-museum-lawrence-ks",
+      "name": "University of Kansas Natural History Museum",
+      "city": "Lawrence",
+      "state": "KS",
+      "country": "US",
+      "lat": 38.97191,
+      "lng": -95.23594,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "university-of-louisiana-at-lafayette-science-museum-lafayette-la",
       "name": "University of Louisiana at Lafayette Science Museum",
       "city": "Lafayette",
@@ -8244,6 +9423,63 @@
       "country": "US",
       "lat": 30.22622,
       "lng": -92.01782,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "university-of-michigan-museum-of-natural-history-ann-arbor-mi",
+      "name": "University of Michigan Museum of Natural History",
+      "city": "Ann Arbor",
+      "state": "MI",
+      "country": "US",
+      "lat": 42.28137,
+      "lng": -83.74846,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "university-of-nebraska-state-museum-of-natural-history-morrill-hall-lincoln-ne",
+      "name": "University of Nebraska State Museum of Natural History-Morrill Hall",
+      "city": "Lincoln",
+      "state": "NE",
+      "country": "US",
+      "lat": 40.80889,
+      "lng": -96.70778,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "university-of-oregon-museum-of-natural-and-cultural-history-eugene-or",
+      "name": "University of Oregon Museum of Natural and Cultural History",
+      "city": "Eugene",
+      "state": "OR",
+      "country": "US",
+      "lat": 44.05051,
+      "lng": -123.09505,
       "website": null,
       "programs": {
         "ASTC": {
@@ -8277,6 +9513,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "usu-eastern-prehistoric-museum-price-ut",
+      "name": "USU Eastern Prehistoric Museum",
+      "city": "Price",
+      "state": "UT",
+      "country": "US",
+      "lat": 39.59941,
+      "lng": -110.81071,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "utica-children-s-museum-utica-ny",
       "name": "Utica Children's Museum",
       "city": "Utica",
@@ -8298,34 +9553,13 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "virginia-discovery-museum-charlottesville-va",
-      "name": "Virginia Discovery Museum",
-      "city": "Charlottesville",
+      "id": "virginia-air-and-space-science-center-hampton-va",
+      "name": "Virginia Air and Space Science Center",
+      "city": "Hampton",
       "state": "VA",
       "country": "US",
-      "lat": 38.02933,
-      "lng": -78.47806,
-      "website": null,
-      "programs": {
-        "ACM": {
-          "verified": "2026-09",
-          "benefit": "discount_50",
-          "admits": 6
-        }
-      },
-      "sources": [
-        "acm"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "w-e-n-at-c-h-e-e-v-a-l-l-e-y-m-u-s-e-u-m-c-u-l-tu-ra-l-c-e-n-t-e-r-w-e-n-a-tc-h-e-e-wa",
-      "name": "W e n at c h e e V a l l e y M u s e u m & C u l tu ra l C e n t e r",
-      "city": "W e n a tc h e e",
-      "state": "WA",
-      "country": "US",
-      "lat": 47.28684,
-      "lng": -120.21261,
+      "lat": 37.02644,
+      "lng": -76.34428,
       "website": null,
       "programs": {
         "ASTC": {
@@ -8338,13 +9572,57 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "w-o-n-d-e-r-l-a-b-m-u-s-e-u-m-o-f-s-c-i-e-n-c-e-h-e-a-l-t-h-a-n-d-t-e-c-h-n-o-l-o-g-y-b-l-o-o-m-i-n-gton-in",
-      "name": "W o n d e r L a b M u s e u m o f S c i e n c e , H e a l t h a n d T e c h n o l o g y",
-      "city": "B l o o m i n gton",
-      "state": "IN",
+      "id": "virginia-discovery-museum-charlottesville-va",
+      "name": "Virginia Discovery Museum",
+      "city": "Charlottesville",
+      "state": "VA",
       "country": "US",
-      "lat": null,
-      "lng": null,
+      "lat": 38.02933,
+      "lng": -78.47806,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
+        "ACM": {
+          "verified": "2026-09",
+          "benefit": "discount_50",
+          "admits": 6
+        }
+      },
+      "sources": [
+        "astc",
+        "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "virginia-living-museum-newport-news-va",
+      "name": "Virginia Living Museum",
+      "city": "Newport News",
+      "state": "VA",
+      "country": "US",
+      "lat": 36.9775,
+      "lng": -76.42977,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "virginia-museum-of-natural-history-martinsville-va",
+      "name": "Virginia Museum of Natural History",
+      "city": "Martinsville",
+      "state": "VA",
+      "country": "US",
+      "lat": 36.69153,
+      "lng": -79.87254,
       "website": null,
       "programs": {
         "ASTC": {
@@ -8376,6 +9654,25 @@
       "last_seen": "2026-09-23"
     },
     {
+      "id": "wenatchee-valley-museum-cultural-center-wenatchee-wa",
+      "name": "Wenatchee Valley Museum & Cultural Center",
+      "city": "Wenatchee",
+      "state": "WA",
+      "country": "US",
+      "lat": 47.42346,
+      "lng": -120.31035,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
       "id": "wenham-museum-wenham-ma",
       "name": "Wenham Museum",
       "city": "Wenham",
@@ -8393,6 +9690,44 @@
       },
       "sources": [
         "acm"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "western-north-carolina-nature-center-asheville-nc",
+      "name": "Western North Carolina Nature Center",
+      "city": "Asheville",
+      "state": "NC",
+      "country": "US",
+      "lat": 35.59536,
+      "lng": -82.55084,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "western-science-center-hemet-ca",
+      "name": "Western Science Center",
+      "city": "Hemet",
+      "state": "CA",
+      "country": "US",
+      "lat": 33.74752,
+      "lng": -116.97197,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
       ],
       "last_seen": "2026-09-23"
     },
@@ -8597,13 +9932,51 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "woods-hole-oceanographic-institution-ocean-science-discovery-center-woods-hole-508-289-ma",
+      "id": "wonderlab-museum-of-science-health-and-technology-bloomington-in",
+      "name": "WonderLab Museum of Science, Health and Technology",
+      "city": "Bloomington",
+      "state": "IN",
+      "country": "US",
+      "lat": 39.16704,
+      "lng": -86.53429,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "woods-hole-oceanographic-institution-ocean-science-discovery-center-woods-hole-ma",
       "name": "Woods Hole Oceanographic Institution Ocean Science Discovery Center",
-      "city": "Woods Hole (508) 289",
+      "city": "Woods Hole",
       "state": "MA",
       "country": "US",
       "lat": 41.52388,
       "lng": -70.6694,
+      "website": null,
+      "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        }
+      },
+      "sources": [
+        "astc"
+      ],
+      "last_seen": "2026-09-23"
+    },
+    {
+      "id": "world-of-wonders-science-museum-lodi-ca",
+      "name": "World of Wonders Science Museum",
+      "city": "Lodi",
+      "state": "CA",
+      "country": "US",
+      "lat": 38.13428,
+      "lng": -121.2736,
       "website": null,
       "programs": {
         "ASTC": {
@@ -8637,8 +10010,8 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "y-a-k-im-a-v-a-lle-y-m-useum-yakima-wa",
-      "name": "Y a k im a V a lle y M useum",
+      "id": "yakima-valley-museum-yakima-wa",
+      "name": "Yakima Valley Museum",
       "city": "Yakima",
       "state": "WA",
       "country": "US",
