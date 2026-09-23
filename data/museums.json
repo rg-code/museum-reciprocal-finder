@@ -1564,27 +1564,6 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "children-s-museum-of-new-hampshire-dover-nh",
-      "name": "Children's Museum of New Hampshire",
-      "city": "Dover",
-      "state": "NH",
-      "country": "US",
-      "lat": 43.19485,
-      "lng": -70.87303,
-      "website": null,
-      "programs": {
-        "ACM": {
-          "verified": "2026-09",
-          "benefit": "discount_50",
-          "admits": 6
-        }
-      },
-      "sources": [
-        "acm"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
       "id": "children-s-museum-of-oak-ridge-oak-ridge-tn",
       "name": "Children's Museum of Oak Ridge",
       "city": "Oak Ridge",
@@ -2637,16 +2616,22 @@
       "city": "Tulsa",
       "state": "OK",
       "country": "US",
-      "lat": 36.15631,
-      "lng": -95.99275,
+      "lat": 36.11818,
+      "lng": -95.98403,
       "website": null,
       "programs": {
         "ASTC": {
           "verified": "2026-09"
+        },
+        "ACM": {
+          "verified": "2026-09",
+          "benefit": "discount_50",
+          "admits": 6
         }
       },
       "sources": [
-        "astc"
+        "astc",
+        "acm"
       ],
       "last_seen": "2026-09-23"
     },
@@ -3781,29 +3766,13 @@
       "city": "Saint Petersburg",
       "state": "FL",
       "country": "US",
-      "lat": 27.77123,
-      "lng": -82.63403,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "great-explorations-the-children-s-museum-saint-petersburg-fl",
-      "name": "Great Explorations, The Children's Museum",
-      "city": "Saint Petersburg",
-      "state": "FL",
-      "country": "US",
       "lat": 27.79022,
       "lng": -82.63828,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -3811,6 +3780,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -4866,16 +4836,22 @@
       "city": "El Paso",
       "state": "TX",
       "country": "US",
-      "lat": 31.7601,
-      "lng": -106.48705,
+      "lat": 31.75901,
+      "lng": -106.49083,
       "website": null,
       "programs": {
         "ASTC": {
           "verified": "2026-09"
+        },
+        "ACM": {
+          "verified": "2026-09",
+          "benefit": "discount_50",
+          "admits": 6
         }
       },
       "sources": [
-        "astc"
+        "astc",
+        "acm"
       ],
       "last_seen": "2026-09-23"
     },
@@ -5089,29 +5065,13 @@
       "city": "Walnut Creek",
       "state": "CA",
       "country": "US",
-      "lat": 37.90207,
-      "lng": -122.06187,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "lindsay-wildlife-museum-walnut-creek-ca",
-      "name": "Lindsay Wildlife Museum",
-      "city": "Walnut Creek",
-      "state": "CA",
-      "country": "US",
       "lat": 37.92342,
       "lng": -122.07567,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -5119,6 +5079,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -6115,16 +6076,22 @@
       "city": "Knoxville",
       "state": "TN",
       "country": "US",
-      "lat": 35.96039,
-      "lng": -83.92103,
+      "lat": 35.99766,
+      "lng": -83.88549,
       "website": null,
       "programs": {
         "ASTC": {
           "verified": "2026-09"
+        },
+        "ACM": {
+          "verified": "2026-09",
+          "benefit": "discount_50",
+          "admits": 6
         }
       },
       "sources": [
-        "astc"
+        "astc",
+        "acm"
       ],
       "last_seen": "2026-09-23"
     },
@@ -8590,16 +8557,22 @@
       "city": "Dover",
       "state": "NH",
       "country": "US",
-      "lat": 43.19811,
-      "lng": -70.87398,
+      "lat": 43.19485,
+      "lng": -70.87303,
       "website": null,
       "programs": {
         "ASTC": {
           "verified": "2026-09"
+        },
+        "ACM": {
+          "verified": "2026-09",
+          "benefit": "discount_50",
+          "admits": 6
         }
       },
       "sources": [
-        "astc"
+        "astc",
+        "acm"
       ],
       "last_seen": "2026-09-23"
     },
@@ -8787,8 +8760,8 @@
       "last_seen": "2026-09-23"
     },
     {
-      "id": "the-doseum-san-antonio-s-museum-for-kids-san-antonio-tx",
-      "name": "The DoSeum, San Antonio's Museum for Kids",
+      "id": "the-doseum-san-antonio-tx",
+      "name": "The DoSeum",
       "city": "San Antonio",
       "state": "TX",
       "country": "US",
@@ -8796,46 +8769,9 @@
       "lng": -98.4707,
       "website": null,
       "programs": {
-        "ACM": {
-          "verified": "2026-09",
-          "benefit": "discount_50",
-          "admits": 6
-        }
-      },
-      "sources": [
-        "acm"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "the-doseum-san-antonio-tx",
-      "name": "The DoSeum",
-      "city": "San Antonio",
-      "state": "TX",
-      "country": "US",
-      "lat": 29.4246,
-      "lng": -98.49514,
-      "website": null,
-      "programs": {
         "ASTC": {
           "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "the-epc-museum-dba-la-nube-the-shape-of-imagination-el-paso-tx",
-      "name": "The EPC Museum dba La Nube: The Shape of Imagination",
-      "city": "El Paso",
-      "state": "TX",
-      "country": "US",
-      "lat": 31.75901,
-      "lng": -106.49083,
-      "website": null,
-      "programs": {
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -8843,6 +8779,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -8958,27 +8895,6 @@
       "country": "US",
       "lat": 38.57369,
       "lng": -90.40581,
-      "website": null,
-      "programs": {
-        "ACM": {
-          "verified": "2026-09",
-          "benefit": "discount_50",
-          "admits": 6
-        }
-      },
-      "sources": [
-        "acm"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "the-muse-knoxville-knoxville-tn",
-      "name": "The Muse Knoxville",
-      "city": "Knoxville",
-      "state": "TN",
-      "country": "US",
-      "lat": 35.99766,
-      "lng": -83.88549,
       "website": null,
       "programs": {
         "ACM": {
@@ -9295,27 +9211,6 @@
       },
       "sources": [
         "astc",
-        "acm"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "tulsa-children-s-museum-discovery-lab-tulsa-ok",
-      "name": "Tulsa Children's Museum Discovery Lab",
-      "city": "Tulsa",
-      "state": "OK",
-      "country": "US",
-      "lat": 36.11818,
-      "lng": -95.98403,
-      "website": null,
-      "programs": {
-        "ACM": {
-          "verified": "2026-09",
-          "benefit": "discount_50",
-          "admits": 6
-        }
-      },
-      "sources": [
         "acm"
       ],
       "last_seen": "2026-09-23"
@@ -9815,29 +9710,13 @@
       "city": "Billings",
       "state": "MT",
       "country": "US",
-      "lat": 45.7875,
-      "lng": -108.49607,
-      "website": null,
-      "programs": {
-        "ASTC": {
-          "verified": "2026-09"
-        }
-      },
-      "sources": [
-        "astc"
-      ],
-      "last_seen": "2026-09-23"
-    },
-    {
-      "id": "wise-wonders-science-discovery-center-billings-mt",
-      "name": "Wise Wonders Science & Discovery Center",
-      "city": "Billings",
-      "state": "MT",
-      "country": "US",
       "lat": 45.78094,
       "lng": -108.50967,
       "website": null,
       "programs": {
+        "ASTC": {
+          "verified": "2026-09"
+        },
         "ACM": {
           "verified": "2026-09",
           "benefit": "discount_50",
@@ -9845,6 +9724,7 @@
         }
       },
       "sources": [
+        "astc",
         "acm"
       ],
       "last_seen": "2026-09-23"
