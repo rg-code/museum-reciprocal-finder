@@ -114,7 +114,8 @@ export function applicableOptions(
     if (!def) continue;
     let benefit: Benefit = entry.benefit ?? def.default_benefit;
     if (entry.tier === IN_KIND_TIER &&
-        user.homeInstitutions.some((h) => h.tiers?.[program] === IN_KIND_TIER)) {
+        (user.homeInstitutions.some((h) => h.tiers?.[program] === IN_KIND_TIER) ||
+         user.associationTiers?.[program] === IN_KIND_TIER)) {
       benefit = "free";
     }
     const admits = entry.admits ?? def.default_admits;

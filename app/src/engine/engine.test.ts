@@ -161,3 +161,19 @@ test("AZA in-kind: a 100%-OR-50% zoo is free only for members of another 100%-OR
   assert.equal(applicableOptions(zoo, redHome, programs)[0].benefit, "discount_50");
   assert.equal(applicableOptions(plain, blueHome, programs)[0].benefit, "discount_50");
 });
+
+test("AZA in-kind via the association checkbox: blue tier gets free at blue zoos, red stays 50%", () => {
+  const programs: Programs = {
+    AZA: { name: "AZA", color: "#ff7f0e", default_benefit: "discount_50", default_admits: 2,
+      default_exclusion: { anchors: ["inter_institution"], discretionary: true } },
+  };
+  const blueZoo = museum("zoo-boise", KC, { AZA: { benefit: "discount_50", tier: "100_or_50" } });
+  const redZoo = museum("birmingham-zoo", KC, { AZA: { benefit: "discount_50" } });
+  const publicZoo = museum("lincoln-park-zoo", KC, { AZA: { benefit: "free", tier: "free_public" } });
+  const blue: UserProfile = { heldPrograms: ["AZA"], homeInstitutions: [], zipCentroid: NYC, associationTiers: { AZA: "100_or_50" } };
+  const red: UserProfile = { heldPrograms: ["AZA"], homeInstitutions: [], zipCentroid: NYC, associationTiers: { AZA: "50" } };
+  assert.equal(applicableOptions(blueZoo, blue, programs)[0].benefit, "free");
+  assert.equal(applicableOptions(redZoo, blue, programs)[0].benefit, "discount_50");
+  assert.equal(applicableOptions(blueZoo, red, programs)[0].benefit, "discount_50");
+  assert.equal(applicableOptions(publicZoo, red, programs)[0].benefit, "free");
+});

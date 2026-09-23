@@ -72,6 +72,9 @@ export interface UserProfile {
   homeInstitutions: HomeInstitution[];
   /** Residence, resolved to a centroid. Optional but strongly recommended. */
   zipCentroid?: LatLng;
+  /** Tier the user's own membership is listed at, per program, when they picked
+   *  an association rather than a home museum (e.g. { AZA: "100_or_50" }). */
+  associationTiers?: Record<string, string>;
 }
 
 export interface Option {

@@ -32,6 +32,9 @@
   .assoc { display:inline-flex; align-items:center; gap:6px; margin:4px 10px 4px 0;
     font-weight:500; }
   .assoc input { width:auto; }
+  .assoc-aza { margin:6px 0 2px; padding:8px 10px; border:1px solid var(--line); border-radius:9px; }
+  .assoc-aza .assoc { display:flex; margin:2px 0; }
+  .assoc-aza p { margin:6px 0 0; font-size:12px; }
   .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .muted { color:var(--muted); font-size:13px; }
   .cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;
@@ -220,9 +223,11 @@ function applicableOptions(museum, user, programs) {
     if (!held.has(program)) continue;
     const def = programs[program]; if (!def) continue;
     let benefit = entry.benefit || def.default_benefit;
-    // AZA is in-kind: a "100% OR 50%" zoo is free for members of another one.
+    // AZA is in-kind: a "100% OR 50%" zoo is free for members of another one —
+    // known from a home museum pick, or from the blue association checkbox.
     if (entry.tier === "100_or_50" &&
-        (user.homeInstitutions || []).some(h => (h.tiers || {})[program] === "100_or_50")) benefit = "free";
+        ((user.homeInstitutions || []).some(h => (h.tiers || {})[program] === "100_or_50") ||
+         (user.associationTiers || {})[program] === "100_or_50")) benefit = "free";
     const admits = entry.admits != null ? entry.admits : def.default_admits;
     if (isExcluded(museum, user, program, resolveExclusion(entry, def.default_exclusion))) continue;
     out.push({ program, benefit, admits, color: def.color });
@@ -330,9 +335,21 @@ function show(sec) {
   window.scrollTo(0, 0);
 }
 
+// AZA reciprocity is in-kind, so association mode asks which tier the user's
+// own zoo is listed at (a home museum pick carries its tier automatically).
+const AZA_TIER_OPTIONS = [
+  ["100_or_50", "AZA — my zoo lists “100% OR 50%” (blue)"],
+  ["50", "AZA — my zoo lists “50%” (red)"],
+];
 function renderAssocList() {
-  el("assoc-list").innerHTML = Object.keys(PROGRAMS).map(k =>
-    `<label class="assoc"><input type="checkbox" value="${k}"> <span style="color:${PROGRAMS[k].color}">●</span> ${PROGRAMS[k].name}</label>`
+  const box = (k, label, tier) =>
+    `<label class="assoc"><input type="checkbox" value="${k}"${tier ? ` data-tier="${tier}"` : ""}>
+      <span style="color:${PROGRAMS[k].color}">●</span> ${esc(label)}</label>`;
+  el("assoc-list").innerHTML = Object.keys(PROGRAMS).map(k => k !== "AZA" ? box(k, PROGRAMS[k].name) :
+    `<div class="assoc-aza">${AZA_TIER_OPTIONS.map(([t, label]) => box(k, label, t)).join("")}
+      <p class="muted">Blue: free at other “100% OR 50%” zoos, 50% off at “50%” zoos. Red: 50% off at both.
+        Home zoo listed as <b>FREE TO PUBLIC</b> (green)? Pick red — AZA says you “can expect to receive
+        free or half-price admission” at “100% OR 50%” zoos, so call those ahead to ask.</p></div>`
   ).join("");
 }
 // Home-museum picker: search box -> checkbox list; picks survive re-filtering.
@@ -371,6 +388,7 @@ const HOME_KEY = "mrf.home";  // remembered home ZIP/city (localStorage)
 async function buildUser() {
   const heldSet = new Set();
   const homeInstitutions = [];
+  const associationTiers = {};  // e.g. { AZA: "100_or_50" } from the association checkboxes
   if (mode === "museum") {
     for (const mu of MUSEUMS) {
       if (!HOME_PICKED.has(mu.id)) continue;
@@ -380,7 +398,10 @@ async function buildUser() {
         tiers: Object.fromEntries(progs.map(p => [p, mu.programs[p].tier])) });
     }
   } else if (mode === "assoc") {
-    el("assoc-list").querySelectorAll("input:checked").forEach(c => heldSet.add(c.value));
+    el("assoc-list").querySelectorAll("input:checked").forEach(c => {
+      heldSet.add(c.value);
+      if (c.dataset.tier) associationTiers[c.value] = c.dataset.tier;
+    });
   }
   const nearGiven = el("near").value.trim() !== "";
   const [home, near] = await Promise.all([resolveLocation(el("loc").value), resolveLocation(el("near").value)]);
@@ -393,6 +414,7 @@ async function buildUser() {
     heldPrograms: [...heldSet],
     homeInstitutions,
     zipCentroid: home.centroid,           // residence anchor for exclusion rules
+    associationTiers,
     home, near: nearGiven ? near : home,  // near = search origin for distance + radius
     radius: Number(el("radius").value) || null,
     _homeIds: new Set(homeInstitutions.map(h => h.id)),
@@ -554,6 +576,11 @@ el("go").addEventListener("click", renderResults);
 el("kind").addEventListener("change", () => { if (RESULTS) { RESULTS.shown = PAGE; sortResults(); renderCards(); } });
 el("more").addEventListener("click", () => { RESULTS.shown += PAGE; renderCards(); });
 el("home-search").addEventListener("input", renderHomeList);
+el("assoc-list").addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset.tier && t.checked)
+    el("assoc-list").querySelectorAll(`input[value="${t.value}"][data-tier]`).forEach(o => { if (o !== t) o.checked = false; });
+});
 el("home-list").addEventListener("change", e => {
   if (e.target.type !== "checkbox") return;
   e.target.checked ? HOME_PICKED.add(e.target.value) : HOME_PICKED.delete(e.target.value);
