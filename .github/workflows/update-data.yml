@@ -20,8 +20,14 @@ jobs:
         run: |
           git config user.name  "data-bot"
           git config user.email "data-bot@users.noreply.github.com"
-          git add data/museums.json data/meta.json pipeline/geocode_cache.json
-          git commit -m "chore(data): monthly refresh" || echo "no changes"
-          git push
+          git add data/museums.json data/meta.json
+          # The geocode cache only exists once at least one lookup has succeeded.
+          [ -f pipeline/geocode_cache.json ] && git add pipeline/geocode_cache.json || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore(data): monthly refresh"
+            git push
+          fi
       # build.py exits non-zero if a source's count collapses (guardrail),
       # which fails the job and leaves the last good data in place.
