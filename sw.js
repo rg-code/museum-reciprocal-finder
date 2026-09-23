@@ -1,5 +1,5 @@
 // Minimal offline service worker: cache the app shell + data, serve cache-first.
-const CACHE = "mrf-v8";
+const CACHE = "mrf-v9";
 const ASSETS = [
   "./",
   "./index.html",

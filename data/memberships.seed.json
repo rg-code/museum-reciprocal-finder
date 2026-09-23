@@ -16,7 +16,7 @@
       "cheapest_reciprocal_tier": { "name": "Travel/Reciprocal (2 adults + up to 6 kids)", "price": 125, "currency": "USD" },
       "unlocks": ["ASTC", "NARM", "ACM", "TIMETRAVELERS"],
       "digital_card": true,
-      "notes": "Best 'most-networks-with-a-digital-card' option from prior research. Digital card via Join It (Apple/Google Wallet), but the card face shows only the Kern seal (no reciprocal logos). Some directories also list ROAM — verify.",
+      "notes": "The most networks with a digital card: it comes via Join It (Apple/Google Wallet), though the card face shows only the Kern seal (no reciprocal logos). Some directories also list ROAM — verify.",
       "source_url": "https://kerncountymuseum.org/become-a-member/",
       "confidence": "approx"
     },
@@ -52,7 +52,7 @@
       "cheapest_reciprocal_tier": { "name": "Individual", "price": 45, "currency": "USD" },
       "unlocks": ["ASTC"],
       "digital_card": null,
-      "notes": "Cheapest single-network (ASTC-only) gateway from prior research (~$45 individual). Good if the goal is just ASTC at the lowest price. Price + digital-card status — verify.",
+      "notes": "Cheapest single-network (ASTC-only) option (~$45 individual) — good if you just want ASTC at the lowest price. Price and digital-card status — verify.",
       "source_url": "https://www.westernsciencecenter.org/",
       "confidence": "verify"
     },
@@ -64,7 +64,7 @@
       "cheapest_reciprocal_tier": { "name": "Family", "price": 100, "currency": "USD" },
       "unlocks": ["ASTC", "NARM", "ROAM"],
       "digital_card": null,
-      "notes": "~$100 family for ASTC+NARM+ROAM (three networks cheaply). Prior research paired this with a 'Carnegie (IN)' option at a similar price — that Carnegie entry still needs to be pinned down/verified.",
+      "notes": "~$100 family for ASTC + NARM + ROAM — three networks cheaply.",
       "source_url": "https://www.dennosmuseum.org/",
       "confidence": "verify"
     },
@@ -112,7 +112,7 @@
       "cheapest_reciprocal_tier": { "name": "reciprocal-eligible tier", "price": null, "currency": "USD" },
       "unlocks": ["ASTC", "NARM", "ROAM", "AHS", "ACM"],
       "digital_card": false,
-      "notes": "Highest raw coverage (5 in-scope networks + ANCA) but PHYSICAL CARD ONLY. This is one of the user's current memberships. Price/tier — verify.",
+      "notes": "Highest coverage (5 of the networks here, plus ANCA), but physical card only. Price/tier — verify.",
       "source_url": "https://nbmaa.org/",
       "confidence": "verify"
     }

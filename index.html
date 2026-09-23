@@ -23,9 +23,39 @@
   button { font:inherit; cursor:pointer; border-radius:9px; border:1px solid var(--line);
     background:#fff; padding:9px 14px; }
   button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
-  button.mode { display:block; width:100%; text-align:left; margin:8px 0; padding:14px;
-    font-weight:600; }
-  button.mode small { display:block; font-weight:400; color:var(--muted); margin-top:3px; }
+  /* Landing */
+  .hero { padding:10px 2px 16px; }
+  .hero-title { font-size:24px; line-height:1.25; margin:4px 0 8px; letter-spacing:-.01em; }
+  .hero-sub { margin:0; color:var(--muted); font-size:15px; max-width:620px; }
+  .hero-sub b { color:var(--ink); }
+  .nets { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .net { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600;
+    padding:3px 10px; border-radius:20px; background:#fff; border:1px solid var(--line); }
+  .net i { width:8px; height:8px; border-radius:50%; }
+  .paths { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:12px; }
+  button.path { display:flex; flex-direction:column; gap:6px; text-align:left; padding:16px;
+    border-radius:14px; border:1px solid var(--line); background:#fff;
+    box-shadow:0 1px 2px rgba(16,24,40,.05); transition:transform .12s ease, box-shadow .12s ease, border-color .12s; }
+  button.path:hover { transform:translateY(-2px); border-color:var(--accent);
+    box-shadow:0 6px 16px rgba(16,24,40,.10); }
+  button.path:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+  .path .ico { width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+    background:#e8f1fb; color:var(--accent); }
+  .path .ico svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8;
+    stroke-linecap:round; stroke-linejoin:round; }
+  .path-title { font-weight:700; font-size:16px; margin-top:4px; }
+  .path-desc { color:var(--muted); font-size:13px; }
+  .path-meta { margin-top:auto; padding-top:8px; display:flex; justify-content:space-between;
+    align-items:center; font-size:12px; font-weight:600; color:var(--accent); }
+  .path .go { font-size:18px; transition:transform .12s ease; }
+  button.path:hover .go { transform:translateX(3px); }
+  /* Quick fade-up when a screen appears */
+  #onboarding, .card { animation:rise .18s ease-out; }
+  @keyframes rise { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce) {
+    #onboarding, .card, button.path, .path .go { animation:none; transition:none; }
+    button.path:hover, button.path:hover .go { transform:none; }
+  }
   label { display:block; font-weight:600; margin:12px 0 4px; }
   input, select { font:inherit; width:100%; padding:9px 10px; border:1px solid var(--line);
     border-radius:9px; background:#fff; }
@@ -75,9 +105,18 @@
     margin-top:8px; padding-top:10px; }
   a.link { color:var(--accent); }
   .hidden { display:none; }
-  .gw { border-top:1px solid var(--line); padding:10px 0; }
-  .gw:first-child { border-top:none; }
-  .price { font-weight:700; }
+  .arms { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:10px; margin:4px 0 8px; }
+  .arm { text-align:left; padding:12px 14px; font-weight:600; }
+  .arm small { display:block; font-weight:400; color:var(--muted); margin-top:3px; }
+  .arm[aria-pressed="true"] { border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent);
+    background:#f3f8fd; }
+  .price { flex:none; font-weight:700; font-size:14px; white-space:nowrap; }
+  .result .tier { font-size:13px; }
+  .result .tags { display:flex; gap:6px; flex-wrap:wrap; }
+  .tag { font-size:11px; font-weight:600; border:1px solid var(--line); border-radius:20px; padding:1px 8px;
+    background:rgba(255,255,255,.6); color:var(--ink); }
+  .tag.instant { border-color:#137a3a; color:#137a3a; }
+  .result .note { font-size:12px; color:var(--muted); }
   .picklist { max-height:240px; overflow-y:auto; border:1px solid var(--line); border-radius:9px;
     margin-top:6px; background:#fff; }
   .picklist label { display:flex; gap:8px; align-items:baseline; margin:0; padding:7px 10px;
@@ -96,15 +135,34 @@
   <p>Which museums does your membership get you into free or at a discount?</p>
 </header>
 <main>
-  <div id="onboarding" class="card">
-    <h2>Get started</h2>
-    <button class="mode" data-mode="museum">I'm a member of a museum
-      <small>Pick your home museum(s) — most accurate (uses their location for distance rules).</small></button>
-    <button class="mode" data-mode="assoc">I have these associations
-      <small>Choose the networks your membership includes (ASTC, NARM, …).</small></button>
-    <button class="mode" data-mode="none">I don't have a membership yet
-      <small>See the cheapest membership that unlocks the most reciprocal access.</small></button>
-  </div>
+  <section id="onboarding">
+    <div class="hero">
+      <h2 class="hero-title">Your membership opens more doors than you think.</h2>
+      <p class="hero-sub">See which of <b id="stat-museums">3,000+</b> museums, zoos and gardens you can visit
+        free or half-price across <b id="stat-nets">7</b> reciprocal networks.</p>
+      <div id="hero-nets" class="nets" aria-hidden="true"></div>
+    </div>
+    <div class="paths">
+      <button class="mode path" data-mode="museum">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21v-9M9.5 21v-9M14.5 21v-9M19 21v-9M2.5 9.5 12 4l9.5 5.5z"/></svg></span>
+        <span class="path-title">I'm a member of a museum</span>
+        <span class="path-desc">Pick your home museum — the most accurate, since it knows your distance rules.</span>
+        <span class="path-meta"><span id="stat-pick">Search 3,000+ museums</span><span class="go" aria-hidden="true">→</span></span>
+      </button>
+      <button class="mode path" data-mode="assoc">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="m8.4 10.8 7.2-3.6M8.4 13.2l7.2 3.6"/></svg></span>
+        <span class="path-title">I have these associations</span>
+        <span class="path-desc">Tick the networks on your card: ASTC, NARM, AZA (blue or red) and more.</span>
+        <span class="path-meta"><span id="stat-assoc">7 networks</span><span class="go" aria-hidden="true">→</span></span>
+      </button>
+      <button class="mode path" data-mode="none">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></span>
+        <span class="path-title">I don't have a membership yet</span>
+        <span class="path-desc">Cheapest, local, or a digital card you can use today.</span>
+        <span class="path-meta"><span id="stat-gw">3 ways to choose</span><span class="go" aria-hidden="true">→</span></span>
+      </button>
+    </div>
+  </section>
 
   <div id="membership" class="card hidden">
     <h2 id="membership-title">Your membership</h2>
@@ -169,12 +227,34 @@
 
   <div id="gateway" class="card hidden">
     <div class="row" style="justify-content:space-between">
-      <h2>Cheapest gateway memberships</h2>
+      <h2>Find a membership</h2>
       <button id="back3">Start over</button>
     </div>
-    <p class="muted">Buy the smallest membership that unlocks the most reciprocal access.
-      Prices approximate — confirm on the museum's site.</p>
-    <div id="gateway-list"></div>
+    <div class="arms">
+      <button class="arm" data-arm="cheap" aria-pressed="false">Cheapest membership
+        <small>The lowest price that unlocks reciprocal networks.</small></button>
+      <button class="arm" data-arm="local" aria-pressed="false">Support a local museum
+        <small>Museums near you that belong to a reciprocal network.</small></button>
+      <button class="arm" data-arm="instant" aria-pressed="false">I need one right away
+        <small>Cheap memberships with an instant digital card.</small></button>
+    </div>
+    <div id="gw-local-form" class="hidden">
+      <label for="gw-zip">Your ZIP or city</label>
+      <div class="row">
+        <input id="gw-zip" autocomplete="postal-code" placeholder="e.g. 64111 or Kansas City, MO" style="flex:1 1 220px; width:auto" />
+        <select id="gw-radius" style="flex:0 0 150px; width:auto">
+          <option value="10">within 10 mi</option>
+          <option value="25" selected>within 25 mi</option>
+          <option value="50">within 50 mi</option>
+        </select>
+        <button class="primary" id="gw-go">Show museums</button>
+      </div>
+      <p id="gw-zip-note" class="muted"></p>
+    </div>
+    <p id="gw-note" class="muted"></p>
+    <div id="gateway-list" class="cards"></div>
+    <p class="disclaimer">Prices are approximate (gathered Sep 2026) and reciprocal benefits usually
+      come only with the tier shown — always confirm on the museum's membership page before buying.</p>
   </div>
 </main>
 
@@ -328,6 +408,16 @@ async function loadData() {
   MUSEUMS = m.museums || [];
   el("sample-note").classList.toggle("hidden", !m._meta);  // only the sample file carries _meta
   MEMBERSHIPS = g.gateways || [];
+  // Live landing-page numbers
+  const nets = Object.keys(PROGRAMS), fmt = n => n.toLocaleString("en-US");
+  el("stat-museums").textContent = fmt(MUSEUMS.length);
+  el("stat-nets").textContent = nets.length;
+  el("stat-pick").textContent = `Search ${fmt(MUSEUMS.length)} museums`;
+  el("stat-assoc").textContent = `${nets.length} networks`;
+  const prices = MEMBERSHIPS.map(g => (g.cheapest_reciprocal_tier || {}).price).filter(p => p != null);
+  if (prices.length) el("stat-gw").textContent = `Memberships from $${Math.min(...prices)}`;
+  el("hero-nets").innerHTML = nets.map(k => `<span class="net"><i style="background:${PROGRAMS[k].color}"></i>${
+    k === "TIMETRAVELERS" ? "Time Travelers" : k}</span>`).join("");
 }
 
 function show(sec) {
@@ -543,30 +633,112 @@ function renderCards() {
   el("more").textContent = `Show more (${rows.length - shown} left)`;
 }
 
-function renderGateway() {
-  const list = [...MEMBERSHIPS].sort((a, b) => {
-    const pa = (a.cheapest_reciprocal_tier||{}).price ?? 1e9;
-    const pb = (b.cheapest_reciprocal_tier||{}).price ?? 1e9;
-    return (b.unlocks.length - a.unlocks.length) || (pa - pb);
-  });
-  el("gateway-list").innerHTML = list.map(g => {
-    const tier = g.cheapest_reciprocal_tier || {};
-    const price = tier.price != null ? `$${tier.price}` : "price varies";
-    const chips = g.unlocks.map(p =>
-      `<span class="chip" style="background:${(PROGRAMS[p]||{}).color||'#888'}">${p}</span>`).join("");
-    const card = g.digital_card === true ? " · digital card" : (g.digital_card === false ? " · physical card only" : "");
-    return `<div class="gw">
-      <div><span class="price">${price}</span> — ${g.name} <span class="muted">(${g.city||""}, ${g.state||""}${card})</span></div>
-      <div class="chips">${chips}</div>
+// ---- No membership yet: three ways to pick one ----
+let GW_ARM = null;
+const priceOf = g => (g.cheapest_reciprocal_tier || {}).price;
+const byPrice = (a, b) => ((priceOf(a) ?? 1e9) - (priceOf(b) ?? 1e9)) || (b.unlocks.length - a.unlocks.length);
+// The gateway's record in museums.json (for its type colors / website), by id, else name + city.
+function museumFor(g) {
+  return MUSEUMS.find(m => m.id === g.id) || MUSEUMS.find(m => m.state === g.state &&
+    normSearch(m.city || "") === normSearch(g.city || "") &&
+    normSearch(m.name).startsWith(normSearch(g.name).split(" ").slice(0, 3).join(" ")));
+}
+function gatewayFor(m) {
+  return MEMBERSHIPS.find(g => g.id === m.id) || MEMBERSHIPS.find(g => museumFor(g) === m);
+}
+const chipsFor = progs => progs.map(p =>
+  `<span class="chip" style="background:${(PROGRAMS[p] || {}).color || "#888"}">${p}</span>`).join("");
+const cardTag = g => g.digital_card === true ? `<span class="tag instant">Instant digital card</span>`
+  : g.digital_card === false ? `<span class="tag">Physical card only</span>` : `<span class="tag">Card type not confirmed</span>`;
+function linksFor(m, name, city, state, extraHref) {
+  const q = encodeURIComponent([name, city, state].filter(Boolean).join(" "));
+  const site = m && /^https?:\/\/[^\s/]+\.[a-z]{2,}/i.test(m.website || "") ? m.website : null;
+  return `<div class="links">
+      ${extraHref ? `<a class="out" href="${esc(extraHref)}" target="_blank" rel="noopener">Membership page ↗</a>` : ""}
+      ${site && site !== extraHref ? `<a class="out" href="${esc(site)}" target="_blank" rel="noopener">Website ↗</a>` : ""}
+      <a class="out" href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener">Search on Google ↗</a>
     </div>`;
-  }).join("");
+}
+function gatewayCard(g, distStr = "") {
+  const m = museumFor(g), tier = g.cheapest_reciprocal_tier || {};
+  const [accent, tint] = KIND_COLORS[m ? kindsOf(m)[0] : "other"];
+  const price = tier.price != null ? `$${tier.price}` : "Price varies";
+  return `<article class="result" style="--accent:${accent};--tint:${tint}">
+      <div class="top"><h3 class="name">${esc(g.name)}</h3><span class="price">${price}</span></div>
+      <div class="muted">${esc([g.city, g.state].filter(Boolean).join(", "))}${distStr}</div>
+      <div class="tier">Buy: <b>${esc(tier.name || "reciprocal-eligible tier")}</b></div>
+      <div class="chips">${chipsFor(g.unlocks)}</div>
+      <div class="tags">${cardTag(g)}</div>
+      ${g.notes ? `<div class="note">${esc(g.notes)}</div>` : ""}
+      ${linksFor(m, g.name, g.city, g.state, g.source_url)}
+    </article>`;
+}
+function localCard(m, dist) {
+  const g = gatewayFor(m), tier = g && g.cheapest_reciprocal_tier || {};
+  const [accent, tint] = KIND_COLORS[kindsOf(m)[0]];
+  const price = g && tier.price != null ? `$${tier.price}` : "";
+  return `<article class="result" style="--accent:${accent};--tint:${tint}">
+      <div class="top"><h3 class="name">${esc(m.name)}</h3>${price ? `<span class="price">${price}</span>` : ""}</div>
+      <div class="muted">${esc([m.city, m.state].filter(Boolean).join(", "))} · ${Math.round(dist)} mi</div>
+      <div class="tier">${g ? `Reciprocal tier: <b>${esc(tier.name || "see museum")}</b>`
+        : `Member museum of:`}</div>
+      <div class="chips">${chipsFor(Object.keys(m.programs))}</div>
+      <div class="kinds"><span class="swatch" aria-hidden="true"></span>${kindsOf(m).map(k => esc(KIND_LABELS[k])).join(" · ")}</div>
+      ${g ? `<div class="tags">${cardTag(g)}</div>` : ""}
+      ${linksFor(m, m.name, m.city, m.state, g && g.source_url)}
+    </article>`;
+}
+
+function renderGateway(arm = GW_ARM) {
+  GW_ARM = arm;
+  document.querySelectorAll("button.arm").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.arm === arm)));
+  el("gw-local-form").classList.toggle("hidden", arm !== "local");
+  const list = el("gateway-list"), note = el("gw-note");
+  if (!arm) {
+    note.textContent = "Choose what matters most to you.";
+    list.innerHTML = "";
+  } else if (arm === "cheap") {
+    note.textContent = "Cheapest first. A membership far from home can unlock the widest access: ASTC and " +
+      "AHS don't cover museums within 90 mi of your home museum or where you live, so buy where you won't visit.";
+    list.innerHTML = [...MEMBERSHIPS].sort(byPrice).map(g => gatewayCard(g)).join("");
+  } else if (arm === "instant") {
+    const fast = MEMBERSHIPS.filter(g => g.digital_card === true).sort(byPrice);
+    note.textContent = `${fast.length} memberships issue a digital card (email or phone wallet) at checkout, ` +
+      "so you can use reciprocal benefits the same day. Cheapest first.";
+    list.innerHTML = fast.map(g => gatewayCard(g)).join("");
+  } else if (arm === "local") {
+    try { if (!el("gw-zip").value) el("gw-zip").value = localStorage.getItem(HOME_KEY) || ""; } catch {}
+    note.textContent = "";
+    list.innerHTML = "";
+    if (el("gw-zip").value.trim()) renderLocal();
+  }
   show("gateway");
 }
 
+async function renderLocal() {
+  const loc = await resolveLocation(el("gw-zip").value);
+  el("gw-zip-note").textContent = loc.centroid ? loc.note : (loc.note || "Enter your ZIP or city.");
+  if (!loc.centroid) { el("gateway-list").innerHTML = ""; el("gw-note").textContent = ""; return; }
+  try { localStorage.setItem(HOME_KEY, el("gw-zip").value.trim()); } catch {}
+  const radius = Number(el("gw-radius").value);
+  const near = MUSEUMS.filter(m => m.lat != null)
+    .map(m => ({ m, dist: haversineMiles(m, loc.centroid) }))
+    .filter(r => r.dist <= radius)
+    .sort((a, b) => a.dist - b.dist || a.m.name.localeCompare(b.m.name));
+  el("gw-note").textContent = near.length
+    ? `${near.length} museum${near.length === 1 ? "" : "s"} within ${radius} mi of ${loc.label} belong to a reciprocal ` +
+      "network. Joining supports them directly; the networks shown usually come with a specific membership level. " +
+      "Heads-up: ASTC and AHS don't cover museums within 90 mi of home, so those perks pay off when you travel."
+    : `No reciprocal-network museums within ${radius} mi of ${loc.label} — try a wider radius.`;
+  el("gateway-list").innerHTML = near.map(r => localCard(r.m, r.dist)).join("");
+}
+
 // wire up
-document.querySelectorAll("button.mode").forEach(b => b.addEventListener("click", () => {
+document.querySelectorAll("button.mode").forEach(b => b.addEventListener("click", async () => {
   mode = b.dataset.mode;
-  if (mode === "none") { renderGateway(); return; }
+  document.body.style.cursor = "progress";
+  try { await dataReady; } finally { document.body.style.cursor = ""; }
+  if (mode === "none") { renderGateway(null); return; }
   el("membership-title").textContent = mode === "museum" ? "Your home museum" : "Your associations";
   el("home-wrap").classList.toggle("hidden", mode !== "museum");
   el("assoc-wrap").classList.toggle("hidden", mode !== "assoc");
@@ -595,12 +767,19 @@ el("home-picked").addEventListener("click", e => {
 el("back1").addEventListener("click", () => show("onboarding"));
 el("back2").addEventListener("click", () => show("onboarding"));
 el("back3").addEventListener("click", () => show("onboarding"));
+document.querySelectorAll("button.arm").forEach(b => b.addEventListener("click", async () => {
+  await dataReady; renderGateway(b.dataset.arm); }));
+el("gw-go").addEventListener("click", renderLocal);
+el("gw-zip").addEventListener("keydown", e => { if (e.key === "Enter") renderLocal(); });
+el("gw-radius").addEventListener("change", () => { if (el("gw-zip").value.trim()) renderLocal(); });
 
-loadData().then(() => {
+// The landing page is usable immediately; a click that lands before the data
+// has arrived just waits for it (instead of opening an empty list).
+const dataReady = loadData().then(() => {
   renderAssocList(); renderHomeList();
   try { el("loc").value = localStorage.getItem(HOME_KEY) || ""; } catch {}
-})
-  .catch(e => { el("onboarding").innerHTML = "<p>Failed to load data: " + e + "</p>"; });
+});
+dataReady.catch(e => { el("onboarding").innerHTML = "<p>Failed to load data: " + e + "</p>"; });
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
