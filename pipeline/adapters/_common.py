@@ -27,14 +27,15 @@ _US_STATES = {
     "SOUTH CAROLINA": "SC", "SOUTH DAKOTA": "SD", "TENNESSEE": "TN", "TEXAS": "TX",
     "UTAH": "UT", "VERMONT": "VT", "VIRGINIA": "VA", "WASHINGTON": "WA",
     "WEST VIRGINIA": "WV", "WISCONSIN": "WI", "WYOMING": "WY",
-    "DISTRICT OF COLUMBIA": "DC",
+    "DISTRICT OF COLUMBIA": "DC", "PUERTO RICO": "PR",
 }
 _STATE_ABBRS = set(_US_STATES.values())
 
 
 def state_header(line: str) -> Optional[str]:
     """Return the 2-letter code if `line` is a state section header, else None."""
-    key = line.strip().upper()
+    # Drop apostrophes/okinas so "HAWAI’I" / "HAWAIʻI" match "HAWAII".
+    key = re.sub(r"['‘’ʻ`]", "", line.strip().upper())
     if key in _US_STATES:
         return _US_STATES[key]
     if key in _STATE_ABBRS:

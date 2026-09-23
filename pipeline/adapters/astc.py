@@ -33,6 +33,8 @@ PROGRAM = "ASTC"
 
 # A US phone anywhere in the tail: "(256) 237-6766", "256 237 6766", "707) 826-4480".
 _PHONE = re.compile(r"\(?\d{3}\)?[\s.\-]*\d{3}[\s.\-]*\d{4}")
+# What's left when a long row wraps mid-phone: "(508) 289-", "(252)", "(402) 502-336".
+_PARTIAL_PHONE = re.compile(r"\s*\(?\d{3}\)(?:[\s.\-]+\d{1,4}){0,2}[\s.\-]*$")
 
 
 def parse_text(text: str) -> List[Record]:
@@ -100,6 +102,7 @@ def _split_name_city(line: str):
     """
     s = _PHONE.split(line, maxsplit=1)[0]          # drop phone and everything after
     s = re.sub(r"ID\s*Required", "", s, flags=re.I)
+    s = _PARTIAL_PHONE.sub("", s)                  # phone cut off by a line wrap
     s = s.strip().rstrip(" ,(-").strip()
     name, sep, city = s.rpartition(",")
     if not sep:                                    # no comma left -> all name

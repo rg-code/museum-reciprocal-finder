@@ -55,6 +55,33 @@ def test_astc_city_is_last_comma_field_when_name_has_commas():
     assert records[0].city == "Wichita" and records[0].state == "KS"
 
 
+def test_astc_phone_cut_off_by_line_wrap_is_not_left_in_city():
+    # A long row can wrap mid-phone; the continuation line ("2663") is skipped.
+    text = (
+        "MASSACHUSETTS\n"
+        "Woods Hole Oceanographic Institution Ocean Science Discovery Center, Woods Hole (508) 289-\n"
+        "2663\n"
+        "NORTH CAROLINA\n"
+        "Children's Museum & Science Center, Rocky Mount (252)\n"
+        "972-1266\n"
+    )
+    records = astc.parse_text(text)
+    assert [(r.city, r.state) for r in records] == [("Woods Hole", "MA"), ("Rocky Mount", "NC")]
+
+
+def test_astc_hawaii_header_with_curly_apostrophe_is_a_us_state():
+    text = "HAWAI’I\nMaui Ocean Center, Wailuku (808) 270-7000\n"
+    records = astc.parse_text(text)
+    assert len(records) == 1
+    assert records[0].state == "HI" and records[0].city == "Wailuku"
+
+
+def test_astc_puerto_rico_is_kept_but_other_countries_are_not():
+    text = "PUERTO RICO\nEcoExploratorio, San Juan (787) 281-9090\nCANADA\nScience North, Sudbury (705) 522-3701\n"
+    records = astc.parse_text(text)
+    assert [(r.name, r.state) for r in records] == [("EcoExploratorio", "PR")]
+
+
 def test_astc_entry_without_trailing_state_uses_section_header():
     text = "OHIO\nBoonshoft Museum of Discovery, Dayton\n"
     records = astc.parse_text(text)
