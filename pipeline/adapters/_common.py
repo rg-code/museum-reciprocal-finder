@@ -10,8 +10,8 @@ import re
 from dataclasses import dataclass, field, asdict
 from typing import Optional
 
-# The app's seven in-scope networks.
-NETWORKS = ["ASTC", "NARM", "ROAM", "AZA", "AHS", "TIMETRAVELERS", "ACM"]
+# The app's in-scope networks.
+NETWORKS = ["ASTC", "NARM", "ROAM", "AZA", "AHS", "TIMETRAVELERS", "ACM", "ANCA"]
 
 _US_STATES = {
     "ALABAMA": "AL", "ALASKA": "AK", "ARIZONA": "AZ", "ARKANSAS": "AR",

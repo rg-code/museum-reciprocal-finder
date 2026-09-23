@@ -19,7 +19,7 @@ jobs:
       # AZA and Time Travelers opt out of scraping: they're read from
       # pipeline/manual_drops/<program>/ when a file is there, else skipped.
       - name: Build data/museums.json from live sources + manual drops
-        run: python pipeline/build.py --sources astc,acm,narm,roam,ahs,aza,timetravelers
+        run: python pipeline/build.py --sources astc,acm,narm,roam,ahs,aza,timetravelers,anca
       - name: Commit refreshed data (if changed)
         run: |
           git config user.name  "data-bot"

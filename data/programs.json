@@ -41,5 +41,11 @@
     "default_benefit": "discount_50", "default_admits": 6,
     "default_exclusion": null,
     "source_url": "https://findachildrensmuseum.org/reciprocal-network/"
+  },
+  "ANCA": {
+    "name": "Association of Nature Center Administrators Reciprocal Program", "category": "nature", "color": "#128a8f",
+    "default_benefit": "varies", "default_admits": 2,
+    "default_exclusion": { "radius_mi": 50, "anchors": ["residence"], "discretionary": true },
+    "source_url": "https://natctr.org/membership/reciprocal-program"
   }
 }

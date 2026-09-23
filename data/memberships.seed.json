@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Seed catalog for the gateway-membership recommender (memberships.json in the app). Each entry = a museum that SELLS a reciprocal-granting membership, its cheapest qualifying tier, and which of the app's 7 networks that tier unlocks.",
-    "networks_in_scope": ["ASTC", "NARM", "ROAM", "AZA", "AHS", "TIMETRAVELERS", "ACM"],
-    "out_of_scope_networks_seen": ["MARP", "ANCA"],
+    "networks_in_scope": ["ASTC", "NARM", "ROAM", "AZA", "AHS", "TIMETRAVELERS", "ACM", "ANCA"],
+    "out_of_scope_networks_seen": ["MARP"],
     "prices_note": "Prices are approximate and were gathered 2026-09 from museum pages and prior project research. ALWAYS reconfirm on the museum's own membership page before relying on them; museums change tiers/prices. lat/lng are approximate city-level and should be replaced by real geocoding.",
     "asof": "2026-09",
     "schema_version": 1
@@ -110,9 +110,9 @@
       "city": "New Britain", "state": "CT",
       "lat": 41.6612, "lng": -72.7795,
       "cheapest_reciprocal_tier": { "name": "reciprocal-eligible tier", "price": null, "currency": "USD" },
-      "unlocks": ["ASTC", "NARM", "ROAM", "AHS", "ACM"],
+      "unlocks": ["ASTC", "NARM", "ROAM", "AHS", "ACM", "ANCA"],
       "digital_card": false,
-      "notes": "Highest coverage (5 of the networks here, plus ANCA), but physical card only. Price/tier — verify.",
+      "notes": "Highest coverage (6 of the networks here), but physical card only. Price/tier — verify.",
       "source_url": "https://nbmaa.org/",
       "confidence": "verify"
     }

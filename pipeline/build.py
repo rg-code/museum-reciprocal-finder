@@ -32,7 +32,7 @@ DATA = HERE.parent / "data"
 sys.path.insert(0, str(ADAPTERS))
 sys.path.insert(0, str(HERE))
 
-import astc, acm, narm, roam, aza, ahs, timetravelers as tt  # noqa: E402
+import astc, acm, narm, roam, aza, ahs, anca, timetravelers as tt  # noqa: E402
 from _common import Record, place_key  # noqa: E402
 
 
@@ -54,6 +54,7 @@ SOURCES: Dict[str, dict] = {
     "aza":  {"live": aza.fetch,  "fixture": _txt(FIXTURES / "aza_sample.txt", aza.parse_text)},
     "ahs":  {"live": ahs.fetch,  "fixture": _json(FIXTURES / "ahs_sample.json", ahs.parse_json)},
     "timetravelers": {"live": tt.fetch, "fixture": _txt(FIXTURES / "timetravelers_sample.txt", tt.parse_text)},
+    "anca": {"live": anca.fetch, "fixture": _txt(FIXTURES / "anca_sample.html", anca.parse_html)},
 }
 
 
@@ -109,10 +110,10 @@ def _manual_drop(program: str) -> Optional[List[Record]]:
     parser = {
         "astc": astc.parse_text, "roam": roam.parse_text, "aza": aza.parse_text,
         "acm": acm.parse_json, "narm": narm.parse_text, "timetravelers": tt.parse_text,
-        "ahs": ahs.parse_json,
+        "ahs": ahs.parse_json, "anca": anca.parse_html,
     }[program]
     module = {"astc": astc, "roam": roam, "aza": aza, "acm": acm, "narm": narm,
-              "timetravelers": tt, "ahs": ahs}[program]
+              "timetravelers": tt, "ahs": ahs, "anca": anca}[program]
     raw_kinds = {".pdf": "extract_pdf_text", ".htm": "extract_html_text", ".html": "extract_html_text"}
     raw = set()
     for f in files:
@@ -185,6 +186,7 @@ SAME_MUSEUM = {
     "luxembourg-american-cultural-center-belgium-wi": "luxembourg-american-cultural-society-and-center-belgium-wi",
     "westford-historical-society-and-musem-westford-ma": "westford-museum-of-the-westford-historical-society-inc-westford-ma",
     "kemper-art-museum-saint-louis-mo": "mildred-lane-kemper-art-museum-st-louis-mo",   # ROAM lists it twice
+    "lacawac-sanctuary-environmental-education-center-lake-ariel-pa": "lacawac-sanctuary-foundation-lake-ariel-pa",
     "union-county-heritage-museum-new-albany-ms":
         "the-william-faulkner-literary-garden-at-the-union-county-heritage-museum-new-albany-ms",
 }
@@ -279,7 +281,8 @@ KIND_PATTERNS = {
     "garden": r"garden|arboret|botanic|conservatory|horticult",
 }
 _KIND_RES = {k: re.compile(v, re.I) for k, v in KIND_PATTERNS.items()}
-PROGRAM_KIND = {"ASTC": "science", "ACM": "children", "AZA": "zoo", "AHS": "garden", "TIMETRAVELERS": "history"}
+PROGRAM_KIND = {"ASTC": "science", "ACM": "children", "AZA": "zoo", "AHS": "garden", "TIMETRAVELERS": "history",
+                "ANCA": "nature"}
 
 
 def museum_kinds(names: List[str], programs) -> List[str]:
@@ -559,7 +562,7 @@ def run(sources: List[str], from_fixtures: bool, geocode_enabled: bool, out_dir:
 def main(argv: Optional[List[str]] = None) -> None:
     ap = argparse.ArgumentParser(description="Build data/museums.json from source adapters.")
     ap.add_argument("--sources", default="astc,acm",
-                    help="comma-separated: astc,acm,narm,roam,aza,ahs,timetravelers")
+                    help="comma-separated: astc,acm,narm,roam,aza,ahs,timetravelers,anca")
     ap.add_argument("--from-fixtures", action="store_true",
                     help="use saved fixtures instead of live fetching (offline)")
     ap.add_argument("--no-geocode", action="store_true", help="skip network (Nominatim) geocoding; offline ZIP/place tables still apply")
