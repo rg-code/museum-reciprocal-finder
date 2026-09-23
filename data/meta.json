@@ -1,17 +1,18 @@
 {
   "last_updated": "2026-09-23",
   "counts": {
-    "museums": 3020,
+    "museums": 3161,
     "by_program": {
       "NARM": 1532,
       "ROAM": 609,
       "TIMETRAVELERS": 511,
       "ACM": 210,
+      "ANCA": 158,
       "AZA": 150,
       "AHS": 391,
       "ASTC": 348
     }
   },
-  "geocoded": 3020,
+  "geocoded": 3161,
   "schema_version": 1
 }
