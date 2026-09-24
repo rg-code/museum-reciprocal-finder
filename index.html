@@ -86,6 +86,8 @@
   .ac.hidden { display:none; }
   .ac li { padding:8px 10px; border-radius:7px; cursor:pointer; font-size:14px; }
   .ac li[aria-selected="true"], .ac li:hover { background:#e8f1fb; }
+  .assoc.select-all { display:flex; font-weight:700; margin:0 0 6px; padding-bottom:6px;
+    border-bottom:1px solid var(--line); }
   .assoc-aza { margin:6px 0 2px; padding:8px 10px; border:1px solid var(--line); border-radius:9px; }
   .assoc-aza .assoc { display:flex; margin:2px 0; }
   .assoc-aza p { margin:6px 0 0; font-size:12px; }
@@ -209,6 +211,7 @@
     </div>
     <div id="assoc-wrap" class="hidden">
       <label>Associations you hold</label>
+      <label class="assoc select-all"><input type="checkbox" id="assoc-all"> Select all</label>
       <div id="assoc-list"></div>
     </div>
     <label for="loc">Your home ZIP <span class="muted">(required — some networks block museums near where you live)</span></label>
@@ -893,7 +896,25 @@ el("assoc-list").addEventListener("change", e => {
   const t = e.target;
   if (t.dataset.tier && t.checked)
     el("assoc-list").querySelectorAll(`input[value="${t.value}"][data-tier]`).forEach(o => { if (o !== t) o.checked = false; });
+  syncSelectAll();
 });
+// "Select all": every association, taking AZA's better tier (blue "100% OR 50%").
+el("assoc-all").addEventListener("change", e => {
+  const on = e.target.checked;
+  el("assoc-list").querySelectorAll("input").forEach(c => {
+    c.checked = on && (!c.dataset.tier || c.dataset.tier === "100_or_50");
+  });
+  syncSelectAll();
+});
+// Checked when every network is picked (either AZA tier), dashed when only some are.
+function syncSelectAll() {
+  const boxes = [...el("assoc-list").querySelectorAll("input")];
+  const nets = new Set(boxes.map(c => c.value));
+  const picked = new Set(boxes.filter(c => c.checked).map(c => c.value));
+  const all = el("assoc-all");
+  all.checked = picked.size === nets.size;
+  all.indeterminate = picked.size > 0 && picked.size < nets.size;
+}
 el("home-list").addEventListener("change", e => {
   if (e.target.type !== "checkbox") return;
   e.target.checked ? HOME_PICKED.add(e.target.value) : HOME_PICKED.delete(e.target.value);
