@@ -129,8 +129,6 @@
   .b-free { background:var(--greenbg); color:var(--green); }
   .b-discount, .b-verify { background:var(--amberbg); color:var(--amber); }
   .b-none { background:var(--greybg); color:var(--grey); }
-  .disclaimer { font-size:12px; color:var(--muted); border-top:1px solid var(--line);
-    margin-top:8px; padding-top:10px; }
   a.link { color:var(--accent); }
   .hidden { display:none; }
   .arms { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:10px; margin:4px 0 8px; }
@@ -251,9 +249,6 @@
     </div>
     <div id="results-list" class="cards"></div>
     <div class="row" style="margin-top:12px"><button id="more" class="hidden">Show more</button></div>
-    <p class="disclaimer">Reciprocal policies are set by each institution and change often.
-      This is guidance only — always confirm with the museum before you visit.
-      <span id="sample-note" class="hidden">Sample data for demonstration.</span></p>
   </div>
 
   <div id="gateway" class="card hidden">
@@ -283,8 +278,6 @@
     </div>
     <p id="gw-note" class="muted"></p>
     <div id="gateway-list" class="cards"></div>
-    <p class="disclaimer">Prices are approximate (gathered Sep 2026) and reciprocal benefits usually
-      come only with the tier shown — always confirm on the museum's membership page before buying.</p>
   </div>
 </main>
 
@@ -531,7 +524,6 @@ async function loadData() {
   ]);
   PROGRAMS = p; delete PROGRAMS._meta;
   MUSEUMS = m.museums || [];
-  el("sample-note").classList.toggle("hidden", !m._meta);  // only the sample file carries _meta
   MEMBERSHIPS = g.gateways || [];
   // Live landing-page numbers
   const nets = Object.keys(PROGRAMS), fmt = n => n.toLocaleString("en-US");
